@@ -30,7 +30,7 @@ const TemplateZone = ({
       {
         resumeData?.templateData ? (
           <>
-            <Actions>
+            <Actions className="print-none">
               <span>Match your resume with Job Description and make it ATS Friendly.</span>
               <button onClick={() => setShowJdModal(true)} type="button" className="btn-primary btn-outlined">
                 Match now

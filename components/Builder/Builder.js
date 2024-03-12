@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  TemplateZone, TemplatesSidebar
+  TemplateContent,
+  TemplateZone,
+  TemplatesSidebar
 } from './components';
 import ResumeContextProvider from '@/context/ResumeContext';
 
@@ -11,6 +13,7 @@ const Builder = () => (
       <EditorSection>
         <TemplatesSidebar />
         <TemplateZone />
+        <TemplateContent />
       </EditorSection>
     </Wrapper>
   </ResumeContextProvider>
@@ -18,6 +21,10 @@ const Builder = () => (
 
 const Wrapper = styled.div`
   padding: 20px;
+
+  @media print {
+    padding: 0;
+  }
 `;
 
 const EditorSection = styled.div`

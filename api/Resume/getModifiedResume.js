@@ -122,9 +122,9 @@ const getModifiedResume = async (resumeString, jobDescription) => {
       data: payload
     };
 
-    // const res = await axios(config);
-    // return res?.data;
-    return dummy;
+    const res = await axios(config);
+    return res?.data;
+    // return dummy;
   } catch (err) {
     console.log(err);
   }

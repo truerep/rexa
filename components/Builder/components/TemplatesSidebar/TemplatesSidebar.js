@@ -6,7 +6,7 @@ import {
 import templatesData from './templatesData';
 
 const TemplatesSidebar = ({updateTemplateId}) => (
-  <Wrapper>
+  <Wrapper className="print-none">
     <ThemeTypes>
       <button className="btn-primary">Basic</button>
       <button className="btn-primary btn-outlined">Premium</button>

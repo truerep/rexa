@@ -3,6 +3,27 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+
+*::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: unset;
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+	background-color: #a881fa;
 }
 
 html {
@@ -89,17 +110,22 @@ button:hover, a:hover {
 /* Print Resume */
 
 @media print {
-  body * {
+  /* html, body {
+    width: 210mm;
+    height: 297mm;        
+  } */
+  .print-none {
+    display: none!important;
+  }
+  body  {
     visibility: hidden;
   }
-  #templateContainer, #templateContainer * {
-    visibility: visible;
-  }
   #templateContainer {
-    position: absolute;
-    left: 0;
-    top: 0;
+    visibility: visible;
     margin: 0 auto;
+  }
+  #templateContainer, #templateContainer:last-child {
+    page-break-after: avoid;
   }
 }
 
@@ -113,6 +139,6 @@ button:hover, a:hover {
 }
 
 @page {
-  size: A4 !important;
-  margin: 0 !important;
+  size: A4;
+  margin: 0;
 }
