@@ -6,12 +6,7 @@ import Image from 'next/image';
 import {
   ResumeContext
 } from '@/context/ResumeContext';
-import userImage from './assets/user.png';
-import educationImage from './assets/mortarboard.png';
-import workImage from './assets/portfolio.png';
-import skillsImage from './assets/skills.png';
-import mailImage from './assets/mail.png';
-import phoneImage from './assets/phone-call.png';
+import {userImage, educationImage, workImage, skillsImage, mailImage, phoneImage} from './assets';
 
 const TemplateModern = () => {
   let {resumeData} = useContext(ResumeContext);
