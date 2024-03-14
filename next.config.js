@@ -3,6 +3,9 @@ const nextConfig = {
   compiler: {
     reactStrictMode: true,
     styledComponents: true
+  },
+  images: {
+    domains: ['images.unsplash.com','imgv3.fotor.com']
   }
 };
 

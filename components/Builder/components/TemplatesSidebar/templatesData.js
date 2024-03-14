@@ -7,6 +7,13 @@ const templatesData = [
     usedBy: '3,450'
   },
   {
+    id: 'modern',
+    name: 'Modern',
+    thumbnail: 'https://resumekraft.com/wp-content/uploads/2022/06/Software-Engineer-Resume-Sample-1.jpg',
+    type: 'basic',
+    usedBy: '1,200'
+  },
+  {
     id: 'dark',
     name: 'Dark',
     thumbnail: 'https://images.resumgo.com/2019/08/DIONA-Free-Resume-Template.png',

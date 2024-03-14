@@ -1,14 +1,16 @@
-/* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import {
-  TemplateDark, TemplateStarter
+  TemplateDark, TemplateModern, TemplateStarter
 } from './TemplatesList';
 
 const TemplateRender = (templateNameKey) => {
   switch (templateNameKey) {
     case 'dark':
       return <TemplateDark />;
-
     case 'starter':
+      return <TemplateStarter />;
+    case 'modern':
+      return <TemplateModern />;
     default:
       return <TemplateStarter />;
   }
