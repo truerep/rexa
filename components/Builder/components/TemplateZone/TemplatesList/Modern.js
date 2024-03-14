@@ -6,12 +6,12 @@ import Image from 'next/image';
 import {
   ResumeContext
 } from '@/context/ResumeContext';
-import userImage from '../../../../assets/templateIcons/user.png';
-import educationImage from '../../../../assets/templateIcons/mortarboard.png';
-import workImage from '../../../../assets/templateIcons/portfolio.png';
-import skillsImage from '../../../../assets/templateIcons/skills.png';
-import mailImage from '../../../../assets/templateIcons/mail.png';
-import phoneImage from '../../../../assets/templateIcons/phone-call.png';
+import userImage from '../../../../assets/templateIcons/modern/user.png';
+import educationImage from '../../../../assets/templateIcons/modern/mortarboard.png';
+import workImage from '../../../../assets/templateIcons/modern/portfolio.png';
+import skillsImage from '../../../../assets/templateIcons/modern/skills.png';
+import mailImage from '../../../../assets/templateIcons/modern/mail.png';
+import phoneImage from '../../../../assets/templateIcons/modern/phone-call.png';
 
 const TemplateModern = () => {
   let {resumeData} = useContext(ResumeContext);
