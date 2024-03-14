@@ -13,7 +13,7 @@ const Builder = () => (
       <EditorSection>
         <TemplatesSidebar />
         <TemplateZone />
-        {/* <TemplateContent /> */}
+        <TemplateContent />
       </EditorSection>
     </Wrapper>
   </ResumeContextProvider>
