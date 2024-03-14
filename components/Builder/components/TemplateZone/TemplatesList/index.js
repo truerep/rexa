@@ -1,4 +1,4 @@
-import TemplateModern from './Modern';
+import {TemplateModern} from './Modern';
 import TemplateStarter from './Starter';
 import TemplateDark from './Dark';
 
