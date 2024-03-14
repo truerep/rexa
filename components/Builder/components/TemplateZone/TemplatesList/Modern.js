@@ -6,6 +6,12 @@ import Image from 'next/image';
 import {
   ResumeContext
 } from '@/context/ResumeContext';
+import userImage from '../../../../assets/templateIcons/user.png';
+import educationImage from '../../../../assets/templateIcons/mortarboard.png';
+import workImage from '../../../../assets/templateIcons/portfolio.png';
+import skillsImage from '../../../../assets/templateIcons/skills.png';
+import mailImage from '../../../../assets/templateIcons/mail.png';
+import phoneImage from '../../../../assets/templateIcons/phone-call.png';
 
 const TemplateModern = () => {
   let {resumeData} = useContext(ResumeContext);
@@ -13,22 +19,83 @@ const TemplateModern = () => {
 
   return (
     <Wrapper>
-      {console.log(resumeData, '<---resumeJson')}
       <BasicInfoWrapper>
-        {/* <Image src="https://imgv3.fotor.com/images/slider-image/Female-portrait-picture-enhanced-with-better-clarity-and-higher-quality-using-Fotors-free-online-AI-photo-enhancer.jpg" alt="logo" width={500} height={100} /> Will fix it somehow width is not beign set */}
+        <Image
+          src="https://imgv3.fotor.com/images/slider-image/Female-portrait-picture-enhanced-with-better-clarity-and-higher-quality-using-Fotors-free-online-AI-photo-enhancer.jpg"
+          alt="logo"
+          width={100}
+          height={100}
+          style={{
+            borderRadius: '50%',
+            margin: '0 10px',
+            width: '100px',
+          }}
+        />
         <h1>{resumeData?.basics?.name}</h1>
       </BasicInfoWrapper>
       <ContactSection>
-        <ContactItem>
-          {resumeData?.basics?.email}
-        </ContactItem>
-        <ContactItem>
-          {resumeData?.basics?.phone}
-        </ContactItem>
+        <ContactSectionImageAndItemDiv>
+          <Image
+            src={mailImage}
+            alt="sectionImage"
+            width={5}
+            height={20}
+            style={{
+              width: '18px',
+              height: '18px',
+              filter: 'invert(1)',
+              marginRight: '10px'
+            }}
+          />
+          <ContactItem>
+            {resumeData?.basics?.email}
+          </ContactItem>
+        </ContactSectionImageAndItemDiv>
+        <ContactSectionImageAndItemDiv>
+          <Image
+            src={phoneImage}
+            alt="sectionImage"
+            width={5}
+            height={20}
+            style={{
+              width: '18px',
+              height: '18px',
+              filter: 'invert(1)',
+              marginRight: '10px'
+            }}
+          />
+          <ContactItem>{resumeData?.basics?.phone}</ContactItem>
+        </ContactSectionImageAndItemDiv>
       </ContactSection>
-      <SectionTitle>SUMMARY</SectionTitle>
+      <SectionImageAndTitleDiv>
+        <Image
+          src={userImage}
+          alt="sectionImage"
+          width={5}
+          height={20}
+          style={{
+            width: '18px',
+            height: '18px',
+            marginRight: '5px'
+          }}
+        />
+        <SectionTitle>SUMMARY</SectionTitle>
+      </SectionImageAndTitleDiv>
       <ShortBio>{resumeData?.basics?.summary}</ShortBio>
-      <SectionTitle>SKILLS</SectionTitle>
+      <SectionImageAndTitleDiv>
+        <Image
+          src={skillsImage}
+          alt="sectionImage"
+          width={5}
+          height={20}
+          style={{
+            width: '18px',
+            height: '18px',
+            marginRight: '5px'
+          }}
+        />
+        <SectionTitle>SKILLS</SectionTitle>
+      </SectionImageAndTitleDiv>
       <SkillItemWrapper>
         {
           resumeData?.skills && resumeData?.skills.map((skill) => (
@@ -47,7 +114,20 @@ const TemplateModern = () => {
           ))
         }
       </SkillItemWrapper>
-      <SectionTitle>WORK EXPERIENCE</SectionTitle>
+      <SectionImageAndTitleDiv>
+        <Image
+          src={workImage}
+          alt="sectionImage"
+          width={5}
+          height={20}
+          style={{
+            width: '18px',
+            height: '18px',
+            marginRight: '5px'
+          }}
+        />
+        <SectionTitle>WORK EXPERIENCE</SectionTitle>
+      </SectionImageAndTitleDiv>
       <SectionContent>
         {resumeData?.work?.map((work, idx) => (
           <Item key={idx}>
@@ -62,7 +142,20 @@ const TemplateModern = () => {
           </Item>
         ))}
       </SectionContent>
-      <SectionTitle>EDUCATION</SectionTitle>
+      <SectionImageAndTitleDiv>
+        <Image
+          src={educationImage}
+          alt="sectionImage"
+          width={5}
+          height={20}
+          style={{
+            width: '18px',
+            height: '18px',
+            marginRight: '5px'
+          }}
+        />
+        <SectionTitle>EDUCATION</SectionTitle>
+      </SectionImageAndTitleDiv>
       <SectionContent>
         {resumeData?.education?.map((education, idx) => (
           <Item key={idx}>
@@ -94,12 +187,21 @@ const Wrapper = styled.div`
 `;
 
 const BasicInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   padding: 20px 20px 20px;
   p {
     padding-top: 10px;
   }
   color: #eee;
   background-color: #2C2C2C;
+`;
+
+const ContactSectionImageAndItemDiv = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
 `;
 
 const ContactSection = styled.div`
@@ -119,12 +221,17 @@ const ShortBio = styled.p`
   padding: 10px 20px;
 `;
 
-const SectionTitle = styled.h2`
+const SectionImageAndTitleDiv = styled.div`
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid #000;
   padding: 10px 5px;
   margin: 0 20px;
+`;
+
+const SectionTitle = styled.h2`
   font-size: 18px;
   font-weight: 600;
-  border-bottom: 4px solid #000;
 `;
 
 const SectionContent = styled.div`
