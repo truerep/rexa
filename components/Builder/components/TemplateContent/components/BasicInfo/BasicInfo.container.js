@@ -1,5 +1,5 @@
 import React, {
-  useContext, useEffect, useState
+  useContext
 } from 'react';
 import BasicInfo from './BasicInfo';
 import {

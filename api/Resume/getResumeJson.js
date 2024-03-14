@@ -55,11 +55,13 @@ const dummy = {
         'Redux',
         'Next.js',
         'Css',
-        'JavaScript / ES6 / jQuery',
-        'TypeScript',
-        'Node.js',
-        'Express.js',
-        'UX/UI',
+        'JavaScript / ES6 / jQuery'
+      ]
+    },
+    {
+      name: 'Backend Development',
+      level: 'Experienced',
+      keywords: [
         'MongoDB',
         'Figma',
         'Selenium',
@@ -117,9 +119,9 @@ const getResumeJson = async (resumeString) => {
       data: {resume: resumeString}
     };
 
-    const res = await axios(config);
-    return res?.data;
-    // return dummy;
+    // const res = await axios(config);
+    // return res?.data;
+    return dummy;
   } catch (err) {
     console.log(err);
   }

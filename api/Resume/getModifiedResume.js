@@ -70,6 +70,30 @@ const dummy = {
         'Git',
         'MERN Stack'
       ]
+    },
+    {
+      name: 'Frontend Development',
+      level: 'Experienced',
+      keywords: [
+        'ReactJS',
+        'Redux',
+        'Next.js',
+        'Css',
+        'JavaScript / ES6 / jQuery',
+        'TypeScript',
+        'Node.js',
+        'Express.js',
+        'UX/UI',
+        'MongoDB',
+        'Figma',
+        'Selenium',
+        'CI/CD',
+        'Product Design',
+        'Bootstrap',
+        'Chakra UI',
+        'Git',
+        'MERN Stack'
+      ]
     }
   ],
   education: [
@@ -122,9 +146,9 @@ const getModifiedResume = async (resumeString, jobDescription) => {
       data: payload
     };
 
-    const res = await axios(config);
-    return res?.data;
-    // return dummy;
+    // const res = await axios(config);
+    // return res?.data;
+    return dummy;
   } catch (err) {
     console.log(err);
   }

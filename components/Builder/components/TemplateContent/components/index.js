@@ -1,5 +1,9 @@
 import BasicInfo from './BasicInfo';
+import Skills from './Skills';
+import Experience from './Experience';
 
 export {
-  BasicInfo
+  BasicInfo,
+  Skills,
+  Experience
 };

@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  BasicInfo
+  BasicInfo, Experience, Skills
 } from './components';
 
-const TemplateContent = ({templateData}) => (
+const TemplateContent = () => (
   <Wrapper className="print-none">
     <BasicInfo />
+    <Skills />
+    <Experience />
   </Wrapper>
 );
 

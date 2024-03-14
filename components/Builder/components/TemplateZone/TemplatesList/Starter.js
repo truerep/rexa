@@ -12,7 +12,6 @@ const TemplateStarter = () => {
 
   return (
     <Wrapper>
-      {console.log(resumeData, '<---resumeJson')}
       <BasicInfoWrapper>
         <h1>{resumeData?.basics?.name}</h1>
         <p>

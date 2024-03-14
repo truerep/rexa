@@ -7,6 +7,8 @@ export const Item = styled.div`
     border-radius: 5px;
     overflow: hidden;
     border: 1px solid #eeeeee;
+    max-height: 400px;
+    overflow: auto;
 
     &:not(:last-child) {
         margin-bottom: 10px;
@@ -17,10 +19,16 @@ export const ItemTitle = styled.h3`
     background: #f7f7f7;
     padding: 5px 10px;
     text-transform: capitalize;
+    position: sticky;
+    top: 0;
 `;
 
 export const ItemContent = styled.div`
     padding: 5px 10px;
+    
+    &:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+    }
 `;
 
 export const InputGroup = styled.div`
