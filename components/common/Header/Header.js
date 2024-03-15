@@ -16,8 +16,8 @@ const Header = ({
   return (
     <HeaderWrapper>
       <LogoWrapper className="d-flex align-center">
-        <Logo src={LogoUrl} alt="Acme Notes" />
-        <ProductName>| Note</ProductName>
+        <Logo src={LogoUrl} alt="Resume Sync" />
+        <ProductName>| Resume</ProductName>
       </LogoWrapper>
       <Nav className={toggleNav ? 'toggled' : ''}>
         {

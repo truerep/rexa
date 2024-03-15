@@ -9,7 +9,7 @@ const Footer = () => (
   <Wrapper>
     <Context className="container">
       <Copyright>
-        &copy; 2024 Acme Notes. All Rights Reserved
+        &copy; 2024 Resume Sync. All Rights Reserved
       </Copyright>
       <Nav>
         <Link href="/">FAQs</Link>
