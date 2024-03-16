@@ -9,6 +9,9 @@ import {
 
 const HeroBanner = () => {
   const [showModal, setShowModal] = useState(false);
+  const takeToLogin = () => {
+    window.location.href = 'http://localhost:3000/api/auth/linkedin';
+  };
 
   return (
     <Section>
@@ -20,7 +23,7 @@ const HeroBanner = () => {
               Capture thoughts effortlessly, organize seamlessly: your resume, your way.
             </InfoLine>
             <ActionLinks data-aos="fade-up" data-aos-delay="300" className="d-flex align-center">
-              <button onClick={() => setShowModal(true)} className="btn-primary">
+              <button onClick={takeToLogin} className="btn-primary">
                 Get Started
               </button>
               <a data-aos="fade-up" data-aos-delay="400" href="#features">Know more</a>
