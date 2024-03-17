@@ -30,8 +30,8 @@ const HeroBanner = () => {
             </ActionLinks>
           </Content>
           <BannerImg>
-            <img className="move-img" src="/assets/images/app-download-image.png" alt="app-img" />
-            <img className="move-img" src="/assets/images/app-banner-image.png" alt="app-img" />
+            <img className="move-img" src="/assets/images/tablet-site-1.png" alt="app-img" />
+            <img className="move-img" src="/assets/images/tablet-site-2.png" alt="app-img" />
           </BannerImg>
         </Container>
       </Wrapper>

@@ -5,7 +5,7 @@ import {
 } from '@/components/common/UiElements';
 
 const ClientsList = () => (
-  <Section>
+  <Section id="clients">
     <SectionTitle data-aos="fade-up">Trusted by Professionals</SectionTitle>
     <SectionSubtitle data-aos="fade-up" data-aos-delay="100">Join Our Global Network of Professionals Using Our App!</SectionSubtitle>
     <ClientsImages data-aos="fade-up" data-aos-delay="200" className="container" />

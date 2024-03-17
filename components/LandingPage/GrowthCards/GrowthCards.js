@@ -19,7 +19,7 @@ const GrowthCards = ({
 }) => (
   <SectionDark id="app-metrics">
     <SectionTitle data-aos="fade-up">App Metrics</SectionTitle>
-    <SectionSubtitle data-aos="fade-up" data-aos-delay="100">See How Our App is Making an Impact!</SectionSubtitle>
+    <SectionSubtitle data-aos="fade-up" data-aos-delay="100">See How Our App is Making an Impact!*</SectionSubtitle>
     <ContentWrapper className="container">
       {growthData.map((item, index) => (
         <Card data-aos="fade-up" data-aos-delay={200 + index * 200}>
@@ -45,6 +45,9 @@ const GrowthCards = ({
         </Card>
       ))}
     </ContentWrapper>
+    <Asterisk>
+      *Numbers are not real, just for demo purposes.
+    </Asterisk>
   </SectionDark>
 );
 
@@ -60,6 +63,12 @@ const ContentWrapper = styled.div`
   @media (max-width: 576px) {
     grid-template-columns: repeat(1, 1fr);
   }
+`;
+
+const Asterisk = styled.p`
+  text-align: center;
+  margin-top: 20px;
+  color: #fff;
 `;
 
 const Card = styled.div`

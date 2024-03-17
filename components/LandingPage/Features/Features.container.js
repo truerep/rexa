@@ -13,17 +13,17 @@ const FeaturesContainer = () => {
       smallImg: '/assets/images/feature-1.png'
     },
     {
-      title: 'Cross-Platform Syncing',
+      title: 'Customizable Templates',
       largeImg: '/assets/images/feature-2-lg.png',
       smallImg: '/assets/images/feature-2.png'
     },
     {
-      title: 'Collaboration Tools',
+      title: 'Advanced Security',
       largeImg: '/assets/images/feature-3-lg.png',
       smallImg: '/assets/images/feature-3.png'
     },
     {
-      title: 'AI Search',
+      title: 'AI Powered',
       largeImg: '/assets/images/feature-4-lg.png',
       smallImg: '/assets/images/feature-4.png'
     }
