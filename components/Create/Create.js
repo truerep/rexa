@@ -4,16 +4,45 @@ import styled from 'styled-components';
 import {
   colors
 } from '@/helpers';
-import {
-  DragAndDrop
-} from './components';
 
-const Create = ({handleResumeUpload}) => (
+const Create = ({tabData, activeTab, setActiveTab}) => (
   <Wrapper>
     <Logo src="/assets/images/company-logo.svg" />
     <Container>
-      {/* <Title>Provide Resume</Title> */}
-      <DragAndDrop handleResumeUpload={handleResumeUpload} />
+      <TabsWrapper data-aos="fade-up" data-aos-delay="200">
+
+        <TitlesWrapper
+          tabWidth={100 / tabData.length}
+          tabPosition={(100 / tabData.length) * (activeTab - 1)}
+        >
+          {tabData.length
+      && tabData.map((button, index) => (
+        <Title
+          key={index}
+          className={activeTab === index + 1 ? 'active' : ''}
+          onClick={() => setActiveTab(index + 1)}
+        >
+          {button.title}
+        </Title>
+      ))}
+        </TitlesWrapper>
+
+        <TabBody>
+
+          {tabData.length
+      && tabData.map((data, index) => (
+        <TabItem
+          key={index}
+          className={`${
+            activeTab === index + 1 ? 'active' : ''
+          } ${index < activeTab - 1 ? 'prev' : ''}`}
+        >
+          {data?.component ?? 'Coming Soon...'}
+        </TabItem>
+      ))}
+        </TabBody>
+
+      </TabsWrapper>
     </Container>
   </Wrapper>
 );
@@ -30,16 +59,103 @@ const Logo = styled.img`
 const Container = styled.div`
     border-radius: 20px;
     background: #fff;
-    max-width: 700px;
+    max-width: 900px;
     margin: 60px auto 10px;
-    padding: 30px;
     text-align: left;
 `;
 
-const Title = styled.h1`
-    font-weight: 500;
+const TabsWrapper = styled.div``;
+
+const TitlesWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    background-color: ${colors.Magnolia};
+    position: relative;
+
+    &::before {
+      height: 2px;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: #ededed;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: ${(props) => props.tabPosition}%;
+        height: 2px;
+        transition: all 0.15s ease-in-out;
+        background-color: ${colors.HanPurple};
+        width: ${(props) => props.tabWidth}%;
+    }
+
+    @media (max-width: 576px) {
+      white-space: pre;
+      overflow: scroll;
+
+      &::after {
+        content: unset;
+      }
+    }
+`;
+
+const Title = styled.button`
+    cursor: pointer;
+    flex: 1;
+    background: transparent;
+    outline: 0;
+    border: 0;
     color: ${colors.ErrieBlack};
-    font-size: 36px;
+    font-size: 20px;
+    padding: 23px 0;
+    transition: all 0.15s ease-in-out;
+
+    &.active, &.active:hover {
+        color: ${colors.HanPurple};
+    }
+
+    &:hover {
+        color: ${colors.ErrieBlack};
+    }
+
+    @media (max-width: 576px) {
+      padding: 20px;
+    }
+`;
+
+const TabBody = styled.div`
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+
+    @media (max-width: 576px) {
+      width: 100%;
+      height: unset;
+      box-sizing: border-box;
+    }
+`;
+
+const TabItem = styled.div`
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(100%);
+    transition: all 0.2s ease-in-out;
+    background-color: #fff;
+
+    &.active {
+        position: relative;
+        transform: translateX(0);
+    }
+
+    &.prev {
+      top: 20px;
+      transform: translateX(-100%);
+    }
 `;
 
 export default Create;

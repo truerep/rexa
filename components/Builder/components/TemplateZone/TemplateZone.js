@@ -33,10 +33,16 @@ const TemplateZone = ({
             <Actions className="print-none">
               <span>Match your resume with Job Description and make it ATS Friendly.</span>
               <button onClick={() => setShowJdModal(true)} type="button" className="btn-primary btn-outlined">
-                Match now
+                <img src="/assets/icons/sync-icon.png" alt="" />
+                <span>Match now</span>
               </button>
-              <button type="button" onClick={() => window.print()} className="btn-primary">
-                Download
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="btn-primary"
+              >
+                <img src="/assets/icons/download-icon.png" alt="" />
+                <span>Download</span>
               </button>
             </Actions>
             <ResumeTemplate id="templateContainer">
@@ -50,7 +56,9 @@ const TemplateZone = ({
             </Modal>
           </>
         ) : (
-          'Loading...'
+          <Loader>
+            <LoaderImg src="https://cdn.dribbble.com/users/171267/screenshots/2454901/fileloading.gif" alt="loading..." />
+          </Loader>
         )
       }
     </Wrapper>
@@ -60,10 +68,6 @@ const TemplateZone = ({
 const Wrapper = styled.div`
     width: 210mm;
     flex-shrink: 0;
-  
-    img {
-      width: 30px;
-    }
   `;
 
 const Actions = styled.div`
@@ -77,6 +81,23 @@ const Actions = styled.div`
       opacity: 0.7;
       font-weight: 500;
     }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 7px 13px;
+
+      img {
+        height: 18px;
+      }
+
+      span {
+        font-weight: 500;
+        font-size: 15px;
+      }
+    }
   `;
 
 const ResumeTemplate = styled.div`
@@ -85,5 +106,18 @@ const ResumeTemplate = styled.div`
     border-radius: 10px;
     overflow: hidden;
   `;
+
+const Loader = styled.div`
+    background: #fff;
+    border-radius: 10px;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const LoaderImg = styled.img`
+  width: 60%;
+`;
 
 export default TemplateZone;

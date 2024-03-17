@@ -1,81 +1,138 @@
-import React, {
-  useState
-} from 'react';
+import React from 'react';
+import styled from 'styled-components';
+import {
+  InfoLine
+} from '@/components/common/UiElements';
+import {
+  colors
+} from '@/helpers';
 
-const DragAndDrop = ({handleResumeUpload}) => {
-  const [dragging, setDragging] = useState(false);
-  const [file, setFile] = useState(null);
-
-  const handleDragEnter = (e) => {
-    e.preventDefault();
-    setDragging(true);
-  };
-
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    setDragging(false);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setDragging(false);
-    const newFile = e.dataTransfer.files[0];
-    setFile(newFile);
-  };
-
-  const handleFileChange = (e) => {
-    const newFile = e.target.files[0];
-    setFile(newFile);
-  };
-
-  const removeFile = () => {
-    setFile(null);
-  };
-
-  return (
-    <div
+const DragAndDrop = ({
+  dragging,
+  file,
+  handleDragEnter,
+  handleDragOver,
+  handleDragLeave,
+  handleDrop,
+  handleFileChange,
+  removeFile,
+  handleResumeUpload
+}) => (
+  <Wrapper>
+    <InfoLine>
+      Upload your existing resume to modify design and
+      you can also match it with the job description
+    </InfoLine>
+    <ResumeUploadContainer
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
       style={{
-        border: dragging ? '2px dashed #007bff' : '2px dashed #ccc',
-        padding: '20px',
-        textAlign: 'center',
-        cursor: 'pointer'
+        border: dragging ? `2px dashed ${colors.HanPurple}` : '2px dashed #ccc'
       }}
     >
-      {file ? (
-        <div>
-          <p>
-            File Name:
-            {file.name}
-          </p>
-          <p>
-            File Size:
-            {file.size}
-            {' '}
-            bytes
-          </p>
-          <p>
-            File Type:
-            {file.type}
-          </p>
-          <button onClick={removeFile}>Remove File</button>
-        </div>
-      ) : (
-        <div>
-          <p>Drag & Drop your file here or</p>
-          <input type="file" onChange={handleFileChange} />
-        </div>
-      )}
-      <button onClick={() => handleResumeUpload(file)}>Generate</button>
-    </div>
-  );
-};
+      <FileUpoadContainer>
+        <FileIcon src="/assets/icons/file-icon.png" />
+        {
+          file ? (
+            <Text className="file-name">{file?.name}</Text>
+          ) : (
+            <>
+              <Text>Drag and Drop</Text>
+              <Text className="or-text">Or</Text>
+            </>
+          )
+        }
+        {
+          file ? (
+            <BrowseFileBtn
+              onClick={removeFile}
+              className="btn-primary btn-outlined"
+            >
+              Remove
+            </BrowseFileBtn>
+          ) : (
+            ''
+          )
+        }
+        {
+          !file ? (
+            <BrowseFileBtn className="btn-primary btn-outlined">
+              <input type="file" onChange={handleFileChange} />
+              Select File
+            </BrowseFileBtn>
+          ) : ('')
+        }
+      </FileUpoadContainer>
+    </ResumeUploadContainer>
+    {
+      file ? (
+        <GenerateButtonWrapper>
+          <GenerateBtn
+            className="btn-primary btn-dark"
+            type="button"
+            onClick={() => handleResumeUpload(file)}
+          >
+            Generate
+          </GenerateBtn>
+        </GenerateButtonWrapper>
+      ) : ('')
+    }
+  </Wrapper>
+);
+
+const Wrapper = styled.div`
+
+`;
+
+const ResumeUploadContainer = styled.div`
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 15px;
+`;
+
+const FileUpoadContainer = styled.div`
+
+`;
+
+const FileIcon = styled.img`
+    margin-bottom: 15px;
+    transform: translateX(15px);
+`;
+
+const Text = styled.p`
+    color: ${colors.Lavender};
+    font-size: 20px;
+
+    &.or-text {
+      font-size: 16px;
+      color: ${colors.Gray};
+      padding: 10px 0;
+    }
+
+    &.file-name {
+      margin-bottom: 15px;
+    }
+`;
+
+const BrowseFileBtn = styled.label`
+    display: inline-block;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+`;
+
+const GenerateButtonWrapper = styled.div`
+    padding-top: 20px;
+    text-align: right;
+`;
+
+const GenerateBtn = styled.button`
+    font-size: 18px;
+`;
 
 export default DragAndDrop;
