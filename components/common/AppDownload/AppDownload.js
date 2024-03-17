@@ -15,8 +15,8 @@ const AppDownload = () => {
     <Wrapper id="download-app" className="container">
       <Content>
         <Overview>
-          <h3 data-aos="fade-up">Get Resume Sync App</h3>
-          <Ratings>
+          <h3 data-aos="fade-up">Resume Sync App</h3>
+          {/* <Ratings>
             <StarsWrapper data-aos="fade-up" data-aos-delay="100">
               <StarIcon src="/assets/icons/star-filled.png" />
               <StarIcon src="/assets/icons/star-filled.png" />
@@ -27,7 +27,7 @@ const AppDownload = () => {
             <span data-aos="fade-up" data-aos-delay="150">4.5</span>
             <Dot data-aos="fade-up" data-aos-delay="200" />
             <span data-aos="fade-up" data-aos-delay="250">9,00,000 +  Downloads</span>
-          </Ratings>
+          </Ratings> */}
           <AppdownloadIcons>
             <a href="#" data-aos="fade-up" data-aos-delay="300">
               <Icon src="/assets/icons/google-play-icon.svg" />
@@ -37,7 +37,7 @@ const AppDownload = () => {
             </a>
           </AppdownloadIcons>
           <TryNowBtn data-aos="fade-up" data-aos-delay="500" onClick={() => setShowModal(true)} href="#" className="btn-primary">
-            Try Now
+            Coming Soon
           </TryNowBtn>
         </Overview>
         <AppImgWrapper>
@@ -164,7 +164,7 @@ const AppImgWrapper = styled.div`
 
   img {
     position: absolute;
-    width: 300px;
+    width: 200px;
     bottom: -120px;
     right: 60px;
   }
