@@ -8,8 +8,19 @@ import templatesData from './templatesData';
 const TemplatesSidebar = ({updateTemplateId}) => (
   <Wrapper className="print-none">
     <ThemeTypes>
-      <button className="btn-primary">Basic</button>
-      <button className="btn-primary btn-outlined">Premium</button>
+      <button
+        type="button"
+        className="active"
+      >
+        <img src="/assets/icons/basic-template-icon.png" alt="" />
+        <span>Starter</span>
+      </button>
+      <button
+        type="button"
+      >
+        <img src="/assets/icons/premium-template-icon.png" alt="" />
+        <span>Premium</span>
+      </button>
     </ThemeTypes>
     <TemplatesList>
       {templatesData.length && templatesData.map((template, idx) => (
@@ -29,26 +40,40 @@ const TemplatesSidebar = ({updateTemplateId}) => (
 );
 
 const Wrapper = styled.div`
-  width: 280px;
+  width: 260px;
   background: #fff;
-  padding: 15px; 
   border-radius: 10px;
 `;
 
 const ThemeTypes = styled.div`
     display: flex;
     align-items: center;
-    gap: 10px;
 
     button {
         flex: 1;
         font-size: 14px;
         font-weight: 500;
+        border-bottom: 2px solid #ededed;
+        padding: 12px 0;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        img {
+          height: 20px;
+        }
+
+        &.active, &:hover {
+          color: ${colors.HanPurple};
+          border-color: ${colors.HanPurple};
+        }
     }
 `;
 
 const TemplatesList = styled.div`
-    padding-top: 20px;
+    padding: 20px 15px; 
 `;
 
 const TemplateItem = styled.div`
@@ -64,8 +89,9 @@ const TemplateItem = styled.div`
 
 const TemplateFigure = styled.img`
     width: 100%;
-    height: 220px;
-    object-fit: contain;
+    height: 210px;
+    object-fit: cover;
+    object-position: top;
 `;
 
 const TemplateInfo = styled.div`

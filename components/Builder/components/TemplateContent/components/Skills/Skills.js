@@ -4,6 +4,9 @@ import {
   InputGroup,
   Item, ItemContent, ItemTitle
 } from '@/components/common/UiElements';
+import {
+  colors
+} from '@/helpers';
 
 const Skills = ({
   templateData,
@@ -17,69 +20,109 @@ const Skills = ({
   templateData ? (
     <Item>
       <ItemTitle>
-        Skills
-        <button
+        <span>Skills</span>
+        <AddBtn
           type="button"
-          className="btn-primary btn-outlined"
           onClick={addNewSkillSection}
         >
-          Add New Section
-        </button>
+          <img src="/assets/icons/plus-icon.png" alt="add-section" />
+        </AddBtn>
       </ItemTitle>
       <ItemContent>
         {
-          templateData?.length && templateData?.map((template, idx) => (
+          templateData?.length ? templateData?.map((template, idx) => (
             <ItemWrapper>
-              <InputGroup>
-                <label htmlFor="#">Skill Title</label>
+              <InputGroup className="highlighted">
                 <input
                   type="text"
+                  placeholder="Skill Type"
                   onChange={(e) => handleUpdateSkillSectionTitle(idx, e.target.value)}
                   value={template?.name}
                 />
-                <button
+                <DeleteBtn
                   type="button"
-                  className="btn-primary btn-outlined"
                   onClick={() => handleDeleteSkillSection(idx)}
                 >
-                  Delete
-                </button>
+                  <img src="/assets/icons/delete-cross-icon.png" alt="delete" />
+                </DeleteBtn>
               </InputGroup>
-              {
+              <div className="d-grid grid-2 col-gap-2">
+                {
                 template?.keywords && template?.keywords.map((skillItem, sIdx) => (
                   <InputGroup>
                     <input
                       type="text"
+                      placeholder="Add Skill"
                       onChange={(e) => handleUpdateSkill(idx, sIdx, e.target.value)}
                       value={skillItem}
                     />
-                    <button
+                    <DeleteBtn
                       type="button"
-                      className="btn-primary btn-outlined"
                       onClick={() => handleDeleteSkill(idx, sIdx)}
                     >
-                      Delete
-                    </button>
+                      <img src="/assets/icons/delete-cross-icon.png" alt="delete" />
+                    </DeleteBtn>
                   </InputGroup>
                 ))
               }
-              <button
+              </div>
+              <AddBtn
+                className="sub-type-add-btn"
                 type="button"
-                className="btn-primary btn-outlined"
                 onClick={() => handleAddSkill(idx)}
               >
-                Add Skill
-              </button>
+                <img src="/assets/icons/plus-icon.png" alt="add-section" />
+              </AddBtn>
             </ItemWrapper>
-          ))
+          )) : ('')
         }
+        <AddNewSkillSection>
+          <button
+            type="button"
+            className="btn-primary btn-outlined"
+            onClick={addNewSkillSection}
+          >
+            Add new skill section
+          </button>
+        </AddNewSkillSection>
       </ItemContent>
     </Item>
   ) : ('')
 );
 
 const ItemWrapper = styled.div`
-    
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+`;
+
+const DeleteBtn = styled.button`
+  margin-left: 10px;
+  transform: unset!important;
+`;
+
+const AddBtn = styled.button`
+  margin-left: 10px;
+  transform: unset!important;
+
+  img {
+    height: 22px;
+  }
+
+  &.sub-type-add-btn {
+    display: block;
+    margin: 10px auto;
+  }
+`;
+
+const AddNewSkillSection = styled.div`
+  padding: 10px 0;
+  border-top: 1px solid ${colors.Lavender};
+  text-align: center;
+
+  button {
+    transform: unset!important;
+  }
 `;
 
 export default Skills;

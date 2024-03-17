@@ -17,7 +17,7 @@ const BasicInfo = ({
       <ItemContent>
         {
           Object.entries(templateData).map((item) => (
-            <InputGroup>
+            <InputGroup className="d-block">
               <label htmlFor="#">{item[0]}</label>
               {
                 showTextarea.includes(item[0]) ? (

@@ -1,27 +1,38 @@
-import React from 'react';
-import {
-  useRouter
-} from 'next/router';
+import React, {
+  useState
+} from 'react';
 import Create from './Create';
 import {
-  getResumeText
-} from '@/api';
+  CopyPaste,
+  DragAndDrop
+} from './components';
 
 const CreateContainer = () => {
-  const router = useRouter();
+  const [activeTab, setActiveTab] = useState(2);
 
-  const handleResumeUpload = async (file) => {
-    try {
-      const res = await getResumeText(file);
-      sessionStorage.setItem('resumeString', res);
-      if (res) {
-        router.push('/builder');
-      }
-    } catch (err) {}
-  };
+  const tabData = [
+    {
+      title: 'Create'
+    },
+    {
+      title: 'Upload',
+      component: <DragAndDrop />
+    },
+    {
+      title: 'Linked In'
+    },
+    {
+      title: 'Copy Paste',
+      component: <CopyPaste />
+    }
+  ];
 
   return (
-    <Create handleResumeUpload={handleResumeUpload} />
+    <Create
+      tabData={tabData}
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+    />
   );
 };
 

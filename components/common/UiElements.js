@@ -64,8 +64,6 @@ export const SectionSubtitle = styled.h3`
 `;
 
 export const Item = styled.div`
-    border-radius: 5px;
-    overflow: hidden;
     border: 1px solid #eeeeee;
     max-height: 400px;
     overflow: auto;
@@ -76,11 +74,14 @@ export const Item = styled.div`
 `;
 
 export const ItemTitle = styled.h3`
-    background: #f7f7f7;
+    background: ${colors.LightLavender};
     padding: 5px 10px;
     text-transform: capitalize;
     position: sticky;
     top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `;
 
 export const ItemContent = styled.div`
@@ -92,8 +93,23 @@ export const ItemContent = styled.div`
 `;
 
 export const InputGroup = styled.div`
-    &:not(:last-child) {
-        margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &.highlighted {
+        padding: 5px;
+        border-radius: 5px;
+        background: ${colors.Magnolia};
+        border: 1px solid ${colors.Lavender};
+
+        input {
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+    img {
+        height: 22px;
     }
     label {
         display: block;
@@ -115,4 +131,10 @@ export const InputGroup = styled.div`
         min-height: 100px;
         font-family: inherit;
     }
+`;
+
+export const InfoLine = styled.p`
+    font-size: 14px;
+    font-weight: 500;
+    color: ${colors.ErrieBlack}
 `;
