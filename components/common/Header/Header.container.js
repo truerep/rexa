@@ -11,20 +11,20 @@ const HeaderContainer = () => {
       url: '/'
     },
     {
-      name: 'Features',
-      url: '#features'
-    },
-    {
       name: 'Explore',
       url: '#app-metrics'
     },
     {
-      name: 'Pricing',
-      url: '/'
+      name: 'Features',
+      url: '#features'
     },
+    // {
+    //   name: 'Pricing',
+    //   url: '/'
+    // },
     {
-      name: 'About',
-      url: '/'
+      name: 'Partners',
+      url: '#clients'
     }
   ];
 
