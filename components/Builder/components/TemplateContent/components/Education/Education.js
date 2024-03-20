@@ -8,22 +8,19 @@ import {
   Item, ItemContent, ItemTitle
 } from '@/components/common/UiElements';
 
-const Experience = ({
+const Education = ({
   templateData,
-  addNewExperienceSection,
-  handleDeleteWorkSection,
-  handleInputChange,
-  handleHighlightsChange,
-  handleAddHighlight,
-  handleDeleteHighlight
+  addNewEducationSection,
+  handleDeleteEducationSection,
+  handleInputChange
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
-        Experience
+        Education
         <AddBtn
           type="button"
-          onClick={addNewExperienceSection}
+          onClick={addNewEducationSection}
         >
           <img src="/assets/icons/plus-icon.png" alt="add-section" />
         </AddBtn>
@@ -35,13 +32,13 @@ const Experience = ({
               <ItemWrapper>
                 <InputGroup className="highlighted">
                   <input
-                    value={templateItem?.company}
-                    placeholder="Company"
-                    onChange={(e) => handleInputChange(idx, 'company', e.target.value)}
+                    value={templateItem?.institution}
+                    placeholder="Name of University | College | Institution"
+                    onChange={(e) => handleInputChange(idx, 'institution', e.target.value)}
                   />
                   <DeleteBtn
                     type="button"
-                    onClick={() => handleDeleteWorkSection(idx)}
+                    onClick={() => handleDeleteEducationSection(idx)}
                   >
                     <img src="/assets/icons/delete-cross-icon.png" alt="delete" />
                   </DeleteBtn>
@@ -50,21 +47,33 @@ const Experience = ({
               <ItemWrapper>
                 <InputGroup>
                   <input
-                    value={templateItem?.website}
-                    placeholder="http://mycompany.com"
-                    onChange={(e) => handleInputChange(idx, 'website', e.target.value)}
+                    value={templateItem?.area}
+                    placeholder="Area of Study i.e Computer Science & Engineering"
+                    onChange={(e) => handleInputChange(idx, 'area', e.target.value)}
                   />
                 </InputGroup>
               </ItemWrapper>
-              <ItemWrapper>
-                <InputGroup>
-                  <textarea
-                    value={templateItem?.summary}
-                    placeholder="Work Summary"
-                    onChange={(e) => handleInputChange(idx, 'summary', e.target.value)}
-                  />
-                </InputGroup>
-              </ItemWrapper>
+
+              <div className="d-grid grid-2 col-gap-2">
+                <ItemWrapper>
+                  <InputGroup>
+                    <input
+                      value={templateItem?.studyType}
+                      placeholder="Study Type - B.Tech"
+                      onChange={(e) => handleInputChange(idx, 'studyType', e.target.value)}
+                    />
+                  </InputGroup>
+                </ItemWrapper>
+                <ItemWrapper>
+                  <InputGroup>
+                    <input
+                      value={templateItem?.gpa}
+                      placeholder="Marks Obtained - 7GPA or 70%"
+                      onChange={(e) => handleInputChange(idx, 'gpa', e.target.value)}
+                    />
+                  </InputGroup>
+                </ItemWrapper>
+              </div>
               <div className="d-grid grid-2 col-gap-2">
                 <ItemWrapper>
                   <InputGroup>
@@ -85,33 +94,6 @@ const Experience = ({
                   </InputGroup>
                 </ItemWrapper>
               </div>
-              {
-                templateItem?.highlights && templateItem?.highlights?.map((highlight, hIdx) => (
-                  <ItemWrapper>
-                    <InputGroup>
-                      <textarea
-                        className="highlight-item"
-                        value={highlight}
-                        placeholder="Add Work Highlight"
-                        onChange={(e) => handleHighlightsChange(idx, hIdx, e.target.value)}
-                      />
-                      <DeleteBtn
-                        type="button"
-                        onClick={() => handleDeleteHighlight(idx, hIdx)}
-                      >
-                        <img src="/assets/icons/delete-cross-icon.png" alt="delete" />
-                      </DeleteBtn>
-                    </InputGroup>
-                  </ItemWrapper>
-                ))
-              }
-              <AddBtn
-                className="sub-type-add-btn"
-                type="button"
-                onClick={() => handleAddHighlight(idx)}
-              >
-                <img src="/assets/icons/plus-icon.png" alt="add-section" />
-              </AddBtn>
             </>
           )) : ('')
         }
@@ -119,9 +101,9 @@ const Experience = ({
           <button
             type="button"
             className="btn-primary btn-outlined"
-            onClick={addNewExperienceSection}
+            onClick={addNewEducationSection}
           >
-            Add new work section
+            Add new education section
           </button>
         </AddNewSkillSection>
       </ItemContent>
@@ -139,4 +121,4 @@ const ItemWrapper = styled.div`
   }
 `;
 
-export default Experience;
+export default Education;

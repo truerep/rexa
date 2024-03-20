@@ -18,21 +18,21 @@ const BasicInfo = ({
         {
           Object.entries(templateData).map((item) => (
             <InputGroup className="d-block">
-              <label htmlFor="#">{item[0]}</label>
               {
                 showTextarea.includes(item[0]) ? (
                   <textarea
                     value={item[1]}
+                    placeholder={item[0]}
                     onChange={(e) => handleInputChange(item[0], e.target.value)}
                   />
                 ) : (
                   <input
                     value={item[1]}
+                    placeholder={item[0]}
                     onChange={(e) => handleInputChange(item[0], e.target.value)}
                   />
                 )
               }
-
             </InputGroup>
           ))
         }

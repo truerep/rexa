@@ -10,14 +10,14 @@ const Header = ({
   toggleNav,
   setToggleNav
 }) => {
-  const LogoUrl = '/assets/images/company-logo.png';
+  const LogoUrl = '/assets/images/company-logo.svg';
   const hamburgerIcon = 'https://ik.imagekit.io/sahildhingra/hamburger-dark.png';
 
   return (
     <HeaderWrapper>
       <LogoWrapper className="d-flex align-center">
         <Logo src={LogoUrl} alt="Resume Sync" />
-        <ProductName>| Resume</ProductName>
+        {/* <ProductName>| Resume</ProductName> */}
       </LogoWrapper>
       <Nav className={toggleNav ? 'toggled' : ''}>
         {
@@ -62,7 +62,7 @@ const LogoWrapper = styled.div`
 `;
 
 const Logo = styled.img`
-    height: 50px;
+    height: 70px;
     transform: translateY(-4px);
 `;
 
