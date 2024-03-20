@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  BasicInfo, Experience, Skills
+  BasicInfo,
+  Education,
+  Experience,
+  Skills
 } from './components';
 
 const TemplateContent = () => (
@@ -9,6 +12,7 @@ const TemplateContent = () => (
     <BasicInfo />
     <Skills />
     <Experience />
+    <Education />
   </Wrapper>
 );
 

@@ -125,6 +125,10 @@ export const InputGroup = styled.div`
         width: 100%;
         font-size: 14px;
         line-height: 1.4;
+
+        &::placeholder {
+            text-transform: capitalize;
+        }
     }
     textarea {
         resize: none;
@@ -137,4 +141,33 @@ export const InfoLine = styled.p`
     font-size: 14px;
     font-weight: 500;
     color: ${colors.ErrieBlack}
+`;
+
+export const AddBtn = styled.button`
+    margin-left: 10px;
+    transform: unset!important;
+
+    img {
+        height: 22px;
+    }
+
+    &.sub-type-add-btn {
+        display: block;
+        margin: 10px auto 20px;
+    }
+`;
+
+export const DeleteBtn = styled.button`
+  margin-left: 10px;
+  transform: unset!important;
+`;
+
+export const AddNewSkillSection = styled.div`
+  padding: 10px 0;
+  border-top: 1px solid ${colors.Lavender};
+  text-align: center;
+
+  button {
+    transform: unset!important;
+  }
 `;

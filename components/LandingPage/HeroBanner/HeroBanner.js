@@ -3,6 +3,9 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 import {
+  useRouter
+} from 'next/router';
+import {
   LoginForm,
   Modal
 } from '@/components/common';
@@ -12,6 +15,7 @@ const HeroBanner = () => {
   const takeToLogin = () => {
     window.location.href = 'http://localhost:3000/api/auth/linkedin';
   };
+  const router = useRouter();
 
   return (
     <Section>
@@ -23,8 +27,15 @@ const HeroBanner = () => {
               Capture thoughts effortlessly, organize seamlessly: your resume, your way.
             </InfoLine>
             <ActionLinks data-aos="fade-up" data-aos-delay="300" className="d-flex align-center">
-              <button onClick={takeToLogin} className="btn-primary">
+              {/* <button onClick={takeToLogin} className="btn-primary">
                 Get Started
+              </button> */}
+              <button
+                type="button"
+                onClick={() => router.push('/create')}
+                className="btn-primary"
+              >
+                Update Resume Now
               </button>
               <a data-aos="fade-up" data-aos-delay="400" href="#features">Know more</a>
             </ActionLinks>

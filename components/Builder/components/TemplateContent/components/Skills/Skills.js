@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  AddBtn,
+  AddNewSkillSection,
+  DeleteBtn,
   InputGroup,
   Item, ItemContent, ItemTitle
 } from '@/components/common/UiElements';
@@ -93,35 +96,6 @@ const Skills = ({
 const ItemWrapper = styled.div`
   &:not(:last-child) {
     margin-bottom: 10px;
-  }
-`;
-
-const DeleteBtn = styled.button`
-  margin-left: 10px;
-  transform: unset!important;
-`;
-
-const AddBtn = styled.button`
-  margin-left: 10px;
-  transform: unset!important;
-
-  img {
-    height: 22px;
-  }
-
-  &.sub-type-add-btn {
-    display: block;
-    margin: 10px auto;
-  }
-`;
-
-const AddNewSkillSection = styled.div`
-  padding: 10px 0;
-  border-top: 1px solid ${colors.Lavender};
-  text-align: center;
-
-  button {
-    transform: unset!important;
   }
 `;
 

@@ -8,6 +8,7 @@ import {
 
 const ExperienceContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
+  console.log(resumeData, '<---resume data');
 
   // Add New Experience Section
   const addNewExperienceSection = () => {
@@ -26,10 +27,50 @@ const ExperienceContainer = () => {
     updateResumeData(updatedResumeData);
   };
 
+  // Remove Experience Section
+  const handleDeleteWorkSection = (index) => {
+    const updatedResumeData = {...resumeData};
+    updatedResumeData.templateData.work.splice(index, 1);
+    updateResumeData(updatedResumeData);
+  };
+
+  // Update data from Input fields
+  const handleInputChange = (index, key, value) => {
+    const updatedResumeData = {...resumeData};
+    updatedResumeData.templateData.work[index][key] = value;
+    updateResumeData(updatedResumeData);
+  };
+
+  // Update data for Highlights
+  const handleHighlightsChange = (index, hIndex, value) => {
+    const updatedResumeData = {...resumeData};
+    updatedResumeData.templateData.work[index].highlights[hIndex] = value;
+    updateResumeData(updatedResumeData);
+  };
+
+  // Add Highlight Item
+  const handleAddHighlight = (index) => {
+    const updatedResumeData = {...resumeData};
+    updatedResumeData.templateData.work[index].highlights.push('Add work highlight');
+    updateResumeData(updatedResumeData);
+  };
+
+  // Delete Highlight Item
+  const handleDeleteHighlight = (index, hIndex) => {
+    const updatedResumeData = {...resumeData};
+    updatedResumeData.templateData.work[index].highlights.splice(hIndex, 1);
+    updateResumeData(updatedResumeData);
+  };
+
   return (
     <Experience
       templateData={resumeData?.templateData?.work}
       addNewExperienceSection={addNewExperienceSection}
+      handleDeleteWorkSection={handleDeleteWorkSection}
+      handleInputChange={handleInputChange}
+      handleHighlightsChange={handleHighlightsChange}
+      handleAddHighlight={handleAddHighlight}
+      handleDeleteHighlight={handleDeleteHighlight}
     />
   );
 };

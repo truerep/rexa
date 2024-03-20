@@ -9,7 +9,7 @@ const Create = ({tabData, activeTab, setActiveTab}) => (
   <Wrapper>
     <Logo src="/assets/images/company-logo.svg" />
     <Container>
-      <TabsWrapper data-aos="fade-up" data-aos-delay="200">
+      <TabsWrapper>
 
         <TitlesWrapper
           tabWidth={100 / tabData.length}
