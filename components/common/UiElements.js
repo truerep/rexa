@@ -64,9 +64,9 @@ export const SectionSubtitle = styled.h3`
 `;
 
 export const Item = styled.div`
-    border: 1px solid #eeeeee;
-    max-height: 400px;
-    overflow: auto;
+    // border: 1px solid #eeeeee;
+    max-height: fit-content;
+    // overflow: auto;
 
     &:not(:last-child) {
         margin-bottom: 10px;
@@ -75,7 +75,7 @@ export const Item = styled.div`
 
 export const ItemTitle = styled.h3`
     background: ${colors.LightLavender};
-    padding: 5px 10px;
+    padding: 5px 20px;
     text-transform: capitalize;
     position: sticky;
     top: 0;
@@ -85,7 +85,7 @@ export const ItemTitle = styled.h3`
 `;
 
 export const ItemContent = styled.div`
-    padding: 5px 10px;
+    padding: 15px 20px;
     
     &:not(:last-child) {
         border-bottom: 1px solid #ccc;
@@ -95,7 +95,7 @@ export const ItemContent = styled.div`
 export const InputGroup = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 
     &.highlighted {
         padding: 5px;

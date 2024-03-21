@@ -86,6 +86,7 @@ const TemplateStarter = () => {
 };
 const Wrapper = styled.div` 
   min-height: 296mm;
+  background: #fff;
 `;
 
 const BasicInfoWrapper = styled.div`

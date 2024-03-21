@@ -68,6 +68,12 @@ const TemplateZone = ({
 const Wrapper = styled.div`
     width: 210mm;
     flex-shrink: 0;
+    padding-top: 20px;
+    margin-bottom: 120px;
+
+    @media print {
+      padding-top: 0;
+    }
   `;
 
 const Actions = styled.div`
@@ -95,16 +101,19 @@ const Actions = styled.div`
 
       span {
         font-weight: 500;
+        opacity: 1;
         font-size: 15px;
       }
     }
   `;
 
 const ResumeTemplate = styled.div`
-    margin-top: 20px;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
+    margin-top: 20px;    
+    padding-bottom: 100px;
+
+    @media print {
+      padding-bottom: 0;
+    }
   `;
 
 const Loader = styled.div`

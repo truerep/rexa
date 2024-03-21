@@ -16,7 +16,7 @@
 
 *::-webkit-scrollbar
 {
-	width: 6px;
+	width: 0px;
 	background-color: transparent;
 }
 
@@ -151,7 +151,8 @@ button:hover, a:hover {
     margin: 0 auto;
   }
   #templateContainer, #templateContainer:last-child {
-    page-break-after: avoid;
+    /* page-break-after: avoid; */
+    page-break-after: auto;
   }
 }
 
