@@ -8,6 +8,7 @@ import {
 
 const BasicInfoContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
 
   const handleInputChange = (key, value) => {
     updateResumeData((prevState) => {
@@ -28,6 +29,8 @@ const BasicInfoContainer = () => {
     <BasicInfo
       templateData={resumeData?.templateData?.basics}
       handleInputChange={handleInputChange}
+      dropdownOpen={dropdownOpen}
+      setDropdownOpen={setDropdownOpen}
     />
   );
 };

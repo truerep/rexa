@@ -8,6 +8,7 @@ import {
 
 const SkillsContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
 
   // Update Skill
   const updateSkill = (index, subindex, newSkill) => {
@@ -84,6 +85,8 @@ const SkillsContainer = () => {
       handleDeleteSkillSection={handleDeleteSkillSection}
       handleAddSkill={handleAddSkill}
       addNewSkillSection={addNewSkillSection}
+      dropdownOpen={dropdownOpen}
+      setDropdownOpen={setDropdownOpen}
     />
   );
 };

@@ -1,5 +1,6 @@
 import React, {
-  useContext
+  createRef,
+  useContext, useRef, useState
 } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
@@ -12,20 +13,35 @@ const TemplateModern = () => {
   let {resumeData} = useContext(ResumeContext);
   resumeData = resumeData?.templateData;
 
+  const [image, setImage] = useState(null);
+
+  const imageRef = createRef();
+
+  const onImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setImage(URL.createObjectURL(event.target.files[0]));
+    }
+  };
+
   return (
     <Wrapper>
       <BasicInfoWrapper>
-        <Image
-          src="https://imgv3.fotor.com/images/slider-image/Female-portrait-picture-enhanced-with-better-clarity-and-higher-quality-using-Fotors-free-online-AI-photo-enhancer.jpg"
+        {/* <Image
+          src={image
+            ? URL.createObjectURL(
+              image
+            )
+            : 'https://imgv3.fotor.com/images/slider-image/Female-portrait-picture-enhanced-with-better-clarity-and-higher-quality-using-Fotors-free-online-AI-photo-enhancer.jpg'}
           alt="logo"
           width={100}
           height={100}
           style={{
             borderRadius: '50%',
             margin: '0 10px',
-            width: '100px',
+            width: '100px'
           }}
-        />
+        /> */}
+        <input type="file" onChange={onImageChange} ref={imageRef} style={{display: 'none'}} />
         <h1>{resumeData?.basics?.name}</h1>
       </BasicInfoWrapper>
       <ContactSection>

@@ -8,6 +8,7 @@ import {
 
 const EducationContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
   console.log(resumeData, '<---resume data');
 
   // Add New Experience Section
@@ -47,6 +48,8 @@ const EducationContainer = () => {
       addNewEducationSection={addNewEducationSection}
       handleDeleteEducationSection={handleDeleteEducationSection}
       handleInputChange={handleInputChange}
+      dropdownOpen={dropdownOpen}
+      setDropdownOpen={setDropdownOpen}
     />
   );
 };

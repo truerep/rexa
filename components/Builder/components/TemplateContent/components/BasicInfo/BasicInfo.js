@@ -4,16 +4,23 @@ import {
   InputGroup,
   Item, ItemContent, ItemTitle
 } from '@/components/common/UiElements';
+import DropdownToggle from '@/components/common/DropdownToggle';
 
 const showTextarea = ['summary'];
 
 const BasicInfo = ({
   templateData,
-  handleInputChange
+  handleInputChange,
+  dropdownOpen,
+  setDropdownOpen
 }) => (
   templateData ? (
     <Item>
-      <ItemTitle>Basic Info</ItemTitle>
+      <ItemTitle>
+        <DropdownToggle dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
+        Basic Info
+      </ItemTitle>
+      {dropdownOpen && (
       <ItemContent>
         {
           Object.entries(templateData).map((item) => (
@@ -37,6 +44,7 @@ const BasicInfo = ({
           ))
         }
       </ItemContent>
+      )}
     </Item>
   ) : ('')
 );

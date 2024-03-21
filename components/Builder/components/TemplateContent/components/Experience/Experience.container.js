@@ -8,6 +8,7 @@ import {
 
 const ExperienceContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
   console.log(resumeData, '<---resume data');
 
   // Add New Experience Section
@@ -71,6 +72,8 @@ const ExperienceContainer = () => {
       handleHighlightsChange={handleHighlightsChange}
       handleAddHighlight={handleAddHighlight}
       handleDeleteHighlight={handleDeleteHighlight}
+      dropdownOpen={dropdownOpen}
+      setDropdownOpen={setDropdownOpen}
     />
   );
 };

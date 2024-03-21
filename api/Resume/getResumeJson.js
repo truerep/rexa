@@ -119,9 +119,9 @@ const getResumeJson = async (resumeString) => {
       data: {resume: resumeString}
     };
 
-    // const res = await axios(config);
-    // return res?.data;
     return dummy;
+    const res = await axios(config);
+    return res?.data;
   } catch (err) {
     console.log(err);
   }
