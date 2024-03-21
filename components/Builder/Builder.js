@@ -20,7 +20,7 @@ const Builder = () => (
 );
 
 const Wrapper = styled.div`
-  padding: 20px;
+  // padding: 20px;
 
   @media print {
     padding: 0;
@@ -30,6 +30,13 @@ const Wrapper = styled.div`
 const EditorSection = styled.div`
   display: flex;
   gap: 30px;
+  height: 100vh;
+  overflow: auto;
+  justify-content: space-between;
+
+  @media print {
+    height: unset;
+  }
 `;
 
 export default Builder;

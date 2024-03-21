@@ -6,7 +6,9 @@ import Image from 'next/image';
 import {
   ResumeContext
 } from '@/context/ResumeContext';
-import {userImage, educationImage, workImage, skillsImage, mailImage, phoneImage} from './assets';
+import {
+  userImage, educationImage, workImage, skillsImage, mailImage, phoneImage
+} from './assets';
 
 const TemplateModern = () => {
   let {resumeData} = useContext(ResumeContext);
@@ -23,7 +25,7 @@ const TemplateModern = () => {
           style={{
             borderRadius: '50%',
             margin: '0 10px',
-            width: '100px',
+            width: '100px'
           }}
         />
         <h1>{resumeData?.basics?.name}</h1>
@@ -179,6 +181,7 @@ const TemplateModern = () => {
 };
 const Wrapper = styled.div` 
   min-height: 296mm;
+  background: #fff;
 `;
 
 const BasicInfoWrapper = styled.div`

@@ -1,11 +1,9 @@
-import {TemplateModern} from './Modern';
-import TemplateStarter from './Starter';
 import {
-  NewTemplate
-} from './NewTemplate';
+  TemplateModern
+} from './Modern';
+import TemplateStarter from './Starter';
 
 export {
   TemplateStarter,
-  TemplateModern,
-  NewTemplate
+  TemplateModern
 };

@@ -42,7 +42,10 @@ const TemplatesSidebar = ({updateTemplateId}) => (
 const Wrapper = styled.div`
   width: 260px;
   background: #fff;
-  border-radius: 10px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ThemeTypes = styled.div`
@@ -74,6 +77,8 @@ const ThemeTypes = styled.div`
 
 const TemplatesList = styled.div`
     padding: 20px 15px; 
+    flex: 1;
+    overflow: auto;
 `;
 
 const TemplateItem = styled.div`
