@@ -40,7 +40,9 @@ const TemplateZoneContainer = () => {
   useEffect(() => {
     const storedResumeString = typeof window !== 'undefined' && window.sessionStorage.getItem('resumeString');
     if (storedResumeString) {
-      setResumeString(storedResumeString);
+      if (resumeString.length === 0) {
+        setResumeString(storedResumeString);
+      }
     } else {
       router.push('/create');
     }

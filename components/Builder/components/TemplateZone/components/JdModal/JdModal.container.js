@@ -29,7 +29,6 @@ const JdModalContainer = () => {
           setJobDescription('');
         }
       } else {
-        console.log('<---something went wrong');
       }
     } catch (err) {}
   };
