@@ -8,7 +8,6 @@ import {
 
 const EducationContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
-  console.log(resumeData, '<---resume data');
 
   // Add New Experience Section
   const addNewEducationSection = () => {

@@ -8,7 +8,6 @@ import {
 
 const ExperienceContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
-  console.log(resumeData, '<---resume data');
 
   // Add New Experience Section
   const addNewExperienceSection = () => {
