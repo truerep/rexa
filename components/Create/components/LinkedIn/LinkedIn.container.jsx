@@ -20,6 +20,7 @@ const LinkedInContainer = () => {
   const { linkedInLogin } = useLinkedIn({
     clientId: appEnv.LINKEDIN_CLIENT_ID,
     redirectUri: `${typeof window === 'object' && window.location.origin}/create`,
+    scope: ["r_liteprofile", "r_emailaddress"],
     onSuccess: (c) => {
       console.log(c);
       setResumeText(c.profileData);
