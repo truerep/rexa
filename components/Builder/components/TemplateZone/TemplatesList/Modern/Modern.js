@@ -11,23 +11,24 @@ import {
 } from './assets';
 
 const TemplateModern = () => {
-  let {resumeData} = useContext(ResumeContext);
+  let { resumeData } = useContext(ResumeContext);
   resumeData = resumeData?.templateData;
 
   return (
     <Wrapper>
       <BasicInfoWrapper>
-        <Image
-          src="https://imgv3.fotor.com/images/slider-image/Female-portrait-picture-enhanced-with-better-clarity-and-higher-quality-using-Fotors-free-online-AI-photo-enhancer.jpg"
-          alt="logo"
-          width={100}
-          height={100}
-          style={{
-            borderRadius: '50%',
-            margin: '0 10px',
-            width: '100px'
-          }}
-        />
+        {resumeData?.basics?.picture &&
+          <Image
+            src={resumeData?.basics?.picture}
+            alt="logo"
+            width={100}
+            height={100}
+            style={{
+              borderRadius: '50%',
+              margin: '0 10px',
+              width: '100px'
+            }}
+          />}
         <h1>{resumeData?.basics?.name}</h1>
       </BasicInfoWrapper>
       <ContactSection>

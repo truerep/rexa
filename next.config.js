@@ -5,7 +5,12 @@ const nextConfig = {
     styledComponents: true
   },
   images: {
-    domains: ['images.unsplash.com','imgv3.fotor.com']
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   }
 };
 
