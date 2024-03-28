@@ -9,7 +9,8 @@ const dummy = {
     name: 'Sahil Dhingra',
     email: 'sahildhingra221@gmail.com',
     phone: '7347648126',
-    summary: 'A versatile Frontend Developer and Software Engineer with a passion for crafting innovative solutions in Fintech. Bringing a wealth of experience in architecting Progressive Web Applications, designing cutting-edge Stock Trading Terminal, and optimizing Mutual Funds transaction systems.'
+    summary: 'A versatile Frontend Developer and Software Engineer with a passion for crafting innovative solutions in Fintech. Bringing a wealth of experience in architecting Progressive Web Applications, designing cutting-edge Stock Trading Terminal, and optimizing Mutual Funds transaction systems.',
+    picture: 'https://imgv3.fotor.com/images/slider-image/Female-portrait-picture-enhanced-with-better-clarity-and-higher-quality-using-Fotors-free-online-AI-photo-enhancer.jpg'
   },
   work: [
     {
@@ -121,7 +122,7 @@ const getResumeJson = async (resumeString) => {
 
     const res = await axios(config);
     return res?.data;
-    // return dummy;
+    return dummy;
   } catch (err) {
     console.log(err);
   }

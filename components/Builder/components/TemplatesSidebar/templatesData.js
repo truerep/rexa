@@ -9,7 +9,7 @@ const templatesData = [
   {
     id: 'modern',
     name: 'Modern',
-    thumbnail: 'https://resumekraft.com/wp-content/uploads/2022/06/Software-Engineer-Resume-Sample-1.jpg',
+    thumbnail: '/assets/images/modern-template.png',
     type: 'basic',
     usedBy: '1,200'
   }

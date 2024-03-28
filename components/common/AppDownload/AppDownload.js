@@ -9,7 +9,7 @@ import Modal from '../Modal';
 import LoginForm from '../LoginForm';
 
 const AppDownload = () => {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
   return (
     <Wrapper id="download-app" className="container">
@@ -29,27 +29,29 @@ const AppDownload = () => {
             <span data-aos="fade-up" data-aos-delay="250">9,00,000 +  Downloads</span>
           </Ratings> */}
           <AppdownloadIcons>
-            <a href="#" data-aos="fade-up" data-aos-delay="300">
+            <a href="#home" data-aos="fade-up" data-aos-delay="300">
               <Icon src="/assets/icons/google-play-icon.svg" />
             </a>
-            <a href="#" data-aos="fade-up" data-aos-delay="350">
+            <a href="#home" data-aos="fade-up" data-aos-delay="350">
               <Icon src="/assets/icons/app-store-icon.svg" />
             </a>
           </AppdownloadIcons>
-          <TryNowBtn data-aos="fade-up" data-aos-delay="500" onClick={() => setShowModal(true)} href="#" className="btn-primary">
-            Coming Soon
+          <TryNowBtn data-aos="fade-up" data-aos-delay="500" href="#" className="btn-primary">
+            <a href='#home'>
+              Coming Soon
+            </a>
           </TryNowBtn>
         </Overview>
         <AppImgWrapper>
           <img className="move-img" src="/assets/images/app-download-image.png" alt="app-img" />
         </AppImgWrapper>
       </Content>
-      <Modal
+      {/* <Modal
         showModal={showModal}
         setShowModal={setShowModal}
       >
         <LoginForm />
-      </Modal>
+      </Modal> */}
     </Wrapper>
   );
 };
