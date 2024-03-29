@@ -4,7 +4,8 @@ import React, {
 import Create from './Create';
 import {
   CopyPaste,
-  DragAndDrop
+  DragAndDrop,
+  LinkedIn
 } from './components';
 
 const CreateContainer = () => {
@@ -19,7 +20,8 @@ const CreateContainer = () => {
       component: <DragAndDrop />
     },
     {
-      title: 'Linked In'
+      title: 'Linked In',
+      component: <LinkedIn />
     },
     {
       title: 'Copy Paste',

@@ -18,7 +18,7 @@ const HeroBanner = () => {
   const router = useRouter();
 
   return (
-    <Section>
+    <Section id="home">
       <Wrapper className="container">
         <Container className="align-center">
           <Content>
