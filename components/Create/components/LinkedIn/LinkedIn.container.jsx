@@ -24,7 +24,7 @@ const LinkedInContainer = () => {
     scope: ['openid', 'profile', 'email'],
     onSuccess: async (c) => {
       console.log(c);
-      await axios.get('https://api.linkedin.com/v2/me', {
+      await axios.get('https://api.linkedin.com/v2/userinfo', {
         headers: {
           'Authorization': `Bearer ${c}`
         }
