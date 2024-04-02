@@ -7,12 +7,13 @@ import {
 } from '@/context/ResumeContext';
 
 const TemplatesSidebarContainer = () => {
-  const {resumeData, updateResumeData} = useContext(ResumeContext);
+  const {updateResumeData} = useContext(ResumeContext);
   const updateTemplateId = (updatedTemplateId) => {
     updateResumeData((prevState) => {
       return {
         ...prevState,
-        templateId: updatedTemplateId
+        templateId: updatedTemplateId,
+        toggleTemplatesPopover: false
       };
     });
   };

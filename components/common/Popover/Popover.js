@@ -23,8 +23,8 @@ const ModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   z-index: 10;
   background: rgba(0, 0, 0, 0);
   opacity: 0;
@@ -44,8 +44,7 @@ const ModalContent = styled.div`
   position: relative;
   background: #fff;
   width: 100%;
-  height: calc(100% - 40px);
-  border-radius: 10px 10px 0 0;
+  height: 100%;
 
   &.toggled {
     transform: translateY(0);
@@ -63,6 +62,7 @@ const CloseModalButton = styled.button`
   border: 0;
   outline: 0;
   cursor: pointer;
+  z-index: 11;
 
   &:hover {
     transform: unset;

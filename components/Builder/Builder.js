@@ -4,8 +4,7 @@ import {
   ContentSectionNames,
   Header,
   TemplateContent,
-  TemplateZone,
-  TemplatesSidebar
+  TemplateZone
 } from './components';
 import ResumeContextProvider from '@/context/ResumeContext';
 
@@ -15,7 +14,6 @@ const Builder = () => (
       <Header />
       <EditorSection>
         <ContentSectionNames />
-        {/* <TemplatesSidebar /> */}
         <TemplateZone />
         <TemplateContent />
       </EditorSection>

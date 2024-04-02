@@ -8,6 +8,7 @@ const ResumeContextProvider = ({children}) => {
   const [resumeData, setResumeData] = useState({
     templateId: 'starter',
     toggleJdModal: false,
+    toggleTemplatesPopover: false,
     contentSectionName: 'basic'
   });
 
