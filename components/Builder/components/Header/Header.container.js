@@ -1,10 +1,21 @@
 import React, {
+  useContext,
+  useEffect,
   useState
 } from 'react';
 import Header from './Header';
+import {
+  ResumeContext
+} from '@/context/ResumeContext';
 
 const HeaderContainer = () => {
   const [showTemplates, setShowTemplates] = useState(false);
+
+  const {resumeData} = useContext(ResumeContext);
+
+  useEffect(() => {
+    setShowTemplates(resumeData.toggleTemplatesPopover);
+  }, [resumeData]);
 
   const builderActionsList = [
     {

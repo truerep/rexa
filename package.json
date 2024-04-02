@@ -20,7 +20,8 @@
     "react-hot-toast": "^2.4.1",
     "react-linkedin-login-oauth2": "^2.0.1",
     "react-to-pdf": "^1.0.1",
-    "styled-components": "^5.3.8"
+    "styled-components": "^5.3.8",
+    "swiper": "^11.1.0"
   },
   "devDependencies": {
     "eslint": "^8.56.0",

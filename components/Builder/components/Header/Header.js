@@ -6,8 +6,7 @@ import {
 import {
   Popover
 } from '@/components/common';
-import TemplateZone from '../TemplateZone';
-import TemplatesSidebar from '../TemplatesSidebar';
+import TemplateSwitcher from '../TemplateSwitcher';
 
 const Header = ({
   builderActionsList,
@@ -35,7 +34,8 @@ const Header = ({
       showModal={showTemplates}
       setShowModal={setShowTemplates}
     >
-      <TemplatesSidebar />
+      {/* <TemplatesSidebar /> */}
+      <TemplateSwitcher />
     </Popover>
   </Wrapper>
 );

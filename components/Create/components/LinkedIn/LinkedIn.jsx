@@ -9,7 +9,7 @@ const LinkedIn = ({
 }) => (
   <Wrapper>
     <InfoLine>
-      Please Login to your LinkedIn account, we will fetch your resume text.
+      Please Login to your LinkedIn account, we will fetch data for your resume.
     </InfoLine>
     <LinkedInButtonWrapper>
       <LinkedInSigninButton
@@ -31,13 +31,13 @@ const LinkedInButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 15px;
-    height: 200px;
+    min-height: 180px;
     align-items: center;
     width: 100%;
-    padding: 10px;
+    padding: 10px 10px 20px;
     resize: none;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    // border: 1px solid #ccc;
     outline: 0;
     font-family: inherit;
     font-size: 15px;
