@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@300;400;500;600&family=Martel:wght@400;600&family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Martel:wght@400;600&display=swap');
 
 * {
   margin: 0;
@@ -31,17 +31,21 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   /* background: #FDFCFF; */
   background: #f5f6fb;
 }
 
 button {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: transparent;
   outline: 0;
   border: 0;
   cursor: pointer;
+}
+
+input {
+  font-family: 'Poppins', sans-serif;
 }
 
 a {

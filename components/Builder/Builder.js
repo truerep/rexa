@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  ContentSectionNames,
+  Header,
   TemplateContent,
   TemplateZone,
   TemplatesSidebar
@@ -10,8 +12,10 @@ import ResumeContextProvider from '@/context/ResumeContext';
 const Builder = () => (
   <ResumeContextProvider>
     <Wrapper>
+      <Header />
       <EditorSection>
-        <TemplatesSidebar />
+        <ContentSectionNames />
+        {/* <TemplatesSidebar /> */}
         <TemplateZone />
         <TemplateContent />
       </EditorSection>
@@ -20,19 +24,22 @@ const Builder = () => (
 );
 
 const Wrapper = styled.div`
-  // padding: 20px;
+  display: flex;
+  flex-direction: column; 
+  height: 100vh;
 
   @media print {
     padding: 0;
+    display: block;
   }
 `;
 
 const EditorSection = styled.div`
   display: flex;
   gap: 30px;
-  height: 100vh;
   overflow: auto;
   justify-content: space-between;
+  flex: 1;
 
   @media print {
     height: unset;

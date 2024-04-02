@@ -1,13 +1,17 @@
 import React, {
+  useContext,
   useState
 } from 'react';
 import TemplateContent from './TemplateContent';
 import {
   BasicInfo, Education, Experience, Skills
 } from './components';
+import {
+  ResumeContext
+} from '@/context/ResumeContext';
 
 const TemplateContentContainer = () => {
-  const [currentModule, setCurrentModule] = useState('');
+  const {resumeData} = useContext(ResumeContext);
 
   const contentModificationModules = [
     {
@@ -35,8 +39,7 @@ const TemplateContentContainer = () => {
   return (
     <TemplateContent
       contentModificationModules={contentModificationModules}
-      currentModule={currentModule}
-      setCurrentModule={setCurrentModule}
+      activeSection={resumeData?.contentSectionName}
     />
   );
 };

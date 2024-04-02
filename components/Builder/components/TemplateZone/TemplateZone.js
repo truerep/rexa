@@ -30,7 +30,7 @@ const TemplateZone = ({
       {
         resumeData?.templateData ? (
           <>
-            <Actions className="print-none">
+            {/* <Actions className="print-none">
               <span>Match your resume with Job Description and make it ATS Friendly.</span>
               <button onClick={() => setShowJdModal(true)} type="button" className="btn-primary btn-outlined">
                 <img src="/assets/icons/sync-icon.png" alt="" />
@@ -44,7 +44,7 @@ const TemplateZone = ({
                 <img src="/assets/icons/download-icon.png" alt="" />
                 <span>Download</span>
               </button>
-            </Actions>
+            </Actions> */}
             <ResumeTemplate id="templateContainer">
               {TemplateRender(templateId)}
             </ResumeTemplate>

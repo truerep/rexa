@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import {
   AddBtn,
+  AddNewBtn,
   AddNewSkillSection,
   DeleteBtn,
   InputGroup,
-  Item, ItemContent, ItemTitle
+  Item, ItemContent, ItemIcon, ItemSection, ItemTitle
 } from '@/components/common/UiElements';
 
 const Experience = ({
@@ -20,18 +21,20 @@ const Experience = ({
   templateData ? (
     <Item>
       <ItemTitle>
-        Experience
-        <AddBtn
+        <ItemIcon src="/assets/icons/experience-icon.svg" />
+        <span>Experience</span>
+        <AddNewBtn
           type="button"
+          className="btn-primary btn-outlined"
           onClick={addNewExperienceSection}
         >
-          <img src="/assets/icons/plus-icon.png" alt="add-section" />
-        </AddBtn>
+          <img src="/assets/icons/plus-icon-dark.svg" alt="add" />
+        </AddNewBtn>
       </ItemTitle>
       <ItemContent>
         {
           templateData.length ? templateData.map((templateItem, idx) => (
-            <>
+            <ItemSection>
               <ItemWrapper>
                 <InputGroup className="highlighted">
                   <input
@@ -43,7 +46,7 @@ const Experience = ({
                     type="button"
                     onClick={() => handleDeleteWorkSection(idx)}
                   >
-                    <img src="/assets/icons/delete-cross-icon.png" alt="delete" />
+                    <img src="/assets/icons/trash-icon-red.svg" alt="delete" />
                   </DeleteBtn>
                 </InputGroup>
               </ItemWrapper>
@@ -53,15 +56,6 @@ const Experience = ({
                     value={templateItem?.website}
                     placeholder="http://mycompany.com"
                     onChange={(e) => handleInputChange(idx, 'website', e.target.value)}
-                  />
-                </InputGroup>
-              </ItemWrapper>
-              <ItemWrapper>
-                <InputGroup>
-                  <textarea
-                    value={templateItem?.summary}
-                    placeholder="Work Summary"
-                    onChange={(e) => handleInputChange(idx, 'summary', e.target.value)}
                   />
                 </InputGroup>
               </ItemWrapper>
@@ -85,6 +79,16 @@ const Experience = ({
                   </InputGroup>
                 </ItemWrapper>
               </div>
+              <ItemWrapper>
+                <InputGroup>
+                  <textarea
+                    value={templateItem?.summary}
+                    placeholder="Work Summary"
+                    onChange={(e) => handleInputChange(idx, 'summary', e.target.value)}
+                  />
+                </InputGroup>
+              </ItemWrapper>
+
               {
                 templateItem?.highlights && templateItem?.highlights?.map((highlight, hIdx) => (
                   <ItemWrapper>
@@ -99,7 +103,7 @@ const Experience = ({
                         type="button"
                         onClick={() => handleDeleteHighlight(idx, hIdx)}
                       >
-                        <img src="/assets/icons/delete-cross-icon.png" alt="delete" />
+                        <img src="/assets/icons/remove-icon-red.svg" alt="delete" />
                       </DeleteBtn>
                     </InputGroup>
                   </ItemWrapper>
@@ -110,28 +114,29 @@ const Experience = ({
                 type="button"
                 onClick={() => handleAddHighlight(idx)}
               >
-                <img src="/assets/icons/plus-icon.png" alt="add-section" />
+                <img src="/assets/icons/plus-icon-round.svg" alt="add-section" />
               </AddBtn>
-            </>
+            </ItemSection>
           )) : ('')
         }
-        <AddNewSkillSection>
-          <button
-            type="button"
-            className="btn-primary btn-outlined"
-            onClick={addNewExperienceSection}
-          >
-            Add new work section
-          </button>
-        </AddNewSkillSection>
       </ItemContent>
+      <AddNewSkillSection>
+        <button
+          type="button"
+          className="btn-primary btn-outlined"
+          onClick={addNewExperienceSection}
+        >
+          <img src="/assets/icons/plus-icon-dark.svg" alt="add" />
+          <span>Experience</span>
+        </button>
+      </AddNewSkillSection>
     </Item>
   ) : ('')
 );
 
 const ItemWrapper = styled.div`
   &:not(:last-child) {
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
   }
 
   .highlight-item {

@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import {
   AddBtn,
+  AddNewBtn,
   AddNewSkillSection,
   DeleteBtn,
   InputGroup,
-  Item, ItemContent, ItemTitle
+  Item, ItemContent, ItemIcon, ItemSection, ItemTitle
 } from '@/components/common/UiElements';
 
 const Education = ({
@@ -17,18 +18,20 @@ const Education = ({
   templateData ? (
     <Item>
       <ItemTitle>
-        Education
-        <AddBtn
+        <ItemIcon src="/assets/icons/education-icon.svg" />
+        <span>Education</span>
+        <AddNewBtn
           type="button"
+          className="btn-primary btn-outlined"
           onClick={addNewEducationSection}
         >
-          <img src="/assets/icons/plus-icon.png" alt="add-section" />
-        </AddBtn>
+          <img src="/assets/icons/plus-icon-dark.svg" alt="add" />
+        </AddNewBtn>
       </ItemTitle>
       <ItemContent>
         {
           templateData.length ? templateData.map((templateItem, idx) => (
-            <>
+            <ItemSection>
               <ItemWrapper>
                 <InputGroup className="highlighted">
                   <input
@@ -40,7 +43,7 @@ const Education = ({
                     type="button"
                     onClick={() => handleDeleteEducationSection(idx)}
                   >
-                    <img src="/assets/icons/delete-cross-icon.png" alt="delete" />
+                    <img src="/assets/icons/trash-icon-red.svg" alt="delete" />
                   </DeleteBtn>
                 </InputGroup>
               </ItemWrapper>
@@ -94,26 +97,27 @@ const Education = ({
                   </InputGroup>
                 </ItemWrapper>
               </div>
-            </>
+            </ItemSection>
           )) : ('')
         }
-        <AddNewSkillSection>
-          <button
-            type="button"
-            className="btn-primary btn-outlined"
-            onClick={addNewEducationSection}
-          >
-            Add new education section
-          </button>
-        </AddNewSkillSection>
       </ItemContent>
+      <AddNewSkillSection>
+        <button
+          type="button"
+          className="btn-primary btn-outlined"
+          onClick={addNewEducationSection}
+        >
+          <img src="/assets/icons/plus-icon-dark.svg" alt="add" />
+          <span>Education</span>
+        </button>
+      </AddNewSkillSection>
     </Item>
   ) : ('')
 );
 
 const ItemWrapper = styled.div`
   &:not(:last-child) {
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
   }
 
   .highlight-item {
