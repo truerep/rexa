@@ -122,7 +122,7 @@ const getResumeJson = async (resumeString) => {
 
     const res = await axios(config);
     return res?.data;
-    return dummy;
+    // return dummy;
   } catch (err) {
     console.log(err);
   }

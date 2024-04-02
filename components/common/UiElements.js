@@ -64,52 +64,69 @@ export const SectionSubtitle = styled.h3`
 `;
 
 export const Item = styled.div`
-    // border: 1px solid #eeeeee;
-    max-height: fit-content;
-    // overflow: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
     &:not(:last-child) {
         margin-bottom: 10px;
     }
 `;
 
+export const ItemSection = styled.div`
+    border-bottom: 1px solid ${colors.LightLavender};
+    padding: 15px 20px 0;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+`;
+
 export const ItemTitle = styled.h3`
-    background: ${colors.LightLavender};
-    padding: 5px 20px;
+    background: #fff;
+    border-bottom: 1px solid ${colors.LightLavender};
+    padding: 20px;
+    font-size: 16px;
+    gap: 10px;
     text-transform: capitalize;
     position: sticky;
     top: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+`;
+
+export const ItemIcon = styled.img`
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    flex-shrink: 0;
 `;
 
 export const ItemContent = styled.div`
-    padding: 15px 20px;
-    
-    &:not(:last-child) {
-        border-bottom: 1px solid #ccc;
-    }
+    flex: 1;
+    overflow: auto;
 `;
 
 export const InputGroup = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 
     &.highlighted {
-        padding: 5px;
-        border-radius: 5px;
-        background: ${colors.Magnolia};
-        border: 1px solid ${colors.Lavender};
+        // background: ${colors.Magnolia};
 
         input {
-            background-color: transparent;
-            border-color: transparent;
+            background: ${colors.GhostWhite};
+            border: 1px solid ${colors.LightLavender};
+        }
+
+        img {
+            width: 14px;
+            height: auto;
         }
     }
     img {
-        height: 22px;
+        width: 16px;
     }
     label {
         display: block;
@@ -118,10 +135,10 @@ export const InputGroup = styled.div`
         font-size: 13px;
     }
     input, textarea {
-        padding: 5px;
-        border-radius: 5px;
+        padding: 6px 8px;
+        border-radius: 3px;
         outline: none;
-        border: 1px solid #ccc;
+        border: 1px solid #EEEEEE;
         width: 100%;
         font-size: 14px;
         line-height: 1.4;
@@ -148,26 +165,59 @@ export const AddBtn = styled.button`
     transform: unset!important;
 
     img {
-        height: 22px;
+        width: 16px;
     }
 
     &.sub-type-add-btn {
-        display: block;
-        margin: 10px auto 20px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 19px;
     }
 `;
 
 export const DeleteBtn = styled.button`
   margin-left: 10px;
   transform: unset!important;
+  display: grid;
+  place-items: center;
 `;
 
 export const AddNewSkillSection = styled.div`
-  padding: 10px 0;
-  border-top: 1px solid ${colors.Lavender};
+  padding: 9px 0;
+  border-top: 1px solid ${colors.LightLavender};
+  background: ${colors.GhostWhite};
   text-align: center;
+  margin-top: auto;
 
   button {
     transform: unset!important;
+    background: #fff;
+    border-color: ${colors.ErrieBlack};
+    color: #000;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 10px;
+    padding: 8px 20px;
+
+    img {
+        width: 13px;
+    }
+  }
+`;
+
+export const AddNewBtn = styled.button`
+  margin-left: auto;
+  transform: unset!important;
+  display: grid;
+  place-items: center;
+  background: ${colors.GhostWhite};
+  border-color: ${colors.LightLavender};
+  padding: 0px 7px;
+  height: 100%;
+
+  img {
+    height: 12px;
   }
 `;

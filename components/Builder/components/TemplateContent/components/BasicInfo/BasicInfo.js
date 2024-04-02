@@ -1,8 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import {
   InputGroup,
-  Item, ItemContent, ItemTitle
+  Item, ItemContent, ItemIcon, ItemSection, ItemTitle
 } from '@/components/common/UiElements';
 
 const showTextarea = ['summary'];
@@ -13,9 +12,13 @@ const BasicInfo = ({
 }) => (
   templateData ? (
     <Item>
-      <ItemTitle>Basic Info</ItemTitle>
+      <ItemTitle>
+        <ItemIcon src="/assets/icons/basic-details-icon.svg" />
+        <span>Basic Details</span>
+      </ItemTitle>
       <ItemContent>
-        {
+        <ItemSection>
+          {
           Object.entries(templateData).map((item) => (
             <InputGroup className="d-block">
               {
@@ -36,6 +39,7 @@ const BasicInfo = ({
             </InputGroup>
           ))
         }
+        </ItemSection>
       </ItemContent>
     </Item>
   ) : ('')

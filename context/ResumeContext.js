@@ -7,7 +7,8 @@ export const ResumeContext = createContext();
 const ResumeContextProvider = ({children}) => {
   const [resumeData, setResumeData] = useState({
     templateId: 'starter',
-    toggleJdModal: false
+    toggleJdModal: false,
+    contentSectionName: 'basic'
   });
 
   const updateResumeData = (newResumeData) => {
