@@ -1,42 +1,64 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import {
+  Tooltip
+} from 'react-tippy';
 import {
   colors
 } from '@/helpers';
 import {
+  Modal,
   Popover
 } from '@/components/common';
+import {
+  JdModal
+} from '../TemplateZone/components';
+
 import TemplateSwitcher from '../TemplateSwitcher';
 
 const Header = ({
   builderActionsList,
   showTemplates,
-  setShowTemplates
+  setShowTemplates,
+  showJdModal,
+  setShowJdModal
 }) => (
   <Wrapper>
     <TemplateNameWrapper>
       <BackBtn>
-        <Icon src="/assets/icons/arrow-left-light.svg" />
+        <Tooltip title="Go to Dashboard (coming soon)">
+          <Icon src="/assets/icons/arrow-left-light.svg" />
+        </Tooltip>
       </BackBtn>
       <Input placeholder="Resume Name" value="Unnamed" />
     </TemplateNameWrapper>
     <BuilderActions>
       {builderActionsList.map((action) => (
-        <ActionButton onClick={action?.handleClick}>
-          <Icon src={action?.iconUrl} />
-        </ActionButton>
+        <Tooltip title={action?.tooltip}>
+          <ActionButton onClick={action?.handleClick}>
+            <Icon src={action?.iconUrl} />
+          </ActionButton>
+        </Tooltip>
       ))}
     </BuilderActions>
     <AccountInfo>
-      <LoginBtn>Login</LoginBtn>
+      <Tooltip title="Login (coming soon)">
+        <LoginBtn>Login</LoginBtn>
+      </Tooltip>
     </AccountInfo>
     <Popover
       showModal={showTemplates}
       setShowModal={setShowTemplates}
     >
-      {/* <TemplatesSidebar /> */}
       <TemplateSwitcher />
     </Popover>
+    <Modal
+      showModal={showJdModal}
+      setShowModal={setShowJdModal}
+    >
+      <JdModal />
+    </Modal>
   </Wrapper>
 );
 
@@ -48,6 +70,10 @@ const Wrapper = styled.div`
 
     @media print {
         display: none;
+
+        * {
+          display: none!important;
+        }
     }
 `;
 

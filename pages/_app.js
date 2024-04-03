@@ -4,6 +4,7 @@ import NextTopLoader from 'nextjs-toploader';
 import {
   Toaster
 } from 'react-hot-toast';
+import 'react-tippy/dist/tippy.css';
 
 export default function App({Component, pageProps}) {
   return (
