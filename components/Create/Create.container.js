@@ -5,7 +5,6 @@ import Create from './Create';
 import {
   CopyPaste,
   DragAndDrop,
-  LinkedIn
 } from './components';
 
 const CreateContainer = () => {
@@ -18,10 +17,6 @@ const CreateContainer = () => {
     {
       title: 'Upload',
       component: <DragAndDrop />
-    },
-    {
-      title: 'Linked In',
-      component: <LinkedIn />
     },
     {
       title: 'Copy Paste',
