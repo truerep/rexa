@@ -10,6 +10,7 @@ import {
 
 const HeaderContainer = () => {
   const [showTemplates, setShowTemplates] = useState(false);
+  const [showJdModal, setShowJdModal] = useState();
 
   const {resumeData} = useContext(ResumeContext);
 
@@ -17,26 +18,33 @@ const HeaderContainer = () => {
     setShowTemplates(resumeData.toggleTemplatesPopover);
   }, [resumeData]);
 
+  useEffect(() => {
+    setShowJdModal(resumeData.toggleJdModal);
+  }, [resumeData]);
+
   const builderActionsList = [
     {
       handleClick: () => setShowTemplates(true),
-      iconUrl: '/assets/icons/template-icon.svg'
+      iconUrl: '/assets/icons/template-icon.svg',
+      tooltip: 'Change Resume Template'
     },
     {
-      handleClick: () => alert(),
-      iconUrl: '/assets/icons/sync-icon.svg'
+      handleClick: () => setShowJdModal(true),
+      iconUrl: '/assets/icons/sync-icon.svg',
+      tooltip: 'Sync Resume with Job Description'
     },
     {
-      handleClick: () => alert('Coming soon...'),
-      iconUrl: '/assets/icons/preview-icon.svg'
+      iconUrl: '/assets/icons/preview-icon.svg',
+      tooltip: 'Preview & Share (coming soon)'
     },
     {
-      handleClick: () => alert('Coming soon...'),
-      iconUrl: '/assets/icons/save-icon.svg'
+      iconUrl: '/assets/icons/save-icon.svg',
+      tooltip: 'Save Template (coming soon)'
     },
     {
       handleClick: () => window.print(),
-      iconUrl: '/assets/icons/download-icon.svg'
+      iconUrl: '/assets/icons/download-icon.svg',
+      tooltip: 'Download Resume'
     }
   ];
 
@@ -45,6 +53,8 @@ const HeaderContainer = () => {
       builderActionsList={builderActionsList}
       showTemplates={showTemplates}
       setShowTemplates={setShowTemplates}
+      showJdModal={showJdModal}
+      setShowJdModal={setShowJdModal}
     />
   );
 };
