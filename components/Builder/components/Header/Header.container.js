@@ -43,8 +43,7 @@ const HeaderContainer = () => {
     },
     {
       handleClick: () => window.print(),
-      iconUrl: '/assets/icons/download-icon.svg',
-      tooltip: 'Download Resume'
+      iconUrl: '/assets/icons/download-icon.svg'
     }
   ];
 
