@@ -5,6 +5,10 @@ import {
   Tooltip
 } from 'react-tippy';
 import {
+  useRouter
+} from 'next/router';
+import {
+  appEnv,
   colors
 } from '@/helpers';
 import {
@@ -19,48 +23,58 @@ import TemplateSwitcher from '../TemplateSwitcher';
 
 const Header = ({
   builderActionsList,
+  resumeName,
+  setResumeName,
   showTemplates,
   setShowTemplates,
   showJdModal,
   setShowJdModal
-}) => (
-  <Wrapper>
-    <TemplateNameWrapper>
-      <BackBtn>
-        <Tooltip title="Go to Dashboard (coming soon)">
-          <Icon src="/assets/icons/arrow-left-light.svg" />
+}) => {
+  const router = useRouter();
+
+  return (
+    <Wrapper>
+      <TemplateNameWrapper>
+        <BackBtn onClick={() => router.push('/create')}>
+          <Tooltip title="Dashboard">
+            <Icon src="/assets/icons/arrow-left-light.svg" />
+          </Tooltip>
+        </BackBtn>
+        <Input
+          onChange={(e) => setResumeName(e.target.value)}
+          placeholder="Resume Name"
+          value={resumeName}
+        />
+      </TemplateNameWrapper>
+      <BuilderActions>
+        {builderActionsList.map((action) => (
+          <Tooltip title={action?.tooltip}>
+            <ActionButton onClick={action?.handleClick}>
+              <Icon src={action?.iconUrl} />
+            </ActionButton>
+          </Tooltip>
+        ))}
+      </BuilderActions>
+      <AccountInfo onClick={() => router.push(`${appEnv.API_URL}/api/auth/google`)}>
+        <Tooltip title="Login">
+          <LoginBtn>Login</LoginBtn>
         </Tooltip>
-      </BackBtn>
-      <Input placeholder="Resume Name" value="Unnamed" />
-    </TemplateNameWrapper>
-    <BuilderActions>
-      {builderActionsList.map((action) => (
-        <Tooltip title={action?.tooltip}>
-          <ActionButton onClick={action?.handleClick}>
-            <Icon src={action?.iconUrl} />
-          </ActionButton>
-        </Tooltip>
-      ))}
-    </BuilderActions>
-    <AccountInfo>
-      <Tooltip title="Login (coming soon)">
-        <LoginBtn>Login</LoginBtn>
-      </Tooltip>
-    </AccountInfo>
-    <Popover
-      showModal={showTemplates}
-      setShowModal={setShowTemplates}
-    >
-      <TemplateSwitcher />
-    </Popover>
-    <Modal
-      showModal={showJdModal}
-      setShowModal={setShowJdModal}
-    >
-      <JdModal />
-    </Modal>
-  </Wrapper>
-);
+      </AccountInfo>
+      <Popover
+        showModal={showTemplates}
+        setShowModal={setShowTemplates}
+      >
+        <TemplateSwitcher />
+      </Popover>
+      <Modal
+        showModal={showJdModal}
+        setShowModal={setShowJdModal}
+      >
+        <JdModal />
+      </Modal>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
     background: ${colors.CharlestonGreen}; 

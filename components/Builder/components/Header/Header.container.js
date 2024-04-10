@@ -3,15 +3,24 @@ import React, {
   useEffect,
   useState
 } from 'react';
+import toast from 'react-hot-toast';
+import {
+  useRouter
+} from 'next/router';
 import Header from './Header';
 import {
   ResumeContext
 } from '@/context/ResumeContext';
+import {
+  createResume, getUserData, updateResume
+} from '@/api';
 
 const HeaderContainer = () => {
   const [showTemplates, setShowTemplates] = useState(false);
   const [showJdModal, setShowJdModal] = useState();
+  const [resumeName, setResumeName] = useState('Unnamed');
 
+  const router = useRouter();
   const {resumeData} = useContext(ResumeContext);
 
   useEffect(() => {
@@ -21,6 +30,50 @@ const HeaderContainer = () => {
   useEffect(() => {
     setShowJdModal(resumeData.toggleJdModal);
   }, [resumeData]);
+
+  const createNewResume = async (payload) => {
+    try {
+      const res = await createResume(payload);
+      if (res?.statusText === 'Created' && res?.data?._id) {
+        toast.success('Resume Saved!');
+        router.push(`/builder/${res?.data?._id}`);
+      } else {
+        toast.error('Something went wrong!');
+      }
+    } catch (err) {
+      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+    }
+  };
+
+  const modifyResume = async (resumeId, payload) => {
+    try {
+      const res = await updateResume(resumeId, payload);
+      console.log(res, '<---updateResume');
+      if (res?.status === 200) {
+        toast.success('Resume Updated!');
+        router.push(`/builder/${res?.data?._id}`);
+      } else {
+        toast.error('Something went wrong!');
+      }
+    } catch (err) {
+      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+    }
+  };
+
+  const handleSaveResume = async () => {
+    const payload = {
+      templateId: '66142be639e68974d5d19a02' ?? resumeData?.templateId,
+      name: resumeName,
+      rawData: resumeData?.resumeString,
+      data: JSON.stringify(resumeData?.templateData)
+    };
+    console.log(resumeData, '<---resuem DAta context');
+    if (resumeData.resumeId) {
+      modifyResume(resumeData.resumeId, payload);
+    } else {
+      createNewResume(payload);
+    }
+  };
 
   const builderActionsList = [
     {
@@ -38,8 +91,9 @@ const HeaderContainer = () => {
       tooltip: 'Preview & Share (coming soon)'
     },
     {
+      handleClick: () => handleSaveResume(),
       iconUrl: '/assets/icons/save-icon.svg',
-      tooltip: 'Save Template (coming soon)'
+      tooltip: 'Save Template'
     },
     {
       handleClick: () => window.print(),
@@ -47,9 +101,36 @@ const HeaderContainer = () => {
     }
   ];
 
+  const checkUserAuthenticated = async (authToken) => {
+    try {
+      const res = await getUserData(authToken);
+      console.log(res.data, '<---userData');
+    } catch (err) {
+    }
+  };
+
+  useEffect(() => {
+    // localStorage.removeItem('auth_token');
+    const authToken = localStorage.getItem('auth_token');
+
+    if (authToken) {
+      checkUserAuthenticated(authToken);
+    } else {
+      // Token doesn't exist, handle the case accordingly
+    }
+  }, [router]);
+
+  useEffect(() => {
+    if (resumeData?.templateName) {
+      setResumeName(resumeData.templateName);
+    }
+  }, [resumeData]);
+
   return (
     <Header
       builderActionsList={builderActionsList}
+      resumeName={resumeName}
+      setResumeName={setResumeName}
       showTemplates={showTemplates}
       setShowTemplates={setShowTemplates}
       showJdModal={showJdModal}

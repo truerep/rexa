@@ -14,7 +14,6 @@ const ContentSectionNamesContainer = () => {
     const updatedResumeData = {...resumeData};
     updatedResumeData.contentSectionName = sectionName;
     updateResumeData(updatedResumeData);
-    console.log(resumeData.contentSectionName, '<---resumeData');
   };
 
   const sectionNamesList = [
