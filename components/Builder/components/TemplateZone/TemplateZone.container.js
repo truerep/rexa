@@ -20,7 +20,6 @@ const TemplateZoneContainer = () => {
   const [resumeString, setResumeString] = useState('');
   const {resumeData, updateResumeData} = useContext(ResumeContext);
   const router = useRouter();
-  console.log('running...');
 
   const getResumeData = async () => {
     try {
@@ -44,8 +43,6 @@ const TemplateZoneContainer = () => {
       if (resumeString.length === 0) {
         setResumeString(storedResumeString);
       }
-    } else {
-      router.push('/create');
     }
   }, []);
 

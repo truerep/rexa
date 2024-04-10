@@ -6,19 +6,16 @@ import {
   TemplateContent,
   TemplateZone
 } from './components';
-import ResumeContextProvider from '@/context/ResumeContext';
 
 const Builder = () => (
-  <ResumeContextProvider>
-    <Wrapper>
-      <Header />
-      <EditorSection>
-        <ContentSectionNames />
-        <TemplateZone />
-        <TemplateContent />
-      </EditorSection>
-    </Wrapper>
-  </ResumeContextProvider>
+  <Wrapper>
+    <Header />
+    <EditorSection>
+      <ContentSectionNames />
+      <TemplateZone />
+      <TemplateContent />
+    </EditorSection>
+  </Wrapper>
 );
 
 const Wrapper = styled.div`
