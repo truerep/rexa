@@ -19,6 +19,8 @@ const HeaderContainer = () => {
   const [showTemplates, setShowTemplates] = useState(false);
   const [showJdModal, setShowJdModal] = useState();
   const [resumeName, setResumeName] = useState('Unnamed');
+  const [userData, setUserData] = useState({});
+  const [toggleDropdown, setToggleDropdown] = useState(false);
 
   const router = useRouter();
   const {resumeData} = useContext(ResumeContext);
@@ -48,7 +50,6 @@ const HeaderContainer = () => {
   const modifyResume = async (resumeId, payload) => {
     try {
       const res = await updateResume(resumeId, payload);
-      console.log(res, '<---updateResume');
       if (res?.status === 200) {
         toast.success('Resume Updated!');
         router.push(`/builder/${res?.data?._id}`);
@@ -67,7 +68,6 @@ const HeaderContainer = () => {
       rawData: resumeData?.resumeString,
       data: JSON.stringify(resumeData?.templateData)
     };
-    console.log(resumeData, '<---resuem DAta context');
     if (resumeData.resumeId) {
       modifyResume(resumeData.resumeId, payload);
     } else {
@@ -104,9 +104,14 @@ const HeaderContainer = () => {
   const checkUserAuthenticated = async (authToken) => {
     try {
       const res = await getUserData(authToken);
-      console.log(res.data, '<---userData');
+      setUserData(res?.data);
     } catch (err) {
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth_token');
+    router.push('/');
   };
 
   useEffect(() => {
@@ -128,7 +133,11 @@ const HeaderContainer = () => {
 
   return (
     <Header
+      userData={userData}
+      handleLogout={handleLogout}
       builderActionsList={builderActionsList}
+      toggleDropdown={toggleDropdown}
+      setToggleDropdown={setToggleDropdown}
       resumeName={resumeName}
       setResumeName={setResumeName}
       showTemplates={showTemplates}

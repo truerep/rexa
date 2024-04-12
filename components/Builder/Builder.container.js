@@ -21,9 +21,6 @@ const BuilderContainer = () => {
   const fetchResumeData = async (resumeId) => {
     try {
       const res = await getResumeData(resumeId);
-      console.log(res?.data, '<---resumedata - db');
-      console.log(resumeData, '<---resumeData - context');
-      console.log(res?.data?.id, '<-----resumeID');
       if (res?.data?.data) {
         updateResumeData((prevState) => {
           return {
@@ -48,7 +45,6 @@ const BuilderContainer = () => {
       router.push('/builder');
     } else if (router.query.resumeId) {
       fetchResumeData(router.query.resumeId);
-      console.log(router.query, '<--resumeId');
     }
   }, [router]);
 
