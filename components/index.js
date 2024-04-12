@@ -13,14 +13,20 @@ import {
 import Builder from './Builder';
 import Create from './Create';
 
+import Dashboard from './Dashboard';
+
 export {
   Header,
   Footer,
   AppDownload,
+
   HeroBanner,
   GrowthCards,
   Features,
   ClientsList,
+
   Builder,
-  Create
+  Create,
+
+  Dashboard
 };
