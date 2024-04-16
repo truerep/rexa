@@ -1,7 +1,8 @@
 import {
   Header,
   Footer,
-  AppDownload
+  AppDownload,
+  Loader
 } from './common';
 import {
   HeroBanner,
@@ -28,5 +29,6 @@ export {
   Builder,
   Create,
 
-  Dashboard
+  Dashboard,
+  Loader
 };

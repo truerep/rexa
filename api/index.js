@@ -4,11 +4,13 @@ import {
   getModifiedResume,
   createResume,
   getResumeData,
-  updateResume
+  updateResume,
+  deleteResume
 } from './Resume';
 
 import {
-  getUserData
+  getUserData,
+  getUserResumes
 } from './Users';
 
 export {
@@ -18,6 +20,8 @@ export {
   createResume,
   getResumeData,
   updateResume,
+  deleteResume,
 
-  getUserData
+  getUserData,
+  getUserResumes
 };
