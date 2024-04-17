@@ -11,7 +11,9 @@ const colors = {
   CharlestonGreen: '#2C2C2C',
   Quartz: '#4A4A4A',
   ChineseBlack: '#111111',
-  VoiletBlue: '#9C6EFF'
+  VoiletBlue: '#9C6EFF',
+  GraniteGray: '#676767',
+  Red: '#FF0000'
 };
 
 export default colors;

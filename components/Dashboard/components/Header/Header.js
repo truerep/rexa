@@ -11,54 +11,21 @@ import {
   appEnv,
   colors
 } from '@/helpers';
-import {
-  Modal,
-  Popover
-} from '@/components/common';
-import {
-  JdModal
-} from '../TemplateZone/components';
-
-import TemplateSwitcher from '../TemplateSwitcher';
 
 const Header = ({
   userData,
   handleLogout,
-  builderActionsList,
   toggleDropdown,
-  setToggleDropdown,
-  resumeName,
-  setResumeName,
-  showTemplates,
-  setShowTemplates,
-  showJdModal,
-  setShowJdModal
+  setToggleDropdown
 }) => {
   const router = useRouter();
 
   return (
     <Wrapper>
       <TemplateNameWrapper>
-        <BackBtn onClick={() => router.push('/dashboard')}>
-          <Tooltip title="Dashboard">
-            <Icon src="/assets/icons/arrow-left-light.svg" />
-          </Tooltip>
-        </BackBtn>
-        <Input
-          onChange={(e) => setResumeName(e.target.value)}
-          placeholder="Resume Name"
-          value={resumeName}
-        />
+        <Icon src="/assets/icons/dashboard-icon-light.svg" />
+        <PageTitle>Dashboard</PageTitle>
       </TemplateNameWrapper>
-      <BuilderActions>
-        {builderActionsList.map((action) => (
-          <Tooltip title={action?.tooltip}>
-            <ActionButton onClick={action?.handleClick}>
-              <Icon src={action?.iconUrl} />
-            </ActionButton>
-          </Tooltip>
-        ))}
-      </BuilderActions>
       {
         Object.keys(userData).length > 0 ? (
           <AccountInfoWrapper>
@@ -81,18 +48,6 @@ const Header = ({
           </AccountInfo>
         )
       }
-      <Popover
-        showModal={showTemplates}
-        setShowModal={setShowTemplates}
-      >
-        <TemplateSwitcher />
-      </Popover>
-      <Modal
-        showModal={showJdModal}
-        setShowModal={setShowJdModal}
-      >
-        <JdModal />
-      </Modal>
     </Wrapper>
   );
 };
@@ -102,6 +57,7 @@ const Wrapper = styled.div`
     color: #fff;
     display: flex;
     justify-content: space-between;
+    padding: 7px 0;
 
     @media print {
         display: none;
@@ -112,48 +68,20 @@ const Wrapper = styled.div`
     }
 `;
 
-const BuilderActions = styled.div`
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-`;
-
-const ActionButton = styled.button`
-    padding: 13px 11px 9px;
-    transform: unset!important;
-    transition: none!important;
-
-    &:hover {
-        background-color: ${colors.ChineseBlack};
-    }
-`;
-
 const Icon = styled.img`
     width: 16px;
 `;
 
 const TemplateNameWrapper = styled.div`
     display: flex;
-    padding-left: 18px;
+    padding-left: 28px;
 `;
 
-const BackBtn = styled(ActionButton)`
-    padding: 0 8px;
-
-    img {
-        width: unset;
-        height: 13px;
-    }
-`;
-
-const Input = styled.input`
+const PageTitle = styled.div`
+    color: #fff;
+    font-size: 16px;
     padding: 5px;
     margin-left: 10px;
-    background: transparent;
-    color: #fff;
-    outline: 0;
-    border: 0;
-    font-size: 16px;
 `;
 
 const AccountInfo = styled.div`

@@ -4,6 +4,7 @@ import Modal from './Modal';
 import Popover from './Popover';
 import LoginForm from './LoginForm';
 import AppDownload from './AppDownload';
+import Loader from './Loader';
 
 export {
   Header,
@@ -11,5 +12,6 @@ export {
   Modal,
   Popover,
   LoginForm,
-  AppDownload
+  AppDownload,
+  Loader
 };

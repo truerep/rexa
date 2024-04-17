@@ -1,7 +1,13 @@
 import React from 'react';
+import {
+  Header, ResumeTable
+} from './components';
 
 const Dashboard = () => (
-  <div>Dashboard</div>
+  <>
+    <Header />
+    <ResumeTable />
+  </>
 );
 
 export default Dashboard;
