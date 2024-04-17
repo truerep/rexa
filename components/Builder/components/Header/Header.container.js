@@ -36,7 +36,7 @@ const HeaderContainer = () => {
   const createNewResume = async (payload) => {
     try {
       const res = await createResume(payload);
-      if (res?.statusText === 'Created' && res?.data?._id) {
+      if (res?.data?._id) {
         toast.success('Resume Saved!');
         router.push(`/builder/${res?.data?._id}`);
       } else {
