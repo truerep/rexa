@@ -5,8 +5,8 @@ import {
   colors
 } from '@/helpers';
 
-const ContentSectionNames = ({sectionNamesList, activeSection}) => (
-  <Wrapper>
+const ContentSectionNames = ({sectionNamesList, activeSection, togglePreview}) => (
+  <Wrapper className={togglePreview ? 'hide' : ''}>
     {sectionNamesList.map((sectionName) => (
       <ActionButton
         className={activeSection === sectionName?.id ? 'active' : ''}
@@ -32,7 +32,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     position: sticky;
-    top: 0;    
+    top: 0;  
+    transition: all 0.2s ease-in-out;
+
+    &.hide {
+      transform: translateX(-101%);
+    }
     
     @media print {
       display: none;

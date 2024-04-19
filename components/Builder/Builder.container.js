@@ -48,8 +48,19 @@ const BuilderContainer = () => {
     }
   }, [router]);
 
+  const handlePreview = () => {
+    if (resumeData?.togglePreview === true) {
+      const newResumeData = {
+        ...resumeData,
+        togglePreview: false
+      };
+
+      updateResumeData(newResumeData);
+    }
+  };
+
   return (
-    <Builder />
+    <Builder handlePreview={handlePreview} togglePreview={resumeData?.togglePreview} />
   );
 };
 

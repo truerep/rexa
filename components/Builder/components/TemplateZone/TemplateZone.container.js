@@ -4,9 +4,6 @@ import React, {
   useState
 } from 'react';
 
-import {
-  useRouter
-} from 'next/router';
 import TemplateZone from './TemplateZone';
 import {
   getResumeJson
@@ -19,7 +16,6 @@ const TemplateZoneContainer = () => {
   const [showJdModal, setShowJdModal] = useState();
   const [resumeString, setResumeString] = useState('');
   const {resumeData, updateResumeData} = useContext(ResumeContext);
-  const router = useRouter();
 
   const getResumeData = async () => {
     try {

@@ -6,9 +6,10 @@ import {
 
 const TemplateContent = ({
   contentModificationModules,
-  activeSection
+  activeSection,
+  togglePreview
 }) => (
-  <Wrapper className="print-none">
+  <Wrapper className={`${togglePreview ? 'hide' : ''} print-none`}>
     <ModulesWrapper>
       {
           contentModificationModules.length ? contentModificationModules.map((module) => (
@@ -32,6 +33,11 @@ const Wrapper = styled.div`
     overflow: hidden;
     box-sizing: border-box;
     border-left: 1px solid ${colors.LavenderWeb};
+    transition: all 0.2s ease-in-out;
+
+    &.hide {
+      transform: translateX(101%);
+    }
 
     @media print {
       display: none;

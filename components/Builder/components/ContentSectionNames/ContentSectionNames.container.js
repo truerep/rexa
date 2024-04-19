@@ -53,6 +53,7 @@ const ContentSectionNamesContainer = () => {
     <ContentSectionNames
       sectionNamesList={sectionNamesList}
       activeSection={resumeData?.contentSectionName}
+      togglePreview={resumeData?.togglePreview}
     />
   );
 };

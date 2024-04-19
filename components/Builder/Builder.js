@@ -7,10 +7,10 @@ import {
   TemplateZone
 } from './components';
 
-const Builder = () => (
-  <Wrapper>
+const Builder = ({handlePreview, togglePreview}) => (
+  <Wrapper onClick={handlePreview}>
     <Header />
-    <EditorSection>
+    <EditorSection className={togglePreview ? 'overflow-hidden' : ''}>
       <ContentSectionNames />
       <TemplateZone />
       <TemplateContent />
@@ -35,6 +35,10 @@ const EditorSection = styled.div`
   overflow: auto;
   justify-content: space-between;
   flex: 1;
+
+  &.overflow-hidden {
+    overflow-x: hidden;
+  }
 
   @media print {
     height: unset;

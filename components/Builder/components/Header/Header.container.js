@@ -23,7 +23,7 @@ const HeaderContainer = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   const router = useRouter();
-  const {resumeData} = useContext(ResumeContext);
+  const {resumeData, updateResumeData} = useContext(ResumeContext);
 
   useEffect(() => {
     setShowTemplates(resumeData.toggleTemplatesPopover);
@@ -75,6 +75,15 @@ const HeaderContainer = () => {
     }
   };
 
+  const handlePreview = () => {
+    const newResumeData = {
+      ...resumeData,
+      togglePreview: true
+    };
+
+    updateResumeData(newResumeData);
+  };
+
   const builderActionsList = [
     {
       handleClick: () => setShowTemplates(true),
@@ -87,8 +96,9 @@ const HeaderContainer = () => {
       tooltip: 'Sync Resume with Job Description'
     },
     {
+      handleClick: () => handlePreview(),
       iconUrl: '/assets/icons/preview-icon.svg',
-      tooltip: 'Preview & Share (coming soon)'
+      tooltip: 'Preview '
     },
     {
       handleClick: () => handleSaveResume(),
@@ -144,6 +154,7 @@ const HeaderContainer = () => {
       setShowTemplates={setShowTemplates}
       showJdModal={showJdModal}
       setShowJdModal={setShowJdModal}
+      togglePreview={resumeData?.togglePreview}
     />
   );
 };

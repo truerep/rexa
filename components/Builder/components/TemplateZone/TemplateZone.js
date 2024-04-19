@@ -26,7 +26,7 @@ const TemplateZone = ({
   }, [resumeData]);
 
   return (
-    <Wrapper>
+    <Wrapper className={resumeData?.togglePreview ? 'scaleup' : ''}>
       {
         resumeData?.templateData ? (
           <>
@@ -70,6 +70,12 @@ const Wrapper = styled.div`
     flex-shrink: 0;
     padding-top: 20px;
     margin-bottom: 120px;
+    transition: all 0.2s ease-in-out;
+
+    &.scaleup {
+      scale: 1.2;
+      transform: translateY(30px);
+    }
 
     @media print {
       padding-top: 0;
