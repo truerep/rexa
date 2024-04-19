@@ -32,12 +32,13 @@ const Header = ({
   showTemplates,
   setShowTemplates,
   showJdModal,
-  setShowJdModal
+  setShowJdModal,
+  togglePreview
 }) => {
   const router = useRouter();
 
   return (
-    <Wrapper>
+    <Wrapper className={togglePreview ? 'hide' : ''}>
       <TemplateNameWrapper>
         <BackBtn onClick={() => router.push('/dashboard')}>
           <Tooltip title="Dashboard">
@@ -102,6 +103,11 @@ const Wrapper = styled.div`
     color: #fff;
     display: flex;
     justify-content: space-between;
+    transition: all 0.2s ease-in-out;
+
+    &.hide {
+      transform: translateY(-101%);
+    }
 
     @media print {
         display: none;

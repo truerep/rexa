@@ -4,12 +4,13 @@ import {
   Swiper, SwiperSlide
 } from 'swiper/react';
 import {
-  EffectCards, Pagination
+  EffectCards, Pagination, Navigation
 } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 import {
   colors
@@ -22,13 +23,14 @@ const TemplateSwitcher = ({templateId, setTemplateId, handleTemplateChange}) => 
       <Swiper
         effect="cards"
         grabCursor
+        navigation
         pagination={{
           dynamicBullets: true
         }}
         cardsEffect={{
           slideShadows: false
         }}
-        modules={[EffectCards, Pagination]}
+        modules={[EffectCards, Pagination, Navigation]}
         className="mySwiper"
       >
         {Object.keys(templatesData).length
@@ -86,6 +88,31 @@ const TemplatesWrapper = styled.div`
     max-width: 50%;
     padding: 50px 0; 
     user-select: none;
+
+    .swiper-button-next, .swiper-button-prev {
+      // bottom: 0;
+      // top: unset;
+      // transform: translateY(40px);
+      height: 42px;
+      width: 32px;
+      background-color: ${colors.LightLavender};
+      border-radius: 5px;
+      border: 2px solid ${colors.HanPurple};
+
+      &::after {
+        font-size: 18px;
+        font-weight: 600;
+        color: ${colors.HanPurple};
+      }
+    }
+
+    .swiper-button-next {
+      transform: translateX(100px);
+    }
+
+    .swiper-button-prev {
+      transform: translateX(-100px);
+    }
 `;
 
 const TemplateBg = styled.div`

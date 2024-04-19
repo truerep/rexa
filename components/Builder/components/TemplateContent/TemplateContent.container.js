@@ -40,6 +40,7 @@ const TemplateContentContainer = () => {
     <TemplateContent
       contentModificationModules={contentModificationModules}
       activeSection={resumeData?.contentSectionName}
+      togglePreview={resumeData?.togglePreview}
     />
   );
 };

@@ -9,6 +9,7 @@ const ResumeContextProvider = ({children}) => {
     templateId: 'starter',
     toggleJdModal: false,
     toggleTemplatesPopover: false,
+    togglePreview: false,
     contentSectionName: 'basic'
   });
 
