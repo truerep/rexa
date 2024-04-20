@@ -4,6 +4,7 @@ import {
   AppDownload,
   Loader
 } from './common';
+import Authenticate from './Authenticate';
 import {
   HeroBanner,
   GrowthCards,
@@ -20,6 +21,7 @@ export {
   Header,
   Footer,
   AppDownload,
+  Authenticate,
 
   HeroBanner,
   GrowthCards,
