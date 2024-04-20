@@ -12,6 +12,13 @@ const templatesData = {
     thumbnail: '/assets/images/template-modern.png',
     type: 'basic',
     usedBy: '1,200'
+  },
+  techstarter: {
+    id: 'techstarter',
+    name: 'Tech Starter',
+    thumbnail: 'https://d.novoresume.com/images/doc/tech-resume-template.png',
+    type: 'premium',
+    usedBy: '12'
   }
 };
 

@@ -7,12 +7,12 @@ import {
   Loader
 } from '../common';
 
-const Authenticate = ({handleLogin, isLoading}) => (
+const Authenticate = ({ handleLogin, isLoading }) => (
   <Wrapper>
     <LoginContent>
       {
         isLoading ? <Loading><Loader /></Loading> : ''
-       }
+      }
       <Logo src="/assets/images/company-logo.svg" alt="logo" />
       <Title>Hello Again!</Title>
       <Tagline>Login or Signup to your account</Tagline>

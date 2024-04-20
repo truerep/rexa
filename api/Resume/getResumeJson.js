@@ -8,9 +8,18 @@ const dummy = {
   basics: {
     name: 'Sahil Dhingra',
     email: 'sahildhingra221@gmail.com',
+    title: 'Frontend Developer and Software Engineer',
     phone: '7347648126',
     summary: 'A versatile Frontend Developer and Software Engineer with a passion for crafting innovative solutions in Fintech. Bringing a wealth of experience in architecting Progressive Web Applications, designing cutting-edge Stock Trading Terminal, and optimizing Mutual Funds transaction systems.',
     picture: 'https://imgv3.fotor.com/images/slider-image/Female-portrait-picture-enhanced-with-better-clarity-and-higher-quality-using-Fotors-free-online-AI-photo-enhancer.jpg'
+  },
+  contact: {
+    email: 'dipanchhabra@gmial.com',
+    phone: '7347648126',
+    city: 'Chandigarh, India',
+    linkedin: 'https://www.linkedin.com/in/sahil-dhingra-7b0b3b1b4/',
+    github: 'https://github.com/dipanc1',
+    leetcode: 'https://leetcode.com/dipanc1/'
   },
   work: [
     {
@@ -44,7 +53,11 @@ const dummy = {
       website: 'None',
       startDate: 'May 2022',
       endDate: 'December 2022',
-      summary: 'Spearheaded the development of responsive and visually appealing user interfaces using HTML, CSS, and JavaScript.'
+      summary: 'Spearheaded the development of responsive and visually appealing user interfaces using HTML, CSS, and JavaScript.',
+      highlights: [
+        'Developed a responsive and visually appealing website for a client',
+        'Independently managed the project'
+      ]
     }
   ],
   skills: [
@@ -117,12 +130,12 @@ const getResumeJson = async (resumeString) => {
     const config = {
       method: 'post',
       url: `${appEnv.API_URL}/api/send-resume`,
-      data: {resume: resumeString}
+      data: { resume: resumeString }
     };
 
+    return dummy;
     const res = await axios(config);
     return res?.data;
-    // return dummy;
   } catch (err) {
     console.log(err);
   }

@@ -57,35 +57,35 @@ const DragAndDrop = ({
           <FileUpoadContainer>
             <FileIcon src="/assets/icons/file-icon.png" />
             {
-          file ? (
-            <Text className="file-name">{file?.name}</Text>
-          ) : (
-            <>
-              <Text>Drag and Drop</Text>
-              <Text className="or-text">Or</Text>
-            </>
-          )
-        }
+              file ? (
+                <Text className="file-name">{file?.name}</Text>
+              ) : (
+                <>
+                  <Text>Drag and Drop</Text>
+                  <Text className="or-text">Or</Text>
+                </>
+              )
+            }
             {
-          file ? (
-            <BrowseFileBtn
-              onClick={removeFile}
-              className="btn-primary btn-outlined"
-            >
-              Remove
-            </BrowseFileBtn>
-          ) : (
-            ''
-          )
-        }
+              file ? (
+                <BrowseFileBtn
+                  onClick={removeFile}
+                  className="btn-primary btn-outlined"
+                >
+                  Remove
+                </BrowseFileBtn>
+              ) : (
+                ''
+              )
+            }
             {
-          !file ? (
-            <BrowseFileBtn className="btn-primary btn-outlined">
-              <input type="file" onChange={handleFileChange} />
-              Select File
-            </BrowseFileBtn>
-          ) : ('')
-        }
+              !file ? (
+                <BrowseFileBtn className="btn-primary btn-outlined">
+                  <input type="file" onChange={handleFileChange} />
+                  Select File
+                </BrowseFileBtn>
+              ) : ('')
+            }
           </FileUpoadContainer>
         </ResumeUploadContainer>
       )
