@@ -77,7 +77,7 @@ const Header = ({
             }
           </AccountInfoWrapper>
         ) : (
-          <AccountInfo onClick={() => router.push(`${appEnv.API_URL}/api/auth/google`)}>
+          <AccountInfo onClick={() => router.push('/authenticate?login&redirectUrl=/builder')}>
             <LoginBtn>Login</LoginBtn>
           </AccountInfo>
         )

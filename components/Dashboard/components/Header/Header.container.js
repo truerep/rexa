@@ -21,6 +21,7 @@ const HeaderContainer = () => {
       const res = await getUserData(authToken);
       setUserData(res?.data);
     } catch (err) {
+      router.push('/authenticate?login');
     }
   };
 
