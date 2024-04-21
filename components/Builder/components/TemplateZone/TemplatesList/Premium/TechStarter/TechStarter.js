@@ -28,7 +28,7 @@ const TemplateTechStarter = () => {
     <Wrapper>
 
       <LeftSection>
-
+        <LeftBar></LeftBar>
         <ProfileSection>
           <ProfileImage>
             <Image
@@ -52,13 +52,13 @@ const TemplateTechStarter = () => {
         <TitleSectionComponent image={skillsImage} title="SKILLS" />
         <SkillsSection>
           <SkillNamesSection>
-            {resumeData?.skills.map((skill, index) => (
+            {resumeData?.skills?.map((skill, index) => (
               <SkillName key={index}>{skill.name}</SkillName>
             ))}
           </SkillNamesSection>
 
           <SkillKeywordsSection>
-            {resumeData?.skills.map((skill, index) => (
+            {resumeData?.skills?.map((skill, index) => (
               <SkillKeywords key={index}>{skill.keywords.join(', ')}</SkillKeywords>
             ))}
           </SkillKeywordsSection>
@@ -67,7 +67,7 @@ const TemplateTechStarter = () => {
 
         <TitleSectionComponent image={workImage} title="WORK EXPERIENCE" />
         <WorkSection>
-          {resumeData?.work.map((work, index) => (
+          {resumeData?.work?.map((work, index) => (
             <WorkExperience key={index}>
               <WorkTitle>{work.position}</WorkTitle>
               <WorkCompany>{work.company}</WorkCompany>
@@ -100,7 +100,7 @@ const TemplateTechStarter = () => {
 
         <TitleSectionComponent image={certificateImage} title="CERTIFICATIONS" />
         <CertificationsSection>
-          {resumeData?.certifications.map((certification, index) => (
+          {resumeData?.certifications?.map((certification, index) => (
             <Certification key={index}>
               <CertificationTitle>{certification.title} ({certification.date})</CertificationTitle>
               <CertificationSummary>{certification.summary}</CertificationSummary>
@@ -110,7 +110,7 @@ const TemplateTechStarter = () => {
 
         <TitleSectionComponent image={projectImage} title="PERSONAL PROJECTS" />
         <ProjectsSection>
-          {resumeData?.projects.map((project, index) => (
+          {resumeData?.projects?.map((project, index) => (
             <Project key={index}>
               <ProjectTitle>{project.name} ({project.startDate} - {project.endDate})</ProjectTitle>
               {project.highlights && project.highlights.map((highlight, index) => (
@@ -122,7 +122,7 @@ const TemplateTechStarter = () => {
 
         <TitleSectionComponent image={langaugeImage} title="LANGUAGES" />
         <ProjectsSection>
-          {resumeData?.languages.map((language, index) => (
+          {resumeData?.languages?.map((language, index) => (
             <Language key={index}>
               <LanguageName>{language.language}</LanguageName>
               <LanguageFluency>{language.fluency}</LanguageFluency>
@@ -132,7 +132,7 @@ const TemplateTechStarter = () => {
 
         <TitleSectionComponent image={interestsImage} title="INTERESTS" />
         <ProjectsSection>
-          {resumeData?.interests.map((interest, index) => (
+          {resumeData?.interests?.map((interest, index) => (
             <Interest key={index}>
               <InterestName>{interest.name}</InterestName>
               {interest.keywords &&
@@ -152,12 +152,23 @@ const Wrapper = styled.div`
   background: #fff;
   display: flex;
   flex-direction: row;
+  position: relative;
 `;
 
 const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
   flex: 2;
+`;
+
+const LeftBar = styled.div`
+  background-color: #1D3344;
+  width: 0.5rem;
+  border-radius: 0.5rem;
+  height: 20rem;
+  position: absolute;
+  left: 0.3rem;
+  top: 1rem;
 `;
 
 const ProfileSection = styled.div`
