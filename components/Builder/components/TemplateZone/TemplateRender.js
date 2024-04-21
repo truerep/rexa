@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  TemplateModern, TemplateStarter
+  TemplateModern, TemplateStarter,
+  TemplateTechStarter
 } from './TemplatesList';
 
 const TemplateRender = (templateNameKey) => {
@@ -9,6 +10,8 @@ const TemplateRender = (templateNameKey) => {
       return <TemplateStarter />;
     case 'modern':
       return <TemplateModern />;
+    case 'techstarter':
+      return <TemplateTechStarter />;
     default:
       return <TemplateStarter />;
   }
