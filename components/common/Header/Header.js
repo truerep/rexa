@@ -2,14 +2,20 @@ import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 import {
+  useRouter
+} from 'next/router';
+import {
   colors
 } from '@/helpers';
 
 const Header = ({
+  isAuthorized,
   navMenu,
   toggleNav,
   setToggleNav
 }) => {
+  const router = useRouter();
+
   const LogoUrl = '/assets/images/company-logo.svg';
   const hamburgerIcon = 'https://ik.imagekit.io/sahildhingra/hamburger-dark.png';
 
@@ -30,9 +36,17 @@ const Header = ({
             ))
         }
       </Nav>
-      <DownloadAppBtn href="#download-app" className="btn-primary btn-outlined">
-        Download App
-      </DownloadAppBtn>
+      {
+        isAuthorized ? (
+          <DownloadAppBtn onClick={() => router.push('/dashboard')} className="btn-primary btn-outlined">
+            Dashboard
+          </DownloadAppBtn>
+        ) : (
+          <DownloadAppBtn onClick={() => router.push('/authenticate?login')} className="btn-primary btn-outlined">
+            Login
+          </DownloadAppBtn>
+        )
+      }
 
       <NavButton onClick={() => setToggleNav(!toggleNav)}>
         <img src={hamburgerIcon} alt="menu" />
@@ -133,6 +147,7 @@ const Item = styled.li`
 const DownloadAppBtn = styled.a`
     font-size: 17px;
     font-weight: 500;
+    cursor: pointer;
 
     @media (max-width: 576px) {
       padding: 5px 15px;
