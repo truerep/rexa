@@ -35,7 +35,9 @@ const AuthenticateContainer = () => {
       }
     } else if (router.query.login == '') {
       const { redirectUrl } = router.query;
-      localStorage.setItem('redirect_url', redirectUrl);
+      if (redirectUrl !== undefined) {
+        localStorage.setItem('redirect_url', redirectUrl);
+      }
       router.push(loginUrl);
     } else {
       setIsLoading(false);
