@@ -35,8 +35,9 @@ const HeaderContainer = () => {
 
     if (authToken) {
       checkUserAuthenticated(authToken);
-    } else {
-    }
+    } else if (authToken === null) {
+      router.push('/authenticate?login');
+    } else {}
   }, [router]);
 
   return (

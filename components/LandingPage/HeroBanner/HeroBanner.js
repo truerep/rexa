@@ -35,7 +35,7 @@ const HeroBanner = () => {
                 onClick={() => router.push('/create')}
                 className="btn-primary"
               >
-                Update Resume Now
+                Get Started
               </button>
               <a data-aos="fade-up" data-aos-delay="400" href="#features">Know more</a>
             </ActionLinks>
