@@ -4,7 +4,12 @@ import {
   colors
 } from '@/helpers';
 
-const JdModal = ({jobDescription, setJobDescription, modifyResume}) => (
+const JdModal = ({
+  isLoading,
+  jobDescription,
+  setJobDescription,
+  modifyResume
+}) => (
   <Wrapper>
     <TextArea
       value={jobDescription}
@@ -13,9 +18,10 @@ const JdModal = ({jobDescription, setJobDescription, modifyResume}) => (
     />
     <Actions>
       <button
+        disabled={isLoading}
         type="button"
         onClick={modifyResume}
-        className="btn-primary"
+        className={`${isLoading || jobDescription.length < 1 ? 'disabled' : ''} btn-primary`}
       >
         Update Resume
       </button>
@@ -49,6 +55,11 @@ const TextArea = styled.textarea`
 const Actions = styled.div`
     padding-top: 20px;
     text-align: right;
+
+    button.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
 `;
 
 export default JdModal;

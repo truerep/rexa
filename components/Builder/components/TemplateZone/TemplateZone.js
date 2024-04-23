@@ -8,6 +8,7 @@ import {
 } from '@/context/ResumeContext';
 import TemplateRender from './TemplateRender';
 import {
+  Loader,
   Modal
 } from '@/components/common';
 import {
@@ -56,9 +57,10 @@ const TemplateZone = ({
             </Modal>
           </>
         ) : (
-          <Loader>
-            <LoaderImg src="https://cdn.dribbble.com/users/171267/screenshots/2454901/fileloading.gif" alt="loading..." />
-          </Loader>
+          <LoaderWrapper>
+            <Loader />
+            {/* <LoaderImg src="https://cdn.dribbble.com/users/171267/screenshots/2454901/fileloading.gif" alt="loading..." /> */}
+          </LoaderWrapper>
         )
       }
     </Wrapper>
@@ -122,10 +124,10 @@ const ResumeTemplate = styled.div`
     }
   `;
 
-const Loader = styled.div`
+const LoaderWrapper = styled.div`
     background: #fff;
     border-radius: 10px;
-    min-height: 600px;
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;

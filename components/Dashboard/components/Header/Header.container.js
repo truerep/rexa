@@ -1,5 +1,6 @@
 import React, {
   useEffect,
+  useRef,
   useState
 } from 'react';
 import {
@@ -9,10 +10,16 @@ import Header from './Header';
 import {
   getUserData
 } from '@/api';
+import {
+  useOnClickOutside
+} from '@/hooks';
 
 const HeaderContainer = () => {
   const [userData, setUserData] = useState({});
   const [toggleDropdown, setToggleDropdown] = useState(false);
+
+  const dropdownRef = useRef(null);
+  useOnClickOutside(dropdownRef, () => setToggleDropdown(false));
 
   const router = useRouter();
 
@@ -45,6 +52,7 @@ const HeaderContainer = () => {
       userData={userData}
       handleLogout={handleLogout}
       toggleDropdown={toggleDropdown}
+      dropdownRef={dropdownRef}
       setToggleDropdown={setToggleDropdown}
     />
   );

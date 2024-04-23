@@ -27,6 +27,7 @@ const Header = ({
   builderActionsList,
   toggleDropdown,
   setToggleDropdown,
+  dropdownRef,
   resumeName,
   setResumeName,
   showTemplates,
@@ -42,14 +43,16 @@ const Header = ({
       <TemplateNameWrapper>
         <BackBtn onClick={() => router.push('/dashboard')}>
           <Tooltip title="Dashboard">
-            <Icon src="/assets/icons/arrow-left-light.svg" />
+            <Icon src="/assets/icons/dashboard-icon-light.svg" />
           </Tooltip>
         </BackBtn>
-        <Input
-          onChange={(e) => setResumeName(e.target.value)}
-          placeholder="Resume Name"
-          value={resumeName}
-        />
+        <InputWrapper>
+          <Input
+            onChange={(e) => setResumeName(e.target.value)}
+            placeholder="Resume Name"
+            value={resumeName}
+          />
+        </InputWrapper>
       </TemplateNameWrapper>
       <BuilderActions>
         {builderActionsList.map((action) => (
@@ -68,13 +71,22 @@ const Header = ({
               <Username>{userData?.firstName}</Username>
               <DownArrowIcon src="/assets/icons/arrow-down-light.svg" />
             </UserWrapper>
-            {
-              toggleDropdown ? (
-                <Dropdown>
-                  <Button onClick={handleLogout}>Logout</Button>
-                </Dropdown>
-              ) : ('')
-            }
+            <div ref={dropdownRef}>
+              {
+                toggleDropdown ? (
+                  <Dropdown>
+                    <Button onClick={() => router.push('/dashboard')}>
+                      <Icon src="/assets/icons/dashboard-icon-light.svg" />
+                      <span>Dashboard</span>
+                    </Button>
+                    <Button onClick={handleLogout}>
+                      <Icon src="/assets/icons/logout-icon-light.svg" />
+                      <span>Logout</span>
+                    </Button>
+                  </Dropdown>
+                ) : ('')
+              }
+            </div>
           </AccountInfoWrapper>
         ) : (
           <AccountInfo onClick={() => router.push('/authenticate?login&redirectUrl=/builder')}>
@@ -140,26 +152,58 @@ const Icon = styled.img`
 
 const TemplateNameWrapper = styled.div`
     display: flex;
+    align-items: center;
     padding-left: 18px;
 `;
 
 const BackBtn = styled(ActionButton)`
     padding: 0 8px;
+    height: 100%;
 
     img {
         width: unset;
-        height: 13px;
+        height: 16px;
+        transform: translateY(3px);
+    }
+`;
+
+const InputWrapper = styled.div`
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-left: 10px;
+    border: 1px solid ${colors.Quartz};
+
+    &:hover {
+      border-color: #fff;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 30px;
+      background-color: ${colors.Quartz};
+      background-image: url('/assets/icons/edit-icon-light.svg');
+      background-size: 12px;
+      background-position: center;
+      background-repeat: no-repeat;
+      pointer-events: none;
     }
 `;
 
 const Input = styled.input`
-    padding: 5px;
-    margin-left: 10px;
+    padding: 3px 10px;
     background: transparent;
     color: #fff;
     outline: 0;
     border: 0;
-    font-size: 16px;
+    font-size: 15px;
+    border-radius: 5px;
+    max-width: 180px;
+    position: relative;
 `;
 
 const AccountInfo = styled.div`
@@ -217,14 +261,31 @@ const Dropdown = styled.div`
   right: 0;
   z-index: 1;
   background: ${colors.CharlestonGreen};
-  min-width: calc(100% + 20px);
+  min-width: calc(100% + 50px);
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
 const Button = styled.button`
-  padding: 5px 15px;
-  font-size: 12px;
+  padding: 10px 15px;
+  font-size: 13px;
   color: #fff;
   transform: unset!important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+
+  img {
+    height: 13px;
+    width: 13px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    background-color: ${colors.Quartz};
+  }
 `;
 
 export default Header;
