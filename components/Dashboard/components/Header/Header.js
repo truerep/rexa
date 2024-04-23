@@ -16,7 +16,8 @@ const Header = ({
   userData,
   handleLogout,
   toggleDropdown,
-  setToggleDropdown
+  setToggleDropdown,
+  dropdownRef
 }) => {
   const router = useRouter();
 
@@ -36,8 +37,15 @@ const Header = ({
             </UserWrapper>
             {
               toggleDropdown ? (
-                <Dropdown>
-                  <Button onClick={handleLogout}>Logout</Button>
+                <Dropdown ref={dropdownRef}>
+                  <Button onClick={() => router.push('/dashboard')}>
+                    <Icon src="/assets/icons/dashboard-icon-light.svg" />
+                    <span>Dashboard</span>
+                  </Button>
+                  <Button onClick={handleLogout}>
+                    <Icon src="/assets/icons/logout-icon-light.svg" />
+                    <span>Logout</span>
+                  </Button>
                 </Dropdown>
               ) : ('')
             }
@@ -139,14 +147,31 @@ const Dropdown = styled.div`
   right: 0;
   z-index: 1;
   background: ${colors.CharlestonGreen};
-  min-width: calc(100% + 20px);
+  min-width: calc(100% + 50px);
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
 const Button = styled.button`
-  padding: 5px 15px;
-  font-size: 12px;
+  padding: 10px 15px;
+  font-size: 13px;
   color: #fff;
   transform: unset!important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+
+  img {
+    height: 13px;
+    width: 13px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    background-color: ${colors.Quartz};
+  }
 `;
 
 export default Header;
