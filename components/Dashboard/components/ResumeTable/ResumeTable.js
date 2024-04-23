@@ -5,13 +5,23 @@ import {
 } from 'next/router';
 
 import {
-  colors
+  colors, getFormattedDate
 } from '@/helpers';
 import {
+  Create,
   Loader
 } from '@/components';
+import {
+  Popover
+} from '@/components/common';
 
-const ResumeTable = ({userResumes, handleDeleteResume, isLoading}) => {
+const ResumeTable = ({
+  userResumes,
+  handleDeleteResume,
+  isLoading,
+  toggleCreate,
+  setToggleCreate
+}) => {
   const router = useRouter();
 
   return (
@@ -20,7 +30,7 @@ const ResumeTable = ({userResumes, handleDeleteResume, isLoading}) => {
         <Title>
           My Resume's
         </Title>
-        <Button onClick={() => router.push('/create')} className="btn-primary btn-outlined">
+        <Button onClick={() => setToggleCreate(true)} className="btn-primary btn-outlined">
           <img src="/assets/icons/plus-icon-purple.svg" alt="create-new" />
           <span>Create New</span>
         </Button>
@@ -53,7 +63,11 @@ const ResumeTable = ({userResumes, handleDeleteResume, isLoading}) => {
                   </a>
                 </td>
                 <td>
-                  -
+                  <span className="faded-text">
+                    {
+                      getFormattedDate(resume?.updatedAt)
+                    }
+                  </span>
                 </td>
                 <td>
                   -
@@ -83,11 +97,18 @@ const ResumeTable = ({userResumes, handleDeleteResume, isLoading}) => {
           <p>
             No resume found... Create a new one!
           </p>
-          <Button onClick={() => router.push('/create')} className="btn-primary btn-outlined">
+          <Button onClick={() => setToggleCreate(true)} className="btn-primary btn-outlined">
             <img src="/assets/icons/plus-icon-purple.svg" alt="create-new" />
           </Button>
         </EmptyData>
       ) : ('')}
+      <Popover
+        showModal={toggleCreate}
+        setShowModal={setToggleCreate}
+        haveMarginTop
+      >
+        <Create />
+      </Popover>
     </Wrapper>
   );
 };
@@ -178,6 +199,10 @@ const Table = styled.table`
       a {
         cursor: pointer;
       }
+    }
+
+    .faded-text {
+      opacity: 0.7;
     }
 `;
 

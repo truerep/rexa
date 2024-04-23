@@ -7,7 +7,7 @@ import {
 
 const Create = ({tabData, activeTab, setActiveTab}) => (
   <Wrapper>
-    <Logo src="/assets/images/company-logo.svg" />
+    {/* <Logo src="/assets/images/company-logo.svg" /> */}
     <Container>
       <TabsWrapper>
 
@@ -62,6 +62,8 @@ const Container = styled.div`
     max-width: 900px;
     margin: 60px auto 10px;
     text-align: left;
+    border: 1px solid ${colors.LightLavender};
+    overflow: auto;
 `;
 
 const TabsWrapper = styled.div``;
@@ -69,7 +71,7 @@ const TabsWrapper = styled.div``;
 const TitlesWrapper = styled.div`
     display: flex;
     align-items: center;
-    background-color: ${colors.Magnolia};
+    // background-color: ${colors.Magnolia};
     position: relative;
 
     &::before {

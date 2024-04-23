@@ -12,6 +12,7 @@ import ResumeTable from './ResumeTable';
 const ResumeTableContainer = () => {
   const [userResumes, setUserResumes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [toggleCreate, setToggleCreate] = useState(false);
 
   const fetchUserResumes = async () => {
     try {
@@ -53,6 +54,8 @@ const ResumeTableContainer = () => {
       userResumes={userResumes}
       handleDeleteResume={handleDeleteResume}
       isLoading={isLoading}
+      toggleCreate={toggleCreate}
+      setToggleCreate={setToggleCreate}
     />
   );
 };

@@ -4,10 +4,11 @@ import styled from 'styled-components';
 const Popover = ({
   showModal,
   setShowModal,
+  haveMarginTop,
   children
 }) => (
   <ModalBackdrop className={showModal && 'toggled'}>
-    <ModalContent className={showModal && 'toggled'}>
+    <ModalContent className={`${showModal && 'toggled'} ${haveMarginTop && 'has-margin'}`}>
       <CloseModalButton onClick={() => setShowModal(false)}>
         <img src="/assets/icons/close-icon-dark.svg" alt="close" />
       </CloseModalButton>
@@ -45,6 +46,12 @@ const ModalContent = styled.div`
   background: #fff;
   width: 100%;
   height: 100%;
+
+  &.has-margin {
+    height: calc(100% - 48px);
+    overflow: auto;
+    border-radius: 10px 10px 0 0;
+  }
 
   &.toggled {
     transform: translateY(0);
