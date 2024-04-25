@@ -11,12 +11,10 @@ const dummy = {
     title: 'Frontend Developer and Software Engineer',
     phone: '7347648126',
     summary: 'A versatile Frontend Developer and Software Engineer with a passion for crafting innovative solutions in Fintech. Bringing a wealth of experience in architecting Progressive Web Applications, designing cutting-edge Stock Trading Terminal, and optimizing Mutual Funds transaction systems.',
-    picture: 'https://media.licdn.com/dms/image/C5603AQFRI9_sNI_qkA/profile-displayphoto-shrink_800_800/0/1641565675119?e=1717027200&v=beta&t=bTXIxZID56IWOs7xWE2Ek4xCCPgO2cIfZm7_haIhPDY'
+    picture: 'https://media.licdn.com/dms/image/C5603AQFRI9_sNI_qkA/profile-displayphoto-shrink_800_800/0/1641565675119?e=1717027200&v=beta&t=bTXIxZID56IWOs7xWE2Ek4xCCPgO2cIfZm7_haIhPDY',
+    city: 'Chandigarh, India'
   },
-  contact: {
-    email: 'dipanchhabra@gmial.com',
-    phone: '7347648126',
-    city: 'Chandigarh, India',
+  additionalLinks: {
     linkedin: 'https://www.linkedin.com/in/sahil-dhingra-7b0b3b1b4/',
     github: 'https://github.com/dipanc1',
     leetcode: 'https://leetcode.com/dipanc1/'
