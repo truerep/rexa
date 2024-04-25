@@ -176,12 +176,12 @@ const getResumeJson = async (resume) => {
     const config = {
       method: 'post',
       url: `${appEnv.API_URL}/api/send-resume`,
-      data: { resume }
+      data: {resume}
     };
 
-    return dummy;
     const res = await axios(config);
     return res?.data;
+    // return dummy;
   } catch (err) {
     console.log(err);
   }

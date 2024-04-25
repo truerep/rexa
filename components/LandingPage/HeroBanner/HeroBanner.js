@@ -3,19 +3,15 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 import {
-  useRouter
-} from 'next/router';
-import {
   LoginForm,
-  Modal
+  Modal,
+  Popover
 } from '@/components/common';
+import Create from '@/components/Create';
 
 const HeroBanner = () => {
   const [showModal, setShowModal] = useState(false);
-  const takeToLogin = () => {
-    window.location.href = 'http://localhost:3000/api/auth/linkedin';
-  };
-  const router = useRouter();
+  const [toggleCreate, setToggleCreate] = useState(false);
 
   return (
     <Section id="home">
@@ -27,12 +23,9 @@ const HeroBanner = () => {
               Capture thoughts effortlessly, organize seamlessly: your resume, your way.
             </InfoLine>
             <ActionLinks data-aos="fade-up" data-aos-delay="300" className="d-flex align-center">
-              {/* <button onClick={takeToLogin} className="btn-primary">
-                Get Started
-              </button> */}
               <button
                 type="button"
-                onClick={() => router.push('/create')}
+                onClick={() => setToggleCreate(true)}
                 className="btn-primary"
               >
                 Get Started
@@ -52,6 +45,13 @@ const HeroBanner = () => {
       >
         <LoginForm />
       </Modal>
+      <Popover
+        showModal={toggleCreate}
+        setShowModal={setToggleCreate}
+        haveMarginTop
+      >
+        <Create />
+      </Popover>
     </Section>
   );
 };

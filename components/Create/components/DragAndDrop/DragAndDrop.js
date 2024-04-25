@@ -10,6 +10,7 @@ import {
 const DragAndDrop = ({
   dragging,
   file,
+  isLoading,
   handleDragEnter,
   handleDragOver,
   handleDragLeave,
@@ -137,7 +138,8 @@ const DragAndDrop = ({
       file ? (
         <GenerateButtonWrapper>
           <GenerateBtn
-            className="btn-primary btn-dark"
+            disabled={isLoading}
+            className={`${isLoading ? 'disabled' : ''} btn-primary btn-dark`}
             type="button"
             onClick={() => handleResumeUpload(file)}
           >
@@ -213,6 +215,11 @@ const GenerateButtonWrapper = styled.div`
 
 const GenerateBtn = styled.button`
     font-size: 18px;
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
 `;
 
 export default DragAndDrop;

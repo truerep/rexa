@@ -1,6 +1,7 @@
 import React, {
   useContext,
   useEffect,
+  useRef,
   useState
 } from 'react';
 import toast from 'react-hot-toast';
@@ -14,6 +15,9 @@ import {
 import {
   createResume, getUserData, updateResume
 } from '@/api';
+import {
+  useOnClickOutside
+} from '@/hooks';
 
 const HeaderContainer = () => {
   const [showTemplates, setShowTemplates] = useState(false);
@@ -21,6 +25,9 @@ const HeaderContainer = () => {
   const [resumeName, setResumeName] = useState('Unnamed');
   const [userData, setUserData] = useState({});
   const [toggleDropdown, setToggleDropdown] = useState(false);
+
+  const dropdownRef = useRef(null);
+  useOnClickOutside(dropdownRef, () => setToggleDropdown(false));
 
   const router = useRouter();
   const {resumeData, updateResumeData} = useContext(ResumeContext);
@@ -148,6 +155,7 @@ const HeaderContainer = () => {
       builderActionsList={builderActionsList}
       toggleDropdown={toggleDropdown}
       setToggleDropdown={setToggleDropdown}
+      dropdownRef={dropdownRef}
       resumeName={resumeName}
       setResumeName={setResumeName}
       showTemplates={showTemplates}
