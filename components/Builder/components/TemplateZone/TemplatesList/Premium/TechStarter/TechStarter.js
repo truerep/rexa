@@ -89,12 +89,12 @@ const TemplateTechStarter = () => {
 
         <ContactSection>
           <ContactItems>
-            <ContactItemComponent image={mailImage} text={resumeData?.contact?.email} />
-            <ContactItemComponent image={mobileImage} text={resumeData?.contact?.phone} />
-            <ContactItemComponent image={mapImage} text={resumeData?.contact?.city} />
-            <ContactItemComponent image={linkedinImage} text={resumeData?.contact?.linkedin} />
-            <ContactItemComponent image={gitImage} text={resumeData?.contact?.github} />
-            <ContactItemComponent image={codingImage} text={resumeData?.contact?.leetcode} />
+            <ContactItemComponent image={mailImage} text={resumeData?.basics?.email} />
+            <ContactItemComponent image={mobileImage} text={resumeData?.basics?.phone} />
+            <ContactItemComponent image={mapImage} text={resumeData?.basics?.city} />
+            <ContactItemComponent image={linkedinImage} text={resumeData?.additionalLinks?.linkedin} />
+            <ContactItemComponent image={gitImage} text={resumeData?.additionalLinks?.github} />
+            <ContactItemComponent image={codingImage} text={resumeData?.additionalLinks?.leetcode} />
           </ContactItems>
         </ContactSection>
 
