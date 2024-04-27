@@ -10,7 +10,7 @@ const ResumeContextProvider = ({children}) => {
     toggleJdModal: false,
     toggleTemplatesPopover: false,
     togglePreview: false,
-    contentSectionName: 'basic'
+    contentSectionName: 'basics'
   });
 
   const updateResumeData = (newResumeData) => {

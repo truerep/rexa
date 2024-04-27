@@ -4,35 +4,46 @@ import React, {
 } from 'react';
 import TemplateContent from './TemplateContent';
 import {
-  BasicInfo, Education, Experience, Skills
+  BasicInfo, Education, Experience, Skills, Project, AdditionalLinks
 } from './components';
 import {
   ResumeContext
 } from '@/context/ResumeContext';
+import { sectionNames } from '@/constants/sectionNames';
 
 const TemplateContentContainer = () => {
-  const {resumeData} = useContext(ResumeContext);
+  const { resumeData } = useContext(ResumeContext);
 
   const contentModificationModules = [
     {
-      id: 'basic',
+      id: sectionNames.BASICS,
       name: 'Basic Info',
       component: <BasicInfo />
     },
     {
-      id: 'skills',
+      id: sectionNames.ADDITONAL_LINKS,
+      name: 'Additional Links',
+      component: <AdditionalLinks />
+    },
+    {
+      id: sectionNames.SKILLS,
       name: 'Skills',
       component: <Skills />
     },
     {
-      id: 'experience',
+      id: sectionNames.WORK,
       name: 'Experience',
       component: <Experience />
     },
     {
-      id: 'education',
+      id: sectionNames.EDUCATION,
       name: 'Education',
       component: <Education />
+    },
+    {
+      id: sectionNames.PROJECTS,
+      name: 'Project',
+      component: <Project />
     }
   ];
 
