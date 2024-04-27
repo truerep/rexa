@@ -1,23 +1,22 @@
 import React, {
   useContext
 } from 'react';
-import BasicInfo from './BasicInfo';
+import AdditionalLinks from './AdditionalLinks';
 import {
   ResumeContext
 } from '@/context/ResumeContext';
 
-const BasicInfoContainer = () => {
-  const { resumeData, updateResumeData } = useContext(ResumeContext);
+const AdditionalLinksContainer = () => {
+  const {resumeData, updateResumeData} = useContext(ResumeContext);
 
   const handleInputChange = (key, value) => {
-
     updateResumeData((prevState) => {
       return {
         ...prevState,
         templateData: {
           ...prevState.templateData,
-          basics: {
-            ...prevState.templateData.basics,
+          additionalLinks: {
+            ...prevState.templateData.additionalLinks,
             [key]: value
           }
         }
@@ -26,11 +25,11 @@ const BasicInfoContainer = () => {
   };
 
   return (
-    <BasicInfo
-      templateData={resumeData?.templateData?.basics}
+    <AdditionalLinks
+      templateData={resumeData?.templateData?.additionalLinks}
       handleInputChange={handleInputChange}
     />
   );
 };
 
-export default BasicInfoContainer;
+export default AdditionalLinksContainer;
