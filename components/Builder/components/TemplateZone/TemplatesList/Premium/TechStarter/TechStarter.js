@@ -74,7 +74,7 @@ const TemplateTechStarter = () => {
               <WorkDate>{work.startDate} - {work.endDate}</WorkDate>
               <WorkHighlights>
                 <WorkHighlightsTitle>Achievements</WorkHighlightsTitle>
-                {work.highlights && work.highlights.map((highlight, index) => (
+                {work?.highlights?.map((highlight, index) => (
                   <WorkHighlight key={index}>{highlight}</WorkHighlight>
                 ))}
               </WorkHighlights>
@@ -89,16 +89,16 @@ const TemplateTechStarter = () => {
 
         <ContactSection>
           <ContactItems>
-            <ContactItemComponent image={mailImage} text={resumeData?.basics?.email} />
-            <ContactItemComponent image={mobileImage} text={resumeData?.basics?.phone} />
-            <ContactItemComponent image={mapImage} text={resumeData?.basics?.city} />
-            <ContactItemComponent image={linkedinImage} text={resumeData?.additionalLinks?.linkedin} />
-            <ContactItemComponent image={gitImage} text={resumeData?.additionalLinks?.github} />
-            <ContactItemComponent image={codingImage} text={resumeData?.additionalLinks?.leetcode} />
+            {resumeData?.basics?.email && <ContactItemComponent image={mailImage} text={resumeData?.basics?.email} />}
+            {resumeData?.basics?.phone && <ContactItemComponent image={mobileImage} text={resumeData?.basics?.phone} />}
+            {resumeData?.basics?.city && <ContactItemComponent image={mapImage} text={resumeData?.basics?.city} />}
+            {resumeData?.additionalLinks?.linkedin && <ContactItemComponent image={linkedinImage} text={resumeData?.additionalLinks?.linkedin} />}
+            {resumeData?.additionalLinks?.github && <ContactItemComponent image={gitImage} text={resumeData?.additionalLinks?.github} />}
+            {resumeData?.additionalLinks?.leetcode && <ContactItemComponent image={codingImage} text={resumeData?.additionalLinks?.leetcode} />}
           </ContactItems>
         </ContactSection>
 
-        <TitleSectionComponent image={certificateImage} title="CERTIFICATIONS" />
+        {resumeData?.certifications?.length > 0 && <TitleSectionComponent image={certificateImage} title="CERTIFICATIONS" />}
         <CertificationsSection>
           {resumeData?.certifications?.map((certification, index) => (
             <Certification key={index}>
@@ -108,7 +108,7 @@ const TemplateTechStarter = () => {
           ))}
         </CertificationsSection>
 
-        <TitleSectionComponent image={projectImage} title="PERSONAL PROJECTS" />
+        {resumeData?.projects?.length > 0 && <TitleSectionComponent image={projectImage} title="PERSONAL PROJECTS" />}
         <ProjectsSection>
           {resumeData?.projects?.map((project, index) => (
             <Project key={index}>
@@ -120,7 +120,7 @@ const TemplateTechStarter = () => {
           ))}
         </ProjectsSection>
 
-        <TitleSectionComponent image={langaugeImage} title="LANGUAGES" />
+        {resumeData?.languages?.length > 0 && <TitleSectionComponent image={langaugeImage} title="LANGUAGES" />}
         <ProjectsSection>
           {resumeData?.languages?.map((language, index) => (
             <Language key={index}>
@@ -130,7 +130,7 @@ const TemplateTechStarter = () => {
           ))}
         </ProjectsSection>
 
-        <TitleSectionComponent image={interestsImage} title="INTERESTS" />
+        {resumeData?.interests?.length > 0 && <TitleSectionComponent image={interestsImage} title="INTERESTS" />}
         <ProjectsSection>
           {resumeData?.interests?.map((interest, index) => (
             <Interest key={index}>
