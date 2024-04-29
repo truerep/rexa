@@ -13,7 +13,7 @@ const AdditionalLinks = ({
   templateData ? (
     <Item>
       <ItemTitle>
-        <ItemIcon src="/assets/icons/basic-details-icon.svg" />
+        <ItemIcon src="/assets/icons/link-icon.svg" />
         <span>Additional Links</span>
       </ItemTitle>
       <ItemContent>
