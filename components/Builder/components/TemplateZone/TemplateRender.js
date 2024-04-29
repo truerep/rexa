@@ -1,13 +1,15 @@
 import React from 'react';
 import {
-  TemplateModern, TemplateStarter,
+  Prism,
+  TemplateModern, 
+  TemplateStarter,
   TemplateTechStarter
 } from './TemplatesList';
 
 const TemplateRender = (templateNameKey) => {
   switch (templateNameKey) {
     case 'starter':
-      return <TemplateStarter />;
+      return <Prism />;
     case 'modern':
       return <TemplateModern />;
     case 'techstarter':
