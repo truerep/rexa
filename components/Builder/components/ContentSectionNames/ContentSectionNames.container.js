@@ -28,7 +28,7 @@ const ContentSectionNamesContainer = () => {
       handleClick: () => handleContentSection(sectionNames.ADDITONAL_LINKS),
       id: sectionNames.ADDITONAL_LINKS,
       name: 'Additional Links',
-      iconUrl: '/assets/icons/basic-details-icon.svg'
+      iconUrl: '/assets/icons/link-icon.svg'
     },
     {
       handleClick: () => handleContentSection(sectionNames.SKILLS),
@@ -53,6 +53,24 @@ const ContentSectionNamesContainer = () => {
       id: sectionNames.PROJECTS,
       name: 'Projects',
       iconUrl: '/assets/icons/projects-icon.svg'
+    },
+    {
+      handleClick: () => handleContentSection(sectionNames.CERTIFICATIONS),
+      id: sectionNames.CERTIFICATIONS,
+      name: 'Certifications',
+      iconUrl: '/assets/icons/certificate-icon.svg'
+    },
+    {
+      handleClick: () => handleContentSection(sectionNames.LANGUAGES),
+      id: sectionNames.LANGUAGES,
+      name: 'Languages',
+      iconUrl: '/assets/icons/translate-icon.svg'
+    },
+    {
+      handleClick: () => handleContentSection(sectionNames.INTERESTS),
+      id: sectionNames.INTERESTS,
+      name: 'Interests',
+      iconUrl: '/assets/icons/basketball-icon.svg'
     }
   ];
 

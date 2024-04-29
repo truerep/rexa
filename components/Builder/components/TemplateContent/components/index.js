@@ -4,6 +4,9 @@ import Experience from './Experience';
 import Education from './Education';
 import Project from './ProjectInfo';
 import AdditionalLinks from './AdditionalLinks';
+import Certifications from './Certifications';
+import Languages from './Languages';
+import Interests from './Interests';
 
 export {
   BasicInfo,
@@ -11,5 +14,8 @@ export {
   Experience,
   Education,
   Project,
-  AdditionalLinks
+  AdditionalLinks,
+  Certifications,
+  Languages,
+  Interests
 };
