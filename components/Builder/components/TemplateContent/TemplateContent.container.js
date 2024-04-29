@@ -4,7 +4,9 @@ import React, {
 } from 'react';
 import TemplateContent from './TemplateContent';
 import {
-  BasicInfo, Education, Experience, Skills, Project, AdditionalLinks
+  BasicInfo, Education, Experience, Skills, Project, AdditionalLinks,
+  Certifications, Languages,
+  Interests
 } from './components';
 import {
   ResumeContext
@@ -44,6 +46,21 @@ const TemplateContentContainer = () => {
       id: sectionNames.PROJECTS,
       name: 'Project',
       component: <Project />
+    },
+    {
+      id: sectionNames.CERTIFICATIONS,
+      name: 'Certifications',
+      component: <Certifications />
+    },
+    {
+      id: sectionNames.LANGUAGES,
+      name: 'Languages',
+      component: <Languages />
+    },
+    {
+      id: sectionNames.INTERESTS,
+      name: 'Interests',
+      component: <Interests />
     }
   ];
 
