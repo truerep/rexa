@@ -1,4 +1,11 @@
 const templatesData = {
+  prism: {
+    id: 'prism',
+    name: 'Modern Prism',
+    thumbnail: '/assets/images/modern-prism.png',
+    type: 'premium',
+    usedBy: '1,450'
+  },
   starter: {
     id: 'starter',
     name: 'Minimalistic Basic',
