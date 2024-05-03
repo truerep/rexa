@@ -8,8 +8,10 @@ import {
 
 const TemplateRender = (templateNameKey) => {
   switch (templateNameKey) {
-    case 'starter':
+    case 'prism':
       return <Prism />;
+    case 'starter':
+      return <TemplateStarter />;
     case 'modern':
       return <TemplateModern />;
     case 'techstarter':

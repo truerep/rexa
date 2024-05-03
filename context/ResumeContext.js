@@ -6,7 +6,7 @@ export const ResumeContext = createContext();
 
 const ResumeContextProvider = ({children}) => {
   const [resumeData, setResumeData] = useState({
-    templateId: 'starter',
+    templateId: 'prism',
     toggleJdModal: false,
     toggleTemplatesPopover: false,
     togglePreview: false,

@@ -13,13 +13,13 @@ const ProjectContainer = () => {
   const addNewProjectSection = () => {
     const updatedResumeData = {...resumeData};
     updatedResumeData.templateData.projects.push({
-      name: 'Stock Trading Terminal',
+      name: 'Project Name',
       startDate: '2023',
       endDate: 'Present',
       url: 'None',
       highlights: [
-        'Implemented real-time data updates',
-        'Designed intuitive interfaces'
+        'What you have done...',
+        'write more if you want....'
       ]
     });
     updateResumeData(updatedResumeData);

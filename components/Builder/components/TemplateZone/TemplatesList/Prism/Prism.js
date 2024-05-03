@@ -29,6 +29,22 @@ const Prism = () => {
   return (
     <Wrapper>
         <HeaderLinks>
+        <ActionLink href={resumeData?.additionalLinks?.personalWebsite}>
+                        <Image src={ExternalLinkIcon} />
+                        <span>Portfolio</span>
+                    </ActionLink>
+                    <ActionLink href={resumeData?.additionalLinks?.github}>
+                        <Image src={GithubIcon} />
+                        <span>Github</span>
+                    </ActionLink>
+                    <ActionLink href={resumeData?.additionalLinks?.linkedin}>
+                        <Image src={LinkedinIcon} />
+                        <span>LinkedIn</span>
+                    </ActionLink>
+                    <ActionLink href={resumeData?.additionalLinks?.leetcode}>
+                        <Image src={LeetcodeIcon} />
+                        <span>Leetcode</span>
+                    </ActionLink>
             {
                 resumeData?.additionalLinks?.personalWebsite ? (
                     <ActionLink href={resumeData?.additionalLinks?.personalWebsite}>
