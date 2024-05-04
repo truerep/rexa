@@ -9,16 +9,16 @@ const Footer = () => (
   <Wrapper>
     <Context className="container">
       <Copyright>
-        &copy; 2024 Resume Sync. All Rights Reserved
+        &copy; {new Date().getFullYear()} AI CV Pro
       </Copyright>
-      <Nav>
+      {/* <Nav>
         <Link href="/">FAQs</Link>
         <Link href="/">Social</Link>
         <Link href="/">Privacy Policy</Link>
         <Link href="/">Terms & Conditions</Link>
         <Link href="/">Legal</Link>
         <Link href="/">Contact</Link>
-      </Nav>
+      </Nav> */}
     </Context>
   </Wrapper>
 );

@@ -37,10 +37,10 @@ const HeaderContainer = () => {
     //   name: 'Pricing',
     //   url: '/'
     // },
-    {
-      name: 'Partners',
-      url: '#clients'
-    }
+    // {
+    //   name: 'Partners',
+    //   url: '#clients'
+    // }
   ];
 
   return (
