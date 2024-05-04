@@ -6,6 +6,6 @@ import ClientsList from './ClientsList';
 export {
   HeroBanner,
   GrowthCards,
-  Features,
-  ClientsList
+  Features
+  // ClientsList
 };

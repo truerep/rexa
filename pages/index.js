@@ -28,7 +28,7 @@ const index = () => {
       <HeroBanner />
       <GrowthCards />
       <Features />
-      <ClientsList />
+      {/* <ClientsList /> */}
       <AppDownload />
       <Footer />
     </>
