@@ -4,20 +4,22 @@ import {
   Swiper, SwiperSlide
 } from 'swiper/react';
 import {
-  EffectCards, Pagination, Navigation
+  EffectCards, Pagination, Navigation,
+  Zoom
 } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/zoom';
 
 import {
   colors
 } from '@/helpers';
 import templatesData from './templatesData';
 
-const TemplateSwitcher = ({templateId, setTemplateId, handleTemplateChange}) => (
+const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, templatePreview, handlePreview }) => (
   <Wrapper>
     <TemplatesWrapper>
       <Swiper
@@ -27,30 +29,31 @@ const TemplateSwitcher = ({templateId, setTemplateId, handleTemplateChange}) => 
         pagination={{
           dynamicBullets: true
         }}
+        zoom
         cardsEffect={{
           slideShadows: false
         }}
-        modules={[EffectCards, Pagination, Navigation]}
+        modules={[EffectCards, Pagination, Navigation, Zoom]}
         className="mySwiper"
       >
         {Object.keys(templatesData).length
-        && Object.entries(templatesData).map(([templateId, template]) => (
-          <SwiperSlide>
-            {({isActive}) => (
-              <>
-                {isActive && setTemplateId(templateId)}
-                <TemplateBg style={{backgroundImage: `url(${template?.thumbnail})`}} />
-                <img
-                  src={template?.thumbnail}
-                  alt={template?.name}
-                />
-              </>
-            )}
-          </SwiperSlide>
-        ))}
+          && Object.entries(templatesData).map(([templateId, template]) => (
+            <SwiperSlide key={templateId}>
+              {({ isActive }) => (
+                <>
+                  {isActive && setTemplateId(templateId)}
+                  <TemplateBg style={{ backgroundImage: `url(${template?.thumbnail})` }} />
+                  <img
+                    src={template?.thumbnail}
+                    alt={template?.name}
+                  />
+                </>
+              )}
+            </SwiperSlide>
+          ))}
       </Swiper>
     </TemplatesWrapper>
-    <TemplateInfo>
+    <TemplateInfo style={{ maxWidth: templatePreview ? '15%' : '50%' }}>
       <TemplateName>
         {templatesData[templateId]?.name}
       </TemplateName>
@@ -67,6 +70,7 @@ const TemplateSwitcher = ({templateId, setTemplateId, handleTemplateChange}) => 
       <button
         type="button"
         className="btn-primary btn-outlined"
+        onClick={handlePreview}
       >
         Preview
       </button>
@@ -85,7 +89,7 @@ const TemplatesWrapper = styled.div`
     height: 100%;
     background: ${colors.GhostWhite};
     border-right: 2px solid ${colors.LightLavender};
-    max-width: 50%;
+    max-width: 100%;
     padding: 50px 0; 
     user-select: none;
 
@@ -142,6 +146,7 @@ const TemplateInfo = styled.div`
     overflow: auto;
     flex: 1;
     max-width: 50%;
+    transition: all 0.4s ease-in-out;
 
     button {
       margin-top: 30px;
