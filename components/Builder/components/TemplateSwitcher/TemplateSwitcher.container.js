@@ -9,7 +9,8 @@ import {
 
 const TemplateSwitcherContainer = () => {
   const [templateId, setTemplateId] = useState('');
-  const {updateResumeData} = useContext(ResumeContext);
+  const [templatePreview, setTemplatePreview] = useState(false);
+  const { updateResumeData } = useContext(ResumeContext);
 
   const handleTemplateChange = async () => {
     updateResumeData((prevState) => {
@@ -21,10 +22,16 @@ const TemplateSwitcherContainer = () => {
     });
   };
 
+  const handlePreview = () => {
+    setTemplatePreview(!templatePreview);
+  }
+
   return (
     <TemplateSwitcher
       templateId={templateId}
       setTemplateId={setTemplateId}
+      handlePreview={handlePreview}
+      templatePreview={templatePreview}
       handleTemplateChange={handleTemplateChange}
     />
   );

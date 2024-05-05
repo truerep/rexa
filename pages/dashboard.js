@@ -8,7 +8,7 @@ const dashboard = () => (
   <>
     <Head>
       <title>
-        Dashboard | AiCV
+        Dashboard | AICVPro
       </title>
     </Head>
     <Dashboard />

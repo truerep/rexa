@@ -15,7 +15,7 @@ const AppDownload = () => {
     <Wrapper id="download-app" className="container">
       <Content>
         <Overview>
-          <h3 data-aos="fade-up">Resume Sync App</h3>
+          <h3 data-aos="fade-up">AI CV Pro</h3>
           {/* <Ratings>
             <StarsWrapper data-aos="fade-up" data-aos-delay="100">
               <StarIcon src="/assets/icons/star-filled.png" />

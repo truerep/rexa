@@ -9,7 +9,7 @@ const create = () => (
   <>
     <Head>
       <title>
-        Match your resume with Job Description | Rexa
+        Match your resume with Job Description | AICVPro
       </title>
     </Head>
     <Create />
