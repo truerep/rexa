@@ -4,15 +4,23 @@ import React, {
 import toast from 'react-hot-toast';
 
 import {
+  createResume,
   deleteResume,
   getUserResumes
 } from '@/api';
 import ResumeTable from './ResumeTable';
+import {
+ useRouter
+} from 'next/router';
 
 const ResumeTableContainer = () => {
   const [userResumes, setUserResumes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [toggleCreate, setToggleCreate] = useState(false);
+  const [toggleCreateOptions, setToggleCreateOptions] = useState(false);
+  const [toggleResumesList, setToggleResumesList] = useState(false)
+
+  const router = useRouter()
 
   const fetchUserResumes = async () => {
     try {
@@ -49,13 +57,49 @@ const ResumeTableContainer = () => {
     }
   };
 
+  const handleDuplicatingResume = async (resumeId) => {
+    try {
+      toast.loading('Creating Copy...', {
+        id: 'copying-resume'
+      });
+      console.log(userResumes, "<---resumesList")
+      const getResume = userResumes.find(obj => obj._id === resumeId);
+      console.log(getResume, "<---reds")
+      const payload = {
+        templateId: '66142be639e68974d5d19a02',
+        name: `${getResume?.name} copy`,
+        rawData: getResume?.rawData,
+        data: getResume?.data
+      };
+      const res = await createResume(payload);
+      if (res?.data?._id) {
+        toast.success('Resume copied!', {
+          id: 'copying-resume'
+        });
+        router.push(`/builder/${res?.data?._id}`);
+      } else {
+        toast.error('Something went wrong!');
+      }
+    } catch (err) {
+      toast.dismiss('copying-resume');
+      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+    } finally {
+      setToggleResumesList(false);
+    }
+  }
+
   return (
     <ResumeTable
       userResumes={userResumes}
       handleDeleteResume={handleDeleteResume}
+      handleDuplicatingResume={handleDuplicatingResume}
       isLoading={isLoading}
       toggleCreate={toggleCreate}
       setToggleCreate={setToggleCreate}
+      toggleCreateOptions={toggleCreateOptions}
+      setToggleCreateOptions={setToggleCreateOptions}
+      toggleResumesList={toggleResumesList}
+      setToggleResumesList={setToggleResumesList}
     />
   );
 };
