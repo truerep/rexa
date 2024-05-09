@@ -92,7 +92,12 @@ const ResumeTable = ({
                   -
                 </td>
                 <td>
-                  -
+                  <a 
+                    className='hover-underline' 
+                    href={`/resume/${resume?._id}?download`}
+                    target='_blank' 
+                    rel="noreferrer"
+                  >Download</a>
                 </td>
                 <td>
                   <ActionsWrapper>
@@ -221,6 +226,10 @@ const Table = styled.table`
       padding: 13px 33px;
       text-align: left;
       font-weight: 400;
+
+      a.hover-underline:hover {
+        text-decoration: underline;
+      }
 
       @media (min-width: 1240px) {
         &:last-child {
