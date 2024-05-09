@@ -16,7 +16,7 @@ const getResumeText = async (resumeFile) => {
     data: formdata
   };
   const res = await axios(config);
-  return res?.data;
+  return res?.data?.text;
 };
 
 export default getResumeText;
