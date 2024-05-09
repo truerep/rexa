@@ -68,6 +68,7 @@ const ResumeTableContainer = () => {
       const payload = {
         templateId: '66142be639e68974d5d19a02',
         name: `${getResume?.name} copy`,
+        resumeUrl: "TODO:UpdateLater",
         rawData: getResume?.rawData,
         data: getResume?.data
       };

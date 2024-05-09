@@ -14,6 +14,7 @@ import {
 
 import Builder from './Builder';
 import Create from './Create';
+import ShowResume from './ShowResume';
 
 import Dashboard from './Dashboard';
 
@@ -30,6 +31,7 @@ export {
 
   Builder,
   Create,
+  ShowResume,
 
   Dashboard,
   Loader

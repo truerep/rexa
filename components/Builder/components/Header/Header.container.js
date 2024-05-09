@@ -72,6 +72,7 @@ const HeaderContainer = () => {
     const payload = {
       templateId: '66142be639e68974d5d19a02' ?? resumeData?.templateId,
       name: resumeName,
+      resumeUrl: "TODO:UpdateLater",
       rawData: resumeData?.resumeString,
       data: JSON.stringify(resumeData?.templateData)
     };
