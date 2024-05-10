@@ -1,3 +1,4 @@
+import { MODERN_PRISM } from '@/helpers/templateKeys';
 import React, {
   createContext, useState
 } from 'react';
@@ -6,7 +7,7 @@ export const ResumeContext = createContext();
 
 const ResumeContextProvider = ({children}) => {
   const [resumeData, setResumeData] = useState({
-    templateId: 'prism',
+    templateId: MODERN_PRISM,
     toggleJdModal: false,
     toggleTemplatesPopover: false,
     togglePreview: false,

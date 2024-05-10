@@ -1,20 +1,21 @@
 import React from 'react';
 import {
   Prism,
-  TemplateModern, 
+  TemplateModern,
   TemplateStarter,
   TemplateTechStarter
 } from './TemplatesList';
+import { MINIMALISTIC_BASIC, MODERN, MODERN_PRISM, TECH_STARTER } from '@/helpers/templateKeys';
 
 const TemplateRender = (templateNameKey) => {
   switch (templateNameKey) {
-    case 'prism':
+    case MODERN_PRISM:
       return <Prism />;
-    case 'starter':
+    case MINIMALISTIC_BASIC:
       return <TemplateStarter />;
-    case 'modern':
+    case MODERN:
       return <TemplateModern />;
-    case 'techstarter':
+    case TECH_STARTER:
       return <TemplateTechStarter />;
     default:
       return <TemplateStarter />;
