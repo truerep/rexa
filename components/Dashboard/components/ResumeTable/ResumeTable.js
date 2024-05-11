@@ -99,7 +99,7 @@ const ResumeTable = ({
                     href={`/resume/${resume?._id}?download`}
                     target='_blank' 
                     rel="noreferrer"
-                  >Download</a>
+                  >Download Original</a>
                 </td>
                 <td>
                   <MenuWrapper>
@@ -235,7 +235,7 @@ const Button = styled.button`
 
 const Table = styled.table`
     width: 100%;
-    // table-layout: fixed;
+    table-layout: fixed;
     
     th, td {
       padding: 13px 33px;
@@ -248,7 +248,8 @@ const Table = styled.table`
 
       @media (min-width: 1240px) {
         &:last-child {
-          max-width: 50px;
+          // max-width: 0px;
+          text-align: right;
         }
       }
     }
@@ -276,6 +277,7 @@ const Table = styled.table`
 const MenuWrapper = styled.div`
     position: relative;
     max-width: fit-content;
+    margin-left: auto;
 `;
 
 const MenuBtn = styled.div`
