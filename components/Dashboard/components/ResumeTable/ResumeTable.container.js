@@ -19,6 +19,7 @@ const ResumeTableContainer = () => {
   const [toggleCreate, setToggleCreate] = useState(false);
   const [toggleCreateOptions, setToggleCreateOptions] = useState(false);
   const [toggleResumesList, setToggleResumesList] = useState(false)
+  const [activeMenuIdx, setActiveMenuIdx] = useState(-1)
 
   const router = useRouter()
 
@@ -101,6 +102,8 @@ const ResumeTableContainer = () => {
       setToggleCreateOptions={setToggleCreateOptions}
       toggleResumesList={toggleResumesList}
       setToggleResumesList={setToggleResumesList}
+      activeMenuIdx={activeMenuIdx}
+      setActiveMenuIdx={setActiveMenuIdx}
     />
   );
 };

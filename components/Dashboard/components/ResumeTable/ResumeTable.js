@@ -26,7 +26,9 @@ const ResumeTable = ({
   toggleCreateOptions,
   setToggleCreateOptions,
   toggleResumesList,
-  setToggleResumesList
+  setToggleResumesList,
+  activeMenuIdx,
+  setActiveMenuIdx
 }) => {
   const router = useRouter();
 
@@ -72,7 +74,7 @@ const ResumeTable = ({
             </tr>
           </thead>
           <tbody>
-            {userResumes.map((resume) => (
+            {userResumes.map((resume, idx) => (
               <tr key={resume?._id}>
                 <td>
                   <a
@@ -97,10 +99,23 @@ const ResumeTable = ({
                     href={`/resume/${resume?._id}?download`}
                     target='_blank' 
                     rel="noreferrer"
-                  >Download</a>
+                  >Download Original</a>
                 </td>
                 <td>
-                  <ActionsWrapper>
+                  <MenuWrapper>
+                  <MenuBtn onClick={() => {activeMenuIdx === idx ? setActiveMenuIdx(-1) : setActiveMenuIdx(idx)}}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </MenuBtn>
+                  <Dropdown className={activeMenuIdx === idx ? 'active' : ''}>
+                    <a href={`/resume/${resume?._id}?download`} target="_blank" rel="noreferrer">Download</a>
+                    <button onClick={() => {setActiveMenuIdx(-1); router.push(`/builder/${resume?._id}`)}}>Edit</button>
+                    <button onClick={() => {setActiveMenuIdx(-1); handleDuplicatingResume(resume?._id)}}>Duplicate</button>
+                    <button onClick={() => {setActiveMenuIdx(-1); handleDeleteResume(resume?._id)}}>Delete</button>
+                  </Dropdown>
+                  </MenuWrapper>
+                  {/* <ActionsWrapper>
                     <Button
                       onClick={() => router.push(`/builder/${resume?._id}`)}
                       className="btn-primary btn-outlined"
@@ -112,7 +127,7 @@ const ResumeTable = ({
                       <img src="/assets/icons/delete-icon-red.svg" alt="delete" />
                       <span>Delete</span>
                     </Button>
-                  </ActionsWrapper>
+                  </ActionsWrapper> */}
                 </td>
               </tr>
             ))}
@@ -220,7 +235,7 @@ const Button = styled.button`
 
 const Table = styled.table`
     width: 100%;
-    // table-layout: fixed;
+    table-layout: fixed;
     
     th, td {
       padding: 13px 33px;
@@ -233,7 +248,8 @@ const Table = styled.table`
 
       @media (min-width: 1240px) {
         &:last-child {
-          max-width: 155px;
+          // max-width: 0px;
+          text-align: right;
         }
       }
     }
@@ -255,6 +271,35 @@ const Table = styled.table`
 
     .faded-text {
       opacity: 0.7;
+    }
+`;
+
+const MenuWrapper = styled.div`
+    position: relative;
+    max-width: fit-content;
+    margin-left: auto;
+`;
+
+const MenuBtn = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    cursor: pointer;
+    padding: 4px;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+    span {
+      height: 5px;
+      width: 5px;
+      border-radius: 20px;
+      background: #ccc;
+      flex-shrink: 0;
     }
 `;
 
@@ -296,6 +341,7 @@ const Dropdown = styled.div`
     opacity: 0;
     padding: 10px 0;
     pointer-events: none;
+    z-index: 1;
 
     &.active {
       transform: unset;
@@ -303,7 +349,7 @@ const Dropdown = styled.div`
       pointer-events: all;
     }
 
-    button {
+    button, a {
       padding: 10px 15px;
       display: block;
       width: 100%;
@@ -311,6 +357,7 @@ const Dropdown = styled.div`
       transform: unset;
       font-weight: 500;
       min-width: 150px;
+      color: ${colors.ErrieBlack};
 
       &:hover {
         background: ${colors.GhostWhite};
