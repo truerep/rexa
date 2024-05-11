@@ -22,11 +22,12 @@ const TemplateSwitcherContainer = () => {
   }, [])
   
 
-  const handleTemplateChange = async () => {
+  const handleTemplateChange = async (templateUniqueId) => {
     updateResumeData((prevState) => {
       return {
         ...prevState,
         templateId,
+        templateUniqueId,
         toggleTemplatesPopover: false
       };
     });

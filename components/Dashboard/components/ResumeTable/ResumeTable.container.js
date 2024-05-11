@@ -66,7 +66,7 @@ const ResumeTableContainer = () => {
       const getResume = userResumes.find(obj => obj._id === resumeId);
       console.log(getResume, "<---reds")
       const payload = {
-        templateId: '66142be639e68974d5d19a02',
+        templateId: '663e4074d805993f9b9b98ea', // TODO: Update later to actual templateId
         name: `${getResume?.name} copy`,
         resumeUrl: "TODO:UpdateLater",
         rawData: getResume?.rawData,

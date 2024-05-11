@@ -60,7 +60,7 @@ const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, tem
         {templatesData[templateId]?.price || 'Free'}
       </TemplatePrice>
       <button
-        onClick={handleTemplateChange}
+        onClick={() => handleTemplateChange(templatesData[templateId].templateId)}
         type="button"
         className="btn-primary"
       >

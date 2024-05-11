@@ -25,7 +25,8 @@ const getAllTemplatesData = async () => {
         name: template.name,
         thumbnail: template.imageUrl,
         price: template.price,
-        users: template.users
+        users: template.users,
+        templateId: template._id
       }
     };
   });
