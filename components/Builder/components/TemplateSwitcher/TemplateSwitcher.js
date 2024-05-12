@@ -17,9 +17,8 @@ import 'swiper/css/zoom';
 import {
   colors
 } from '@/helpers';
-import templatesData from './templatesData';
 
-const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, templatePreview, handlePreview }) => (
+const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, templatePreview, handlePreview, templatesData }) => (
   <Wrapper>
     <TemplatesWrapper>
       <Swiper
@@ -58,10 +57,10 @@ const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, tem
         {templatesData[templateId]?.name}
       </TemplateName>
       <TemplatePrice>
-        {templatesData[templateId]?.price ?? 'Free'}
+        {templatesData[templateId]?.price || 'Free'}
       </TemplatePrice>
       <button
-        onClick={handleTemplateChange}
+        onClick={() => handleTemplateChange(templatesData[templateId].templateId)}
         type="button"
         className="btn-primary"
       >
