@@ -26,6 +26,7 @@ const BuilderContainer = () => {
           return {
             ...prevState,
             resumeId,
+            templateId: res?.data?.templateId.slug,
             templateName: res?.data?.name ?? 'Unnamed',
             resumeString: res?.data?.rawData,
             templateData: JSON.parse(res.data.data)
