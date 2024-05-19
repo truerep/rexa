@@ -34,14 +34,16 @@ const Header = ({
   setShowTemplates,
   showJdModal,
   setShowJdModal,
-  togglePreview
+  togglePreview,
+  handleRouteToDashboard,
+  handleRouteToAuth
 }) => {
   const router = useRouter();
 
   return (
     <Wrapper className={togglePreview ? 'hide' : ''}>
       <TemplateNameWrapper>
-        <BackBtn onClick={() => router.push('/dashboard')}>
+        <BackBtn onClick={handleRouteToDashboard}>
           <Tooltip title="Dashboard">
             <Icon src="/assets/icons/dashboard-icon-light.svg" />
           </Tooltip>
@@ -89,7 +91,7 @@ const Header = ({
             </div>
           </AccountInfoWrapper>
         ) : (
-          <AccountInfo onClick={() => router.push('/authenticate?login&redirectUrl=/builder')}>
+          <AccountInfo onClick={handleRouteToAuth}>
             <LoginBtn>Login</LoginBtn>
           </AccountInfo>
         )

@@ -18,8 +18,14 @@ import {
 import {
   useOnClickOutside
 } from '@/hooks';
+import { HttpStatusCode } from 'axios';
 
 const HeaderContainer = () => {
+  const routeNames = {
+    builder: 'builder',
+    dashboard: 'dashboard'
+  };
+
   const [showTemplates, setShowTemplates] = useState(false);
   const [showJdModal, setShowJdModal] = useState();
   const [resumeName, setResumeName] = useState('Unnamed');
@@ -30,7 +36,7 @@ const HeaderContainer = () => {
   useOnClickOutside(dropdownRef, () => setToggleDropdown(false));
 
   const router = useRouter();
-  const {resumeData, updateResumeData} = useContext(ResumeContext);
+  const { resumeData, updateResumeData } = useContext(ResumeContext);
 
   useEffect(() => {
     setShowTemplates(resumeData.toggleTemplatesPopover);
@@ -40,35 +46,45 @@ const HeaderContainer = () => {
     setShowJdModal(resumeData.toggleJdModal);
   }, [resumeData]);
 
-  const createNewResume = async (payload) => {
+  const handleRouteToAuth = async () => {
+    await router.push('/authenticate?login&redirectUrl=/builder');
+  };
+
+  const createNewResume = async (payload, route) => {
     try {
       const res = await createResume(payload);
       if (res?.data?._id) {
         toast.success('Resume Saved!');
-        router.push(`/builder/${res?.data?._id}`);
+        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : route);
       } else {
         toast.error('Something went wrong!');
       }
     } catch (err) {
       toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+      if (err?.response?.status === HttpStatusCode.Unauthorized) {
+        await handleRouteToAuth();
+      }
     }
   };
 
-  const modifyResume = async (resumeId, payload) => {
+  const modifyResume = async (resumeId, payload, route) => {
     try {
       const res = await updateResume(resumeId, payload);
       if (res?.status === 200) {
         toast.success('Resume Updated!');
-        router.push(`/builder/${res?.data?._id}`);
+        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : route);
       } else {
         toast.error('Something went wrong!');
       }
     } catch (err) {
       toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+      if (err?.response?.status === HttpStatusCode.Unauthorized) {
+        await handleRouteToAuth();
+      }
     }
   };
 
-  const handleSaveResume = async () => {
+  const handleSaveResume = async (route) => {
     const payload = {
       templateId: resumeData?.templateUniqueId,
       name: resumeName,
@@ -77,10 +93,14 @@ const HeaderContainer = () => {
       data: JSON.stringify(resumeData?.templateData)
     };
     if (resumeData.resumeId) {
-      modifyResume(resumeData.resumeId, payload);
+      modifyResume(resumeData.resumeId, payload, route);
     } else {
-      createNewResume(payload);
+      createNewResume(payload, route);
     }
+  };
+
+  const handleRouteToDashboard = async () => {
+    await handleSaveResume(routeNames.dashboard);
   };
 
   const handlePreview = () => {
@@ -109,7 +129,7 @@ const HeaderContainer = () => {
       tooltip: 'Preview '
     },
     {
-      handleClick: () => handleSaveResume(),
+      handleClick: () => handleSaveResume(routeNames.builder),
       iconUrl: '/assets/icons/save-icon.svg',
       tooltip: 'Save Template'
     },
@@ -133,7 +153,6 @@ const HeaderContainer = () => {
   };
 
   useEffect(() => {
-    // localStorage.removeItem('auth_token');
     const authToken = localStorage.getItem('auth_token');
 
     if (authToken) {
@@ -164,6 +183,8 @@ const HeaderContainer = () => {
       showJdModal={showJdModal}
       setShowJdModal={setShowJdModal}
       togglePreview={resumeData?.togglePreview}
+      handleRouteToDashboard={handleRouteToDashboard}
+      handleRouteToAuth={handleRouteToAuth}
     />
   );
 };
