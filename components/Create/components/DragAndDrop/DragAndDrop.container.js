@@ -28,7 +28,8 @@ const DragAndDropContainer = () => {
         toast.success('Resume uploaded!', {
           id: 'uploading-resume'
         });
-        sessionStorage.setItem('resumeString', res);
+        console.log(res, "<---resUpload")
+        sessionStorage.setItem('resumeString', JSON.stringify(res));
         router.push('/builder');
       }
     } catch (err) {

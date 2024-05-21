@@ -39,15 +39,20 @@ const HeaderContainer = () => {
   const { resumeData, updateResumeData } = useContext(ResumeContext);
 
   useEffect(() => {
-    setShowTemplates(resumeData.toggleTemplatesPopover);
+    setShowTemplates(resumeData?.toggleTemplatesPopover);
   }, [resumeData]);
 
   useEffect(() => {
     setShowJdModal(resumeData.toggleJdModal);
   }, [resumeData]);
 
+  const handleSaveDataLocally = async () => {
+    localStorage.setItem('resumeDataLocally', JSON.stringify(resumeData));
+    router.push('/authenticate?login&redirectUrl=/builder?fetchLocalData')
+  }
+
   const handleRouteToAuth = async () => {
-    await router.push('/authenticate?login&redirectUrl=/builder');
+    router.push('/authenticate?login&redirectUrl=/builder');
   };
 
   const createNewResume = async (payload, route) => {
@@ -85,10 +90,19 @@ const HeaderContainer = () => {
   };
 
   const handleSaveResume = async (route) => {
+    let resumeLink = "";
+    let storedResumeString = typeof window !== 'undefined' && window.sessionStorage.getItem('resumeString');
+    if (storedResumeString) {
+      storedResumeString = JSON.parse(storedResumeString);
+      if (storedResumeString?.url) {
+        resumeLink = storedResumeString?.url;
+      }
+    }
+
     const payload = {
       templateId: resumeData?.templateUniqueId,
       name: resumeName,
-      resumeUrl: "TODO:UpdateLater",
+      resumeUrl: resumeData?.resumeUrl ?? resumeLink,
       rawData: resumeData?.resumeString,
       data: JSON.stringify(resumeData?.templateData)
     };
@@ -172,6 +186,7 @@ const HeaderContainer = () => {
     <Header
       userData={userData}
       handleLogout={handleLogout}
+      handleSaveDataLocally={handleSaveDataLocally}
       builderActionsList={builderActionsList}
       toggleDropdown={toggleDropdown}
       setToggleDropdown={setToggleDropdown}

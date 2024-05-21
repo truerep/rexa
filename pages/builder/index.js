@@ -15,10 +15,10 @@ const ResumeBuilder = () => {
 
   useEffect(() => {
     const storedResumeString = typeof window !== 'undefined' && window.sessionStorage.getItem('resumeString');
-    if (!storedResumeString) {
-      router.push('/create');
-    }
-  }, []);
+    // if (!storedResumeString || !router.query.fetchLocalData == '') {
+    //   router.push('/create');
+    // }
+  }, [router]);
 
   return (
     <>

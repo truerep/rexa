@@ -24,6 +24,7 @@ import TemplateSwitcher from '../TemplateSwitcher';
 const Header = ({
   userData,
   handleLogout,
+  handleSaveDataLocally,
   builderActionsList,
   toggleDropdown,
   setToggleDropdown,
@@ -91,7 +92,7 @@ const Header = ({
             </div>
           </AccountInfoWrapper>
         ) : (
-          <AccountInfo onClick={handleRouteToAuth}>
+          <AccountInfo onClick={handleSaveDataLocally}>
             <LoginBtn>Login</LoginBtn>
           </AccountInfo>
         )
