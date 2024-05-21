@@ -77,7 +77,7 @@ const Header = ({
               {
                 toggleDropdown ? (
                   <Dropdown>
-                    <Button onClick={() => router.push('/dashboard')}>
+                    <Button onClick={handleRouteToDashboard}>
                       <Icon src="/assets/icons/dashboard-icon-light.svg" />
                       <span>Dashboard</span>
                     </Button>
