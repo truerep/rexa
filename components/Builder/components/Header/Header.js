@@ -35,14 +35,15 @@ const Header = ({
   setShowTemplates,
   showJdModal,
   setShowJdModal,
-  togglePreview
+  togglePreview,
+  handleRouteToDashboard
 }) => {
   const router = useRouter();
 
   return (
     <Wrapper className={togglePreview ? 'hide' : ''}>
       <TemplateNameWrapper>
-        <BackBtn onClick={() => router.push('/dashboard')}>
+        <BackBtn onClick={handleRouteToDashboard}>
           <Tooltip title="Dashboard">
             <Icon src="/assets/icons/dashboard-icon-light.svg" />
           </Tooltip>

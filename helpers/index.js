@@ -3,7 +3,7 @@ import appEnv from './appEnv';
 import checkAuthenticated from './checkAuthenticated';
 import getFormattedDate from './getFormattedDate';
 import { checkImageURLIsValid } from './validator';
-import { templateKeys } from './templateKeys';
+import templateKeys from './templateKeys';
 
 export {
   colors,
