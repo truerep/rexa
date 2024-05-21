@@ -34,10 +34,11 @@ const TemplateZoneContainer = () => {
   };
 
   useEffect(() => {
-    const storedResumeString = typeof window !== 'undefined' && window.sessionStorage.getItem('resumeString');
+    let storedResumeString = typeof window !== 'undefined' && window.sessionStorage.getItem('resumeString');
     if (storedResumeString) {
-      if (resumeString.length === 0) {
-        setResumeString(storedResumeString);
+      storedResumeString = JSON.parse(storedResumeString);
+      if (resumeString?.length === 0) {
+        setResumeString(storedResumeString?.text);
       }
     }
   }, []);
@@ -47,7 +48,7 @@ const TemplateZoneContainer = () => {
   }, [resumeData]);
 
   useEffect(() => {
-    if (resumeString.length > 0) {
+    if (resumeString?.length > 0) {
       getResumeData();
     }
   }, [resumeString]);
