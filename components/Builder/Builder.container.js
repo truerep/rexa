@@ -46,6 +46,10 @@ const BuilderContainer = () => {
       router.push('/builder');
     } else if (router.query.resumeId) {
       fetchResumeData(router.query.resumeId);
+    } else if (router.query.fetchLocalData == '') {
+      const localResumeData = JSON.parse(localStorage.getItem('resumeDataLocally'))
+      localStorage.removeItem('resumeDataLocally');
+      updateResumeData(() => localResumeData);
     }
   }, [router]);
 
