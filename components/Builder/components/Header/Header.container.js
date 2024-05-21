@@ -52,7 +52,7 @@ const HeaderContainer = () => {
   }
 
   const handleRouteToAuth = async () => {
-    router.push('/authenticate?login&redirectUrl=/builder');
+    await router.push('/authenticate?login&redirectUrl=/builder');
   };
 
   const createNewResume = async (payload, route) => {
