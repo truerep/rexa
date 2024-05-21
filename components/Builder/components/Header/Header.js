@@ -36,8 +36,7 @@ const Header = ({
   showJdModal,
   setShowJdModal,
   togglePreview,
-  handleRouteToDashboard,
-  handleRouteToAuth
+  handleRouteToDashboard
 }) => {
   const router = useRouter();
 
