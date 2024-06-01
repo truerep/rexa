@@ -20,6 +20,7 @@ const ResumeTable = ({
   userResumes,
   handleDeleteResume,
   handleDuplicatingResume,
+  handleDownloadOriginalResume,
   isLoading,
   toggleCreate,
   setToggleCreate,
@@ -95,11 +96,11 @@ const ResumeTable = ({
                 </td>
                 <td>
                   <a 
-                    className='hover-underline' 
-                    href={`/resume/${resume?._id}?download`}
-                    target='_blank' 
-                    rel="noreferrer"
-                  >Download Original</a>
+                    className='hover-underline'
+                    onClick={() => handleDownloadOriginalResume(resume?.resumeUrl)}
+                  >
+                    Download Original
+                  </a>
                 </td>
                 <td>
                   <MenuWrapper>
