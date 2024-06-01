@@ -38,7 +38,6 @@ const Header = ({
   togglePreview,
   handleRouteToDashboard
 }) => {
-  const router = useRouter();
 
   return (
     <Wrapper className={togglePreview ? 'hide' : ''}>
