@@ -60,7 +60,7 @@ const HeaderContainer = () => {
       const res = await createResume(payload);
       if (res?.data?._id) {
         toast.success('Resume Saved!');
-        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : route);
+        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`);
       } else {
         toast.error('Something went wrong!');
       }
@@ -77,7 +77,7 @@ const HeaderContainer = () => {
       const res = await updateResume(resumeId, payload);
       if (res?.status === 200) {
         toast.success('Resume Updated!');
-        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : route);
+        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`);
       } else {
         toast.error('Something went wrong!');
       }
