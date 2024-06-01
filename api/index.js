@@ -5,7 +5,8 @@ import {
   createResume,
   getResumeData,
   updateResume,
-  deleteResume
+  deleteResume,
+  downloadOriginalResume
 } from './Resume';
 
 import {
@@ -21,6 +22,7 @@ export {
   getResumeData,
   updateResume,
   deleteResume,
+  downloadOriginalResume,
 
   getUserData,
   getUserResumes

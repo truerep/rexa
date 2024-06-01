@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import {
   createResume,
   deleteResume,
+  downloadOriginalResume,
   getUserResumes
 } from '@/api';
 import ResumeTable from './ResumeTable';
@@ -90,11 +91,25 @@ const ResumeTableContainer = () => {
     }
   }
 
+  const handleDownloadOriginalResume = async (resumeUrl) => {
+    let toastId;
+    try {
+      toastId = toast.loading("Downloading resume...");
+      const res = await downloadOriginalResume(resumeUrl);
+    } catch (err) {
+      toast.dismiss(toastId);
+      toast.error(err?.response?.data?.message?? 'Something went wrong!');
+    } finally {
+      toast.dismiss(toastId);
+    }
+  }
+
   return (
     <ResumeTable
       userResumes={userResumes}
       handleDeleteResume={handleDeleteResume}
       handleDuplicatingResume={handleDuplicatingResume}
+      handleDownloadOriginalResume={handleDownloadOriginalResume}
       isLoading={isLoading}
       toggleCreate={toggleCreate}
       setToggleCreate={setToggleCreate}
