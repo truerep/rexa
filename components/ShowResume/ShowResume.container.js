@@ -16,7 +16,7 @@ import {
 
 const ShowResumeContainer = () => {
     const router = useRouter();
-    const {resumeData, updateResumeData} = useContext(ResumeContext);
+    const {updateResumeData} = useContext(ResumeContext);
 
     const fetchResumeData = async (resumeId) => {
         try {
