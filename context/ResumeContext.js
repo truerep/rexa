@@ -13,7 +13,7 @@ const ResumeContextProvider = ({children}) => {
     toggleTemplatesPopover: false,
     togglePreview: false,
     contentSectionName: 'basics',
-    templateUniqueId: '663e402cd805993f9b9b98e1' // TODO: Update this later with dynamic data
+    templateUniqueId: '663e402cd805993f9b9b98e1'
   });
 
   const updateResumeData = (newResumeData) => {
