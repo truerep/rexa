@@ -64,13 +64,11 @@ const ResumeTableContainer = () => {
       toast.loading('Creating Copy...', {
         id: 'copying-resume'
       });
-      console.log(userResumes, "<---resumesList")
       const getResume = userResumes.find(obj => obj._id === resumeId);
-      console.log(getResume, "<---reds")
       const payload = {
-        templateId: '663e4074d805993f9b9b98ea', // TODO: Update later to actual templateId
-        name: `${getResume?.name} copy`,
-        resumeUrl: "TODO:UpdateLater",
+        templateId: getResume?.templateId?._id,
+        name: `${getResume?.name} - copy`,
+        resumeUrl: getResume?.resumeUrl,
         rawData: getResume?.rawData,
         data: getResume?.data
       };
