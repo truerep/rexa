@@ -33,7 +33,7 @@ const TemplateTechStarter = () => {
           <ProfileImage>
             <Image
               src={resumeData?.basics?.picture}
-              alt="logo"
+              alt="Use your own image's url, in basics section"
               width={150}
               height={150}
               style={{
