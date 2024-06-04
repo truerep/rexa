@@ -27,6 +27,7 @@ const ShowResumeContainer = () => {
                 ...prevState,
                 resumeId,
                 templateId: res?.data?.templateId.slug,
+                templateUniqueId: res?.data?.templateId._id,
                 templateName: res?.data?.name ?? 'Unnamed',
                 resumeString: res?.data?.rawData,
                 templateData: JSON.parse(res.data.data)
