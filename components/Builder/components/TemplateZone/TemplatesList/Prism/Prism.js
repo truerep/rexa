@@ -24,7 +24,6 @@ import Image from 'next/image';
 const Prism = () => {
   let {resumeData} = useContext(ResumeContext);
   resumeData = resumeData?.templateData;
-  console.log(resumeData, "<--resumeData")
 
   return (
     <Wrapper>

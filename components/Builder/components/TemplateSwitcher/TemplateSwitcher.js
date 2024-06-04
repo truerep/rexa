@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  Swiper, SwiperSlide
+  Swiper, SwiperSlide,
+  useSwiperSlide
 } from 'swiper/react';
 import {
   EffectCards, Pagination, Navigation,
@@ -18,64 +19,67 @@ import {
   colors
 } from '@/helpers';
 
-const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, templatePreview, handlePreview, templatesData }) => (
-  <Wrapper>
-    <TemplatesWrapper>
-      <Swiper
-        effect="cards"
-        grabCursor
-        navigation
-        pagination={{
-          dynamicBullets: true
-        }}
-        zoom
-        cardsEffect={{
-          slideShadows: false
-        }}
-        modules={[EffectCards, Pagination, Navigation, Zoom]}
-        className="mySwiper"
-      >
-        {Object.keys(templatesData).length
-          && Object.entries(templatesData).map(([templateId, template]) => (
-            <SwiperSlide key={templateId}>
-              {({ isActive }) => (
-                <>
-                  {isActive && setTemplateId(templateId)}
-                  <TemplateBg style={{ backgroundImage: `url(${template?.thumbnail})` }} />
-                  <img
-                    src={template?.thumbnail}
-                    alt={template?.name}
-                  />
-                </>
-              )}
-            </SwiperSlide>
-          ))}
-      </Swiper>
-    </TemplatesWrapper>
-    <TemplateInfo style={{ maxWidth: templatePreview ? '15%' : '50%' }}>
-      <TemplateName>
-        {templatesData[templateId]?.name}
-      </TemplateName>
-      <TemplatePrice>
-        {templatesData[templateId]?.price || 'Free'}
-      </TemplatePrice>
-      <button
-        onClick={() => handleTemplateChange(templatesData[templateId].templateId)}
-        type="button"
-        className="btn-primary"
-      >
-        Use Now
-      </button>
-      <button
-        type="button"
-        className="btn-primary btn-outlined"
-        onClick={handlePreview}
-      >
-        Preview
-      </button>
-    </TemplateInfo>
-  </Wrapper>
-);
+const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, templatePreview, handlePreview, templatesData, initialIndex }) => {
+  return (
+    <Wrapper>
+      <TemplatesWrapper>
+        <Swiper
+          effect="cards"
+          grabCursor
+          initialSlide={initialIndex}
+          navigation
+          pagination={{
+            dynamicBullets: true
+          }}
+          zoom
+          cardsEffect={{
+            slideShadows: false
+          }}
+          modules={[EffectCards, Pagination, Navigation, Zoom]}
+          className="mySwiper"
+        >
+          {Object.keys(templatesData).length
+            && Object.entries(templatesData).map(([templateId, template]) => (
+              <SwiperSlide key={templateId}>
+                {({ isActive }) => (
+                  <>
+                    {isActive && setTemplateId(templateId)}
+                    <TemplateBg style={{ backgroundImage: `url(${template?.thumbnail})` }} />
+                    <img
+                      src={template?.thumbnail}
+                      alt={template?.name}
+                    />
+                  </>
+                )}
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </TemplatesWrapper>
+      <TemplateInfo style={{ maxWidth: templatePreview ? '15%' : '50%' }}>
+        <TemplateName>
+          {templatesData[templateId]?.name}
+        </TemplateName>
+        <TemplatePrice>
+          {templatesData[templateId]?.price || 'Free'}
+        </TemplatePrice>
+        <button
+          onClick={() => handleTemplateChange(templatesData[templateId].templateId)}
+          type="button"
+          className="btn-primary"
+        >
+          Use Now
+        </button>
+        <button
+          type="button"
+          className="btn-primary btn-outlined"
+          onClick={handlePreview}
+        >
+          Preview
+        </button>
+      </TemplateInfo>
+    </Wrapper>
+  )
+};
 
 const Wrapper = styled.div`
     color: ${colors.ErrieBlack};

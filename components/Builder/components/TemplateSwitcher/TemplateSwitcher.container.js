@@ -11,16 +11,20 @@ import { getAllTemplatesData } from '@/api/Template';
 
 const TemplateSwitcherContainer = () => {
   const [templateId, setTemplateId] = useState('');
+  const [initialIndex, setInitialIndex] = useState(0);
   const [getAllTemplates, setGetAllTemplates] = useState([]);
   const [templatePreview, setTemplatePreview] = useState(false);
-  const { updateResumeData } = useContext(ResumeContext);
+  const { resumeData, updateResumeData } = useContext(ResumeContext);
 
   useEffect(() => {
     getAllTemplatesData().then((data) => {
       setGetAllTemplates(data);
     });
-  }, [])
-  
+  }, []);
+
+  useEffect(() => {
+    setInitialIndex(Object.keys(getAllTemplates).indexOf(resumeData.templateId));
+  }, [resumeData, getAllTemplates]);
 
   const handleTemplateChange = async (templateUniqueId) => {
     updateResumeData((prevState) => {
@@ -45,6 +49,7 @@ const TemplateSwitcherContainer = () => {
       templatePreview={templatePreview}
       handleTemplateChange={handleTemplateChange}
       templatesData={getAllTemplates}
+      initialIndex={initialIndex}
     />
   );
 };
