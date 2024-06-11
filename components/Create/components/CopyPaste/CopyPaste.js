@@ -7,7 +7,8 @@ import {
 const CopyPaste = ({
   resumeText,
   setResumeText,
-  handleText
+  handleText,
+  ref
 }) => (
   <Wrapper>
     <InfoLine>
@@ -18,6 +19,7 @@ const CopyPaste = ({
         value={resumeText}
         onChange={(e) => setResumeText(e.target.value)}
         placeholder="Paste resume text..."
+        ref={ref}
       />
     </TextAreaWrapper>
     {
