@@ -38,7 +38,7 @@ const TemplateZoneContainer = () => {
     if (storedResumeString) {
       storedResumeString = JSON.parse(storedResumeString);
       if (resumeString?.length === 0) {
-        setResumeString(storedResumeString?.text);
+        setResumeString(storedResumeString?.text ?? storedResumeString);
       }
     }
   }, []);

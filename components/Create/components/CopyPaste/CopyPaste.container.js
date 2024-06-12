@@ -16,7 +16,7 @@ const CopyPasteContainer = () => {
 
   const handleText = async () => {
     try {
-      sessionStorage.setItem('resumeString', resumeText);
+      sessionStorage.setItem('resumeString', JSON.stringify(resumeText));
       router.push('/builder');
     } catch (err) { }
   };
