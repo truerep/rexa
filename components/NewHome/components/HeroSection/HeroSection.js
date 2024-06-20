@@ -1,7 +1,12 @@
+import Create from '@/components/Create';
+import { Popover } from '@/components/common';
 import React from 'react'
 import styled from 'styled-components'
 
-const HeroSection = () => {
+const HeroSection = ({
+  toggleCreate,
+  setToggleCreate
+}) => {
   return (
     <Wrapper>
       <CardItem>
@@ -13,7 +18,11 @@ const HeroSection = () => {
             Generate Resume Effortlessly <br />
             Optimize Seamlessly
           </CardCaption>
-          <button className='btn-primary'>
+          <button 
+            type="button"
+            onClick={() => setToggleCreate(true)}
+            className='btn-primary'
+          >
             Get Started
           </button>
         </CardInfo>
@@ -21,6 +30,13 @@ const HeroSection = () => {
           <Figure className='round-corners' src="/assets/images/builder-page-image.png" alt="figure" />
         </CardFigure>
       </CardItem>
+      <Popover
+        showModal={toggleCreate}
+        setShowModal={setToggleCreate}
+        haveMarginTop
+      >
+        <Create />
+      </Popover>
     </Wrapper>
   );
 }
