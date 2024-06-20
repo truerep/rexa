@@ -59,7 +59,6 @@ const CardInfo = styled.div`
   button {
     margin-top: 50px;
     font-size: 21px;
-    font-weight: 500;
   }
 `;
 
