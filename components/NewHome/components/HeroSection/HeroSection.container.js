@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HeroSection from './HeroSection'
 
 const HeroSectionContainer = () => {
+  const [toggleCreate, setToggleCreate] = useState(false);
+
   return (
-    <HeroSection />
+    <HeroSection 
+      toggleCreate={toggleCreate}
+      setToggleCreate={setToggleCreate}
+    />
   )
 }
 
