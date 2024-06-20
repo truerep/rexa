@@ -60,6 +60,9 @@ const Header = ({
           <Tooltip title={action?.tooltip}>
             <ActionButton onClick={action?.handleClick}>
               <Icon src={action?.iconUrl} />
+              <ActionName>
+                {action?.name}
+              </ActionName>
             </ActionButton>
           </Tooltip>
         ))}
@@ -135,12 +138,16 @@ const BuilderActions = styled.div`
     display: flex;
     align-items: center;
     margin: 0 auto;
+    gap: 10px;
 `;
 
 const ActionButton = styled.button`
-    padding: 13px 11px 9px;
+    padding: 11px;
     transform: unset!important;
     transition: none!important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
     &:hover {
         background-color: ${colors.ChineseBlack};
@@ -148,7 +155,13 @@ const ActionButton = styled.button`
 `;
 
 const Icon = styled.img`
-    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+`;
+
+const ActionName = styled.p`
+    font-size: 14px;
+    color: #fff;
 `;
 
 const TemplateNameWrapper = styled.div`

@@ -129,26 +129,31 @@ const HeaderContainer = () => {
   const builderActionsList = [
     {
       handleClick: () => setShowTemplates(true),
+      name: 'Change Template',
       iconUrl: '/assets/icons/template-icon.svg',
       tooltip: 'Change Resume Template'
     },
     {
       handleClick: () => setShowJdModal(true),
+      name: 'Match Resume',
       iconUrl: '/assets/icons/sync-icon.svg',
       tooltip: 'Sync Resume with Job Description'
     },
     {
       handleClick: () => handlePreview(),
+      name: 'Preview',
       iconUrl: '/assets/icons/preview-icon.svg',
       tooltip: 'Preview '
     },
     {
       handleClick: () => handleSaveResume(routeNames.builder),
+      name: 'Save',
       iconUrl: '/assets/icons/save-icon.svg',
       tooltip: 'Save Template'
     },
     {
       handleClick: () => window.print(),
+      name: 'Download',
       iconUrl: '/assets/icons/download-icon.svg'
     }
   ];
