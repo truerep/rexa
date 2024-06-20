@@ -25,7 +25,7 @@ const Header = ({
         <Logo src={LogoUrl} alt="Resume Sync" />
         {/* <ProductName>| Resume</ProductName> */}
       </LogoWrapper>
-      <Nav className={toggleNav ? 'toggled' : ''}>
+      {/* <Nav className={toggleNav ? 'toggled' : ''}>
         {
             navMenu && navMenu.map((menuItem) => (
               <Item>
@@ -35,7 +35,7 @@ const Header = ({
               </Item>
             ))
         }
-      </Nav>
+      </Nav> */}
       {
         isAuthorized ? (
           <DownloadAppBtn onClick={() => router.push('/dashboard')} className="btn-primary btn-outlined">
