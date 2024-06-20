@@ -18,6 +18,8 @@ import ShowResume from './ShowResume';
 
 import Dashboard from './Dashboard';
 
+import NewHome from './NewHome';
+
 export {
   Header,
   Footer,
@@ -34,5 +36,7 @@ export {
   ShowResume,
 
   Dashboard,
-  Loader
+  Loader,
+
+  NewHome
 };
