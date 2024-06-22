@@ -48,9 +48,9 @@ const Header = ({
         )
       }
 
-      <NavButton onClick={() => setToggleNav(!toggleNav)}>
+      {/* <NavButton onClick={() => setToggleNav(!toggleNav)}>
         <img src={hamburgerIcon} alt="menu" />
-      </NavButton>
+      </NavButton> */}
     </HeaderWrapper>
   );
 };
