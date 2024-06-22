@@ -7,7 +7,7 @@ import {
 const authenticate = () => (
   <>
     <Head>
-      <title>Login or Signup | AICVPro</title>
+      <title>Login or Signup | AICVPro - Powered by AI</title>
     </Head>
     <Authenticate />
   </>

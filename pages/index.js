@@ -6,7 +6,7 @@ const homePage = () => {
   return (
     <>
         <Head>
-					<title>Resume Builder | Powered By AI</title>
+					<title>Resume Builder | AICVPro - Powered by AI</title>
         </Head>
 				<NewHome />
     </>

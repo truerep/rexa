@@ -4,7 +4,7 @@ import Head from 'next/head';
 import {
   useAos
 } from '@/hooks';
-import About from '@/components/About';
+import PrivacyPolicy from '@/components/PrivacyPolicy';
 
 const index = () => {
   useAos({
@@ -14,9 +14,11 @@ const index = () => {
   return (
     <>
       <Head>
-        <title>About | AICVPro - Powered by AI</title>
+        <title>
+          Privacy Policy | AICVPro - Powered by AI
+        </title>
       </Head>
-      <About />
+      <PrivacyPolicy />
     </>
   );
 };
