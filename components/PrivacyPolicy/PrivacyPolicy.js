@@ -117,6 +117,9 @@ const PolicyText = styled.div`
   font-size: 1rem;
   font-weight: 500;
   text-align: left;
+  @media screen and (max-width: 768px) {
+      width: 90%;
+  }
 `;
 
 const Ul = styled.ul`
