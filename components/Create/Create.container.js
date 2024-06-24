@@ -6,6 +6,7 @@ import Create from './Create';
 import {
   CopyPaste,
   DragAndDrop,
+  ImportFromLinkedIn,
 } from './components';
 import { useRouter } from 'next/router';
 
@@ -27,6 +28,10 @@ const CreateContainer = () => {
     {
       title: 'Upload',
       component: <DragAndDrop />
+    },
+    {
+      title: 'Linked In',
+      component: <ImportFromLinkedIn />
     },
     {
       title: 'Copy Paste',
