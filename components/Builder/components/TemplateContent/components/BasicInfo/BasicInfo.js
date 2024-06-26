@@ -15,12 +15,12 @@ const BasicInfo = ({
       <ItemTitle>
         <ItemIcon src="/assets/icons/basic-details-icon.svg" />
         <span>Basic Details</span>
-        <ReMatchBtn
+        {/* <ReMatchBtn
           type="button"
           className="btn-primary btn-outlined"
         >
           <img src="/assets/icons/sync-icon-purple.svg" alt="re-match" />
-        </ReMatchBtn>
+        </ReMatchBtn> */}
       </ItemTitle>
       <ItemContent>
         <ItemSection>
