@@ -6,7 +6,7 @@ import {
   AddNewSkillSection,
   DeleteBtn,
   InputGroup,
-  Item, ItemContent, ItemIcon, ItemSection, ItemTitle
+  Item, ItemContent, ItemIcon, ItemSection, ItemTitle, ReMatchBtn
 } from '@/components/common/UiElements';
 import {
   colors
@@ -26,6 +26,12 @@ const Skills = ({
       <ItemTitle>
         <ItemIcon src="/assets/icons/skills-icon.svg" />
         <span>Skills</span>
+        {/* <ReMatchBtn
+          type="button"
+          className="btn-primary btn-outlined"
+        >
+          <img src="/assets/icons/sync-icon-purple.svg" alt="re-match" />
+        </ReMatchBtn> */}
         <AddNewBtn
           type="button"
           className="btn-primary btn-outlined"

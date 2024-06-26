@@ -42,7 +42,7 @@ const HeroSection = ({
 }
 
 const Wrapper = styled.div`
-  padding: 110px 0 0 20px;
+  padding: 110px 20px 0;
   height: 100%;
 
   @media (max-width: 992px) {
@@ -93,6 +93,8 @@ const CardFigure = styled.div`
   height: 100%;
   flex: 1;
   overflow: hidden;
+  display: grid;
+  place-items: center;
 
   @media (max-width: 992px) {
     height: unset;
@@ -100,7 +102,7 @@ const CardFigure = styled.div`
 `;
 
 const Figure = styled.img`
-  height: 100%;
+  width: 100%;
 
   &.round-corners {
     border-radius: 20px;

@@ -26,13 +26,25 @@ const HeaderContainer = () => {
       url: '/'
     },
     {
-      name: 'Explore',
-      url: '#app-metrics'
+      name: 'About Us',
+      url: '/about'
     },
     {
-      name: 'Features',
-      url: '#features'
+      name: 'Privacy Policy',
+      url: '/privacy-policy'
     },
+    // {
+    //   name: 'Home',
+    //   url: '/'
+    // },
+    // {
+    //   name: 'Explore',
+    //   url: '#app-metrics'
+    // },
+    // {
+    //   name: 'Features',
+    //   url: '#features'
+    // },
     // {
     //   name: 'Pricing',
     //   url: '/'

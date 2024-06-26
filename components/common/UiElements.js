@@ -93,6 +93,10 @@ export const ItemTitle = styled.h3`
     top: 0;
     display: flex;
     align-items: center;
+
+    span {
+        flex: 1;
+    }
 `;
 
 export const ItemIcon = styled.img`
@@ -208,7 +212,7 @@ export const AddNewSkillSection = styled.div`
 `;
 
 export const AddNewBtn = styled.button`
-  margin-left: auto;
+  margin-left: 5px;
   transform: unset!important;
   display: grid;
   place-items: center;
@@ -220,4 +224,8 @@ export const AddNewBtn = styled.button`
   img {
     height: 12px;
   }
+`;
+
+export const ReMatchBtn = styled(AddNewBtn)`
+
 `;
