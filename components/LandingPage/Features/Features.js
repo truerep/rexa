@@ -13,41 +13,40 @@ const Features = ({
   setActiveTab
 }) => (
   <Section id="features" className="container">
-    <SectionTitle data-aos="fade-up">Key Features</SectionTitle>
-    <SectionSubtitle data-aos="fade-up" data-aos-delay="100">Explore What Sets Our App Apart!</SectionSubtitle>
-    <TabsWrapper data-aos="fade-up" data-aos-delay="200">
+    <SectionTitle >How it works</SectionTitle>
+    {/* <SectionSubtitle data-aos="fade-up" data-aos-delay="100">Explore What Sets Our App Apart!</SectionSubtitle> */}
+    <TabsWrapper >
 
       <TitlesWrapper
         tabWidth={100 / featuresData.length}
         tabPosition={(100 / featuresData.length) * (activeTab - 1)}
       >
         {featuresData.length
-            && featuresData.map((button, index) => (
-              <Title
-                key={index}
-                className={activeTab === index + 1 ? 'active' : ''}
-                onClick={() => setActiveTab(index + 1)}
-              >
-                {button.title}
-              </Title>
-            ))}
+          && featuresData.map((button, index) => (
+            <Title
+              key={index}
+              className={activeTab === index + 1 ? 'active' : ''}
+              onClick={() => setActiveTab(index + 1)}
+            >
+              {button.title}
+            </Title>
+          ))}
       </TitlesWrapper>
 
       <TabBody>
         <MacMockup />
         {featuresData.length
-            && featuresData.map((data, index) => (
-              <TabItem
-                key={index}
-                className={`${
-                  activeTab === index + 1 ? 'active' : ''
+          && featuresData.map((data, index) => (
+            <TabItem
+              key={index}
+              className={`${activeTab === index + 1 ? 'active' : ''
                 } ${index < activeTab - 1 ? 'prev' : ''}`}
-              >
-                <LargeImageWrapper>
-                  <ImageLarge src={data.largeImg} />
-                </LargeImageWrapper>
-              </TabItem>
-            ))}
+            >
+              <LargeImageWrapper>
+                <ImageLarge src={data.largeImg} />
+              </LargeImageWrapper>
+            </TabItem>
+          ))}
       </TabBody>
 
     </TabsWrapper>
@@ -55,8 +54,9 @@ const Features = ({
 );
 
 const Section = styled.div`
-    position: relative;
+    display: flex;
     padding: 60px 0 80px;
+    flex-direction: column;
     h2, h3 {
         color: ${colors.ErrieBlack};
     }
@@ -74,23 +74,29 @@ const Section = styled.div`
     }
 `;
 
-const TabsWrapper = styled.div``;
+const TabsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+`;
 
 const TitlesWrapper = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
-    background-color: ${colors.Magnolia};
     position: relative;
+    flex: 1;
+    justify-content: space-around;
+    margin: 0 20px;
 
     &::after {
         content: "";
         position: absolute;
         bottom: 0;
         left: ${(props) => props.tabPosition}%;
-        height: 2px;
+        height: 1px;
         transition: all 0.15s ease-in-out;
-        background-color: ${colors.HanPurple};
-        width: ${(props) => props.tabWidth}%;
+        width: ${(props) => props.tabWidth}em;
     }
 
     @media (max-width: 576px) {
@@ -105,23 +111,28 @@ const TitlesWrapper = styled.div`
 
 const Title = styled.button`
     cursor: pointer;
-    flex: 1;
-    background: transparent;
-    outline: 0;
-    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${colors.LightLavender};
     color: ${colors.ErrieBlack};
-    font-size: 20px;
+    font-size: 15px;
     padding: 23px 0;
     transition: all 0.15s ease-in-out;
+    border: 1px solid transparent;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    
 
     &.active {
-        color: ${colors.HanPurple};
-        border-bottom-color: ${colors.HanPurple};
+        color: ${colors.GhostWhite};
+        background-color: ${colors.Lavender}
     }
 
-    &:hover {
-        color: ${colors.ErrieBlack};
-    }
+    /* &:hover {
+        color: ${colors.GhostWhite};
+    } */
 
     @media (max-width: 576px) {
       padding: 20px;
@@ -153,7 +164,8 @@ const TabBody = styled.div`
     padding: 20px;
     height: 500px;
     width: 600px;
-    margin: auto;
+    margin: 0 20px;
+    flex: 5;
 
     @media (max-width: 576px) {
       width: 100%;
@@ -168,25 +180,25 @@ const TabItem = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-    transform: translateX(100%);
-    transition: all 0.2s ease-in-out;
+    transform: translateY(100%);
+    transition: all 0.3s ease-in-out;
     background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &.active {
-        position: relative;
         transform: translateX(0);
     }
 
     &.prev {
-        transform: translateX(-100%);
+        transform: translateY(-100%);
     }
 `;
 
 const LargeImageWrapper = styled.div`
     height: 340px;
     width: 520px;
-    margin: 0 auto;
-    margin-top: 63px;
 
     @media (max-width: 576px) {
       height: 100%;
