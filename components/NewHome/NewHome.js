@@ -15,8 +15,9 @@ const NewHome = () => {
 }
 
 const Wrapper = styled.div`
-    height: 100vh;
-    background-image: linear-gradient(-45deg, rgba(85, 3, 251, 0.1) -9.44%, rgba(254, 168, 2, 0.1) 99.42%);
+    min-height: 100vh;
+    background: #fff;
+    // background-image: linear-gradient(-45deg, rgba(85, 3, 251, 0.1) -9.44%, rgba(254, 168, 2, 0.1) 99.42%);
 `;
 
 const HeaderWrapper = styled.div`

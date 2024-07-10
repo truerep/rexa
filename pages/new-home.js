@@ -1,6 +1,7 @@
-import { NewHome } from '@/components'
-import Head from 'next/head'
 import React from 'react'
+import Head from 'next/head'
+
+import { NewHome } from '@/components'
 
 const homePage = () => {
 
