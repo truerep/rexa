@@ -6,7 +6,7 @@ import {
 } from '@/hooks';
 import About from '@/components/About';
 
-const index = () => {
+const about = () => {
   useAos({
     offset: 200
   });
@@ -21,4 +21,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default about;

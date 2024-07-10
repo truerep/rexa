@@ -6,7 +6,7 @@ import {
 } from '@/hooks';
 import PrivacyPolicy from '@/components/PrivacyPolicy';
 
-const index = () => {
+const privacyPolicy = () => {
   useAos({
     offset: 200
   });
@@ -23,4 +23,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default privacyPolicy;

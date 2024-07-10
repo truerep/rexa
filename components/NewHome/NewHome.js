@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components';
-import { HeroSection } from './components';
 import { Header } from '../common';
+import { HeroSection } from './components';
 
 const NewHome = () => {
   return (
     <Wrapper>
-        <HeaderWrapper>
-            <Header />
-        </HeaderWrapper>
-        <HeroSection />
+      <HeaderWrapper>
+        <Header />
+      </HeaderWrapper>
+      <HeroSection />
     </Wrapper>
   )
 }
