@@ -19,6 +19,7 @@ import ShowResume from './ShowResume';
 import Dashboard from './Dashboard';
 
 import NewHome from './NewHome';
+import HomePage from './HomePage';
 
 export {
   Header,
@@ -38,5 +39,6 @@ export {
   Dashboard,
   Loader,
 
-  NewHome
+  NewHome,
+  HomePage
 };

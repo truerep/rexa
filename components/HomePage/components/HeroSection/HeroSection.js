@@ -53,18 +53,16 @@ const Wrapper = styled.div`
 const CardItem = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
   height: 100%;
-  gap: 10px;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
 `;
 
 const CardInfo = styled.div`
-  text-align: center;
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-width: 550px;
+  padding-right: 50px;
   
   button {
     margin-top: 50px;
@@ -72,6 +70,7 @@ const CardInfo = styled.div`
   }
 
   @media (max-width: 1200px) {
+    text-align: center;
     padding: 0 0 30px;
     min-width: unset;
 
@@ -91,16 +90,15 @@ const CardInfo = styled.div`
 `;
 
 const CardFigure = styled.div`
-  height: unset;
+  height: 100%;
   flex: 1;
   overflow: hidden;
   display: grid;
   place-items: center;
-  max-width: 850px;
-  margin-bottom: 170px; 
-  transform: perspective(500px) rotateX(3deg) rotateY(-4deg) rotateZ(9deg) translateX(-50px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.01);
-  border-radius: 18px;
+
+  @media (max-width: 992px) {
+    height: unset;
+  }
 `;
 
 const Figure = styled.img`
