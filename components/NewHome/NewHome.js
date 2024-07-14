@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-import { HeroSection, WhyChooseUs } from './components';
 import { Header } from '../common';
+import { HeroSection, WhyChooseUs } from './components';
 
 const NewHome = () => {
   return (
