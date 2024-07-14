@@ -229,3 +229,23 @@ export const AddNewBtn = styled.button`
 export const ReMatchBtn = styled(AddNewBtn)`
 
 `;
+
+export const DarkBtn = styled.button`
+  background: black;
+  color: #fff;
+  padding: 15px 35px;
+  border-radius: 100px;
+`;
+
+export const SectionTitleLight = styled.h2`
+    font-size: 56px;
+    line-height: 64px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-family: Martel;
+
+    span {
+        opacity: 0.7;
+        font-style: italic;
+    }
+`;

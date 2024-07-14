@@ -65,6 +65,12 @@ const HeaderWrapper = styled.div`
     left: 0;
     right: 0;
     z-index: 9;
+    max-width: 80%;
+    margin: 0 auto;
+
+    @media (max-width: 1200px) {
+      max-width: 100%;
+    }
 
     @media (max-width: 576px) {
       justify-content: unset;

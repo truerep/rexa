@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { HeroSection } from './components';
+import { HeroSection, WhyChooseUs } from './components';
 import { Header } from '../common';
 
 const NewHome = () => {
@@ -10,6 +10,7 @@ const NewHome = () => {
             <Header />
         </HeaderWrapper>
         <HeroSection />
+        <WhyChooseUs />
     </Wrapper>
   )
 }
