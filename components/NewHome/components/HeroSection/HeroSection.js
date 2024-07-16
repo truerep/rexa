@@ -12,14 +12,16 @@ const HeroSection = ({
     <Wrapper>
       <CardItem>
         <CardInfo>
-          <CardTitle>
+          <CardTitle data-aos="fade-up">
             Create AI Powered Resume
           </CardTitle>
-          <CardCaption>
+          <CardCaption data-aos="fade-up" data-aos-delay="100">
             Generate Resume Effortlessly <br />
             Optimize Seamlessly
           </CardCaption>
           <button 
+            data-aos="fade-up"
+            data-aos-delay="200"
             type="button"
             onClick={() => setToggleCreate(true)}
             className='btn-primary'

@@ -8,7 +8,6 @@ const homePage = () => {
     offset: 200
   });
 
-
   return (
     <>
       <Head>

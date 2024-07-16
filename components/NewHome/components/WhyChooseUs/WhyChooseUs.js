@@ -6,24 +6,24 @@ const WhyChooseUs = () => {
   return (
     <Wrapper>
         <div className="container">
-            <SectionTitleLight className='text-center'>Features of <span>AiCvPro</span></SectionTitleLight>
+            <SectionTitleLight data-aos="fade-up" className='text-center'>Features of <span>AiCvPro</span></SectionTitleLight>
             <CardsWrapper>
-                <CardItem>
+                <CardItem data-aos="fade-up">
                     <CardIcon src='/assets/icons/choose-us/editable.svg' alt='icon' />
                     <CardTitle>Easy Customization</CardTitle>
                     <CardInfo>Personalize your resume with our new age intuitive tools.</CardInfo>
                 </CardItem>
-                <CardItem>
+                <CardItem data-aos="fade-up" data-aos-delay="100">
                     <CardIcon src='/assets/icons/choose-us/ai.svg' alt='icon' />
                     <CardTitle>AI-Powered Editing</CardTitle>
                     <CardInfo>Enhance and modify your resume with AI-driven suggestions.</CardInfo>
                 </CardItem>
-                <CardItem>
+                <CardItem data-aos="fade-up" data-aos-delay="200">
                     <CardIcon src='/assets/icons/choose-us/professional.svg' alt='icon' />
                     <CardTitle>Professional Templates</CardTitle>
                     <CardInfo>Choose from a variety of modern, professionally designed templates.</CardInfo>
                 </CardItem>
-                <CardItem>
+                <CardItem data-aos="fade-up" data-aos-delay="300">
                     <CardIcon src='/assets/icons/choose-us/ats-friendly.svg' alt='icon' />
                     <CardTitle>ATS Friendly</CardTitle>
                     <CardInfo>Ensure your resume gets noticed by Applicant Tracking Systems.</CardInfo>
@@ -56,7 +56,7 @@ const CardsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding-top: 50px;
+  padding-top: 70px;
 `;
 
 const CardItem = styled.div`

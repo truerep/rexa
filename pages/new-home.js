@@ -1,9 +1,14 @@
 import React from 'react'
 import Head from 'next/head'
 
+import { useAos } from '@/hooks';
+
 import { NewHome } from '@/components'
 
 const homePage = () => {
+  useAos({
+    offset: 200
+  });
 
   return (
     <>
