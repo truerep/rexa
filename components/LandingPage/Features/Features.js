@@ -197,8 +197,8 @@ const TabItem = styled.div`
 `;
 
 const LargeImageWrapper = styled.div`
-    height: 340px;
-    width: 520px;
+    height: 100%;
+    width: 100%;
 
     @media (max-width: 576px) {
       height: 100%;

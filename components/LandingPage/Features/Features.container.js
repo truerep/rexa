@@ -8,17 +8,17 @@ const FeaturesContainer = () => {
 
   const featuresData = [
     {
-      title: 'Intuitive Interface',
+      title: 'Easy Access to Dashboard',
       largeImg: '/assets/images/feature-1-lg.png',
       smallImg: '/assets/images/feature-1.png'
     },
     {
-      title: 'Customizable Templates',
+      title: 'Multiple Features',
       largeImg: '/assets/images/feature-2-lg.png',
       smallImg: '/assets/images/feature-2.png'
     },
     {
-      title: 'Advanced Security',
+      title: 'Choose from multiple templates',
       largeImg: '/assets/images/feature-3-lg.png',
       smallImg: '/assets/images/feature-3.png'
     },
