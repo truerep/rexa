@@ -40,6 +40,7 @@ button {
   background-color: transparent;
   outline: 0;
   border: 0;
+  transition: all 0.5s;
   cursor: pointer;
 }
 
@@ -50,6 +51,7 @@ input {
 a {
   text-decoration: none;
   color: #6725f4;
+  transition: all 0.5s;
 }
 
 .container {
@@ -95,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary {
   padding: 10px 25px;
-  border-radius: 5px;
+  border-radius: 15px;
   border: 1px solid #6725f4;
   background: #ece5fb;
   color: #6725f4;
@@ -122,8 +124,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 button:hover, a:hover {
-  transform: translateY(-2px);
-  transition: all 0.15s ease-in-out;
+  transform: scale3d(0.95, 0.95, 0.95);
 }
 
 .move-img {
@@ -136,6 +137,9 @@ button:hover, a:hover {
   }
   50% {
     transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 

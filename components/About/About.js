@@ -9,7 +9,9 @@ const About = () => {
   return (
     <Wrapper>
       <HeaderWrapper>
-        <img src={LogoUrl} alt="Resume Sync" />
+        <Link href="/">
+          <img src={LogoUrl} alt="Resume Sync" />
+        </Link>
         <h1>About Us</h1>
       </HeaderWrapper>
       <AboutWrapper>

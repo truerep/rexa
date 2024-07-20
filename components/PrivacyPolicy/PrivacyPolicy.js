@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Link from 'next/link';
+
 const PrivacyPolicy = () => {
   const LogoUrl = '/assets/images/company-logo.svg';
 
   return (
     <Wrapper>
       <HeaderWrapper>
-        <img src={LogoUrl} alt="AICVPro" />
+        <Link href="/">
+          <img src={LogoUrl} alt="AICVPro" />
+        </Link>
         <h1>Privacy Policy</h1>
       </HeaderWrapper>
       <PolicyWrapper>

@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import { Header } from '../common';
 import { HeroSection, WhyChooseUs } from './components';
 
 const NewHome = () => {
+  const [toggleCreate, setToggleCreate] = useState(false);
+
   return (
     <Wrapper>
-        <HeaderWrapper>
+        {!toggleCreate && <HeaderWrapper>
             <Header />
-        </HeaderWrapper>
-        <HeroSection />
+        </HeaderWrapper>}
+        <HeroSection toggleCreate={toggleCreate} setToggleCreate={setToggleCreate} />
         <WhyChooseUs />
     </Wrapper>
   )
