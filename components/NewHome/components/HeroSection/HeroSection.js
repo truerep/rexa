@@ -121,6 +121,8 @@ const CardInfo = styled.div`
   button {
     margin-top: 50px;
     font-size: 21px; 
+    font-weight: bolder;
+    border: 1px solid #6725f4;
   }
 
   @media (max-width: 1200px) {
