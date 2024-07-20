@@ -48,7 +48,6 @@ export const SectionTitle = styled.h2`
     font-size: 42px;
     text-align: center;
     padding-bottom: 10px;
-    font-family: 'Martel';
 
     @media (max-width: 576px) {
         font-size: 32px;
