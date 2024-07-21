@@ -7,22 +7,19 @@
   -moz-box-sizing: border-box;
 }
 
-*::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: unset;
-	background-color: transparent;
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: unset;
+  background-color: transparent;
 }
 
-*::-webkit-scrollbar
-{
-	width: 0px;
-	background-color: transparent;
+*::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent;
 }
 
-*::-webkit-scrollbar-thumb
-{
+*::-webkit-scrollbar-thumb {
   border-radius: 10px;
-	background-color: #a881fa;
+  background-color: #a881fa;
 }
 
 html {
@@ -64,7 +61,7 @@ a {
 }
 
 .d-block {
-  display: block!important;
+  display: block !important;
 }
 
 .d-flex {
@@ -91,9 +88,69 @@ a {
   justify-content: space-between;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
 }
+
+.question-box {}
+
+.question-box:hover>div {
+  transform: scale3d(1.1, 1.1, 1.1) rotate(180deg);
+}
+
+.question-box-closed {}
+
+.question-box-closed:hover>div {
+  transform: scale3d(1.1, 1.1, 1.1) rotate(0deg);
+}
+
+.arrow-down-to-top {
+  transform: rotate(180deg);
+}
+
+.answer-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background: #F5F6F7;
+  color: #000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-height: 30vh;
+  animation: show-answer 1s ease;
+
+  p {
+    animation: show-answer 1s ease;
+  }
+
+}
+
+
+@keyframes show-answer {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+.answer-box-closed {
+  display: none;
+
+  p {
+    opacity: 0;
+  }
+}
+
 
 .btn-primary {
   padding: 10px 25px;
@@ -123,7 +180,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #6725f4;
 }
 
-button:hover, a:hover {
+button:hover,
+a:hover {
   transform: scale3d(0.95, 0.95, 0.95);
 }
 
@@ -132,12 +190,16 @@ button:hover, a:hover {
 }
 
 @keyframes move-up-down {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -164,12 +226,12 @@ button:hover, a:hover {
 }
 
 .swiper-pagination {
-  bottom: -30px!important;
+  bottom: -30px !important;
   scale: 1.2;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #000!important;
+  background-color: #000 !important;
 }
 
 .swiper-slide {
@@ -179,31 +241,37 @@ button:hover, a:hover {
 /* Print Resume */
 
 @media print {
+
   /* html, body {
     width: 210mm;
     height: 297mm;        
   } */
   .print-none {
-    display: none!important;
+    display: none !important;
   }
-  body  {
+
+  body {
     visibility: hidden;
   }
+
   #templateContainer {
     visibility: visible;
     margin: 0 auto;
   }
-  #templateContainer, #templateContainer:last-child {
+
+  #templateContainer,
+  #templateContainer:last-child {
     /* page-break-after: avoid; */
     page-break-after: auto;
   }
 }
 
 @media print {
+
   body *,
   *::before,
   *::after {
-    -webkit-print-color-adjust: exact !important; 
+    -webkit-print-color-adjust: exact !important;
     color-adjust: exact !important;
   }
 }
