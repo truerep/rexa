@@ -9,6 +9,7 @@ const FAQs = ({
   return (
     <Wrapper>
       <HeaderWrapper>
+        <img src="assets/icons/faq.gif" />
         <SectionTitle>
           Frequently Asked Questions
         </SectionTitle>
@@ -50,17 +51,18 @@ const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 20px;
 `;
 
 const HeaderWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   width: 100%;
-  height: 10vh;
+  height: 20vh;
 `;
 
 const SectionTitle = styled.h1`
@@ -75,21 +77,37 @@ const Section = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40vw;
-  max-height: 60vh;
+  width: 50vw;
+  height: 80vh;
 `;
 
 const QuestionBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background: #F5F6F7;
+  color: #000;
+  border-radius: 10px;
+  height: 10vh;
+  margin: 10px 0 0 0;
 
   &:hover {
+    cursor: pointer;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     & > div {
       background: ${colors.HanPurple};
+      cursor: pointer;
     }
   }
 `;
 
 const Question = styled.h2`
   color: #000;
+  font-size: 1.5rem;
+  font-weight: 600;
 `;
 
 const IconBox = styled.div`
