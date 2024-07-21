@@ -2,50 +2,43 @@ import { colors } from '@/helpers';
 import React from 'react'
 import styled from 'styled-components';
 
-const FAQs = ({ showAnswer, setShowAnswer, QAs, toggleAnswer }) => {
+const FAQs = ({
+  QAs
+}) => {
+
   return (
     <Wrapper>
-      <SectionTitle>
-        Frequently Asked Questions
-      </SectionTitle>
+      <HeaderWrapper>
+        <SectionTitle>
+          Frequently Asked Questions
+        </SectionTitle>
+      </HeaderWrapper>
       <Section>
-        {QAs.map((QA, index) => (
+        {QAs.map((QA) => (
           <>
-            <QuestionBox onClick={toggleAnswer} className={showAnswer
-              ? 'question-box-' + index : 'question-box-closed'}>
+            <QuestionBox onClick={QA.toggleAnswer} className={QA.showAnswer
+              ? 'question-box' : 'question-box-closed'
+            }>
               <Question>
-                {QA.question}
+                {
+                  QA.question
+                }
               </Question>
               <IconBox className={
-                showAnswer ? 'arrow-down-to-top' : ''
+                QA.showAnswer ? 'arrow-down-to-top' : ''
               }>
                 <img src="assets/icons/arrow-down.svg" />
               </IconBox>
             </QuestionBox>
-            <AnswerBox className={showAnswer ? 'answer-box' : 'answer-box-closed'}>
+            <AnswerBox className={QA.showAnswer ? 'answer-box' : 'answer-box-closed'}>
               <Answer>
-                {QA.answer}
+                {
+                  QA.answer
+                }
               </Answer>
             </AnswerBox>
           </>
         ))}
-
-        <QuestionBox onClick={() => setShowAnswer(!showAnswer)} className={showAnswer ? 'question-box' : 'question-box-closed'}>
-          <Question>
-            hajnfrjnife
-          </Question>
-          <IconBox className={
-            showAnswer ? 'arrow-down-to-top' : ''
-          }>
-            <img src="assets/icons/arrow-down.svg" />
-          </IconBox>
-        </QuestionBox>
-        <AnswerBox className={showAnswer ? 'answer-box' : 'answer-box-closed'}>
-          <Answer>
-            jndjnjenfjn
-          </Answer>
-        </AnswerBox>
-
       </Section>
     </Wrapper>
   )
@@ -62,8 +55,19 @@ const Wrapper = styled.div`
   padding: 20px;
 `;
 
+const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+`;
+
 const SectionTitle = styled.h1`
   color: #000;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
 `;
 
 const Section = styled.div`
@@ -72,28 +76,14 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   width: 40vw;
-  height: 50vh;
+  max-height: 60vh;
 `;
 
 const QuestionBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-  background: #F5F6F7;
-  color: #000;
-  border-radius: 10px;
-  height: 20vh;
-  margin: 10px 0 0 0;
 
   &:hover {
-    cursor: pointer;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     & > div {
       background: ${colors.HanPurple};
-      cursor: pointer;
     }
   }
 `;
