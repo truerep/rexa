@@ -51,7 +51,7 @@ const Footer = () => {
   return (
     <Wrapper id="footer">
       <Context>
-        <TopBox>
+        <TopBox data-aos="fade-up" data-aos-duration="500">
           <Tagline>Unleash Your Thoughts</Tagline>
           <InfoLine>
             Capture thoughts effortlessly, organize seamlessly: your resume, your way.
@@ -61,7 +61,7 @@ const Footer = () => {
           </GetStartedButton>
         </TopBox>
         <BottomBox>
-          <LeftBox>
+          <LeftBox data-aos="fade-up" data-aos-duration="1000">
             <LeftBoxTitle>
               AI CV Pro
             </LeftBoxTitle>
@@ -72,7 +72,7 @@ const Footer = () => {
             <CopyRight>&copy; {new Date().getFullYear()} AI CV Pro</CopyRight>
 
           </LeftBox>
-          <RightBox>
+          <RightBox data-aos="fade-up" data-aos-duration="1000">
             {RightBoxesContent.map((box) => (
               <RightBoxes>
                 <TitleTopRightBox>
