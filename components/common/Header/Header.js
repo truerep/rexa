@@ -21,7 +21,7 @@ const Header = ({
   const hamburgerIcon = 'https://ik.imagekit.io/sahildhingra/hamburger-dark.png';
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper id="header">
       <LogoWrapper className="d-flex align-center">
         <Logo src={LogoUrl} alt="Resume Sync" />
         {/* <ProductName>| Resume</ProductName> */}

@@ -13,6 +13,10 @@ const Footer = () => {
         {
           title: 'About',
           url: '/about'
+        },
+        {
+          title: 'Blog',
+          url: '#footer'
         }
       ]
     },
@@ -21,11 +25,11 @@ const Footer = () => {
       links: [
         {
           title: 'Web app',
-          url: '/'
+          url: '#footer'
         },
         {
           title: 'Chrome extension',
-          url: '/'
+          url: '#footer'
         }
       ]
     },
@@ -35,13 +39,17 @@ const Footer = () => {
         {
           title: 'Privacy Policy',
           url: '/privacy-policy'
+        },
+        {
+          title: 'Terms of Service',
+          url: '#footer'
         }
       ]
     }
   ];
 
   return (
-    <Wrapper>
+    <Wrapper id="footer">
       <Context>
         <TopBox>
           <Tagline>Unleash Your Thoughts</Tagline>
@@ -49,20 +57,32 @@ const Footer = () => {
             Capture thoughts effortlessly, organize seamlessly: your resume, your way.
           </InfoLine>
           <GetStartedButton>
-            Get Started
+            <a href="#header">Get Started</a>
           </GetStartedButton>
         </TopBox>
         <BottomBox>
-          <LeftBox></LeftBox>
+          <LeftBox>
+            <LeftBoxTitle>
+              AI CV Pro
+            </LeftBoxTitle>
+            <LeftBoxTagline>
+              Capture thoughts effortlessly, <br /> organize seamlessly: your resume, your way.
+            </LeftBoxTagline>
+
+            <CopyRight>&copy; {new Date().getFullYear()} AI CV Pro</CopyRight>
+
+          </LeftBox>
           <RightBox>
             {RightBoxesContent.map((box) => (
               <RightBoxes>
-                <BottomRightBoxTitle>
-                  {box.title}
-                </BottomRightBoxTitle>
+                <TitleTopRightBox>
+                  <BottomRightBoxTitle>
+                    {box.title}
+                  </BottomRightBoxTitle>
+                </TitleTopRightBox>
                 <BottomRightBoxContent>
                   {box.links.map((link) => (
-                    <Links>
+                    <Links href={link.url}>
                       {link.title}
                     </Links>
                   ))}
@@ -138,6 +158,12 @@ const GetStartedButton = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
+
+  a{
+    color: #fff;
+    text-decoration: none;
+  
+  }
 `;
 
 const Nav = styled.div`
@@ -171,9 +197,26 @@ const BottomBox = styled.div`
 
 const LeftBox = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  
+`;
+
+const LeftBoxTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 600;
+`;
+
+const LeftBoxTagline = styled.p`
+  font-size: 0.7rem;
+  font-weight: 400;
+`;
+
+const CopyRight = styled.p`
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 10px 0;
 `;
 
 const RightBox = styled.div`
@@ -190,6 +233,14 @@ const RightBoxes = styled.div`
   flex-direction: column;
   padding: 10px;
   margin: 10px;
+  height: 100%;
+`;
+
+const TitleTopRightBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 `;
 
 const BottomRightBoxTitle = styled.h2`
