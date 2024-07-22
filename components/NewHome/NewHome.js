@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import { Header } from '../common';
+import { Footer, Header } from '../common';
 import { HeroSection, WhyChooseUs, Features, FAQs } from './components';
 
 const NewHome = () => {
@@ -17,6 +17,7 @@ const NewHome = () => {
       <WhyChooseUs />
       <Features />
       <FAQs />
+      <Footer />
     </Wrapper>
   )
 }

@@ -8,18 +8,18 @@ const FAQs = ({
 
   return (
     <Wrapper>
-      <HeaderWrapper>
+      <HeaderWrapper data-aos="fade-up" data-aos-duration="500">
         <img src="assets/icons/faq.gif" />
         <SectionTitle>
           Frequently Asked Questions
         </SectionTitle>
       </HeaderWrapper>
-      <Section>
+      <Section data-aos="fade-up" data-aos-duration="500">
         {QAs.map((QA) => (
           <>
             <QuestionBox onClick={QA.toggleAnswer} className={QA.showAnswer
               ? 'question-box' : 'question-box-closed'
-            }>
+            } key={QA.id}>
               <Question>
                 {
                   QA.question
