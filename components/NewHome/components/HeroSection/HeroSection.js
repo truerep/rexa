@@ -121,7 +121,7 @@ const CardInfo = styled.div`
   button {
     margin-top: 50px;
     font-size: 21px; 
-    font-weight: bolder;
+    font-weight: 500;
     border: 1px solid #6725f4;
   }
 
@@ -175,7 +175,7 @@ const Figure = styled.img`
 
 const CardTitle = styled.h1`
   font-size: 50px;
-  font-weight: bolder;
+  font-weight: 500;
   background: linear-gradient(90deg, #5200FF 0%, #FFA800 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -192,7 +192,7 @@ const CardTitle = styled.h1`
 
 const CardCaption = styled.p`
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 500;
   margin-top: 25px;
   line-height: 1.6;
 
