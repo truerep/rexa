@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  SectionSubtitle, SectionTitle
+  SectionTitle
 } from '@/components/common/UiElements';
 import {
   colors
@@ -16,7 +16,7 @@ const Features = ({
     <SectionTitle data-aos="fade-up" data-aos-delay="100">How it works</SectionTitle>
     {/* <SectionSubtitle data-aos="fade-up" data-aos-delay="100">Explore What Sets Our App Apart!</SectionSubtitle> */}
     <TabsWrapper data-aos="fade-up"
-        data-aos-delay="100">
+      data-aos-delay="100">
 
       <TitlesWrapper
         tabWidth={100 / featuresData.length}
@@ -35,7 +35,6 @@ const Features = ({
       </TitlesWrapper>
 
       <TabBody data-aos="fade-up" data-aos-delay="100">
-        {/* <MacMockup /> */}
         {featuresData.length
           && featuresData.map((data, index) => (
             <TabItem
@@ -136,26 +135,10 @@ const Title = styled.button`
     } */
 
     @media (max-width: 576px) {
-      padding: 20px;
-    }
-`;
-
-const MacMockup = styled.div`
-    background-image: url("/assets/images/macbook-mockup.png");
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1;
-
-    @media (max-width: 576px) {
-      display: none;
+      padding: 10px;
+      height: 10px;
+      font-size: 5px;
+      text-overflow: ellipsis;
     }
 `;
 

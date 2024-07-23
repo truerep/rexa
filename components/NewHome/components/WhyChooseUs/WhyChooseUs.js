@@ -57,6 +57,10 @@ const CardsWrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding-top: 70px;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const CardItem = styled.div`
