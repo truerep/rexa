@@ -83,6 +83,7 @@ const HeaderWrapper = styled.div`
 
     @media (max-width: 576px) {
       justify-content: unset;
+      margin: 20px;
     }
 `;
 
@@ -114,6 +115,10 @@ const AddtoChromeBtn = styled.a`
     border-radius: 15px;
     border: 0;
     color: #000;
+
+    @media (max-width: 576px) {
+      display: none;
+    }
  `;
 
 

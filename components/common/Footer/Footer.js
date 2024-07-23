@@ -49,50 +49,64 @@ const Footer = () => {
   ];
 
   return (
-    <Wrapper id="footer">
-      <Context>
-        <TopBox data-aos="fade-up" data-aos-duration="500">
-          <Tagline>Unleash Your Thoughts</Tagline>
-          <InfoLine>
-            Capture thoughts effortlessly, organize seamlessly: your resume, your way.
-          </InfoLine>
-          <GetStartedButton>
-            <a href="#header">Get Started</a>
-          </GetStartedButton>
-        </TopBox>
-        <BottomBox>
-          <LeftBox data-aos="fade-up" data-aos-duration="1000">
-            <LeftBoxTitle>
-              AI CV Pro
-            </LeftBoxTitle>
-            <LeftBoxTagline>
-              Capture thoughts effortlessly, <br /> organize seamlessly: your resume, your way.
-            </LeftBoxTagline>
+    <>
+      <Nav>
+        <Link href="/">
+          Home
+        </Link>
+        <Link href="/about">
+          About Us
+        </Link>
+        <Link href="/privacy-policy">
+          Privacy Policy
+        </Link>
+      </Nav>
+      <Wrapper>
+        <Context>
+          <TopBox data-aos="fade-up" data-aos-duration="500">
+            <Tagline>Unleash Your Thoughts</Tagline>
+            <InfoLine>
+              Capture thoughts effortlessly, organize seamlessly: your resume, your way.
+            </InfoLine>
+            <GetStartedButton>
+              <a href="#header">Get Started</a>
+            </GetStartedButton>
+          </TopBox>
+          <BottomBox>
+            <LeftBox data-aos="fade-up" data-aos-duration="1000">
+              <LeftBoxTitle>
+                AI CV Pro
+              </LeftBoxTitle>
+              <LeftBoxTagline>
+                Capture thoughts effortlessly, <br /> organize seamlessly: your resume, your way.
+              </LeftBoxTagline>
 
-            <CopyRight>&copy; {new Date().getFullYear()} AI CV Pro</CopyRight>
+              <CopyRight>&copy; {new Date().getFullYear()} AI CV Pro</CopyRight>
 
-          </LeftBox>
-          <RightBox data-aos="fade-up" data-aos-duration="1000">
-            {RightBoxesContent.map((box) => (
-              <RightBoxes>
-                <TitleTopRightBox>
-                  <BottomRightBoxTitle>
-                    {box.title}
-                  </BottomRightBoxTitle>
-                </TitleTopRightBox>
-                <BottomRightBoxContent>
-                  {box.links.map((link) => (
-                    <Links href={link.url}>
-                      {link.title}
-                    </Links>
-                  ))}
-                </BottomRightBoxContent>
-              </RightBoxes>
-            ))}
-          </RightBox>
-        </BottomBox>
-      </Context>
-    </Wrapper>
+            </LeftBox>
+            <RightBox data-aos="fade-up" data-aos-duration="1000">
+              {RightBoxesContent.map((box) => (
+                <RightBoxes>
+                  <TitleTopRightBox>
+                    <BottomRightBoxTitle>
+                      {box.title}
+                    </BottomRightBoxTitle>
+                  </TitleTopRightBox>
+                  <BottomRightBoxContent>
+                    {box.links.map((link) => (
+                      <Links href={link.url}>
+                        {link.title}
+                      </Links>
+                    ))}
+                  </BottomRightBoxContent>
+                </RightBoxes>
+              ))}
+            </RightBox>
+          </BottomBox>
+        </Context>
+      </Wrapper>
+    </>
+
   )
 };
 
@@ -100,8 +114,11 @@ const Wrapper = styled.div`
   font-size: 14px;
   color: #fff;
   height: 100vh;
-  width: 100vw;
   padding: 10px;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 const Context = styled.div`
@@ -167,7 +184,9 @@ const GetStartedButton = styled.button`
 `;
 
 const Nav = styled.div`
-  display: flex;
+  display: none;
+  background-color: ${colors.DarkGunmetal};
+  padding: 10px;
   align-items: center;
   
   a {
@@ -181,6 +200,7 @@ const Nav = styled.div`
   }
 
   @media (max-width: 576px) {
+    display: flex;
     flex-direction: column; 
     padding: 5px 10px;
   }

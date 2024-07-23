@@ -70,6 +70,10 @@ const SectionTitle = styled.h1`
   font-size: 2.5rem;
   font-weight: 600;
   text-transform: uppercase;
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 `;
 
 const Section = styled.div`
@@ -108,6 +112,10 @@ const Question = styled.h2`
   color: #000;
   font-size: 1.5rem;
   font-weight: 600;
+
+  @media (max-width: 576px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const IconBox = styled.div`
@@ -123,6 +131,14 @@ const IconBox = styled.div`
     width: 25px;
   }
 
+  @media (max-width: 576px) {
+    padding: 5px;
+
+    img {
+      width: 10px;
+    }
+  }
+
 `;
 
 const AnswerBox = styled.div`
@@ -131,6 +147,10 @@ const AnswerBox = styled.div`
 
 const Answer = styled.p`
   color: #000;
+  
+  @media (max-width: 576px) {
+    font-size: 0.5rem;
+  }
 `;
 
 
