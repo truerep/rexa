@@ -248,4 +248,8 @@ export const SectionTitleLight = styled.h2`
         opacity: 0.7;
         font-style: italic;
     }
+
+    @media (max-width: 576px) {
+        font-size: 30px;
+    }
 `;

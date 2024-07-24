@@ -134,6 +134,8 @@ const CardInfo = styled.div`
   }
 
   @media (max-width: 576px) {
+    min-height: unset;
+
     button {
       font-size: 14px;
       font-weight: 500;
@@ -154,6 +156,10 @@ const CardFigure = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.01);
   border-radius: 20px;
   border: 20px solid #bec2d6;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 const Figure = styled.img`

@@ -50,6 +50,10 @@ const Wrapper = styled.div`
     z-index: 1;
     position: relative;
   }
+
+  @media (max-width: 576px) {
+    padding: 70px 20px 100px;
+  }
 `;
 
 const CardsWrapper = styled.div`
@@ -57,6 +61,11 @@ const CardsWrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding-top: 70px;
+
+  @media (max-width: 576px) {
+    padding-top: 40px;
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const CardItem = styled.div`
