@@ -13,7 +13,7 @@ const useAos = (options = {}) => {
       offset: 0
     };
 
-    const newSettings = {...aosSettings, ...options};
+    const newSettings = { ...aosSettings, ...options };
 
     Aos.init({
       easing: newSettings.easing,

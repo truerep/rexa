@@ -120,7 +120,9 @@ const CardInfo = styled.div`
   
   button {
     margin-top: 50px;
-    font-size: 21px;
+    font-size: 21px; 
+    font-weight: 500;
+    border: 1px solid #6725f4;
   }
 
   @media (max-width: 1200px) {
@@ -178,14 +180,12 @@ const Figure = styled.img`
 `;
 
 const CardTitle = styled.h1`
-  font-size: 40px;
-  font-weight: 600;
-  font-family: Martel;
+  font-size: 50px;
+  font-weight: 500;
   background: linear-gradient(90deg, #5200FF 0%, #FFA800 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 
   @media (max-width: 1200px) {
     font-size: 33px;
@@ -197,7 +197,8 @@ const CardTitle = styled.h1`
 `;
 
 const CardCaption = styled.p`
-  font-size: 28px;
+  font-size: 30px;
+  font-weight: 500;
   margin-top: 25px;
   line-height: 1.6;
 

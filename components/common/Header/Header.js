@@ -7,6 +7,7 @@ import {
 import {
   colors
 } from '@/helpers';
+import Image from 'next/image';
 
 const Header = ({
   isAuthorized,
@@ -20,22 +21,27 @@ const Header = ({
   const hamburgerIcon = 'https://ik.imagekit.io/sahildhingra/hamburger-dark.png';
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper id="header">
       <LogoWrapper className="d-flex align-center">
         <Logo src={LogoUrl} alt="Resume Sync" />
         {/* <ProductName>| Resume</ProductName> */}
       </LogoWrapper>
       <Nav className={toggleNav ? 'toggled' : ''}>
         {
-            navMenu && navMenu.map((menuItem) => (
-              <Item>
-                <Link href={menuItem?.url}>
-                  {menuItem?.name}
-                </Link>
-              </Item>
-            ))
+          navMenu && navMenu.map((menuItem) => (
+            <Item>
+              <Link href={menuItem?.url}>
+                {menuItem?.name}
+              </Link>
+            </Item>
+          ))
         }
       </Nav>
+      <AddtoChromeBtn target="_blank" href="https://chrome.google.com/webstore/detail/resume-sync/oh" className="btn-primary">
+        <Image src="/assets/icons/chrome-icon.svg" width={20} height={20} alt="chrome-icon" />
+        Add to Chrome
+      </AddtoChromeBtn>
+
       {
         isAuthorized ? (
           <DownloadAppBtn onClick={() => router.push('/dashboard')} className="btn-primary btn-outlined">
@@ -56,7 +62,7 @@ const Header = ({
 };
 
 const HeaderWrapper = styled.div`
-    padding: 20px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,8 +71,11 @@ const HeaderWrapper = styled.div`
     left: 0;
     right: 0;
     z-index: 9;
-    max-width: 80%;
+    max-width: 50%;
     margin: 0 auto;
+    border : 1px solid #e5e5e5;
+    border-radius: 20px;
+    margin-top: 20px;
 
     @media (max-width: 1200px) {
       max-width: 100%;
@@ -74,6 +83,7 @@ const HeaderWrapper = styled.div`
 
     @media (max-width: 576px) {
       justify-content: unset;
+      margin: 20px;
     }
 `;
 
@@ -83,8 +93,34 @@ const LogoWrapper = styled.div`
 
 const Logo = styled.img`
     height: 70px;
-    transform: translateY(-4px);
+    transition: all 0.5s;
+    
+    &:hover {
+      transform: scale3d(0.9, 0.9, 0.9);
+      cursor: pointer;
+    }
 `;
+
+const AddtoChromeBtn = styled.a`
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 150px;
+    background: #E8E8E8;
+    border-radius: 15px;
+    border: 0;
+    color: #000;
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+ `;
+
 
 const ProductName = styled.h1`
     font-size: 22px;
@@ -151,7 +187,7 @@ const Item = styled.li`
 `;
 
 const DownloadAppBtn = styled.a`
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 500;
     cursor: pointer;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  SectionSubtitle, SectionTitle
+  SectionTitle
 } from '@/components/common/UiElements';
 import {
   colors
@@ -13,9 +13,10 @@ const Features = ({
   setActiveTab
 }) => (
   <Section id="features" className="container">
-    <SectionTitle >How it works</SectionTitle>
+    <SectionTitle data-aos="fade-up" data-aos-delay="100">How it works</SectionTitle>
     {/* <SectionSubtitle data-aos="fade-up" data-aos-delay="100">Explore What Sets Our App Apart!</SectionSubtitle> */}
-    <TabsWrapper >
+    <TabsWrapper data-aos="fade-up"
+      data-aos-delay="100">
 
       <TitlesWrapper
         tabWidth={100 / featuresData.length}
@@ -33,8 +34,7 @@ const Features = ({
           ))}
       </TitlesWrapper>
 
-      <TabBody>
-        <MacMockup />
+      <TabBody data-aos="fade-up" data-aos-delay="100">
         {featuresData.length
           && featuresData.map((data, index) => (
             <TabItem
@@ -135,26 +135,10 @@ const Title = styled.button`
     } */
 
     @media (max-width: 576px) {
-      padding: 20px;
-    }
-`;
-
-const MacMockup = styled.div`
-    background-image: url("/assets/images/macbook-mockup.png");
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1;
-
-    @media (max-width: 576px) {
-      display: none;
+      padding: 10px;
+      height: 10px;
+      font-size: 5px;
+      text-overflow: ellipsis;
     }
 `;
 
@@ -180,25 +164,22 @@ const TabItem = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-    transform: translateY(100%);
-    transition: all 0.3s ease-in-out;
+    display: none;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &.active {
-        transform: translateX(0);
+        display: flex;
     }
 
     &.prev {
-        transform: translateY(-100%);
+        display: none;
     }
+    
 `;
 
 const LargeImageWrapper = styled.div`
-    height: 340px;
-    width: 520px;
+    height: 100%;
+    width: 100%;
 
     @media (max-width: 576px) {
       height: 100%;
@@ -211,6 +192,19 @@ const ImageLarge = styled.img`
     height: 100%;
     width: 100%;
     object-fit: fill;
+    border-radius: 10px;
+    animation: scaleIn 0.2s ease;
+
+    @keyframes scaleIn {
+      0% {
+        display: none;
+        transform: scale(1.05);
+      }
+      100% {
+        display: block;
+        transform: scale(1);
+      }
+    }
 
     @media (max-width: 576px) {
       object-fit: contain;
