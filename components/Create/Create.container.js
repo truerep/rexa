@@ -29,10 +29,10 @@ const CreateContainer = () => {
       title: 'Upload',
       component: <DragAndDrop />
     },
-    // {
-    //   title: 'Linked In',
-    //   component: <ImportFromLinkedIn />
-    // },
+    {
+      title: 'Linked In',
+      component: <ImportFromLinkedIn />
+    },
     {
       title: 'Copy Paste',
       component: <CopyPaste />

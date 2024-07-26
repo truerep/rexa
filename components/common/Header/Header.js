@@ -37,7 +37,7 @@ const Header = ({
           ))
         }
       </Nav>
-      <AddtoChromeBtn target="_blank" href="https://chrome.google.com/webstore/detail/resume-sync/oh" className="btn-primary">
+      <AddtoChromeBtn target="_blank" href="https://chromewebstore.google.com/detail/ai-cv-pro/inkipncofmmbnabhkgoahpagmbakhjcb?authuser=1&hl=en" className="btn-primary">
         <Image src="/assets/icons/chrome-icon.svg" width={20} height={20} alt="chrome-icon" />
         Add to Chrome
       </AddtoChromeBtn>
