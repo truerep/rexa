@@ -11,12 +11,19 @@ import {
 import { useRouter } from 'next/router';
 
 const CreateContainer = () => {
-  const [activeTab, setActiveTab] = useState(2);
+  const tabs = {
+    CREATE: 1,
+    UPLOAD: 2,
+    LINKEDIN: 3,
+    COPY_PASTE: 4
+  }
+
+  const [activeTab, setActiveTab] = useState(tabs.UPLOAD);
   const router = useRouter();
 
   useEffect(() => {
     if (router.query?.tab === 'copy-paste') {
-      setActiveTab(3);
+      setActiveTab(tabs.COPY_PASTE);
     }
   }, [router.query]);
 
