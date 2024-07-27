@@ -29,7 +29,7 @@ const Footer = () => {
         },
         {
           title: 'Chrome extension',
-          url: '#footer'
+          url: 'https://chromewebstore.google.com/detail/ai-cv-pro/inkipncofmmbnabhkgoahpagmbakhjcb?authuser=1&hl=en'
         }
       ]
     },

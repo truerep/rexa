@@ -10,9 +10,7 @@ const ImportFromLinkedIn = () => {
             1. Click on the download link below to download the extension for your browser:
         </h3>
         <ul>
-            <li>Chrome: <a href="http://">Download for Chrome</a></li>
-            <li>Firefox: <a href="http://">Download for Firefox</a></li>
-            <li>Edge: <a href="http://">Download for Edge</a></li>
+            <li>Chrome: <a href="https://chromewebstore.google.com/detail/ai-cv-pro/inkipncofmmbnabhkgoahpagmbakhjcb?authuser=1&hl=en">Download for Chrome</a></li>
         </ul>
         <h3>
             2. Use the Extension
