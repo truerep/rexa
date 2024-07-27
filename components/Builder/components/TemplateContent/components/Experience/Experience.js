@@ -6,7 +6,7 @@ import {
   AddNewSkillSection,
   DeleteBtn,
   InputGroup,
-  Item, ItemContent, ItemIcon, ItemSection, ItemTitle
+  Item, ItemContent, ItemIcon, ItemSection, ItemTitle, SyncBtn
 } from '@/components/common/UiElements';
 
 const Experience = ({
@@ -16,7 +16,8 @@ const Experience = ({
   handleInputChange,
   handleHighlightsChange,
   handleAddHighlight,
-  handleDeleteHighlight
+  handleDeleteHighlight,
+  handleModifyHighlights
 }) => (
   templateData ? (
     <Item>
@@ -37,6 +38,13 @@ const Experience = ({
             <ItemSection>
               <ItemWrapper>
                 <InputGroup className="highlighted">
+                  <SyncBtn
+                    type="button"
+                    className="btn-primary btn-outlined"
+                    onClick={() => handleModifyHighlights(idx)}
+                  >
+                    <img src="/assets/icons/sync-icon-purple.svg" alt="add" />
+                  </SyncBtn>
                   <input
                     value={templateItem?.company}
                     placeholder="Company"

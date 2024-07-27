@@ -5,6 +5,8 @@ import Experience from './Experience';
 import {
   ResumeContext
 } from '@/context/ResumeContext';
+import toast from 'react-hot-toast';
+import { updateWorkSection } from '@/api';
 
 const ExperienceContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
@@ -61,6 +63,29 @@ const ExperienceContainer = () => {
     updateResumeData(updatedResumeData);
   };
 
+  // Modify Hightlights Using Prompt
+  const handleModifyHighlights = async (index) => {
+    const modifiedHighlights = prompt('Enter prompt to improve your work section', 'Modify my work summary according on this Job Description... ');
+    if (modifiedHighlights) {
+      let olderHighlights = resumeData?.templateData?.work[index]?.highlights.join('. ')
+      let payload = {
+        resume: olderHighlights,
+        prompt: modifiedHighlights
+      }
+      try {
+        const res = await updateWorkSection(payload);
+        if (res?.data) {
+          let newHighlights = res.data[0]?.highlights;
+          const updatedResumeData = {...resumeData};
+          updatedResumeData?.templateData?.work[index]?.highlights.splice(0, updatedResumeData?.templateData?.work[index]?.highlights?.length, ...newHighlights);
+          updateResumeData(updatedResumeData);
+        }
+      } catch (error) {
+        toast.error("Error modifying work!")
+      }
+    }
+  }
+
   return (
     <Experience
       templateData={resumeData?.templateData?.work}
@@ -70,6 +95,7 @@ const ExperienceContainer = () => {
       handleHighlightsChange={handleHighlightsChange}
       handleAddHighlight={handleAddHighlight}
       handleDeleteHighlight={handleDeleteHighlight}
+      handleModifyHighlights={handleModifyHighlights}
     />
   );
 };

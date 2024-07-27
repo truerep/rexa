@@ -229,6 +229,14 @@ export const ReMatchBtn = styled(AddNewBtn)`
 
 `;
 
+export const SyncBtn = styled(AddNewBtn)`
+  margin-left: 0;
+  margin-right: 10px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+`;
+
 export const DarkBtn = styled.button`
   background: black;
   color: #fff;
