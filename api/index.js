@@ -7,7 +7,7 @@ import {
   updateResume,
   deleteResume,
   downloadOriginalResume,
-  updateWorkSection
+  updateSection
 } from './Resume';
 
 import {
@@ -24,7 +24,7 @@ export {
   updateResume,
   deleteResume,
   downloadOriginalResume,
-  updateWorkSection,
+  updateSection,
 
   getUserData,
   getUserResumes

@@ -4,10 +4,10 @@ import {
   appEnv
 } from '@/helpers';
 
-const updateWorkSection = async (payload) => {
+const updateSection = async (payload, section) => {
   const config = {
     method: 'post',
-    url: `${appEnv.API_URL}/api/send-resume/generate-resume-section/work`,
+    url: `${appEnv.API_URL}/api/send-resume/generate-resume-section/${section}`,
     data: payload,
   };
 
@@ -15,4 +15,4 @@ const updateWorkSection = async (payload) => {
   return res;
 };
 
-export default updateWorkSection;
+export default updateSection;
