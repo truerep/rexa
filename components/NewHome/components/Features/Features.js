@@ -100,9 +100,8 @@ const TitlesWrapper = styled.div`
     }
 
     @media (max-width: 576px) {
-      white-space: pre;
-      overflow: scroll;
-
+      flex-direction: row;
+      justify-content: space-between;
       &::after {
         content: unset;
       }
@@ -130,15 +129,22 @@ const Title = styled.button`
         background-color: ${colors.Lavender}
     }
 
-    /* &:hover {
-        color: ${colors.GhostWhite};
-    } */
+    @media (max-width: 992px) {
+      padding: 15px;
+      height: 55px;
+      font-size: 10px;
+      white-space: normal;
+      text-overflow: ellipsis;
+    }
 
     @media (max-width: 576px) {
       padding: 10px;
-      height: 10px;
+      height: 40px;
       font-size: 5px;
+      margin: 0 3px;
       text-overflow: ellipsis;
+      text-align: center;
+      white-space: normal;
     }
 `;
 
@@ -152,6 +158,7 @@ const TabBody = styled.div`
     flex: 5;
 
     @media (max-width: 576px) {
+      margin: 0;
       width: 100%;
       height: unset;
       box-sizing: border-box;
