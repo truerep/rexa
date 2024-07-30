@@ -1,5 +1,5 @@
 import React, {
-  useContext
+  useContext, useState
 } from 'react';
 import Experience from './Experience';
 import {
@@ -10,6 +10,9 @@ import { updateSection } from '@/api';
 
 const ExperienceContainer = () => {
   const { resumeData, updateResumeData } = useContext(ResumeContext);
+  const [showPromptModal, setShowPromptModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [promptText, setPromptText] = useState('');
 
   // Add New Experience Section
   const addNewExperienceSection = () => {
@@ -65,12 +68,14 @@ const ExperienceContainer = () => {
 
   // Modify Hightlights Using Prompt
   const handleModifyHighlights = async (index) => {
-    const modifiedHighlights = prompt('Enter prompt to improve your work section', 'Modify my work summary according on this Job Description... ');
-    if (modifiedHighlights) {
+    if (promptText.length > 0) {setIsLoading(true);
+      toast.loading('Modifying resume...', {
+        id: 'modifying-resume'
+      });
       let olderHighlights = resumeData?.templateData?.work[index]?.highlights.join(', ')
       let payload = {
         resume: olderHighlights,
-        prompt: modifiedHighlights
+        prompt: promptText
       }
       try {
         const res = await updateSection(payload, 'work');
@@ -80,8 +85,17 @@ const ExperienceContainer = () => {
           updatedResumeData?.templateData?.work[index]?.highlights.splice(0, updatedResumeData?.templateData?.work[index]?.highlights?.length, ...newHighlights);
           updateResumeData(updatedResumeData);
         }
-      } catch (error) {
-        toast.error("Error modifying work!")
+        toast.success('Resume modified!', {
+          id: 'modifying-resume'
+        });
+      } catch (err) {
+        toast.error(err?.response?.data?.message ?? 'Error modifying resume!', {
+          id: 'modifying-resume'
+        });
+      } finally {
+        setIsLoading(false);
+        setShowPromptModal(false);
+        setPromptText('');
       }
     }
   }
@@ -96,6 +110,12 @@ const ExperienceContainer = () => {
       handleAddHighlight={handleAddHighlight}
       handleDeleteHighlight={handleDeleteHighlight}
       handleModifyHighlights={handleModifyHighlights}
+      showPromptModal={showPromptModal}
+      setShowPromptModal={setShowPromptModal}
+      isLoading={isLoading}
+      setIsLoading={setIsLoading}
+      promptText={promptText}
+      setPromptText={setPromptText}
     />
   );
 };
