@@ -6,6 +6,7 @@ import getResumeData from './getResumeData';
 import updateResume from './updateResume';
 import deleteResume from './deleteResume';
 import downloadOriginalResume from './downloadOriginalResume';
+import updateSection from './updateSection';
 
 export {
   getResumeText,
@@ -15,5 +16,6 @@ export {
   getResumeData,
   updateResume,
   deleteResume,
-  downloadOriginalResume
+  downloadOriginalResume,
+  updateSection
 };

@@ -25,7 +25,7 @@ const Footer = () => {
       links: [
         {
           title: 'Web app',
-          url: '#footer'
+          url: '/create'
         },
         {
           title: 'Chrome extension',
@@ -69,7 +69,7 @@ const Footer = () => {
               Capture thoughts effortlessly, organize seamlessly: your resume, your way.
             </InfoLine>
             <GetStartedButton>
-              <a href="#header">Get Started</a>
+              <a href="/create">Get Started</a>
             </GetStartedButton>
           </TopBox>
           <BottomBox>

@@ -62,6 +62,10 @@ const CardsWrapper = styled.div`
   gap: 20px;
   padding-top: 70px;
 
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   @media (max-width: 576px) {
     padding-top: 40px;
     grid-template-columns: repeat(1, 1fr);
