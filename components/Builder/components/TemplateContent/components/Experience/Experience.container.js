@@ -13,6 +13,7 @@ const ExperienceContainer = () => {
   const [showPromptModal, setShowPromptModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [promptText, setPromptText] = useState('');
+  const [currentWorkIndex, setCurrentWorkIndex] = useState(0)
 
   // Add New Experience Section
   const addNewExperienceSection = () => {
@@ -67,12 +68,13 @@ const ExperienceContainer = () => {
   };
 
   // Modify Hightlights Using Prompt
-  const handleModifyHighlights = async (index) => {
-    if (promptText.length > 0) {setIsLoading(true);
+  const handleModifyHighlights = async () => {
+    if (promptText.length > 0) {
+      setIsLoading(true);
       toast.loading('Modifying resume...', {
         id: 'modifying-resume'
       });
-      let olderHighlights = resumeData?.templateData?.work[index]?.highlights.join(', ')
+      let olderHighlights = resumeData?.templateData?.work[currentWorkIndex]?.highlights.join(', ')
       let payload = {
         resume: olderHighlights,
         prompt: promptText
@@ -82,7 +84,7 @@ const ExperienceContainer = () => {
         if (res?.data) {
           let newHighlights = res.data[0]?.highlights;
           const updatedResumeData = { ...resumeData };
-          updatedResumeData?.templateData?.work[index]?.highlights.splice(0, updatedResumeData?.templateData?.work[index]?.highlights?.length, ...newHighlights);
+          updatedResumeData?.templateData?.work[currentWorkIndex]?.highlights.splice(0, updatedResumeData?.templateData?.work[currentWorkIndex]?.highlights?.length, ...newHighlights);
           updateResumeData(updatedResumeData);
         }
         toast.success('Resume modified!', {
@@ -116,6 +118,7 @@ const ExperienceContainer = () => {
       setIsLoading={setIsLoading}
       promptText={promptText}
       setPromptText={setPromptText}
+      setCurrentWorkIndex={setCurrentWorkIndex}
     />
   );
 };
