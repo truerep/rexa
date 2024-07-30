@@ -23,9 +23,9 @@ const Experience = ({
   showPromptModal,
   setShowPromptModal,
   isLoading,
-  setIsLoading,
   promptText,
-  setPromptText
+  setPromptText,
+  setCurrentWorkIndex
 }) => (
   templateData ? (
     <Item>
@@ -44,35 +44,14 @@ const Experience = ({
         {
           templateData.length ? templateData.map((templateItem, idx) => (
             <ItemSection>
-              <Modal
-                showModal={showPromptModal}
-                setShowModal={setShowPromptModal}
-              >
-                <PromptWrapper>
-                  <TextArea
-                    value={promptText}
-                    onChange={(e) => setPromptText(e.target.value)}
-                    placeholder="Ex. Modify my work summary according on this Job Description..."
-                  />
-                  <Actions>
-                    <button
-                      disabled={isLoading}
-                      type="button"
-                      onClick={() => handleModifyHighlights(idx)}
-                      className={`${isLoading || promptText.length < 1 ? 'disabled' : ''} btn-primary`}
-                    >
-                      Update Resume
-                    </button>
-                  </Actions>
-                </PromptWrapper>
-              </Modal>
               <ItemWrapper>
                 <InputGroup className="highlighted">
                   <SyncBtn
                     type="button"
                     className="btn-primary btn-outlined"
                     onClick={() => {
-                      setShowPromptModal(true); 
+                      setCurrentWorkIndex(idx);
+                      setShowPromptModal(true);  
                       // handleModifyHighlights(idx)
                     }}
                   >
@@ -171,6 +150,28 @@ const Experience = ({
           <span>Experience</span>
         </button>
       </AddNewSkillSection>
+      <Modal
+        showModal={showPromptModal}
+        setShowModal={setShowPromptModal}
+      >
+        <PromptWrapper>
+          <TextArea
+            value={promptText}
+            onChange={(e) => setPromptText(e.target.value)}
+            placeholder="Ex. Modify my work summary according on this Job Description..."
+          />
+          <Actions>
+            <button
+              disabled={isLoading}
+              type="button"
+              onClick={handleModifyHighlights}
+              className={`${isLoading || promptText.length < 1 ? 'disabled' : ''} btn-primary`}
+            >
+              Update Resume
+            </button>
+          </Actions>
+        </PromptWrapper>
+      </Modal>
     </Item>
   ) : ('')
 );
