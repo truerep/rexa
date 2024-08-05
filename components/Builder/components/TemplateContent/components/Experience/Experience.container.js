@@ -1,5 +1,5 @@
 import React, {
-  useContext, useState
+  useContext, useRef, useState
 } from 'react';
 import Experience from './Experience';
 import {
@@ -13,10 +13,14 @@ const ExperienceContainer = () => {
   const [showPromptModal, setShowPromptModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [promptText, setPromptText] = useState('');
-  const [currentWorkIndex, setCurrentWorkIndex] = useState(0)
+  const [currentWorkIndex, setCurrentWorkIndex] = useState(0);
+  const experienceRef = useRef(null);
 
   // Add New Experience Section
   const addNewExperienceSection = () => {
+    toast.loading('Adding Experience...', {
+      id: 'adding-experience'
+    });
     const updatedResumeData = { ...resumeData };
     updatedResumeData.templateData.work.push({
       company: 'Company Name',
@@ -30,13 +34,30 @@ const ExperienceContainer = () => {
       ]
     });
     updateResumeData(updatedResumeData);
+    setTimeout(() => {
+      if (experienceRef.current) {
+        experienceRef.current.scrollTo({
+          top: experienceRef.current.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }, 500);
+    toast.success('Experience added!', {
+      id: 'adding-experience'
+    });
   };
 
   // Remove Experience Section
   const handleDeleteWorkSection = (index) => {
+    toast.loading('Removing Experience...', {
+      id: 'removing-experience'
+    });
     const updatedResumeData = { ...resumeData };
     updatedResumeData.templateData.work.splice(index, 1);
     updateResumeData(updatedResumeData);
+    toast.success('Experience Removed!', {
+      id: 'removing-experience'
+    });
   };
 
   // Update data from Input fields
@@ -105,6 +126,7 @@ const ExperienceContainer = () => {
   return (
     <Experience
       templateData={resumeData?.templateData?.work}
+      experienceRef={experienceRef}
       addNewExperienceSection={addNewExperienceSection}
       handleDeleteWorkSection={handleDeleteWorkSection}
       handleInputChange={handleInputChange}

@@ -13,6 +13,7 @@ import { colors } from '@/helpers';
 
 const Experience = ({
   templateData,
+  experienceRef,
   addNewExperienceSection,
   handleDeleteWorkSection,
   handleInputChange,
@@ -40,7 +41,7 @@ const Experience = ({
           <img src="/assets/icons/plus-icon-dark.svg" alt="add" />
         </AddNewBtn>
       </ItemTitle>
-      <ItemContent>
+      <ItemContent ref={experienceRef}>
         {
           templateData.length ? templateData.map((templateItem, idx) => (
             <ItemSection>
@@ -160,6 +161,19 @@ const Experience = ({
             onChange={(e) => setPromptText(e.target.value)}
             placeholder="Ex. Modify my work summary according on this Job Description..."
           />
+          <HintsWrapper>
+            <HintSectionTitle>Sample prompts</HintSectionTitle>
+            <HintItem 
+              onClick={() => setPromptText('Modify my work highlights based on this Job Description... "[Paste Job Description here]"')}
+            >
+              Modify my work highlights based on this Job Description... "[Paste Job Description here]"
+            </HintItem>
+            <HintItem 
+              onClick={() => setPromptText('Enhance my work section based on...')}
+            >
+              Enhance my work section based on...
+            </HintItem>
+          </HintsWrapper>
           <Actions>
             <button
               disabled={isLoading}
@@ -206,6 +220,48 @@ const TextArea = styled.textarea`
 
     &:active {
         border-color: ${colors.HanPurple};
+    }
+`;
+
+const HintsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0 10px;
+    max-width: 450px;
+`;
+
+const HintSectionTitle = styled.h3`
+    padding-bottom: 2px;
+    font-weight: 500;
+`;
+
+const HintItem = styled.div`
+    background-color: ${colors.GhostWhite};
+    border: 1px solid ${colors.LightLavender};
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    white-space: pre;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 50px;
+      background-image: linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0.9),rgba(255,255,255,0.7),rgba(255,255,255,0));
+      pointer-events: none;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    &:hover {
+      background: ${colors.LightLavender};
+      color: ${colors.HanPurple};
     }
 `;
 
