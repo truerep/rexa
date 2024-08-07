@@ -182,12 +182,6 @@ const HeaderContainer = () => {
   }, [router]);
 
   useEffect(() => {
-    if (router.query?.jobDescription === 'copy-paste') {
-      setShowJdModal(true);
-    }
-  }, [router.query]);
-
-  useEffect(() => {
     if (resumeData?.templateName) {
       setResumeName(resumeData.templateName);
     }

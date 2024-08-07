@@ -5,31 +5,18 @@ import {
 } from '@/helpers';
 
 const JdModal = ({
-  redirectToCreateResumePage,
   isLoading,
   jobDescription,
   setJobDescription,
-  ref,
-  modifyResume,
-  resumeData
+  modifyResume
 }) => (
   <Wrapper>
     <TextArea
       value={jobDescription}
       onChange={(e) => setJobDescription(e.target.value)}
       placeholder="Enter job description || Copy paste"
-      ref={ref}
     />
     <Actions>
-      {!resumeData?.resumeString && (
-        <button
-          type="button"
-          onClick={redirectToCreateResumePage}
-          className="btn-primary"
-        >
-          Create Resume
-        </button>
-      )}
       <button
         disabled={isLoading}
         type="button"
@@ -66,8 +53,6 @@ const TextArea = styled.textarea`
 `;
 
 const Actions = styled.div`
-    display: flex;
-    justify-content: space-between;
     padding-top: 20px;
     text-align: right;
 
