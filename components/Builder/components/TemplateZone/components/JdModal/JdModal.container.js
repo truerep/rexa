@@ -15,7 +15,7 @@ const JdModalContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [jobDescription, setJobDescription] = useState('');
   const {resumeData, updateResumeData} = useContext(ResumeContext);
-
+  
   const modifyResume = async () => {
     try {
       setIsLoading(true);

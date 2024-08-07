@@ -6,8 +6,18 @@ import {
   TemplateContent,
   TemplateZone
 } from './components';
+import { colors } from '@/helpers';
+import { Modal } from '../common';
 
-const Builder = ({handlePreview, togglePreview}) => (
+const Builder = ({
+  userResumes,
+  toggleResumesList,
+  setToggleResumesList,
+  isLoading,
+  handleGeneratingResume,
+  handlePreview, 
+  togglePreview
+}) => (
   <Wrapper onClick={handlePreview}>
     <Header />
     <EditorSection className={togglePreview ? 'overflow-hidden' : ''}>
@@ -15,6 +25,26 @@ const Builder = ({handlePreview, togglePreview}) => (
       <TemplateZone />
       <TemplateContent />
     </EditorSection>
+    <Modal
+        showModal={toggleResumesList}
+        setShowModal={setToggleResumesList}
+      >
+        <ResumesListWrapper>
+          <SectionTitle>Select resume to start with...</SectionTitle>
+          <ResumeList>
+            {
+              userResumes.map((resume, idx) => (
+                <ResumeNameItem 
+                  key={resume._id}
+                  onClick={() => handleGeneratingResume(idx)}
+                >
+                  {resume.name}
+                </ResumeNameItem>
+              ))
+            }
+          </ResumeList>
+        </ResumesListWrapper>
+      </Modal>
   </Wrapper>
 );
 
@@ -43,6 +73,33 @@ const EditorSection = styled.div`
   @media print {
     height: unset;
   }
+`;
+
+const ResumesListWrapper = styled.div`
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+`;
+
+const SectionTitle = styled.h4`
+    font-size: 14px;
+    color: ${colors.ErrieBlack};
+    padding: 10px 50px 10px 10px;
+`;
+
+const ResumeList = styled.div`
+    max-height: 350px;
+    overflow: auto;
+`;
+
+const ResumeNameItem = styled.div`
+    padding: 10px 15px;
+    border: 1px solid ${colors.GhostWhite};
+    cursor: pointer;
+
+    &:hover {
+      background: ${colors.GhostWhite};
+    }
 `;
 
 export default Builder;
