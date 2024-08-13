@@ -30,7 +30,6 @@ const BuilderContainer = () => {
       setToggleResumesList(false)
       let storedJobDescription = typeof window !== 'undefined' && window.sessionStorage.getItem('jobDescription');
       const res = await getModifiedResume(userResumes[index].rawData, storedJobDescription)
-      console.log(res);
       if (res?.basics) {
         toast.success('Resume generated!', {
           id: 'modifying-resume'
@@ -131,16 +130,13 @@ const BuilderContainer = () => {
 
   const handleUploadedResume = async () => {
     setIsLoading(true);
-    console.log("here")
     try {
       toast.loading('Uploading resume...', {
         id: 'uploading-resume'
       });
       const res = await getResumeText(file);
-      console.log(res, "<---res")
 
       if (res) {
-        console.log(res, "<---res")
         toast.success('Resume uploaded!', {
           id: 'uploading-resume'
         });
@@ -148,7 +144,6 @@ const BuilderContainer = () => {
         let storedJobDescription = typeof window !== 'undefined' && window.sessionStorage.getItem('jobDescription');
         const resumeString = res?.text
         const resModifiedResume = await getModifiedResume(JSON.stringify(resumeString), storedJobDescription)
-        console.log(resModifiedResume);
         if (resModifiedResume?.basics) {
           toast.success('Resume generated!', {
             id: 'modifying-resume'
