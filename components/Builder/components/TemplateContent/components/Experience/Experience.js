@@ -52,7 +52,7 @@ const Experience = ({
                     className="btn-primary btn-outlined"
                     onClick={() => {
                       setCurrentWorkIndex(idx);
-                      setShowPromptModal(true);  
+                      setShowPromptModal(true);
                       // handleModifyHighlights(idx)
                     }}
                   >
@@ -74,9 +74,9 @@ const Experience = ({
               <ItemWrapper>
                 <InputGroup>
                   <input
-                    value={templateItem?.website}
-                    placeholder="http://mycompany.com"
-                    onChange={(e) => handleInputChange(idx, 'website', e.target.value)}
+                    value={templateItem?.position}
+                    placeholder="Position"
+                    onChange={(e) => handleInputChange(idx, 'position', e.target.value)}
                   />
                 </InputGroup>
               </ItemWrapper>
@@ -163,12 +163,12 @@ const Experience = ({
           />
           <HintsWrapper>
             <HintSectionTitle>Sample prompts</HintSectionTitle>
-            <HintItem 
+            <HintItem
               onClick={() => setPromptText('Modify my work highlights based on this Job Description... "[Paste Job Description here]"')}
             >
               Modify my work highlights based on this Job Description... "[Paste Job Description here]"
             </HintItem>
-            <HintItem 
+            <HintItem
               onClick={() => setPromptText('Enhance my work section based on...')}
             >
               Enhance my work section based on...
