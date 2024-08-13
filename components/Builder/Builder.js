@@ -31,24 +31,31 @@ const Builder = ({
         setShowModal={setToggleResumesList}
       >
         <ResumesListWrapper>
-            <BrowseFileBtn className="btn-primary btn-outlined">
-              <input type="file"  onChange={handleFileUpload} />
-              Upload Resume
-            </BrowseFileBtn>
-            <OrText>OR</OrText>
-          <SectionTitle>Select resume to start with...</SectionTitle>
-          <ResumeList>
-            {
-              userResumes.map((resume, idx) => (
-                <ResumeNameItem 
-                  key={resume._id}
-                  onClick={() => handleGeneratingResume(idx)}
-                >
-                  {resume.name}
-                </ResumeNameItem>
-              ))
-            }
-          </ResumeList>
+          <BrowseFileBtn className="btn-primary btn-outlined">
+            <input type="file"  onChange={handleFileUpload} />
+            Upload Resume
+          </BrowseFileBtn>
+          {
+            userResumes.length > 0 ? (
+              <>
+                <OrText>OR</OrText>
+                <SectionTitle>Select resume to start with...</SectionTitle>
+                <ResumeList>
+                  {
+                    userResumes.map((resume, idx) => (
+                      <ResumeNameItem 
+                        key={resume._id}
+                        onClick={() => handleGeneratingResume(idx)}
+                      >
+                        {resume.name}
+                      </ResumeNameItem>
+                    ))
+                  }
+                </ResumeList>
+              </>
+            ) : ('')
+          }
+          
         </ResumesListWrapper>
       </Modal>
   </Wrapper>
