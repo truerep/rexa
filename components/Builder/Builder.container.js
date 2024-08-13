@@ -13,13 +13,14 @@ import {
 } from '@/context/ResumeContext';
 import {
   getModifiedResume,
-  getResumeData, getUserResumes
+  getResumeData, getResumeText, getUserResumes
 } from '@/api';
 
 const BuilderContainer = () => {
   const [toggleResumesList, setToggleResumesList] = useState(false);
   const [userResumes, setUserResumes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [file, setFile] = useState(null);
 
   const router = useRouter();
   const {resumeData, updateResumeData} = useContext(ResumeContext);
@@ -116,12 +117,66 @@ const BuilderContainer = () => {
     }
   };
 
+  const handleFileUpload = (e) => {
+    const newFile = e.target.files[0];
+    setFile(newFile);
+  }
+
+  useEffect(() => {
+    if(file !== null) {
+      handleUploadedResume();
+    }
+  }, [file])
+  
+
+  const handleUploadedResume = async () => {
+    setIsLoading(true);
+    console.log("here")
+    try {
+      toast.loading('Uploading resume...', {
+        id: 'uploading-resume'
+      });
+      const res = await getResumeText(file);
+      console.log(res, "<---res")
+
+      if (res) {
+        console.log(res, "<---res")
+        toast.success('Resume uploaded!', {
+          id: 'uploading-resume'
+        });
+        setToggleResumesList(false)
+        let storedJobDescription = typeof window !== 'undefined' && window.sessionStorage.getItem('jobDescription');
+        const resumeString = res?.text
+        const resModifiedResume = await getModifiedResume(JSON.stringify(resumeString), storedJobDescription)
+        console.log(resModifiedResume);
+        if (resModifiedResume?.basics) {
+          toast.success('Resume generated!', {
+            id: 'modifying-resume'
+          });
+          updateResumeData((prevState) => {
+            return {
+              ...prevState,
+              templateData: resModifiedResume
+            };
+          });
+        }
+      }
+    } catch (err) {
+      toast.error(err?.response?.data?.message ?? 'Something went wrong uploading resume!', {
+        id: 'uploading-resume'
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <Builder 
       userResumes={userResumes}
       toggleResumesList={toggleResumesList}
       setToggleResumesList={setToggleResumesList}
       isLoading={isLoading}
+      handleFileUpload={handleFileUpload}
       handleGeneratingResume={handleGeneratingResume}
       handlePreview={handlePreview} 
       togglePreview={resumeData?.togglePreview} 
