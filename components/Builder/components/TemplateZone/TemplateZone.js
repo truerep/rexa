@@ -8,12 +8,18 @@ import {
 } from '@/context/ResumeContext';
 import TemplateRender from './TemplateRender';
 import {
-  Loader,
   Modal
 } from '@/components/common';
 import {
   JdModal
 } from './components';
+
+// animations
+import Lottie from "lottie-react";
+
+import {
+  one, two, three, four, five, six, seven, eight
+} from '@/components/common/animations';
 
 const TemplateZone = ({
   showJdModal,
@@ -26,7 +32,11 @@ const TemplateZone = ({
     setTemplateId(resumeData.templateId);
   }, [resumeData]);
 
-  const animationName = () => { return "assets/animations/" + (Math.floor(Math.random() * 5) + 1) + ".gif"; };
+  const animationName = () => {
+    const animations = [one, two, three, four, five, six, seven, eight];
+    const random = Math.floor(Math.random() * animations.length);
+    return animations[random];
+  };
 
   return (
     <Wrapper className={resumeData?.togglePreview ? 'scaleup' : ''}>
@@ -60,7 +70,7 @@ const TemplateZone = ({
           </>
         ) : (
           <LoaderWrapper>
-            <LoaderImg src={animationName()} alt="loading..." />
+            <Lottie animationData={animationName()} loop autoplay />
           </LoaderWrapper>
         )
       }
