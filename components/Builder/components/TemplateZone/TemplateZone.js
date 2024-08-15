@@ -20,11 +20,13 @@ const TemplateZone = ({
   setShowJdModal
 }) => {
   const [templateId, setTemplateId] = useState();
-  const {resumeData} = useContext(ResumeContext);
+  const { resumeData } = useContext(ResumeContext);
 
   useEffect(() => {
     setTemplateId(resumeData.templateId);
   }, [resumeData]);
+
+  const animationName = () => { return "assets/animations/" + (Math.floor(Math.random() * 5) + 1) + ".gif"; };
 
   return (
     <Wrapper className={resumeData?.togglePreview ? 'scaleup' : ''}>
@@ -58,8 +60,7 @@ const TemplateZone = ({
           </>
         ) : (
           <LoaderWrapper>
-            <Loader />
-            {/* <LoaderImg src="https://cdn.dribbble.com/users/171267/screenshots/2454901/fileloading.gif" alt="loading..." /> */}
+            <LoaderImg src={animationName()} alt="loading..." />
           </LoaderWrapper>
         )
       }
@@ -130,11 +131,12 @@ const LoaderWrapper = styled.div`
     min-height: 500px;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
 `;
 
 const LoaderImg = styled.img`
-  width: 60%;
+  width: 15%;
 `;
 
 export default TemplateZone;
