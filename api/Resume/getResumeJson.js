@@ -26,7 +26,6 @@ const dummy = {
       website: 'None',
       startDate: 'April 2023',
       endDate: 'Present',
-      summary: 'Developed robust Progressive Web Applications (PWAs) for insurance systems, designed and implemented a cutting-edge stock trading terminal, and contributed to the development of a mutual funds transactions system.',
       highlights: [
         'Implemented responsive and user-friendly interfaces for insurance systems',
         'Engineered intuitive interfaces with real-time data updates for stock trading terminal',
@@ -39,7 +38,6 @@ const dummy = {
       website: 'None',
       startDate: 'December 2022',
       endDate: 'February 2023',
-      summary: 'Led the design and development of a stock screener project, achieving seamless integration of user-friendly interfaces with robust functionality.',
       highlights: [
         'Successfully implemented responsive design principles and real-time data updates',
         'Independently managed the project'
@@ -51,7 +49,6 @@ const dummy = {
       website: 'None',
       startDate: 'May 2022',
       endDate: 'December 2022',
-      summary: 'Spearheaded the development of responsive and visually appealing user interfaces using HTML, CSS, and JavaScript.',
       highlights: [
         'Developed a responsive and visually appealing website for a client',
         'Independently managed the project'

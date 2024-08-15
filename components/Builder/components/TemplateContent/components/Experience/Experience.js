@@ -100,16 +100,6 @@ const Experience = ({
                   </InputGroup>
                 </ItemWrapper>
               </div>
-              <ItemWrapper>
-                <InputGroup>
-                  <textarea
-                    value={templateItem?.summary}
-                    placeholder="Work Summary"
-                    onChange={(e) => handleInputChange(idx, 'summary', e.target.value)}
-                  />
-                </InputGroup>
-              </ItemWrapper>
-
               {
                 templateItem?.highlights && templateItem?.highlights?.map((highlight, hIdx) => (
                   <ItemWrapper>
