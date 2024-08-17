@@ -70,7 +70,10 @@ const TemplateZone = ({
           </>
         ) : (
           <LoaderWrapper>
-            <Lottie animationData={animationName()} loop autoplay />
+            <Lottie animationData={animationName()} loop autoplay
+              style={{
+                width: '40%',
+              }} />
           </LoaderWrapper>
         )
       }
@@ -145,8 +148,5 @@ const LoaderWrapper = styled.div`
     justify-content: center;
 `;
 
-const LoaderImg = styled.img`
-  width: 15%;
-`;
 
 export default TemplateZone;

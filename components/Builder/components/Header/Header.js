@@ -37,10 +37,12 @@ const Header = ({
   setShowJdModal,
   togglePreview,
   handleRouteToDashboard,
+  resumeDataExists,
+  handleSaveResume
 }) => {
 
   return (
-    <Wrapper className={togglePreview ? 'hide' : ''}>
+    <Wrapper className={togglePreview || resumeDataExists ? 'hide' : ''}>
       <TemplateNameWrapper>
         <BackBtn onClick={handleRouteToDashboard}>
           <Tooltip title="Dashboard">
@@ -52,6 +54,7 @@ const Header = ({
             onChange={(e) => setResumeName(e.target.value)}
             placeholder="Resume Name"
             value={resumeName}
+            onKeyDown={(e) => e.key === 'Enter' && handleSaveResume()}
           />
         </InputWrapper>
       </TemplateNameWrapper>

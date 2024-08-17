@@ -60,7 +60,7 @@ const HeaderContainer = () => {
       const res = await createResume(payload);
       if (res?.data?._id) {
         toast.success('Resume Saved!');
-        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`);
+        route && router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`);
       } else {
         toast.error('Something went wrong!');
       }
@@ -112,6 +112,8 @@ const HeaderContainer = () => {
     } else {
       createNewResume(payload, route);
     }
+
+    window.sessionStorage.removeItem('resumeString');
   };
 
   const handleRouteToDashboard = async () => {
@@ -206,6 +208,8 @@ const HeaderContainer = () => {
       togglePreview={resumeData?.togglePreview}
       handleRouteToDashboard={handleRouteToDashboard}
       handleRouteToAuth={handleRouteToAuth}
+      resumeDataExists={!resumeData?.resumeString}
+      handleSaveResume={handleSaveResume}
     />
   );
 };
