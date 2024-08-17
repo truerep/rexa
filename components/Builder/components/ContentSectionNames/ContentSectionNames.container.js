@@ -76,12 +76,10 @@ const ContentSectionNamesContainer = () => {
 
   return (
     <ContentSectionNames
-      // sectionNamesList={resumeData && resumeData?.templateData && sectionNamesList.map((sectionName) => (
-      //   Object.keys(resumeData?.templateData).includes(sectionName.id) ? sectionName : null
-      // ))}
       sectionNamesList={sectionNamesList}
       activeSection={resumeData?.contentSectionName}
       togglePreview={resumeData?.togglePreview}
+      resumeDataExists={!resumeData?.resumeString}
     />
   );
 };
