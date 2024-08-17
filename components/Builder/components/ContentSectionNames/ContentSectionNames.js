@@ -5,8 +5,8 @@ import {
   colors
 } from '@/helpers';
 
-const ContentSectionNames = ({ sectionNamesList, activeSection, togglePreview, loading }) => (
-  <Wrapper className={togglePreview || loading ? 'hide' : ''}>
+const ContentSectionNames = ({ sectionNamesList, activeSection, togglePreview }) => (
+  <Wrapper className={togglePreview ? 'hide' : ''}>
     {sectionNamesList?.map((sectionName) => (
       sectionName &&
       <ActionButton

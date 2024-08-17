@@ -106,6 +106,7 @@ const HeaderContainer = () => {
       rawData: resumeData?.resumeString,
       data: JSON.stringify(resumeData?.templateData)
     };
+    
     if (resumeData.resumeId) {
       modifyResume(resumeData.resumeId, payload, route);
     } else {
@@ -205,7 +206,6 @@ const HeaderContainer = () => {
       togglePreview={resumeData?.togglePreview}
       handleRouteToDashboard={handleRouteToDashboard}
       handleRouteToAuth={handleRouteToAuth}
-      loading={resumeData?.loading}
     />
   );
 };
