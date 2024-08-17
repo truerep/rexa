@@ -8,23 +8,35 @@ import {
 } from '@/context/ResumeContext';
 import TemplateRender from './TemplateRender';
 import {
-  Loader,
   Modal
 } from '@/components/common';
 import {
   JdModal
 } from './components';
 
+// animations
+import Lottie from "lottie-react";
+
+import {
+  one, two, three, four, five, six, seven, eight
+} from '@/components/common/animations';
+
 const TemplateZone = ({
   showJdModal,
   setShowJdModal
 }) => {
   const [templateId, setTemplateId] = useState();
-  const {resumeData} = useContext(ResumeContext);
+  const { resumeData } = useContext(ResumeContext);
 
   useEffect(() => {
     setTemplateId(resumeData.templateId);
   }, [resumeData]);
+
+  const animationName = () => {
+    const animations = [one, two, three, four, five, six, seven, eight];
+    const random = Math.floor(Math.random() * animations.length);
+    return animations[random];
+  };
 
   return (
     <Wrapper className={resumeData?.togglePreview ? 'scaleup' : ''}>
@@ -58,8 +70,7 @@ const TemplateZone = ({
           </>
         ) : (
           <LoaderWrapper>
-            <Loader />
-            {/* <LoaderImg src="https://cdn.dribbble.com/users/171267/screenshots/2454901/fileloading.gif" alt="loading..." /> */}
+            <Lottie animationData={animationName()} loop autoplay />
           </LoaderWrapper>
         )
       }
@@ -130,11 +141,12 @@ const LoaderWrapper = styled.div`
     min-height: 500px;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
 `;
 
 const LoaderImg = styled.img`
-  width: 60%;
+  width: 15%;
 `;
 
 export default TemplateZone;

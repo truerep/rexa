@@ -205,6 +205,7 @@ const HeaderContainer = () => {
       togglePreview={resumeData?.togglePreview}
       handleRouteToDashboard={handleRouteToDashboard}
       handleRouteToAuth={handleRouteToAuth}
+      loading={resumeData?.loading}
     />
   );
 };

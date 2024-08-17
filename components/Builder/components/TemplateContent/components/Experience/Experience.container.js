@@ -28,7 +28,6 @@ const ExperienceContainer = () => {
       website: 'http://websiteUrl.com',
       startDate: 'Jan 2015',
       endDate: 'Present',
-      summary: 'A short work summary in this company',
       highlights: [
         'Work information point 1'
       ]

@@ -131,7 +131,6 @@ const TemplateModern = () => {
           <Item key={idx}>
             <ItemTitle>{work?.company}</ItemTitle>
             <ItemSubline>{work?.position}</ItemSubline>
-            <BulletPoints>{work?.summary}</BulletPoints>
             {
               work?.highlights && work?.highlights.map((highlight, hIdx) => (
                 <BulletPoints key={hIdx}>{highlight}</BulletPoints>

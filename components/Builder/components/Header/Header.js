@@ -36,11 +36,12 @@ const Header = ({
   showJdModal,
   setShowJdModal,
   togglePreview,
-  handleRouteToDashboard
+  handleRouteToDashboard,
+  loading
 }) => {
 
   return (
-    <Wrapper className={togglePreview ? 'hide' : ''}>
+    <Wrapper className={togglePreview || loading ? 'hide' : ''}>
       <TemplateNameWrapper>
         <BackBtn onClick={handleRouteToDashboard}>
           <Tooltip title="Dashboard">
