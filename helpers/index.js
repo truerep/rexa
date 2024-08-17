@@ -4,6 +4,7 @@ import checkAuthenticated from './checkAuthenticated';
 import getFormattedDate from './getFormattedDate';
 import { checkImageURLIsValid } from './validator';
 import templateKeys from './templateKeys';
+import { removeDataFromSession } from './removeData';
 
 export {
   colors,
@@ -11,5 +12,6 @@ export {
   checkAuthenticated,
   getFormattedDate,
   checkImageURLIsValid,
-  templateKeys
+  templateKeys,
+  removeDataFromSession
 };
