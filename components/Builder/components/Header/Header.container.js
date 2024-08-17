@@ -107,6 +107,7 @@ const HeaderContainer = () => {
       data: JSON.stringify(resumeData?.templateData)
     };
     
+    
     if (resumeData.resumeId) {
       modifyResume(resumeData.resumeId, payload, route);
     } else {
