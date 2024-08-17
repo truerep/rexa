@@ -38,7 +38,7 @@ const Header = ({
   togglePreview,
   handleRouteToDashboard,
   resumeDataExists,
-  handleSaveResume
+  handleSaveResumeOnBuilderPage
 }) => {
 
   return (
@@ -54,7 +54,7 @@ const Header = ({
             onChange={(e) => setResumeName(e.target.value)}
             placeholder="Resume Name"
             value={resumeName}
-            onKeyDown={(e) => e.key === 'Enter' && handleSaveResume()}
+            onKeyDown={(e) => e.key === 'Enter' && handleSaveResumeOnBuilderPage()}
           />
         </InputWrapper>
       </TemplateNameWrapper>
