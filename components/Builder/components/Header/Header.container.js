@@ -19,6 +19,7 @@ import {
   useOnClickOutside
 } from '@/hooks';
 import { HttpStatusCode } from 'axios';
+import { removeDataFromSession } from '@/helpers';
 
 const HeaderContainer = () => {
   const routeNames = {
@@ -60,7 +61,8 @@ const HeaderContainer = () => {
       const res = await createResume(payload);
       if (res?.data?._id) {
         toast.success('Resume Saved!');
-        route && router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`);
+        route ? router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`) : router.push(`/builder/${res?.data?._id}`);
+        removeDataFromSession('resumeString');
       } else {
         toast.error('Something went wrong!');
       }
@@ -77,7 +79,8 @@ const HeaderContainer = () => {
       const res = await updateResume(resumeId, payload);
       if (res?.status === 200) {
         toast.success('Resume Updated!');
-        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`);
+        route ? router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`) : router.push(`/builder/${res?.data?._id}`);
+        removeDataFromSession('resumeString');
       } else {
         toast.error('Something went wrong!');
       }
@@ -106,15 +109,14 @@ const HeaderContainer = () => {
       rawData: resumeData?.resumeString,
       data: JSON.stringify(resumeData?.templateData)
     };
-    
-    
+
+
     if (resumeData.resumeId) {
       modifyResume(resumeData.resumeId, payload, route);
     } else {
       createNewResume(payload, route);
     }
 
-    window.sessionStorage.removeItem('resumeString');
   };
 
   const handleRouteToDashboard = async () => {
