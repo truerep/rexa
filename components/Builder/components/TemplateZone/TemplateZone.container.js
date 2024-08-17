@@ -24,7 +24,6 @@ const TemplateZoneContainer = () => {
         updateResumeData((prevState) => {
           return {
             ...prevState,
-            loading: false,
             resumeString,
             templateData: res
           };

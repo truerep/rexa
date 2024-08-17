@@ -175,7 +175,6 @@ const BuilderContainer = () => {
       handleGeneratingResume={handleGeneratingResume}
       handlePreview={handlePreview} 
       togglePreview={resumeData?.togglePreview} 
-      loading={resumeData?.loading}
     />
   );
 };

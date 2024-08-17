@@ -82,7 +82,6 @@ const ContentSectionNamesContainer = () => {
       sectionNamesList={sectionNamesList}
       activeSection={resumeData?.contentSectionName}
       togglePreview={resumeData?.togglePreview}
-      loading={resumeData?.loading}
     />
   );
 };

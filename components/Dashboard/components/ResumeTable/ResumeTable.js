@@ -45,14 +45,15 @@ const ResumeTable = ({
               setToggleCreateOptions(!toggleCreateOptions)
             } else {
               setToggleCreate(true)
-            }}} 
+            }
+          }}
             className="btn-primary btn-outlined">
             <img src="/assets/icons/plus-icon-purple.svg" alt="create-new" />
             <span>Create New</span>
           </Button>
           <Dropdown className={toggleCreateOptions ? 'active' : ''}>
-            <button onClick={() => {setToggleCreateOptions(false);setToggleCreate(true);}}>Start New</button>
-            <button onClick={() => {setToggleCreateOptions(false);setToggleResumesList(true);}}>Copy Existing</button>
+            <button onClick={() => { setToggleCreateOptions(false); setToggleCreate(true); }}>Start New</button>
+            <button onClick={() => { setToggleCreateOptions(false); setToggleResumesList(true); }}>Copy Existing</button>
           </Dropdown>
         </CreateResumeOptions>
       </Header>
@@ -95,7 +96,7 @@ const ResumeTable = ({
                   -
                 </td>
                 <td>
-                  <a 
+                  <a
                     className='hover-underline'
                     onClick={() => handleDownloadOriginalResume(resume?.resumeUrl)}
                   >
@@ -104,17 +105,17 @@ const ResumeTable = ({
                 </td>
                 <td>
                   <MenuWrapper>
-                  <MenuBtn onClick={() => {activeMenuIdx === idx ? setActiveMenuIdx(-1) : setActiveMenuIdx(idx)}}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </MenuBtn>
-                  <Dropdown className={activeMenuIdx === idx ? 'active' : ''}>
-                    <a href={`/resume/${resume?._id}?download`} target="_blank" rel="noreferrer">Download</a>
-                    <button onClick={() => {setActiveMenuIdx(-1); router.push(`/builder/${resume?._id}`)}}>Edit</button>
-                    <button onClick={() => {setActiveMenuIdx(-1); handleDuplicatingResume(resume?._id)}}>Duplicate</button>
-                    <button onClick={() => {setActiveMenuIdx(-1); handleDeleteResume(resume?._id)}}>Delete</button>
-                  </Dropdown>
+                    <MenuBtn onClick={() => { activeMenuIdx === idx ? setActiveMenuIdx(-1) : setActiveMenuIdx(idx) }}>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </MenuBtn>
+                    <Dropdown className={activeMenuIdx === idx ? 'active' : ''}>
+                      <a href={`/resume/${resume?._id}?download`} target="_blank" rel="noreferrer">Download</a>
+                      <button onClick={() => { setActiveMenuIdx(-1); router.push(`/builder/${resume?._id}`) }}>Edit</button>
+                      <button onClick={() => { setActiveMenuIdx(-1); handleDuplicatingResume(resume?._id) }}>Duplicate</button>
+                      <button onClick={() => { setActiveMenuIdx(-1); handleDeleteResume(resume?._id) }}>Delete</button>
+                    </Dropdown>
                   </MenuWrapper>
                   {/* <ActionsWrapper>
                     <Button
@@ -161,7 +162,7 @@ const ResumeTable = ({
           <ResumeList>
             {
               userResumes.map((resume) => (
-                <ResumeNameItem 
+                <ResumeNameItem
                   key={resume._id}
                   onClick={() => handleDuplicatingResume(resume._id)}
                 >
