@@ -61,7 +61,7 @@ const HeaderContainer = () => {
       const res = await createResume(payload);
       if (res?.data?._id) {
         toast.success('Resume Saved!');
-        route ? router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`) : router.push(`/builder/${res?.data?._id}`);
+        router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`);
         removeDataFromSession('resumeString');
       } else {
         toast.error('Something went wrong!');
@@ -79,7 +79,7 @@ const HeaderContainer = () => {
       const res = await updateResume(resumeId, payload);
       if (res?.status === 200) {
         toast.success('Resume Updated!');
-        route ? router.push(route === routeNames.builder ? `/${route}/${res?.data?._id}` : `/${route}`) : router.push(`/builder/${res?.data?._id}`);
+        route === routeNames.dashboard && router.push(`/${route}`);
         removeDataFromSession('resumeString');
       } else {
         toast.error('Something went wrong!');
@@ -123,6 +123,10 @@ const HeaderContainer = () => {
     await handleSaveResume(routeNames.dashboard);
   };
 
+  const handleSaveResumeOnBuilderPage = async () => {
+    await handleSaveResume(routeNames.builder);
+  };
+
   const handlePreview = () => {
     const newResumeData = {
       ...resumeData,
@@ -152,7 +156,7 @@ const HeaderContainer = () => {
       tooltip: 'Preview '
     },
     {
-      handleClick: () => handleSaveResume(routeNames.builder),
+      handleClick: () => handleSaveResumeOnBuilderPage(),
       name: 'Save',
       iconUrl: '/assets/icons/save-icon.svg',
       tooltip: 'Save Template'
@@ -212,7 +216,7 @@ const HeaderContainer = () => {
       handleRouteToDashboard={handleRouteToDashboard}
       handleRouteToAuth={handleRouteToAuth}
       resumeDataExists={!resumeData?.resumeString}
-      handleSaveResume={handleSaveResume}
+      handleSaveResumeOnBuilderPage={handleSaveResumeOnBuilderPage}
     />
   );
 };
