@@ -12,14 +12,14 @@ const TemplateContent = ({
   <Wrapper className={`${togglePreview ? 'hide' : ''} print-none`}>
     <ModulesWrapper>
       {
-          contentModificationModules.length ? contentModificationModules.map((module) => (
-            <Module className={activeSection === module.id ? 'active' : ''}>
-              <ComponentWrapper>
-                {module?.component}
-              </ComponentWrapper>
-            </Module>
-          )) : ('')
-        }
+        contentModificationModules.length ? contentModificationModules.map((module) => (
+          <Module className={activeSection === module.id ? 'active' : ''}>
+            <ComponentWrapper>
+              {module?.component}
+            </ComponentWrapper>
+          </Module>
+        )) : ('')
+      }
     </ModulesWrapper>
   </Wrapper>
 );

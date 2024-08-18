@@ -37,12 +37,12 @@ const Header = ({
   setShowJdModal,
   togglePreview,
   handleRouteToDashboard,
-  resumeDataExists,
+  resumeDataDoesNotExist,
   handleSaveResumeOnBuilderPage
 }) => {
 
   return (
-    <Wrapper className={togglePreview || resumeDataExists ? 'hide' : ''}>
+    <Wrapper className={togglePreview || resumeDataDoesNotExist ? 'hide' : ''}>
       <TemplateNameWrapper>
         <BackBtn onClick={handleRouteToDashboard}>
           <Tooltip title="Dashboard">

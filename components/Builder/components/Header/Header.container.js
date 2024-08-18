@@ -215,7 +215,7 @@ const HeaderContainer = () => {
       togglePreview={resumeData?.togglePreview}
       handleRouteToDashboard={handleRouteToDashboard}
       handleRouteToAuth={handleRouteToAuth}
-      resumeDataExists={!resumeData?.resumeString}
+      resumeDataDoesNotExist={!resumeData?.resumeString}
       handleSaveResumeOnBuilderPage={handleSaveResumeOnBuilderPage}
     />
   );
