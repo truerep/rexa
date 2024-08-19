@@ -42,7 +42,7 @@ const ShowResumeContainer = () => {
             }, 500)
           }
         } catch (err) {
-          toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+          toast.error(err?.response?.data?.error ?? 'Something went wrong!');
           router.push('/dashboard');
         }
       };

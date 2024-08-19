@@ -18,7 +18,6 @@ import {
 import {
   useOnClickOutside
 } from '@/hooks';
-import { HttpStatusCode } from 'axios';
 import { removeDataFromSession } from '@/helpers';
 
 const HeaderContainer = () => {
@@ -67,17 +66,14 @@ const HeaderContainer = () => {
         toast.error('Something went wrong!');
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
-      if (err?.response?.status === HttpStatusCode.Unauthorized) {
-        await handleRouteToAuth();
-      }
+      toast.error(err?.response?.data?.error ?? 'Something went wrong!');
     }
   };
 
   const modifyResume = async (resumeId, payload, route) => {
     try {
       const res = await updateResume(resumeId, payload);
-      if (res?.status === 200) {
+      if (res?.statusCode === 200) {
         toast.success('Resume Updated!');
         route === routeNames.dashboard && router.push(`/${route}`);
         removeDataFromSession('resumeString');
@@ -85,10 +81,7 @@ const HeaderContainer = () => {
         toast.error('Something went wrong!');
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
-      if (err?.response?.status === HttpStatusCode.Unauthorized) {
-        await handleRouteToAuth();
-      }
+      toast.error(err?.response?.data?.error ?? 'Something went wrong!');
     }
   };
 

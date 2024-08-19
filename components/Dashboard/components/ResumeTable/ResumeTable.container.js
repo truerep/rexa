@@ -27,11 +27,11 @@ const ResumeTableContainer = () => {
   const fetchUserResumes = async () => {
     try {
       const res = await getUserResumes();
-      if (res?.status === 200) {
+      if (res?.statusCode === 200) {
         setUserResumes(res?.data);
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+      toast.error(err?.response?.data?.error ?? 'Something went wrong!');
     } finally {
       setIsLoading(false);
     }
@@ -47,7 +47,7 @@ const ResumeTableContainer = () => {
         id: 'delete-resume'
       });
       const res = await deleteResume(resumeId);
-      if (res?.status === 200) {
+      if (res?.statusCode === 200) {
         fetchUserResumes();
         toast.success('Resume deleted!', {
           id: 'delete-resume'
@@ -55,7 +55,7 @@ const ResumeTableContainer = () => {
       }
     } catch (err) {
       toast.dismiss('delete-resume');
-      toast.error(err?.response?.data?.message ?? 'Error deleting resume!');
+      toast.error(err?.response?.data?.error ?? 'Error deleting resume!');
     }
   };
 
@@ -83,7 +83,7 @@ const ResumeTableContainer = () => {
       }
     } catch (err) {
       toast.dismiss('copying-resume');
-      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+      toast.error(err?.response?.data?.error ?? 'Something went wrong!');
     } finally {
       setToggleResumesList(false);
     }
@@ -96,7 +96,7 @@ const ResumeTableContainer = () => {
       const res = await downloadOriginalResume(resumeUrl);
     } catch (err) {
       toast.dismiss(toastId);
-      toast.error(err?.response?.data?.message?? 'Something went wrong!');
+      toast.error(err?.response?.data?.error?? 'Something went wrong!');
     } finally {
       toast.dismiss(toastId);
     }

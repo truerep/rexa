@@ -9,7 +9,7 @@ const checkAuthenticated = async () => {
   }
   try {
     const res = await getUserData(authToken);
-    if (res?.status === 200) {
+    if (res?.statusCode === 200) {
       return true;
     }
   } catch (err) {
