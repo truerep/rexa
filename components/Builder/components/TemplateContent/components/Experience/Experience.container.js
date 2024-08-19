@@ -111,7 +111,7 @@ const ExperienceContainer = () => {
           id: 'modifying-resume'
         });
       } catch (err) {
-        toast.error(err?.response?.data?.message ?? 'Error modifying resume!', {
+        toast.error(err?.response?.data?.error ?? 'Error modifying resume!', {
           id: 'modifying-resume'
         });
       } finally {

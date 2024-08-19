@@ -32,7 +32,7 @@ const DragAndDropContainer = () => {
         router.push('/builder');
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message ?? 'Something went wrong uploading resume!', {
+      toast.error(err?.response?.data?.error ?? 'Something went wrong uploading resume!', {
         id: 'uploading-resume'
       });
     } finally {

@@ -42,18 +42,18 @@ const BuilderContainer = () => {
         });
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+      toast.error(err?.response?.data?.error ?? 'Something went wrong!');
     } 
   }
 
   const fetchUserResumes = async () => {
     try {
       const res = await getUserResumes();
-      if (res?.status === 200) {
+      if (res?.statusCode === 200) {
         setUserResumes(res?.data);
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message ?? 'Something went wrong!');
+      toast.error(err?.response?.data?.error ?? 'Something went wrong!');
     } finally {
       setIsLoading(false);
     }
@@ -76,7 +76,7 @@ const BuilderContainer = () => {
         });
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message);
+      toast.error(err?.response?.data?.error);
       router.push('/create');
     }
   };
@@ -157,7 +157,7 @@ const BuilderContainer = () => {
         }
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message ?? 'Something went wrong uploading resume!', {
+      toast.error(err?.response?.data?.error ?? 'Something went wrong uploading resume!', {
         id: 'uploading-resume'
       });
     } finally {
