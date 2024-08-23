@@ -59,7 +59,7 @@ const BuilderContainer = () => {
   const fetchUserResumes = async () => {
     try {
       const res = await getUserResumes();
-      if (res?.statusCode === 200) {
+      if (res?.status === 200) {
         setUserResumes(res?.data);
       }
     } catch (err) {
