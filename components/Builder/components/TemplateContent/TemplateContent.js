@@ -7,9 +7,10 @@ import {
 const TemplateContent = ({
   contentModificationModules,
   activeSection,
-  togglePreview
+  togglePreview,
+  resumeDataDoesNotExist
 }) => (
-  <Wrapper className={`${togglePreview ? 'hide' : ''} ${activeSection === '' ? 'd-none' : ''} print-none`}>
+  <Wrapper className={`${togglePreview ? 'hide' : ''} ${activeSection === '' ? 'd-none' : ''} print-none`} style={{ opacity: resumeDataDoesNotExist ? 0 : 1 }}>
     <ModulesWrapper>
       {
         contentModificationModules.length ? contentModificationModules.map((module) => (

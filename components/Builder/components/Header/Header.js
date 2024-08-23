@@ -40,10 +40,9 @@ const Header = ({
   resumeDataDoesNotExist,
   handleSaveResumeOnBuilderPage
 }) => {
-
   return (
-    <Wrapper className={togglePreview || resumeDataDoesNotExist ? 'hide' : ''}>
-      <TemplateNameWrapper>
+    <Wrapper className={togglePreview ? 'hide' : ''}>
+      {!resumeDataDoesNotExist && <TemplateNameWrapper>
         <BackBtn onClick={handleRouteToDashboard}>
           <Tooltip title="Dashboard">
             <Icon src="/assets/icons/dashboard-icon-light.svg" />
@@ -57,8 +56,8 @@ const Header = ({
             onKeyDown={(e) => e.key === 'Enter' && handleSaveResumeOnBuilderPage()}
           />
         </InputWrapper>
-      </TemplateNameWrapper>
-      <BuilderActions>
+      </TemplateNameWrapper>}
+      {!resumeDataDoesNotExist && <BuilderActions>
         {builderActionsList.map((action) => (
           <Tooltip title={action?.tooltip}>
             <ActionButton onClick={action?.handleClick}>
@@ -69,9 +68,9 @@ const Header = ({
             </ActionButton>
           </Tooltip>
         ))}
-      </BuilderActions>
+      </BuilderActions>}
       {
-        Object.keys(userData).length > 0 ? (
+        !resumeDataDoesNotExist && Object.keys(userData).length > 0 ? (
           <AccountInfoWrapper>
             <UserWrapper onClick={() => setToggleDropdown(!toggleDropdown)}>
               <UserImg src={userData?.picture} />
@@ -96,7 +95,7 @@ const Header = ({
             </div>
           </AccountInfoWrapper>
         ) : (
-          <AccountInfo onClick={handleSaveDataLocally}>
+          !resumeDataDoesNotExist && <AccountInfo onClick={handleSaveDataLocally}>
             <LoginBtn>Login</LoginBtn>
           </AccountInfo>
         )

@@ -73,7 +73,7 @@ const HeaderContainer = () => {
   const modifyResume = async (resumeId, payload, route) => {
     try {
       const res = await updateResume(resumeId, payload);
-      if (res?.statusCode === 200) {
+      if (res?.status === 200) {
         toast.success('Resume Updated!');
         route === routeNames.dashboard && router.push(`/${route}`);
         removeDataFromSession('resumeString');

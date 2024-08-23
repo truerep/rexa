@@ -73,6 +73,7 @@ const TemplateZone = ({
             <Lottie animationData={animationName()} loop autoplay
               style={{
                 width: '40%',
+                opacity: 0.7
               }} />
           </LoaderWrapper>
         )
@@ -147,6 +148,8 @@ const LoaderWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    padding-top: 40px;
+    margin-top: 50px;
 `;
 
 
