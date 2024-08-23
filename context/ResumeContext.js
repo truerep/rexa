@@ -12,7 +12,7 @@ const ResumeContextProvider = ({children}) => {
     toggleJdModal: false,
     toggleTemplatesPopover: false,
     togglePreview: false,
-    contentSectionName: 'basics',
+    contentSectionName: '',
     templateUniqueId: '663e402cd805993f9b9b98e1'
   });
 

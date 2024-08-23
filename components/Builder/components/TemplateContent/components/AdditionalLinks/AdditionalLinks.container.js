@@ -24,10 +24,17 @@ const AdditionalLinksContainer = () => {
     });
   };
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <AdditionalLinks
       templateData={resumeData?.templateData?.additionalLinks}
       handleInputChange={handleInputChange}
+      handleClose={handleClose}
     />
   );
 };

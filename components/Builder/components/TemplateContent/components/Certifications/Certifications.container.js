@@ -35,12 +35,19 @@ const CertificationsContainer = () => {
     updateResumeData(updatedResumeData);
   };
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <Certifications
       templateData={resumeData?.templateData?.certifications}
       addNewCertificationsSection={addNewCertificationsSection}
       handleDeleteCertificationsSection={handleDeleteCertificationsSection}
       handleInputChange={handleInputChange}
+      handleClose={handleClose}
     />
   );
 };

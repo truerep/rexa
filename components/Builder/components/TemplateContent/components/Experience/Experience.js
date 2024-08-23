@@ -4,6 +4,7 @@ import {
   AddBtn,
   AddNewBtn,
   AddNewSkillSection,
+  CloseIcon,
   DeleteBtn,
   InputGroup,
   Item, ItemContent, ItemIcon, ItemSection, ItemTitle, SyncBtn
@@ -26,11 +27,13 @@ const Experience = ({
   isLoading,
   promptText,
   setPromptText,
-  setCurrentWorkIndex
+  setCurrentWorkIndex,
+  handleClose
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
+        <CloseIcon onClick={handleClose} src="/assets/icons/close-icon-dark.svg" />
         <ItemIcon src="/assets/icons/experience-icon.svg" />
         <span>Experience</span>
         <AddNewBtn

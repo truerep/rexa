@@ -75,6 +75,12 @@ const SkillsContainer = () => {
     updateResumeData(updatedResumeData);
   };
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <Skills
       templateData={resumeData?.templateData?.skills}
@@ -84,6 +90,7 @@ const SkillsContainer = () => {
       handleDeleteSkillSection={handleDeleteSkillSection}
       handleAddSkill={handleAddSkill}
       addNewSkillSection={addNewSkillSection}
+      handleClose={handleClose}
     />
   );
 };

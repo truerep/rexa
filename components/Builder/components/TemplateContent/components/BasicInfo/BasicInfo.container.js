@@ -25,10 +25,17 @@ const BasicInfoContainer = () => {
     });
   };
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <BasicInfo
       templateData={resumeData?.templateData?.basics}
       handleInputChange={handleInputChange}
+      handleClose={handleClose}
     />
   );
 };

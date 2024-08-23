@@ -25,6 +25,16 @@ const BuilderContainer = () => {
   const router = useRouter();
   const {resumeData, updateResumeData} = useContext(ResumeContext);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth > 768) {
+        const updatedResumeData = { ...resumeData };
+        updatedResumeData.contentSectionName = 'basics';
+        updateResumeData(updatedResumeData);
+      }
+    }
+  }, []);
+
   const handleGeneratingResume = async (index) => {
     try {
       setToggleResumesList(false)

@@ -4,6 +4,7 @@ import {
   AddBtn,
   AddNewBtn,
   AddNewSkillSection,
+  CloseIcon,
   DeleteBtn,
   InputGroup,
   Item, ItemContent, ItemIcon, ItemSection, ItemTitle
@@ -19,11 +20,13 @@ const Interests = ({
   handleDeleteInterest,
   handleDeleteInterestsection,
   handleAddInterest,
-  addNewInterestsection
+  addNewInterestsection,
+  handleClose
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
+        <CloseIcon onClick={handleClose} src="/assets/icons/close-icon-dark.svg" />
         <ItemIcon src="/assets/icons/basketball-icon.svg" />
         <span>Interests</span>
         <AddNewBtn

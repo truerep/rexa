@@ -122,6 +122,12 @@ const ExperienceContainer = () => {
     }
   }
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <Experience
       templateData={resumeData?.templateData?.work}
@@ -140,6 +146,7 @@ const ExperienceContainer = () => {
       promptText={promptText}
       setPromptText={setPromptText}
       setCurrentWorkIndex={setCurrentWorkIndex}
+      handleClose={handleClose}
     />
   );
 };

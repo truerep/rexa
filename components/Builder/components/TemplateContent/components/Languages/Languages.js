@@ -4,6 +4,7 @@ import {
   AddBtn,
   AddNewBtn,
   AddNewSkillSection,
+  CloseIcon,
   DeleteBtn,
   InputGroup,
   Item, ItemContent, ItemIcon, ItemSection, ItemTitle
@@ -13,11 +14,13 @@ const Languages = ({
   templateData,
   addNewLanguagesSection,
   handleDeleteLanguagesSection,
-  handleInputChange
+  handleInputChange,
+  handleClose
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
+        <CloseIcon onClick={handleClose} src="/assets/icons/close-icon-dark.svg" />
         <ItemIcon src="/assets/icons/translate-icon.svg" />
         <span>Languages</span>
         <AddNewBtn

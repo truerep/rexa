@@ -33,12 +33,19 @@ const LanguagesContainer = () => {
     updateResumeData(updatedResumeData);
   };
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <Languages
       templateData={resumeData?.templateData?.languages}
       addNewLanguagesSection={addNewLanguagesSection}
       handleDeleteLanguagesSection={handleDeleteLanguagesSection}
       handleInputChange={handleInputChange}
+      handleClose={handleClose}
     />
   );
 };

@@ -4,6 +4,7 @@ import {
   AddBtn,
   AddNewBtn,
   AddNewSkillSection,
+  CloseIcon,
   DeleteBtn,
   InputGroup,
   Item, ItemContent, ItemIcon, ItemSection, ItemTitle, ReMatchBtn
@@ -19,11 +20,13 @@ const Skills = ({
   handleDeleteSkill,
   handleDeleteSkillSection,
   handleAddSkill,
-  addNewSkillSection
+  addNewSkillSection,
+  handleClose
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
+        <CloseIcon onClick={handleClose} src="/assets/icons/close-icon-dark.svg" />
         <ItemIcon src="/assets/icons/skills-icon.svg" />
         <span>Skills</span>
         {/* <ReMatchBtn

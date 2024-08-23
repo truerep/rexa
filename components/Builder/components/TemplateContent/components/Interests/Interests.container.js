@@ -74,6 +74,12 @@ const InterestsContainer = () => {
     updateResumeData(updatedResumeData);
   };
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <Interests
       templateData={resumeData?.templateData?.interests}
@@ -83,6 +89,7 @@ const InterestsContainer = () => {
       handleDeleteInterestsection={handleDeleteInterestsection}
       handleAddInterest={handleAddInterest}
       addNewInterestsection={addNewInterestsection}
+      handleClose={handleClose}
     />
   );
 };

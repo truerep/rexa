@@ -40,12 +40,19 @@ const EducationContainer = () => {
     updateResumeData(updatedResumeData);
   };
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <Education
       templateData={resumeData?.templateData?.education}
       addNewEducationSection={addNewEducationSection}
       handleDeleteEducationSection={handleDeleteEducationSection}
       handleInputChange={handleInputChange}
+      handleClose={handleClose}
     />
   );
 };

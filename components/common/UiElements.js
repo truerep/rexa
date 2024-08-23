@@ -79,6 +79,10 @@ export const ItemSection = styled.div`
     &:last-child {
         border-bottom: 0;
     }
+
+    @media (max-width: 576px) {
+        padding: 15px;
+    }
 `;
 
 export const ItemTitle = styled.h3`
@@ -96,6 +100,11 @@ export const ItemTitle = styled.h3`
     span {
         flex: 1;
     }
+
+    @media (max-width: 576px) {
+        padding: 15px;
+        font-size: 14px;
+    }
 `;
 
 export const ItemIcon = styled.img`
@@ -103,6 +112,26 @@ export const ItemIcon = styled.img`
     height: 24px;
     object-fit: cover;
     flex-shrink: 0;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+
+    @media (max-width: 576px) {
+        height: 14px!important;
+        width: 14px!important;
+    }
+`;
+
+export const CloseIcon = styled(ItemIcon)`
+    display: none;
+    width: 16px;
+    height: 16px;
+    filter: invert(24%) sepia(96%) saturate(7492%) hue-rotate(357deg) brightness(103%) contrast(104%);
+
+    @media (max-width: 768px) {
+        display: block;
+    }
 `;
 
 export const ItemContent = styled.div`
@@ -154,6 +183,14 @@ export const InputGroup = styled.div`
         resize: none;
         min-height: 100px;
         font-family: inherit;
+    }
+
+    @media (max-width: 576px) {
+        margin-bottom: 14px;
+
+        input, textarea {
+            padding: 5px 7px;
+        }
     }
 `;
 
