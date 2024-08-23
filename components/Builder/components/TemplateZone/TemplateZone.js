@@ -98,6 +98,10 @@ const Wrapper = styled.div`
     @media print {
       padding-top: 0;
     }
+
+    @media (max-width: 576px) {
+      width: 100%;
+    }
   `;
 
 const Actions = styled.div`
