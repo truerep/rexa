@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  CloseIcon,
   InputGroup,
   Item, ItemContent, ItemIcon, ItemSection, ItemTitle
 } from '@/components/common/UiElements';
@@ -8,11 +9,13 @@ const showTextarea = ['summary'];
 
 const AdditionalLinks = ({
   templateData,
-  handleInputChange
+  handleInputChange,
+  handleClose
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
+        <CloseIcon onClick={handleClose} src="/assets/icons/close-icon-dark.svg" />
         <ItemIcon src="/assets/icons/link-icon.svg" />
         <span>Additional Links</span>
       </ItemTitle>

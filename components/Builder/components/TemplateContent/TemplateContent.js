@@ -9,7 +9,7 @@ const TemplateContent = ({
   activeSection,
   togglePreview
 }) => (
-  <Wrapper className={`${togglePreview ? 'hide' : ''} print-none`}>
+  <Wrapper className={`${togglePreview ? 'hide' : ''} ${activeSection === '' ? 'd-none' : ''} print-none`}>
     <ModulesWrapper>
       {
         contentModificationModules.length ? contentModificationModules.map((module) => (
@@ -39,8 +39,26 @@ const Wrapper = styled.div`
       transform: translateX(101%);
     }
 
+    &.d-none {
+      display: none;
+    }
+
     @media print {
       display: none;
+    }
+
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: calc(100% - 54px);
+      border-bottom: 1px solid ${colors.LavenderWeb};
+      box-shadow: 0px 0 30px 10px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 576px) {
+      width: 100%;
+      height: calc(100% - 37px);
     }
 `;
 

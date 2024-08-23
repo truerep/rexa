@@ -4,6 +4,7 @@ import {
   AddBtn,
   AddNewBtn,
   AddNewSkillSection,
+  CloseIcon,
   DeleteBtn,
   InputGroup,
   Item, ItemContent, ItemIcon, ItemSection, ItemTitle
@@ -13,11 +14,13 @@ const Certifications = ({
   templateData,
   addNewCertificationsSection,
   handleDeleteCertificationsSection,
-  handleInputChange
+  handleInputChange,
+  handleClose
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
+        <CloseIcon onClick={handleClose} src="/assets/icons/close-icon-dark.svg" />
         <ItemIcon src="/assets/icons/certificate-icon.svg" />
         <span>Certifications</span>
         <AddNewBtn

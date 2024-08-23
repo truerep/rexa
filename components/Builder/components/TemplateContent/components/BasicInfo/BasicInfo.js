@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  CloseIcon,
   InputGroup,
   Item, ItemContent, ItemIcon, ItemSection, ItemTitle, ReMatchBtn
 } from '@/components/common/UiElements';
@@ -8,11 +9,13 @@ const showTextarea = ['summary'];
 
 const BasicInfo = ({
   templateData,
-  handleInputChange
+  handleInputChange,
+  handleClose
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
+        <CloseIcon onClick={handleClose} src="/assets/icons/close-icon-dark.svg" />
         <ItemIcon src="/assets/icons/basic-details-icon.svg" />
         <span>Basic Details</span>
         {/* <ReMatchBtn

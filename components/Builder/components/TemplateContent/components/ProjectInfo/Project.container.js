@@ -60,6 +60,12 @@ const ProjectContainer = () => {
     updateResumeData(updatedResumeData);
   };
 
+  const handleClose = () => {
+    const updatedResumeData = { ...resumeData };
+    updatedResumeData.contentSectionName = '';
+    updateResumeData(updatedResumeData);
+  }
+
   return (
     <Project
       templateData={resumeData?.templateData?.projects}
@@ -69,6 +75,7 @@ const ProjectContainer = () => {
       handleHighlightsChange={handleHighlightsChange}
       handleAddHighlight={handleAddHighlight}
       handleDeleteHighlight={handleDeleteHighlight}
+      handleClose={handleClose}
     />
   );
 };

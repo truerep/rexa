@@ -43,6 +43,26 @@ const Wrapper = styled.div`
     @media print {
       display: none;
     }
+
+    @media (max-width: 768px) {
+      position: absolute;
+      top: unset;
+      bottom: 0;
+      width: 100%;
+      flex-direction: row;
+      overflow: auto;
+      padding-top: 0;
+      z-index: 1;
+
+      span {
+        white-space: nowrap;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      height: 5px;
+      background-color: transparent;
+    }
 `;
 
 const ActionButton = styled.button`
@@ -62,6 +82,19 @@ const ActionButton = styled.button`
             opacity: 1;
         }
     }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      color: ${colors.ErrieBlack};
+    }
+
+    @media (max-width: 576px) {
+      padding: 9px 12px;
+      border-right: 1px solid ${colors.LavenderWeb};
+      border-top: 1px solid ${colors.LavenderWeb};
+      gap: 10px;
+      font-size: 12px;
+    }
 `;
 
 const Icon = styled.img`
@@ -76,6 +109,20 @@ const Icon = styled.img`
         margin-left: auto;
         opacity: 0;
     }
+
+    @media (max-width: 768px) {
+      height: 20px;
+      width: 20px;
+
+      &.arrow {
+        display: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      height: 14px;
+      width: 14px;
+    }
 `;
 
 const InfoLine = styled.p`
@@ -87,6 +134,10 @@ const InfoLine = styled.p`
   font-weight: 500;
   background: lightyellow;
   margin-top: auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default ContentSectionNames;

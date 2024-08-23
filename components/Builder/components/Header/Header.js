@@ -135,6 +135,10 @@ const Wrapper = styled.div`
           display: none!important;
         }
     }
+
+    @media (max-width: 768px) {
+      // display: none;
+    }
 `;
 
 const BuilderActions = styled.div`
@@ -142,6 +146,10 @@ const BuilderActions = styled.div`
     align-items: center;
     margin: 0 auto;
     gap: 10px;
+
+    @media (max-width: 576px) {
+      gap: 0;
+    }
 `;
 
 const ActionButton = styled.button`
@@ -155,22 +163,38 @@ const ActionButton = styled.button`
     &:hover {
         background-color: ${colors.ChineseBlack};
     }
+
+    @media (max-width: 576px) {
+      padding: 8px;
+    }
 `;
 
 const Icon = styled.img`
     height: 16px;
     flex-shrink: 0;
+
+    @media (max-width: 576px) {
+      height: 14px!important;
+    }
 `;
 
 const ActionName = styled.p`
     font-size: 14px;
     color: #fff;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
 `;
 
 const TemplateNameWrapper = styled.div`
     display: flex;
     align-items: center;
     padding-left: 18px;
+
+    @media (max-width: 576px) {
+      padding-left: 10px;
+    }
 `;
 
 const BackBtn = styled(ActionButton)`
@@ -209,6 +233,10 @@ const InputWrapper = styled.div`
       background-repeat: no-repeat;
       pointer-events: none;
     }
+
+    @media (max-width: 576px) {
+      display: none;
+    }
 `;
 
 const Input = styled.input`
@@ -227,17 +255,26 @@ const AccountInfo = styled.div`
     display: flex;
     align-items: center;
     margin-right: 28px;
+
+    @media (max-width: 576px) {
+      margin-right: 18px;
+    }
 `;
 
 const LoginBtn = styled.button`
     transform: unset!important;
     transition: none!important;
     background: ${colors.VoiletBlue};
-    font-size: 12px;
     font-size: 14px;
     padding: 4px 12px;
     color: #fff;
-    border-radius: 3px
+    border-radius: 3px;
+
+    @media (max-width: 576px) {
+      font-size: 12px;
+      padding: 3px 10px;
+      margin: 5px 0;
+    }
 `;
 
 const AccountInfoWrapper = styled.div`

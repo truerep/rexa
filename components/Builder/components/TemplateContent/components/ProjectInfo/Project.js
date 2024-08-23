@@ -4,6 +4,7 @@ import {
   AddBtn,
   AddNewBtn,
   AddNewSkillSection,
+  CloseIcon,
   DeleteBtn,
   InputGroup,
   Item, ItemContent, ItemIcon, ItemSection, ItemTitle
@@ -16,11 +17,13 @@ const Project = ({
   handleInputChange,
   handleHighlightsChange,
   handleAddHighlight,
-  handleDeleteHighlight
+  handleDeleteHighlight,
+  handleClose
 }) => (
   templateData ? (
     <Item>
       <ItemTitle>
+        <CloseIcon onClick={handleClose} src="/assets/icons/close-icon-dark.svg" />
         <ItemIcon src="/assets/icons/experience-icon.svg" />
         <span>Project</span>
         <AddNewBtn

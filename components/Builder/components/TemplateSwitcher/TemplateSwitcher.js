@@ -85,6 +85,10 @@ const Wrapper = styled.div`
     color: ${colors.ErrieBlack};
     height: 100%;
     display: flex;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
 `;
 
 const TemplatesWrapper = styled.div`
@@ -95,6 +99,19 @@ const TemplatesWrapper = styled.div`
     max-width: 100%;
     padding: 50px 0; 
     user-select: none;
+
+    @media (max-width: 768px) {
+      height: calc(100% - 260px);
+      padding-top: 80px;
+    }
+
+    @media (max-width: 576px) {
+      height: calc(100% - 220px);
+
+      .swiper {
+        width: 80%;
+      }
+    }
 
     .swiper-button-next, .swiper-button-prev {
       // bottom: 0;
@@ -154,6 +171,19 @@ const TemplateInfo = styled.div`
     button {
       margin-top: 30px;
       margin-right: 20px;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 100%!important;
+      padding: 50px;
+
+      .btn-outlined {
+        display: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      padding: 20px;
     }
 `;
 

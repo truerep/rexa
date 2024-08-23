@@ -84,6 +84,7 @@ const TemplateZone = ({
 const Wrapper = styled.div`
     width: 210mm;
     flex-shrink: 0;
+    flex-grow: 0;
     padding-top: 20px;
     margin-bottom: 120px;
     transition: all 0.2s ease-in-out;
