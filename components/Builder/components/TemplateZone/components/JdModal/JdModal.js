@@ -34,6 +34,14 @@ const Wrapper = styled.div`
     padding: 20px;
     border-radius: 10px;
     background: #fff;
+
+    @media (max-width: 768px) {
+      min-width: 370px;
+    }
+
+    @media (max-width: 576px) {
+      min-width: 270px;
+    }
 `;
 
 const TextArea = styled.textarea`
