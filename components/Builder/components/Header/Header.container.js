@@ -179,9 +179,9 @@ const HeaderContainer = () => {
 
     if (authToken) {
       checkUserAuthenticated(authToken);
-    } else {
-      // Token doesn't exist, handle the case accordingly
-    }
+    } else if (authToken === null) {
+      router.push('/authenticate?login');
+    } else { }
   }, [router]);
 
   useEffect(() => {
