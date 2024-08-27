@@ -160,7 +160,7 @@ const Nav = styled.ul`
         right: 0;
         z-index: 8;
         align-items: flex-start;
-        padding-top: 80px;
+        padding-top: 120px;
 
         a {
             padding: 10px 20px!important;
@@ -182,6 +182,10 @@ const Item = styled.li`
 
         &:hover, &.active {
             color: ${colors.HanPurple};
+        }
+
+        @media (max-width: 768px) {
+          padding: 10px 30px!important;
         }
     }
 `;

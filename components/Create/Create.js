@@ -102,6 +102,11 @@ const TitlesWrapper = styled.div`
         content: unset;
       }
     }
+
+    &::-webkit-scrollbar {
+      height: 5px;
+      background-color: transparent;
+    }
 `;
 
 const Title = styled.button`
@@ -124,7 +129,8 @@ const Title = styled.button`
     }
 
     @media (max-width: 576px) {
-      padding: 20px;
+      padding: 12px 15px;
+      font-size: 16px;
     }
 `;
 
