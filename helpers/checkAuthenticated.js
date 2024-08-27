@@ -13,6 +13,7 @@ const checkAuthenticated = async () => {
       return res?.data;
     }
   } catch (err) {
+    return false;
   }
   return false;
 };
