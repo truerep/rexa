@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST="{\"..\\\\components\\\\LandingPage\\\\GrowthCards\\\\GrowthCards.js -> react-animated-numbers\":{\"id\":\"..\\\\components\\\\LandingPage\\\\GrowthCards\\\\GrowthCards.js -> react-animated-numbers\",\"files\":[\"static/chunks/node_modules_react-animated-numbers_dist_index_js.js\"]}}"
