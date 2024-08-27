@@ -13,7 +13,7 @@ const HeaderContainer = () => {
 
   const checkUserAuthenticated = async () => {
     const res = await checkAuthenticated();
-    setIsAuthorized(res);
+    setIsAuthorized(!!res);
   };
 
   useEffect(() => {
