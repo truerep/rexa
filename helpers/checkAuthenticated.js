@@ -10,7 +10,7 @@ const checkAuthenticated = async () => {
   try {
     const res = await getUserData(authToken);
     if (res?.status === 200) {
-      return true;
+      return res?.data;
     }
   } catch (err) {
   }

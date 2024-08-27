@@ -18,7 +18,7 @@ import {
 import {
   useOnClickOutside
 } from '@/hooks';
-import { removeDataFromSession } from '@/helpers';
+import { checkAuthenticated, removeDataFromSession } from '@/helpers';
 
 const HeaderContainer = () => {
   const routeNames = {
@@ -161,27 +161,36 @@ const HeaderContainer = () => {
     }
   ];
 
-  const checkUserAuthenticated = async (authToken) => {
-    try {
-      const res = await getUserData(authToken);
-      setUserData(res?.data);
-    } catch (err) {
-    }
-  };
+  // const checkUserAuthenticated = async (authToken) => {
+  //   try {
+  //     const res = await getUserData(authToken);
+  //     setUserData(res?.data);
+  //   } catch (err) {
+  //   }
+  // };
 
   const handleLogout = () => {
     localStorage.removeItem('auth_token');
     router.push('/');
   };
 
-  useEffect(() => {
-    const authToken = localStorage.getItem('auth_token');
+  // useEffect(() => {
+  //   const authToken = localStorage.getItem('auth_token');
 
-    if (authToken) {
-      checkUserAuthenticated(authToken);
-    } else if (authToken === null) {
-      router.push('/authenticate?login');
-    } else { }
+  //   if (authToken) {
+  //     checkUserAuthenticated(authToken);
+  //   } else {
+  //     // Token doesn't exist, handle the case accordingly
+  //   }
+  // }, [router]);
+
+  useEffect(async () => {
+    const isAuthenticated = await checkAuthenticated();
+
+    if (!!isAuthenticated) {
+      // if user is authenticated, get user data
+      setUserData(isAuthenticated);
+    }
   }, [router]);
 
   useEffect(() => {
