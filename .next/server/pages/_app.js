@@ -1,0 +1,6 @@
+(()=>{var t={};t.id=888,t.ids=[888],t.modules={6719:(t,r,e)=>{"use strict";e.a(t,async(t,s)=>{try{e.r(r),e.d(r,{default:()=>g});var a=e(997);e(6764);var i=e(968),n=e.n(i),o=e(6238),c=e.n(o),u=e(6201);e(5053);var d=t([u]);function g({Component:t,pageProps:r}){return(0,a.jsxs)(a.Fragment,{children:[a.jsx(c(),{height:2,color:"#6725f4",shadow:"0 0 10px #9F85F7,0 0 5px #9F85F7",showSpinner:!1}),a.jsx(u.Toaster,{position:"top-right",reverseOrder:!1}),(0,a.jsxs)(n(),{children:[a.jsx("script",{async:!0,src:"https://www.googletagmanager.com/gtag/js?id=G-N275J762K6"}),a.jsx("script",{dangerouslySetInnerHTML:{__html:`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-N275J762K6');
+            `}})]}),a.jsx(t,{...r})]})}u=(d.then?(await d)():d)[0],s()}catch(t){s(t)}})},5053:()=>{},6764:()=>{},968:t=>{"use strict";t.exports=require("next/head")},6238:t=>{"use strict";t.exports=require("nextjs-toploader")},997:t=>{"use strict";t.exports=require("react/jsx-runtime")},6201:t=>{"use strict";t.exports=import("react-hot-toast")}};var r=require("../webpack-runtime.js");r.C(t);var e=r(r.s=6719);module.exports=e})();
