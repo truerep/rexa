@@ -5,18 +5,30 @@ const FAQsContainer = () => {
 
   const toggleAnswer1 = () => {
     setShowAnswer1(!showAnswer1);
+    setShowAnswer2(false);
+    setShowAnswer3(false);
+    setShowAnswer4(false);
   }
 
   const toggleAnswer2 = () => {
     setShowAnswer2(!showAnswer2);
+    setShowAnswer1(false);
+    setShowAnswer3(false);
+    setShowAnswer4(false);
   }
 
   const toggleAnswer3 = () => {
     setShowAnswer3(!showAnswer3);
+    setShowAnswer1(false);
+    setShowAnswer2(false);
+    setShowAnswer4(false);
   }
 
   const toggleAnswer4 = () => {
     setShowAnswer4(!showAnswer4);
+    setShowAnswer1(false);
+    setShowAnswer2(false);
+    setShowAnswer3(false);
   }
 
   const [showAnswer1, setShowAnswer1] = React.useState(false);
