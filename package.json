@@ -10,8 +10,8 @@
     "lint": "next lint"
   },
   "engines": {
-    "node": ">=20.10.0",
-    "npm": ">=10.2.3"
+    "node": ">=20.00.0",
+    "npm": ">=8.00.0"
   },
   "dependencies": {
     "aos": "^2.3.4",
