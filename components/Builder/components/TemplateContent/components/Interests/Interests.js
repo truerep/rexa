@@ -40,7 +40,7 @@ const Interests = ({
       <ItemContent>
         {
           templateData?.length ? templateData?.map((template, idx) => (
-            <ItemSection>
+            <ItemSection key={idx}>
               <ItemWrapper>
                 <InputGroup className="highlighted">
                   <input
@@ -59,7 +59,7 @@ const Interests = ({
                 <div className="d-grid grid-2 col-gap-2">
                   {
                 template?.keywords && template?.keywords.map((InterestItem, sIdx) => (
-                  <InputGroup>
+                  <InputGroup key={sIdx}>
                     <input
                       type="text"
                       placeholder="Add Interest"

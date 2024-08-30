@@ -34,7 +34,7 @@ const Education = ({
       <ItemContent>
         {
           templateData.length ? templateData.map((templateItem, idx) => (
-            <ItemSection>
+            <ItemSection key={idx}>
               <ItemWrapper>
                 <InputGroup className="highlighted">
                   <input
