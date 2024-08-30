@@ -8,9 +8,6 @@ import {
 } from 'next/router';
 import Header from './Header';
 import {
-  getUserData
-} from '@/api';
-import {
   useOnClickOutside
 } from '@/hooks';
 import { checkAuthenticated } from '@/helpers';
@@ -24,41 +21,28 @@ const HeaderContainer = () => {
 
   const router = useRouter();
 
-  // const checkUserAuthenticated = async (authToken) => {
-  //   try {
-  //     const res = await getUserData(authToken);
-  //     setUserData(res?.data);
-  //   } catch (err) {
-  //     router.push('/authenticate?login');
-  //   }
-  // };
-
   const handleLogout = () => {
     localStorage.removeItem('auth_token');
     router.push('/');
   };
 
-  // useEffect(() => {
-  //   const authToken = localStorage.getItem('auth_token');
 
-  //   if (authToken) {
-  //     checkUserAuthenticated(authToken);
-  //   } else if (authToken === null) {
-  //     router.push('/authenticate?login');
-  //   } else {}
-  // }, [router]);
+  useEffect(() => {
 
+    const checkAuthenticatedUser = async () => {
+      const isAuthenticated = await checkAuthenticated();
 
-  useEffect(async () => {
-    const isAuthenticated = await checkAuthenticated();
-
-    if (!isAuthenticated) {
-      // if user is not authenticated, redirect to login page
-      router.push('/authenticate?login');
-    } else {
-      // if user is authenticated, get user data
-      setUserData(isAuthenticated);
+      if (!isAuthenticated) {
+        // if user is not authenticated, redirect to login page
+        router.push('/authenticate?login');
+      } else {
+        // if user is authenticated, get user data
+        setUserData(isAuthenticated);
+      }
     }
+
+    checkAuthenticatedUser();
+
   }, [router]);
 
   return (

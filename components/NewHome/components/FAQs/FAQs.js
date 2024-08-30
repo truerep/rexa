@@ -31,7 +31,7 @@ const FAQs = ({
                 <img src="assets/icons/arrow-down.svg" />
               </IconBox>
             </QuestionBox>
-            <AnswerBox className={QA.showAnswer ? 'answer-box' : 'answer-box-closed'}>
+            <AnswerBox className={QA.showAnswer ? 'answer-box' : 'answer-box-closed'} key={QA.id}>
               <Answer>
                 {
                   QA.answer

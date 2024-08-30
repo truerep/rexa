@@ -47,7 +47,7 @@ const Experience = ({
       <ItemContent ref={experienceRef}>
         {
           templateData.length ? templateData.map((templateItem, idx) => (
-            <ItemSection>
+            <ItemSection key={idx}>
               <ItemWrapper>
                 <InputGroup className="highlighted">
                   <SyncBtn
@@ -105,7 +105,7 @@ const Experience = ({
               </div>
               {
                 templateItem?.highlights && templateItem?.highlights?.map((highlight, hIdx) => (
-                  <ItemWrapper>
+                  <ItemWrapper key={hIdx}>
                     <InputGroup>
                       <textarea
                         className="highlight-item"

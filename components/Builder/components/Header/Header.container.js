@@ -13,12 +13,13 @@ import {
   ResumeContext
 } from '@/context/ResumeContext';
 import {
-  createResume, getUserData, updateResume
+  createResume, updateResume
 } from '@/api';
 import {
   useOnClickOutside
 } from '@/hooks';
 import { checkAuthenticated, removeDataFromSession } from '@/helpers';
+import { HttpStatusCode } from 'axios';
 
 const HeaderContainer = () => {
   const routeNames = {
@@ -67,6 +68,9 @@ const HeaderContainer = () => {
       }
     } catch (err) {
       toast.error(err?.response?.data?.error ?? 'Something went wrong!');
+      if (err?.response?.data?.status === HttpStatusCode.Unauthorized) {
+        await handleRouteToAuth();
+      }
     }
   };
 
@@ -82,6 +86,9 @@ const HeaderContainer = () => {
       }
     } catch (err) {
       toast.error(err?.response?.data?.error ?? 'Something went wrong!');
+      if (err?.response?.data?.status === HttpStatusCode.Unauthorized) {
+        await handleRouteToAuth();
+      }
     }
   };
 
@@ -161,36 +168,22 @@ const HeaderContainer = () => {
     }
   ];
 
-  // const checkUserAuthenticated = async (authToken) => {
-  //   try {
-  //     const res = await getUserData(authToken);
-  //     setUserData(res?.data);
-  //   } catch (err) {
-  //   }
-  // };
-
   const handleLogout = () => {
     localStorage.removeItem('auth_token');
     router.push('/');
   };
 
-  // useEffect(() => {
-  //   const authToken = localStorage.getItem('auth_token');
+  useEffect(() => {
+    const checkAuthenticatedUser = async () => {
+      const isAuthenticated = await checkAuthenticated();
 
-  //   if (authToken) {
-  //     checkUserAuthenticated(authToken);
-  //   } else {
-  //     // Token doesn't exist, handle the case accordingly
-  //   }
-  // }, [router]);
-
-  useEffect(async () => {
-    const isAuthenticated = await checkAuthenticated();
-
-    if (!!isAuthenticated) {
-      // if user is authenticated, get user data
-      setUserData(isAuthenticated);
+      if (!!isAuthenticated) {
+        // if user is authenticated, get user data
+        setUserData(isAuthenticated);
+      }
     }
+
+    checkAuthenticatedUser();
   }, [router]);
 
   useEffect(() => {

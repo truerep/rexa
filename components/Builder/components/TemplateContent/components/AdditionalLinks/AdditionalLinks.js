@@ -22,8 +22,8 @@ const AdditionalLinks = ({
       <ItemContent>
         <ItemSection>
           {
-          Object.entries(templateData).map((item) => (
-            <InputGroup className="d-block">
+          Object.entries(templateData).map((item, index) => (
+            <InputGroup className="d-block" key={index}>
               {
                 showTextarea.includes(item[0]) ? (
                   <textarea
