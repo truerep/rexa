@@ -1,6 +1,7 @@
 import {
   getUserData
 } from '@/api';
+import { HttpStatusCode } from 'axios';
 
 const checkAuthenticated = async () => {
   const authToken = localStorage.getItem('auth_token');
@@ -9,7 +10,7 @@ const checkAuthenticated = async () => {
   }
   try {
     const res = await getUserData(authToken);
-    if (res?.status === 200) {
+    if (res?.status === HttpStatusCode.Ok) {
       return res?.data;
     }
   } catch (err) {

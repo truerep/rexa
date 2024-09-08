@@ -1,3 +1,5 @@
+import { HttpStatusCode } from "axios";
+
 const checkImageURLIsValid = async (url) => {
     if (!url) {
         return false;
@@ -11,7 +13,7 @@ const checkImageURLIsValid = async (url) => {
 
     let response = await fetch(url);
 
-    return response.status === 200;
+    return response.status === HttpStatusCode.Ok;
 };
 
 
