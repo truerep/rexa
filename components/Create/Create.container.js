@@ -7,6 +7,7 @@ import {
   CopyPaste,
   DragAndDrop,
   ImportFromLinkedIn,
+  CreateNew
 } from './components';
 import { useRouter } from 'next/router';
 
@@ -30,7 +31,8 @@ const CreateContainer = () => {
 
   const tabData = [
     {
-      title: 'Create'
+      title: 'Create',
+      component: <CreateNew />
     },
     {
       title: 'Upload',

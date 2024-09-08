@@ -8,7 +8,8 @@ import {
   ResumeContext
 } from '@/context/ResumeContext';
 import {
-  getResumeData
+  getResumeData,
+  getTempResumeJsonData
 } from '@/api';
 import { useRouter } from 'next/router';
 
@@ -16,6 +17,23 @@ const BuilderContainer = () => {
   const {resumeData, updateResumeData} = useContext(ResumeContext);
   
   const router = useRouter();
+
+  const getTempResumeData = async () => {
+    try {
+      const res = await getTempResumeJsonData();
+      if (res?.basics) {
+        sessionStorage.setItem('resumeString', JSON.stringify(res));
+        updateResumeData((prevState) => {
+          return {
+            ...prevState,
+            resumeString: JSON.stringify(res),
+            templateData: res
+          };
+        });
+      }
+    } catch (err) {
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -60,6 +78,8 @@ const BuilderContainer = () => {
       const localResumeData = JSON.parse(localStorage.getItem('resumeDataLocally'))
       localStorage.removeItem('resumeDataLocally');
       updateResumeData(() => localResumeData);
+    } else if (router.query.createNew) {
+      getTempResumeData();
     }
   }, [router]);
 

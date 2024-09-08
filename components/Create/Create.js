@@ -5,7 +5,7 @@ import {
   colors
 } from '@/helpers';
 
-const Create = ({tabData, activeTab, setActiveTab}) => (
+const Create = ({ tabData, activeTab, setActiveTab }) => (
   <Wrapper>
     {/* <Logo src="/assets/images/company-logo.svg" /> */}
     <Container>
@@ -16,30 +16,29 @@ const Create = ({tabData, activeTab, setActiveTab}) => (
           tabPosition={(100 / tabData.length) * (activeTab - 1)}
         >
           {tabData.length
-      && tabData.map((button, index) => (
-        <Title
-          key={index}
-          className={activeTab === index + 1 ? 'active' : ''}
-          onClick={() => setActiveTab(index + 1)}
-        >
-          {button.title}
-        </Title>
-      ))}
+            && tabData.map((button, index) => (
+              <Title
+                key={index}
+                className={activeTab === index + 1 ? 'active' : ''}
+                onClick={() => setActiveTab(index + 1)}
+              >
+                {button.title}
+              </Title>
+            ))}
         </TitlesWrapper>
 
         <TabBody>
 
           {tabData.length
-      && tabData.map((data, index) => (
-        <TabItem
-          key={index}
-          className={`${
-            activeTab === index + 1 ? 'active' : ''
-          } ${index < activeTab - 1 ? 'prev' : ''}`}
-        >
-          {data?.component ?? 'Coming Soon...'}
-        </TabItem>
-      ))}
+            && tabData.map((data, index) => (
+              <TabItem
+                key={index}
+                className={`${activeTab === index + 1 ? 'active' : ''
+                  } ${index < activeTab - 1 ? 'prev' : ''}`}
+              >
+                {data?.component ?? 'Coming Soon...'}
+              </TabItem>
+            ))}
         </TabBody>
 
       </TabsWrapper>

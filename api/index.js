@@ -7,7 +7,8 @@ import {
   updateResume,
   deleteResume,
   downloadOriginalResume,
-  updateSection
+  updateSection,
+  getTempResumeJsonData
 } from './Resume';
 
 import {
@@ -25,7 +26,7 @@ export {
   deleteResume,
   downloadOriginalResume,
   updateSection,
-
+  getTempResumeJsonData,
   getUserData,
   getUserResumes
 };

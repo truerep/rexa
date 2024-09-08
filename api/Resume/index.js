@@ -7,6 +7,7 @@ import updateResume from './updateResume';
 import deleteResume from './deleteResume';
 import downloadOriginalResume from './downloadOriginalResume';
 import updateSection from './updateSection';
+import getTempResumeJsonData from './getTempResumeJsonData';
 
 export {
   getResumeText,
@@ -17,5 +18,6 @@ export {
   updateResume,
   deleteResume,
   downloadOriginalResume,
-  updateSection
+  updateSection,
+  getTempResumeJsonData
 };
