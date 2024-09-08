@@ -13,6 +13,7 @@ import ResumeTable from './ResumeTable';
 import {
  useRouter
 } from 'next/router';
+import { HttpStatusCode } from 'axios';
 
 const ResumeTableContainer = () => {
   const [userResumes, setUserResumes] = useState([]);
@@ -27,7 +28,7 @@ const ResumeTableContainer = () => {
   const fetchUserResumes = async () => {
     try {
       const res = await getUserResumes();
-      if (res?.status === 200) {
+      if (res?.status === HttpStatusCode.Ok) {
         setUserResumes(res?.data);
       }
     } catch (err) {
@@ -47,7 +48,7 @@ const ResumeTableContainer = () => {
         id: 'delete-resume'
       });
       const res = await deleteResume(resumeId);
-      if (res?.status === 200) {
+      if (res?.status === HttpStatusCode.NoContent) {
         fetchUserResumes();
         toast.success('Resume deleted!', {
           id: 'delete-resume'

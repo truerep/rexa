@@ -7,6 +7,7 @@ import { ResumeContext } from '@/context/ResumeContext';
 import SyncJobDescriptionModal from './SyncJobDescriptionModal';
 
 import { getModifiedResume, getResumeText, getUserResumes } from '@/api';
+import { HttpStatusCode } from 'axios';
 
 const SyncJobDescriptionModalContainer = () => {
     const [userResumes, setUserResumes] = useState([]);
@@ -53,7 +54,7 @@ const SyncJobDescriptionModalContainer = () => {
     const fetchUserResumes = async () => {
         try {
             const res = await getUserResumes();
-            if (res?.status === 200) {
+            if (res?.status === HttpStatusCode.Ok) {
                 setUserResumes(res?.data);
             }
         } catch (err) {
