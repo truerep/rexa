@@ -6,6 +6,7 @@ import React, {
 
 import TemplateZone from './TemplateZone';
 import {
+  getRandomResumeFactAndAnimation,
   getResumeJson
 } from '@/api';
 import {
@@ -15,7 +16,10 @@ import {
 const TemplateZoneContainer = () => {
   const [showJdModal, setShowJdModal] = useState();
   const [resumeString, setResumeString] = useState('');
-  const {resumeData, updateResumeData} = useContext(ResumeContext);
+  const [animation, setAnimation] = useState();
+  const [fact, setFact] = useState();
+
+  const { resumeData, updateResumeData } = useContext(ResumeContext);
 
   const getResumeData = async () => {
     try {
@@ -53,10 +57,19 @@ const TemplateZoneContainer = () => {
     }
   }, [resumeString]);
 
+  useEffect(() => {
+    getRandomResumeFactAndAnimation().then((res) => {
+      setFact(res.facts);
+      setAnimation(res.animations);
+    });
+  }, []);
+
   return (
     <TemplateZone
       showJdModal={showJdModal}
       setShowJdModal={setShowJdModal}
+      fact={fact}
+      animation={animation}
     />
   );
 };

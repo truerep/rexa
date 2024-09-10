@@ -18,6 +18,7 @@ const SyncJobDescriptionModal = ({
         <Modal
             showModal={toggleResumesList}
             setShowModal={setToggleResumesList}
+            showCloseButton={false}
         >
             <ResumesListWrapper>
                 <BrowseFileBtn className="btn-primary btn-outlined">

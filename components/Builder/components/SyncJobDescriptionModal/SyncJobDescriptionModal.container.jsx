@@ -94,6 +94,7 @@ const SyncJobDescriptionModalContainer = () => {
                 setToggleResumesList(false)
                 let storedJobDescription = typeof window !== 'undefined' && window.sessionStorage.getItem('jobDescription');
                 const resumeString = res?.text
+                sessionStorage.setItem('resumeString', JSON.stringify(resumeString));
                 const resModifiedResume = await getModifiedResume(JSON.stringify(resumeString), storedJobDescription)
                 if (resModifiedResume?.basics) {
                     toast.success('Resume generated!', {

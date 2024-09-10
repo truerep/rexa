@@ -79,7 +79,7 @@ const ContentSectionNamesContainer = () => {
       sectionNamesList={sectionNamesList}
       activeSection={resumeData?.contentSectionName}
       togglePreview={resumeData?.togglePreview}
-      resumeDataDoesNotExist={!resumeData?.resumeString}
+      resumeDataDoesNotExist={!resumeData?.templateData}
     />
   );
 };

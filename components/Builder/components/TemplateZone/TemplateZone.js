@@ -17,13 +17,11 @@ import {
 // animations
 import Lottie from "lottie-react";
 
-import {
-  one, two, three, four, five, six, seven, eight
-} from '@/components/common/animations';
-
 const TemplateZone = ({
   showJdModal,
-  setShowJdModal
+  setShowJdModal,
+  animation,
+  fact
 }) => {
   const [templateId, setTemplateId] = useState();
   const { resumeData } = useContext(ResumeContext);
@@ -32,11 +30,6 @@ const TemplateZone = ({
     setTemplateId(resumeData.templateId);
   }, [resumeData]);
 
-  const animationName = () => {
-    const animations = [one, two, three, four, five, six, seven, eight];
-    const random = Math.floor(Math.random() * animations.length);
-    return animations[random];
-  };
 
   return (
     <Wrapper className={resumeData?.togglePreview ? 'scaleup' : ''}>
@@ -70,11 +63,15 @@ const TemplateZone = ({
           </>
         ) : (
           <LoaderWrapper>
-            <Lottie animationData={animationName()} loop autoplay
+            <Lottie animationData={animation} loop autoplay
               style={{
                 width: '40%',
                 opacity: 0.7
               }} />
+            <DoYouKnowHeading>Do you know?</DoYouKnowHeading>
+            <RandomResumeFact>
+              {fact}
+            </RandomResumeFact>
           </LoaderWrapper>
         )
       }
@@ -135,6 +132,17 @@ const Actions = styled.div`
     }
   `;
 
+const DoYouKnowHeading = styled.h4`
+`;
+
+const RandomResumeFact = styled.span`
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.7;
+    margin-top: 5px;
+    display: block;
+  `;
+
 const ResumeTemplate = styled.div`
     margin-top: 20px;    
     padding-bottom: 100px;
@@ -152,7 +160,6 @@ const LoaderWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding-top: 40px;
     margin-top: 50px;
 `;
 
