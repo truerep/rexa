@@ -14,6 +14,7 @@ const SyncJobDescriptionModal = ({
     handleGeneratingResume,
     isLoading
 }) => {
+
     return (
         <Modal
             showModal={toggleResumesList}
@@ -21,30 +22,38 @@ const SyncJobDescriptionModal = ({
             showCloseButton={false}
         >
             <ResumesListWrapper>
-                <BrowseFileBtn className="btn-primary btn-outlined">
-                    <input type="file" onChange={handleFileUpload} />
-                    Upload Resume
-                </BrowseFileBtn>
-                {
-                    userResumes.length > 0 ? (
-                        <>
-                            <OrText>OR</OrText>
-                            <SectionTitle>Select resume to start with...</SectionTitle>
-                            <ResumeList>
-                                {
-                                    userResumes.map((resume, idx) => (
-                                        <ResumeNameItem
-                                            key={resume._id}
-                                            onClick={() => handleGeneratingResume(idx)}
-                                        >
-                                            {resume.name}
-                                        </ResumeNameItem>
-                                    ))
-                                }
-                            </ResumeList>
-                        </>
-                    ) : ('')
-                }
+                <LeftSection>
+                    <BrowseFileBtn className="btn-primary btn-outlined">
+                        <input type="file" onChange={handleFileUpload} />
+                        Upload Resume
+                    </BrowseFileBtn>
+                </LeftSection>
+                <OrText>OR</OrText>
+                <RightSection>
+                    {
+                        userResumes.length > 0 ? (
+                            <>
+                                <SectionTitle>
+                                    Select a resume
+                                </SectionTitle>
+                                <ResumeList>
+                                    {
+                                        userResumes.map((resume, idx) => (
+                                            <ResumeNameItem
+                                                key={resume._id}
+                                                onClick={() => handleGeneratingResume(idx)}
+                                            >
+                                                {resume.name}
+                                            </ResumeNameItem>
+                                        ))
+                                    }
+                                </ResumeList>
+                            </>
+                        ) : (
+                            <NoResumeText>No resumes found. Please upload a resume to proceed.</NoResumeText>
+                        )
+                    }
+                </RightSection>
 
             </ResumesListWrapper>
         </Modal>
@@ -59,10 +68,24 @@ const ResumesListWrapper = styled.div`
     overflow: hidden;
     padding: 50px 30px 30px;
     text-align: center;
-    /* width: 50rem;
+    width: 50rem;
     max-width: 100%;
+    height: 35rem;
     max-height: 100%;
-    overflow-y: scroll; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
+const LeftSection = styled.div`
+    width: 50%;
+    padding: 0 20px;
+`;
+
+const RightSection = styled.div`
+    width: 50%;
+    padding: 0 20px;
 `;
 
 const BrowseFileBtn = styled.label`
@@ -83,24 +106,22 @@ const OrText = styled.p`
   &:after {
     content: '';
     position: absolute;
-    top: 30px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: ${colors.LightLavender};
+    top: 4rem;
+    left: 10px;
+    width: 1%;
+    height: 10rem;
+    background: ${colors.GraniteGray};
     z-index: -2;
   }
 
   &:before {
-    position: absolute;
     content: '';
-    height: 100%;
-    width: 40px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    top: 0;
-    background: #fff;
+    position: absolute;
+    top: -10rem;
+    left: 10px;
+    width: 1%;
+    height: 10rem;
+    background: ${colors.GraniteGray};
     z-index: -1;
   }
 `;
@@ -113,9 +134,25 @@ const SectionTitle = styled.h4`
 `;
 
 const ResumeList = styled.div`
-    max-height: 250px;
+    max-height: 25rem;
     overflow: auto;
     text-align: left;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: ${colors.Gray};
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: ${colors.Quartz};
+    }
+    ::-webkit-scrollbar-track {
+        background: ${colors.GhostWhite};
+    }
+    ::-webkit-scrollbar-track:hover {
+        background: ${colors.GhostWhite};
+    }
 `;
 
 const ResumeNameItem = styled.div`
@@ -126,6 +163,12 @@ const ResumeNameItem = styled.div`
     &:hover {
       background: ${colors.GhostWhite};
     }
+`;
+
+const NoResumeText = styled.p`
+    font-size: 16px;
+    color: ${colors.ErrieBlack};
+    padding: 10px 0;
 `;
 
 

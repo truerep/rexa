@@ -68,6 +68,7 @@ const SyncJobDescriptionModalContainer = () => {
         if (router.query.syncWithJobDescription == '') {
             setToggleResumesList(true);
             setIsLoading(true);
+            sessionStorage.removeItem('resumeString');
             fetchUserResumes();
             if (!document.hasFocus()) {
                 document.body.focus();
