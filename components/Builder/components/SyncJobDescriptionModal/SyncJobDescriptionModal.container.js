@@ -68,6 +68,7 @@ const SyncJobDescriptionModalContainer = () => {
         if (router.query.syncWithJobDescription == '') {
             setToggleResumesList(true);
             setIsLoading(true);
+            sessionStorage.removeItem('resumeString');
             fetchUserResumes();
             if (!document.hasFocus()) {
                 document.body.focus();
@@ -94,6 +95,7 @@ const SyncJobDescriptionModalContainer = () => {
                 setToggleResumesList(false)
                 let storedJobDescription = typeof window !== 'undefined' && window.sessionStorage.getItem('jobDescription');
                 const resumeString = res?.text
+                sessionStorage.setItem('resumeString', JSON.stringify(resumeString));
                 const resModifiedResume = await getModifiedResume(JSON.stringify(resumeString), storedJobDescription)
                 if (resModifiedResume?.basics) {
                     toast.success('Resume generated!', {

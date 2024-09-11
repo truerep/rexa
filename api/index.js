@@ -8,7 +8,8 @@ import {
   deleteResume,
   downloadOriginalResume,
   updateSection,
-  getTempResumeJsonData
+  getTempResumeJsonData,
+  getRandomResumeFactAndAnimation
 } from './Resume';
 
 import {
@@ -28,5 +29,6 @@ export {
   updateSection,
   getTempResumeJsonData,
   getUserData,
-  getUserResumes
+  getUserResumes,
+  getRandomResumeFactAndAnimation
 };

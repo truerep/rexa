@@ -8,6 +8,7 @@ import deleteResume from './deleteResume';
 import downloadOriginalResume from './downloadOriginalResume';
 import updateSection from './updateSection';
 import getTempResumeJsonData from './getTempResumeJsonData';
+import getRandomResumeFactAndAnimation from './getRandomResumeFactAndAnimation';
 
 export {
   getResumeText,
@@ -19,5 +20,6 @@ export {
   deleteResume,
   downloadOriginalResume,
   updateSection,
-  getTempResumeJsonData
+  getTempResumeJsonData,
+  getRandomResumeFactAndAnimation
 };

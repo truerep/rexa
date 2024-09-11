@@ -4,13 +4,14 @@ import styled from 'styled-components';
 const Modal = ({
   showModal,
   setShowModal,
+  showCloseButton = true,
   children
 }) => (
   <ModalBackdrop className={showModal && 'toggled'}>
     <ModalContent className={showModal && 'toggled'}>
-      <CloseModalButton onClick={() => setShowModal(false)}>
+      {showCloseButton && <CloseModalButton onClick={() => setShowModal(false)}>
         <img src="https://flaticons.net/icon.php?slug_category=mobile-application&slug_icon=close" alt="close" />
-      </CloseModalButton>
+      </CloseModalButton>}
       {children}
     </ModalContent>
   </ModalBackdrop>

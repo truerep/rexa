@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  Swiper, SwiperSlide,
-  useSwiperSlide
+  Swiper, SwiperSlide
 } from 'swiper/react';
 import {
   EffectCards, Pagination, Navigation,
@@ -18,10 +17,11 @@ import 'swiper/css/zoom';
 import {
   colors
 } from '@/helpers';
+import { Loader } from '@/components/common';
 
 const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, templatePreview, handlePreview, templatesData, initialIndex }) => {
   return (
-    <Wrapper>
+    Object.keys(templatesData).length ? <Wrapper>
       <TemplatesWrapper>
         <Swiper
           effect="cards"
@@ -56,6 +56,9 @@ const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, tem
         </Swiper>
       </TemplatesWrapper>
       <TemplateInfo style={{ maxWidth: templatePreview ? '15%' : '50%' }}>
+        <SelectTemplate>
+          Select Your Template
+        </SelectTemplate>
         <TemplateName>
           {templatesData[templateId]?.name}
         </TemplateName>
@@ -78,6 +81,9 @@ const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, tem
         </button>
       </TemplateInfo>
     </Wrapper>
+      : <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
   )
 };
 
@@ -187,13 +193,27 @@ const TemplateInfo = styled.div`
     }
 `;
 
-const TemplateName = styled.h2`
+const SelectTemplate = styled.h1`
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+`;
+
+const TemplateName = styled.h3`
     font-size: 24px;
 `;
 
-const TemplatePrice = styled.h3`
+const TemplatePrice = styled.h4`
     font-size: 18px;
     opacity: 0.8;
+`;
+
+const LoaderWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 90px 0 0;
+    height: 80%;
 `;
 
 export default TemplateSwitcher;
