@@ -27,7 +27,8 @@ const BuilderContainer = () => {
           return {
             ...prevState,
             resumeString: JSON.stringify(res),
-            templateData: res
+            templateData: res,
+            toggleTemplatesPopover: true,
           };
         });
       }
@@ -78,7 +79,7 @@ const BuilderContainer = () => {
       const localResumeData = JSON.parse(localStorage.getItem('resumeDataLocally'))
       localStorage.removeItem('resumeDataLocally');
       updateResumeData(() => localResumeData);
-    } else if (router.query.createNew) {
+    } else if (router.query.createNew === 'true') {
       getTempResumeData();
     }
   }, [router]);

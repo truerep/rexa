@@ -15,7 +15,6 @@ const CreateNew = ({ handleRedirectionToBuilder }) => (
     <Container>
       <Button onClick={handleRedirectionToBuilder}>Create New Resume</Button>
     </Container>
-
   </Wrapper>
 );
 
