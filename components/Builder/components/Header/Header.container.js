@@ -120,7 +120,13 @@ const HeaderContainer = () => {
   };
 
   const handleRouteToDashboard = async () => {
-    await handleSaveResume(routeNames.dashboard);
+    const saveResume = sessionStorage.getItem('saveResume');
+    if (saveResume === "true") {
+      sessionStorage.removeItem('saveResume');
+      await handleSaveResume(routeNames.dashboard);
+    } else {
+      router.push(`/${routeNames.dashboard}`)
+    }
   };
 
   const handleSaveResumeOnBuilderPage = async () => {

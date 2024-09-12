@@ -64,12 +64,17 @@ const TemplateContentContainer = () => {
     }
   ];
 
+  const handleOnFocus= () => {
+    sessionStorage.setItem('saveResume', true);
+  }
+
   return (
     <TemplateContent
       contentModificationModules={contentModificationModules}
       activeSection={resumeData?.contentSectionName}
       togglePreview={resumeData?.togglePreview}
       resumeDataDoesNotExist={!resumeData?.templateData}
+      handleOnFocus={handleOnFocus}
     />
   );
 };
