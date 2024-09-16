@@ -96,12 +96,18 @@ const ResumeTable = ({
                   -
                 </td>
                 <td>
-                  <a
-                    className='hover-underline'
-                    onClick={() => handleDownloadOriginalResume(resume?.resumeUrl)}
-                  >
-                    Download Original
-                  </a>
+                  {
+                    resume?.resumeUrl.length > 0 ? (
+                      <a
+                        className='hover-underline'
+                        onClick={() => handleDownloadOriginalResume(resume?.resumeUrl)}
+                      >
+                        Download Original
+                      </a>
+                    ) : (
+                      <>-</>
+                    )
+                  }
                 </td>
                 <td>
                   <MenuWrapper>

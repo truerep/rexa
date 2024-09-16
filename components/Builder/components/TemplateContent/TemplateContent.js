@@ -8,9 +8,10 @@ const TemplateContent = ({
   contentModificationModules,
   activeSection,
   togglePreview,
-  resumeDataDoesNotExist
+  resumeDataDoesNotExist,
+  handleOnFocus
 }) => (
-  <Wrapper className={`${togglePreview ? 'hide' : ''} ${activeSection === '' ? 'd-none' : ''} print-none`} style={{ opacity: resumeDataDoesNotExist ? 0 : 1 }}>
+  <Wrapper onClick={handleOnFocus} className={`${togglePreview ? 'hide' : ''} ${activeSection === '' ? 'd-none' : ''} print-none`} style={{ opacity: resumeDataDoesNotExist ? 0 : 1 }}>
     <ModulesWrapper>
       {
         contentModificationModules.length ? contentModificationModules.map((module) => (
