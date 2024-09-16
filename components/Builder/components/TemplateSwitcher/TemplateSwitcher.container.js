@@ -19,6 +19,8 @@ const TemplateSwitcherContainer = () => {
   useEffect(() => {
     getAllTemplatesData().then((data) => {
       setGetAllTemplates(data);
+    }).catch((error) => {
+      console.error('Error fetching templates data: ', error);
     });
   }, []);
 
