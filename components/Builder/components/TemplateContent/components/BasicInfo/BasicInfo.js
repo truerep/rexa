@@ -43,18 +43,18 @@ const BasicInfo = ({
                 {
                   showTextarea.includes(item[0]) ? (
                     <InputGroup>
-                      <SyncBtn
-                        type="button"
-                        className="btn-primary btn-outlined"
-                        onClick={() => setShowPromptModal(true)}
-                      >
-                        <img src="/assets/icons/sync-icon-purple.svg" alt="add" />
-                      </SyncBtn>
                       <textarea
                         value={item[1]}
                         placeholder={item[0]}
                         onChange={(e) => handleInputChange(item[0], e.target.value)}
                       />
+                      <SyncBtn
+                        type="button"
+                        className="btn-primary btn-outlined sync-btn-summary"
+                        onClick={() => setShowPromptModal(true)}
+                      >
+                        <img src="/assets/icons/sync-icon-purple.svg" alt="add" />
+                      </SyncBtn>
                     </InputGroup>
                   ) : (
                     <input
