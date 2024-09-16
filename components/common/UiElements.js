@@ -272,6 +272,7 @@ export const SyncBtn = styled(AddNewBtn)`
   border: 0;
   background: transparent;
   padding: 0;
+  flex-shrink: 0;
 `;
 
 export const DarkBtn = styled.button`
