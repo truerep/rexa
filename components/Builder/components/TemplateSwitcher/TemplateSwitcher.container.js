@@ -9,6 +9,8 @@ import {
 } from '@/context/ResumeContext';
 import { getAllTemplatesData } from '@/api/Template';
 
+import toast from 'react-hot-toast';
+
 const TemplateSwitcherContainer = () => {
   const [templateId, setTemplateId] = useState('');
   const [initialIndex, setInitialIndex] = useState(0);
@@ -20,6 +22,7 @@ const TemplateSwitcherContainer = () => {
     getAllTemplatesData().then((data) => {
       setGetAllTemplates(data);
     }).catch((error) => {
+      toast.error('Error fetching templates data');
       console.error('Error fetching templates data: ', error);
     });
   }, []);
