@@ -22,8 +22,8 @@ const TemplateSwitcherContainer = () => {
     getAllTemplatesData().then((data) => {
       setGetAllTemplates(data);
     }).catch((error) => {
-      toast.error('Error fetching templates data');
-      console.error('Error fetching templates data: ', error);
+      toast.error(error?.response?.data?.error || error?.message || 'Error fetching templates data');
+      console.error('Error fetching templates data: ', error?.response?.data?.error || error?.message || error);
     });
   }, []);
 
