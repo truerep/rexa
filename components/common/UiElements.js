@@ -272,6 +272,18 @@ export const SyncBtn = styled(AddNewBtn)`
   border: 0;
   background: transparent;
   padding: 0;
+  flex-shrink: 0;
+
+  &.sync-btn-summary {
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-top: 5px;
+    align-self: flex-start;
+
+    img {
+        height: 18px;
+    }
+  }
 `;
 
 export const DarkBtn = styled.button`
