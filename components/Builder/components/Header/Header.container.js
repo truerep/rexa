@@ -121,7 +121,8 @@ const HeaderContainer = () => {
 
   const handleRouteToDashboard = async () => {
     const saveResume = sessionStorage.getItem('saveResume');
-    if (saveResume === "true") {
+    console.log(router, "<---router")
+    if (saveResume === "true" || router.pathname === "/builder") {
       sessionStorage.removeItem('saveResume');
       await handleSaveResume(routeNames.dashboard);
     } else {
