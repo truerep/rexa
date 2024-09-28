@@ -23,6 +23,7 @@
     "react-animated-numbers": "^0.18.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-quill": "^2.0.0",
     "react-tippy": "^1.4.0",
     "styled-components": "^5.3.8",
     "swiper": "^11.1.0"
