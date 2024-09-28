@@ -21,6 +21,11 @@ import Dashboard from './Dashboard';
 import NewHome from './NewHome';
 import HomePage from './HomePage';
 
+import {
+  BlogsListing,
+  BlogDetail 
+} from './Blogs';
+
 export {
   Header,
   Footer,
@@ -40,5 +45,8 @@ export {
   Loader,
 
   NewHome,
-  HomePage
+  HomePage,
+
+  BlogsListing,
+  BlogDetail
 };
