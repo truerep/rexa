@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const StyledReactQuill = styled(ReactQuill)`
     .ql-container {
-        height: 500px;
+        height: 200px;
         overflow-y: scroll;
     }
 `;
