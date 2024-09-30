@@ -26,6 +26,10 @@ import {
   BlogDetail 
 } from './Blogs';
 
+import AdminPanel from './AdminPanel';
+
+import { BlogsList, CreateBlog } from './AdminPanel/components';
+
 export {
   Header,
   Footer,
@@ -48,5 +52,10 @@ export {
   HomePage,
 
   BlogsListing,
-  BlogDetail
+  BlogDetail,
+
+  AdminPanel,
+
+  BlogsList,
+  CreateBlog
 };
