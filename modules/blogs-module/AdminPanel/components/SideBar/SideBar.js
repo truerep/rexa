@@ -9,7 +9,6 @@ const SideBar = ({
 }) => {
   return (
     <Wrapper>
-      {console.log(pathname)}
       <LogoWrapper>
         <Logo src="/assets/images/company-logo.svg" alt="company logo" />
       </LogoWrapper>

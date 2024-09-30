@@ -1,6 +1,14 @@
 import React, { useMemo } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import styled from "styled-components";
+
+const StyledReactQuill = styled(ReactQuill)`
+    .ql-container {
+        height: 500px;
+        overflow-y: scroll;
+    }
+`;
 
 export default function TextEditor({ value, setValue }) {
 
@@ -81,19 +89,17 @@ export default function TextEditor({ value, setValue }) {
     }, []);
 
     const handleTextChange = (e) => {
-        setValue(e)
-    }
+        setValue(e);
+    };
 
     return (
-        <>
-            <ReactQuill
-                modules={modules}
-                theme="snow"
-                value={value}
-                placeholder="Write something amazing..."
-                onChange={handleTextChange}
-                onChangeSelection={handleImageRemove}
-            ></ReactQuill>
-        </>
+        <StyledReactQuill
+            modules={modules}
+            theme="snow"
+            value={value}
+            placeholder="Write something amazing..."
+            onChange={handleTextChange}
+            onChangeSelection={handleImageRemove}
+        />
     );
 }
