@@ -9,7 +9,6 @@ import {
   HeroBanner,
   GrowthCards,
   Features,
-  ClientsList
 } from './LandingPage';
 
 import Builder from './Builder';
@@ -21,14 +20,6 @@ import Dashboard from './Dashboard';
 import NewHome from './NewHome';
 import HomePage from './HomePage';
 
-import {
-  BlogsListing,
-  BlogDetail 
-} from './Blogs';
-
-import AdminPanel from './AdminPanel';
-
-import { BlogsList, CreateBlog } from './AdminPanel/components';
 
 export {
   Header,
@@ -39,7 +30,6 @@ export {
   HeroBanner,
   GrowthCards,
   Features,
-  // ClientsList,
 
   Builder,
   Create,
@@ -50,12 +40,4 @@ export {
 
   NewHome,
   HomePage,
-
-  BlogsListing,
-  BlogDetail,
-
-  AdminPanel,
-
-  BlogsList,
-  CreateBlog
 };

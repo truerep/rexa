@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
 
-import { BlogDetail } from '@/components'
 import { useAos } from '@/hooks';
+import { BlogDetail } from '@/modules/blogs-module';
 
 const BlogPost = () => {
     useAos({

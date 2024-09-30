@@ -1,4 +1,4 @@
-import { AdminPanel } from '@/components'
+import { AdminPanel } from '@/modules/blogs-module'
 import Head from 'next/head'
 import React from 'react'
 
