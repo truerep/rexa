@@ -31,6 +31,10 @@ const Wrapper = styled.div`
 const BlogImgWrapper = styled.div`
     width: 100%;
     height: 250px;
+
+    @media (max-width: 576px) {
+        height: 220px;
+    }
 `;
 
 const BlogImg = styled.img`
