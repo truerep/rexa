@@ -1,41 +1,41 @@
-import { Footer, Header } from '@/components/common';
-import { colors } from '@/helpers';
 import React from 'react'
 import styled from 'styled-components';
-import BlogCard from '../BlogCard';
+import parse from 'html-react-parser';
 
-const BlogDetail = () => {
+import BlogCard from '../BlogCard';
+import { Footer, Header } from '@/components/common';
+import { colors } from '@/helpers';
+import { calculateReadTime, getDayMonth } from '@/utils';
+
+const BlogDetail = ({blogData, relatedBlogs}) => {
   return (
     <Wrapper>
       <Header />
       <Container>
         <BlogInfoWrapper>
             <BlogKeys>
-                <KeyItem>5 min read</KeyItem>
-                <KeyItem>24 Sep</KeyItem>
+                <KeyItem>{calculateReadTime(blogData?.content)} min read</KeyItem>
+                <KeyItem>{getDayMonth(blogData?.createdAt)}</KeyItem>
             </BlogKeys>
-            <BlogName>This is the name of the Lastest Blog Published on AiCvPro.com</BlogName>
+            <BlogName>{blogData?.title}</BlogName>
         </BlogInfoWrapper>
         <BlogThumbnailWrapper>
-            <BlogThumbnail src="https://framerusercontent.com/images/RBpHBZtwSkU6uF9GENaXtaZ4ozU.png" alt="" />
+            <BlogThumbnail src={blogData?.image} alt="thumbnail" />
         </BlogThumbnailWrapper>
         <BlogBody>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum aperiam dolore, impedit voluptatem odio consectetur explicabo, eligendi unde, facere voluptates nam ducimus natus. Porro eaque voluptas numquam repellendus quo esse voluptate, blanditiis praesentium facere officia sunt incidunt tenetur nisi ipsam at libero, ex accusamus fuga suscipit? Fugit doloribus veniam animi amet quod cum expedita, maiores fuga adipisci necessitatibus cupiditate, deserunt illo vel ab? Fugiat labore, fuga dolore molestias aliquid impedit exercitationem vitae quia perferendis sint ut obcaecati laborum? Magnam, molestias. Quos quam labore quas eligendi, quia ipsa, veniam temporibus maiores omnis aut impedit quo repellat facilis minus rem, porro ducimus.</p>
-            <h3>Lorem ipsum dolor sit amet.</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem corporis odio laborum maxime aut. Provident, aspernatur! Voluptatum distinctio libero deserunt, natus consequuntur doloribus molestiae magnam.</p>
-            <img src="https://s3-ap-south-1.amazonaws.com/ricedigitals3bucket/AUPortalContent/2020/04/25073740/AIimg.jpg" alt="" />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem corporis odio laborum maxime aut. Provident, aspernatur! Voluptatum distinctio libero deserunt, natus consequuntur doloribus molestiae magnam.</p>
-            <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, voluptates.</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus voluptatum dolores veniam, libero velit nostrum ea recusandae eos fugiat rem odit reprehenderit dolorum architecto, facilis voluptatem eveniet consectetur! Laudantium, tempore maiores temporibus at sequi voluptatibus voluptates nostrum. Distinctio, natus porro.</p>
-            <p>Voluptatum distinctio libero deserunt, natus consequuntur doloribus molestiae magnam.</p>
+          {parse(blogData?.content ?? "")}
         </BlogBody>
       </Container>
-    <OtherBlogsWrapper>
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-    </OtherBlogsWrapper>
-        <Footer />
+      {
+        relatedBlogs.length > 0 ? (
+          <OtherBlogsWrapper>
+            {relatedBlogs.map((blogItem, index) => (
+              <BlogCard key={index} blogData={blogItem} />
+            ))}
+          </OtherBlogsWrapper>
+        ) : null
+      }
+      <Footer />
       <BgImages>
         <BgImageItem className='item-1' src='/assets/icons/gradients/peach.png' alt="bg-1" />
         <BgImageItem className='item-2' src='/assets/icons/gradients/blue.png' alt="bg-2" />
@@ -55,6 +55,10 @@ const Wrapper = styled.div`
   @media (max-width: 992px) {
     padding: 150px 20px 50px;
   }
+
+  @media (max-width: 768px) {
+    padding: 90px 0 50px;
+  }
 `;
 
 const BlogBody = styled.div`
@@ -66,6 +70,7 @@ const BlogBody = styled.div`
     font-weight: 500;
     color: ${colors.ErrieBlack};
     padding: 5px 30px;
+    line-height: 1.6;
   }
   
   p {
@@ -73,11 +78,21 @@ const BlogBody = styled.div`
     color: ${colors.ErrieBlack};
     text-align: justify;
     padding: 5px 30px;
+    line-height: 1.6;
   }
 
   img {
     width: 100%;
     margin: 20px 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 0 20px;
+
+    h1, h2, h3, h4, h5, h6, p {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 `;
 
@@ -86,11 +101,19 @@ const Container = styled.div`
     margin: 50px auto 50px;
     border-radius: 8px;
     overflow: hidden;
+
+    @media (max-width: 768px) {
+      border-radius: 0;
+    }
 `;
 
 const BlogThumbnailWrapper = styled.div`
     width: 100%;
     height: 400px;
+
+    @media (max-width: 768px) {
+      height: unset;
+    }
 `;
 
 const BlogThumbnail = styled.img`
@@ -109,6 +132,11 @@ const BlogName = styled.h2`
     color: ${colors.ErrieBlack};
     font-weight: 600;
     text-align: center;
+    line-height: 1.6;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
 `;
 
 const BlogKeys = styled.div`

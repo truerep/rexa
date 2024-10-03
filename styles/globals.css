@@ -247,7 +247,7 @@ h6 {
 
 button:hover,
 a:hover {
-  transform: scale3d(0.95, 0.95, 0.95);
+  /* transform: scale3d(0.95, 0.95, 0.95); */
 }
 
 .move-img {

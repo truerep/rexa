@@ -3,13 +3,17 @@ import React from 'react'
 import styled from 'styled-components';
 import BlogCard from '../BlogCard';
 
-const BlogsListing = () => {
+const BlogsListing = ({blogsData}) => {
   return (
     <Wrapper>
         <Header />
         <Container>
             <BlogsWrapper>
-                <BlogCard />
+              {
+                blogsData.length > 0 ? blogsData.map((blogItem) => (
+                  <BlogCard blogData={blogItem} />
+                )) : null
+              }
             </BlogsWrapper>
         </Container>
         <BgImages>

@@ -1,9 +1,9 @@
 import React from 'react'
 import BlogsListing from './BlogsListing'
 
-const BlogsListingContainer = () => {
+const BlogsListingContainer = ({blogsData}) => {
   return (
-    <BlogsListing />
+    <BlogsListing blogsData={blogsData?.blogs} />
   )
 }
 
