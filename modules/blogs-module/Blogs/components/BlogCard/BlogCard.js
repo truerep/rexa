@@ -1,18 +1,19 @@
 import { colors } from '@/helpers';
+import { calculateReadTime, getDayMonth } from '@/utils';
 import React from 'react'
 import styled from 'styled-components'
 
-const BlogCard = () => {
+const BlogCard = ({blogData, router}) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={() => router.push(`/blogs/${blogData?.slug}`)}>
         <BlogImgWrapper>
-            <BlogImg src="https://framerusercontent.com/images/RBpHBZtwSkU6uF9GENaXtaZ4ozU.png" alt="" />
+            <BlogImg src={blogData?.image} alt="thumbnail" />
         </BlogImgWrapper>
         <BlogInfoWrapper>
-            <BlogName>This is the name of the Lastest Blog Published on AiCvPro.com</BlogName>
+            <BlogName>{blogData?.title}</BlogName>
             <BlogKeys>
-                <KeyItem>5 min read</KeyItem>
-                <KeyItem>24 Sep</KeyItem>
+                <KeyItem>{calculateReadTime(blogData?.content ?? "")} min read</KeyItem>
+                <KeyItem>{getDayMonth(blogData?.createdAt ?? "")}</KeyItem>
             </BlogKeys>
         </BlogInfoWrapper>
     </Wrapper>
@@ -30,6 +31,10 @@ const Wrapper = styled.div`
 const BlogImgWrapper = styled.div`
     width: 100%;
     height: 250px;
+
+    @media (max-width: 576px) {
+        height: 220px;
+    }
 `;
 
 const BlogImg = styled.img`

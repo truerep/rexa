@@ -3,13 +3,17 @@ import React from 'react'
 import styled from 'styled-components';
 import BlogCard from '../BlogCard';
 
-const BlogsListing = () => {
+const BlogsListing = ({blogsData}) => {
   return (
     <Wrapper>
         <Header />
         <Container>
             <BlogsWrapper>
-                <BlogCard />
+              {
+                blogsData.length > 0 ? blogsData.map((blogItem) => (
+                  <BlogCard blogData={blogItem} />
+                )) : null
+              }
             </BlogsWrapper>
         </Container>
         <BgImages>
@@ -30,6 +34,10 @@ const Wrapper = styled.div`
     @media (max-width: 992px) {
         padding: 150px 20px 50px;
     }
+
+    @media (max-width: 768px) {
+        padding: 90px 20px 50px;
+    }
 `;
 
 const Container = styled.div`
@@ -42,6 +50,14 @@ const BlogsWrapper = styled.div`
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding-top: 50px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
 `;
 
 const BgImages = styled.div`

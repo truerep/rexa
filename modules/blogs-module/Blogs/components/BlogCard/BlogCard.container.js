@@ -1,9 +1,12 @@
 import React from 'react'
 import BlogCard from './BlogCard'
+import { useRouter } from 'next/router'
 
-const BlogCardContainer = () => {
+const BlogCardContainer = ({blogData}) => {
+  const router = useRouter();
+
   return (
-    <BlogCard />
+    <BlogCard blogData={blogData} router={router} />
   )
 }
 
