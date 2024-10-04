@@ -5,7 +5,13 @@ const CreateBlogContainer = () => {
   const [state, setState] = React.useState({ title: '', tags: '', thumbnail: null, content: '' });
 
   const handleChanges = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
+    if (e.target.name === 'tags') {
+      const tags = e.target.value.split(',');
+      setState({ ...state, tags });
+      return;
+    } else {
+      setState({ ...state, [e.target.name]: e.target.value });
+    }
   }
 
   const handleSetThumbnail = (e) => {
@@ -31,7 +37,18 @@ const CreateBlogContainer = () => {
   }
 
   return (
-    <CreateBlog content={state.content} title={state.title} tags={state.tags} thumbnail={state.thumbnail} setContent={(content) => setState({ ...state, content })} handleChanges={handleChanges} handleSelectThumbnail={handleSelectThumbnail} handleSetThumbnail={handleSetThumbnail} removeThumbnail={removeThumbnail} handlePublish={handlePublish} />
+    <CreateBlog
+      content={state.content}
+      title={state.title}
+      tags={state.tags}
+      thumbnail={state.thumbnail}
+      setContent={(content) => setState({ ...state, content })}
+      handleChanges={handleChanges}
+      handleSelectThumbnail={handleSelectThumbnail}
+      handleSetThumbnail={handleSetThumbnail}
+      removeThumbnail={removeThumbnail}
+      handlePublish={handlePublish}
+    />
   )
 }
 

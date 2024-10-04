@@ -2,7 +2,18 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
 
-const CreateBlog = ({ title, tags, thumbnail, content, setContent, handleSelectThumbnail, removeThumbnail, handleSetThumbnail, handleChanges, handlePublish }) => {
+const CreateBlog = ({
+  title,
+  tags,
+  thumbnail,
+  content,
+  setContent,
+  handleSelectThumbnail,
+  removeThumbnail,
+  handleSetThumbnail,
+  handleChanges,
+  handlePublish
+}) => {
 
   const TextEditor = useMemo(() => {
     return dynamic(() => import("./components/TextEditor"), {
