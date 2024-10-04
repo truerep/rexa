@@ -4,8 +4,14 @@ import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 
 const StyledReactQuill = styled(ReactQuill)`
+    .ql-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background: white;
+    }
     .ql-container {
-        height: 200px;
+        height: 500px;
         overflow-y: scroll;
     }
 `;

@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react'
-import styled from 'styled-components'
-import dynamic from 'next/dynamic'
+import React, { useMemo } from 'react';
+import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 
-const CreateBlog = ({ value, setValue, handlePublish }) => {
+const CreateBlog = ({ title, setTitle, tags, setTags, thumbnail, setThumbnail, content, setContent, handlePublish, handleTags }) => {
 
   const TextEditor = useMemo(() => {
     return dynamic(() => import("./components/TextEditor"), {
@@ -11,6 +11,18 @@ const CreateBlog = ({ value, setValue, handlePublish }) => {
     });
   }, []);
 
+  const handleSetThumbnail = (e) => {
+    const file = e.target.files[0];
+    if (file && (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
+      setThumbnail(URL.createObjectURL(file));
+    } else {
+      alert('Please select a valid image file (PNG, JPEG, JPG).');
+    }
+  };
+
+  const handleSelectThumbnail = () => {
+    document.querySelector('.file-input').click();
+  };
 
   return (
     <Container>
@@ -18,20 +30,24 @@ const CreateBlog = ({ value, setValue, handlePublish }) => {
         <Title>Create New Blog</Title>
         <PublishButton onClick={handlePublish} className='btn-primary btn-outlined'>Publish</PublishButton>
       </Header>
-      <BlogTitle placeholder="Blog Title" />
-      <BlogThumbnail type="file" placeholder="Blog Thumbnail" />
-      <Tags placeholder="Tags" />
+      <BlogTitle placeholder="Blog Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <BlogThumbnail onClick={handleSelectThumbnail}>
+        <input type="file" style={{ display: 'none' }} className="file-input" onChange={handleSetThumbnail} />
+        {thumbnail ? <Thumbnail src={thumbnail} alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
+      </BlogThumbnail>
+      {thumbnail && <RemoveThumbnail onClick={() => setThumbnail(null)}>Remove</RemoveThumbnail>}
+      <Tags placeholder="Tags" value={tags} onChange={handleTags} />
       <ContentWrapper>
-        <TextEditor value={value} setValue={setValue} />
+        <TextEditor value={content} setValue={setContent} />
       </ContentWrapper>
       <PreviewWrapper>
         <PreviewTitle>Preview</PreviewTitle>
-        <PreviewContent dangerouslySetInnerHTML={{ __html: value }}></PreviewContent>
-        <PreviewHTML>{value}</PreviewHTML>
+        <PreviewContent dangerouslySetInnerHTML={{ __html: content }}></PreviewContent>
+        <PreviewHTML>{content}</PreviewHTML>
       </PreviewWrapper>
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
     display: flex;
@@ -64,12 +80,40 @@ const BlogTitle = styled.input`
     }
 `;
 
-const BlogThumbnail = styled.input`
+const BlogThumbnail = styled.div`
     width: 100%;
+    height: 200px;
     padding: 10px;
     border: 1px solid #e1e1e1;
     border-radius: 5px;
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+`;
+
+const Thumbnail = styled.img`
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+`;
+
+const ThumbnailText = styled.p`
+    color: #666;
+`;
+
+const RemoveThumbnail = styled.button`
+    background-color: #f00;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
 `;
 
 const Tags = styled.input`
@@ -91,7 +135,8 @@ const ContentWrapper = styled.div`
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    height: 100%;
+    height: 500px;
+    overflow-y: auto;
 `;
 
 const PublishButton = styled.button`
@@ -125,4 +170,4 @@ const PreviewHTML = styled.div`
     font-size: 14px;
 `;
 
-export default CreateBlog
+export default CreateBlog;

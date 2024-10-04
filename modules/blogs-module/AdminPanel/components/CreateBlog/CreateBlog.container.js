@@ -2,10 +2,17 @@ import React from 'react'
 import CreateBlog from './CreateBlog'
 
 const CreateBlogContainer = () => {
-  const [value, setValue] = React.useState("");
+  const [content, setContent] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [tags, setTags] = React.useState("");
+  const [thumbnail, setThumbnail] = React.useState(null);
+
+  const handleTags = (e) => {
+    setTags(e.target.value);
+  }
 
   return (
-    <CreateBlog value={value} setValue={setValue} />
+    <CreateBlog content={content} setContent={setContent} title={title} setTitle={setTitle} tags={tags} setTags={setTags} thumbnail={thumbnail} setThumbnail={setThumbnail} handleTags={handleTags} />
   )
 }
 
