@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
 
-const CreateBlog = ({ title, setTitle, tags, setTags, thumbnail, setThumbnail, content, setContent, handlePublish, handleTags }) => {
+const CreateBlog = ({ title, tags, thumbnail, content, setContent, handleSelectThumbnail, removeThumbnail, handleSetThumbnail, handleChanges, handlePublish }) => {
 
   const TextEditor = useMemo(() => {
     return dynamic(() => import("./components/TextEditor"), {
@@ -11,18 +11,6 @@ const CreateBlog = ({ title, setTitle, tags, setTags, thumbnail, setThumbnail, c
     });
   }, []);
 
-  const handleSetThumbnail = (e) => {
-    const file = e.target.files[0];
-    if (file && (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
-      setThumbnail(URL.createObjectURL(file));
-    } else {
-      alert('Please select a valid image file (PNG, JPEG, JPG).');
-    }
-  };
-
-  const handleSelectThumbnail = () => {
-    document.querySelector('.file-input').click();
-  };
 
   return (
     <Container>
@@ -30,15 +18,15 @@ const CreateBlog = ({ title, setTitle, tags, setTags, thumbnail, setThumbnail, c
         <Title>Create New Blog</Title>
         <PublishButton onClick={handlePublish} className='btn-primary btn-outlined'>Publish</PublishButton>
       </Header>
-      <BlogTitle placeholder="Blog Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <BlogTitle placeholder="Blog Title" value={title} onChange={handleChanges} name="title" />
       <BlogThumbnail onClick={handleSelectThumbnail}>
         <input type="file" style={{ display: 'none' }} className="file-input" onChange={handleSetThumbnail} />
         {thumbnail ? <Thumbnail src={thumbnail} alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
       </BlogThumbnail>
-      {thumbnail && <RemoveThumbnail onClick={() => setThumbnail(null)}>Remove</RemoveThumbnail>}
-      <Tags placeholder="Tags" value={tags} onChange={handleTags} />
+      {thumbnail && <RemoveThumbnail onClick={removeThumbnail}>Remove</RemoveThumbnail>}
+      <Tags placeholder="Tags" value={tags} onChange={handleChanges} name="tags" />
       <ContentWrapper>
-        <TextEditor value={content} setValue={setContent} />
+        <TextEditor content={content} setContent={setContent} />
       </ContentWrapper>
       <PreviewWrapper>
         <PreviewTitle>Preview</PreviewTitle>

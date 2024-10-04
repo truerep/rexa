@@ -16,7 +16,7 @@ const StyledReactQuill = styled(ReactQuill)`
     }
 `;
 
-export default function TextEditor({ value, setValue }) {
+export default function TextEditor({ content, setContent }) {
 
     const handleImageUpload = () => {
         const input = document.createElement('input');
@@ -95,14 +95,14 @@ export default function TextEditor({ value, setValue }) {
     }, []);
 
     const handleTextChange = (e) => {
-        setValue(e);
+        setContent(e);
     };
 
     return (
         <StyledReactQuill
             modules={modules}
             theme="snow"
-            value={value}
+            value={content}
             placeholder="Write something amazing..."
             onChange={handleTextChange}
             onChangeSelection={handleImageRemove}
