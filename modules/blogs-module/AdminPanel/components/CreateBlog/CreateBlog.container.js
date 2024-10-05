@@ -19,7 +19,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         ...action.payload,
-        tags: action.payload.tags.join(', '),
+        tags: action.payload.tags.join(','),
         pageTitle: 'Edit Blog',
         saveButtonTitle: 'Save Changes'
       };
@@ -96,7 +96,6 @@ const CreateBlogContainer = () => {
   };
 
   const handleUpdate = (slug) => {
-    console.log(slug);
     const res = updateBlog(slug, {
       title: state.title,
       tags: state.tags,

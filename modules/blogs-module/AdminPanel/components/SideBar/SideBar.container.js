@@ -1,13 +1,28 @@
 import React from 'react'
 import SideBar from './SideBar'
 import { useRouter } from 'next/router'
+import { checkAuthenticated } from '@/helpers';
 
 const SideBarContainer = () => {
   const router = useRouter();
+  const [isAuthorized, setIsAuthorized] = React.useState(false);
 
   const handleRedirectRoute = (route) => {
     router.push(route);
   }
+
+  const handleLogin = async () => {
+    router.push('/authenticate?login&redirectUrl=/admin-panel');
+  }
+
+  const checkUserAuthenticated = async () => {
+    const res = await checkAuthenticated();
+    setIsAuthorized(!!res);
+  };
+
+  React.useEffect(() => {
+    checkUserAuthenticated();
+  }, []);
 
   const primaryMenu = [
     {
@@ -42,6 +57,8 @@ const SideBarContainer = () => {
       pathname={router?.pathname}
       primaryMenu={primaryMenu}
       secondryMenu={secondryMenu}
+      isAuthorized={isAuthorized}
+      handleLogin={handleLogin}
     />
   )
 }

@@ -5,19 +5,24 @@ import styled from 'styled-components';
 const SideBar = ({
   pathname,
   primaryMenu,
-  secondryMenu
+  secondryMenu,
+  isAuthorized,
+  handleLogin
 }) => {
   return (
     <Wrapper>
       <LogoWrapper>
         <Logo src="/assets/images/company-logo.svg" alt="company logo" />
       </LogoWrapper>
+      {!isAuthorized && <LoginButton onClick={handleLogin}>
+        <span>Login</span>
+      </LoginButton>}
       <MenuWrapper>
         <PrimaryMenu>
           {
             primaryMenu.length ? primaryMenu.map((menuItem) => (
               <MenuItem
-                className={menuItem?.activeFor.includes(pathname) ? 'active': ''}
+                className={menuItem?.activeFor.includes(pathname) ? 'active' : ''}
                 onClick={menuItem?.handleClick}
               >
                 <img src={menuItem?.icon} alt={menuItem?.name} />
@@ -57,6 +62,16 @@ const LogoWrapper = styled.div`
 
 const Logo = styled.img`
   height: 80px;
+`;
+
+const LoginButton = styled.button`
+  padding: 10px 0;
+  background-color: ${colors.Red};
+  color: ${colors.ErrieBlack};
+  font-size: 16px;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
 `;
 
 const MenuWrapper = styled.div`
