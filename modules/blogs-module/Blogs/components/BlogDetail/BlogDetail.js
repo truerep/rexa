@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import parse from 'html-react-parser';
 
-import BlogCard from '../BlogCard';
+import BlogCard from '../../../common/BlogCard';
 import { Footer, Header } from '@/components/common';
 import { colors } from '@/helpers';
 import { calculateReadTime, getDayMonth } from '@/utils';

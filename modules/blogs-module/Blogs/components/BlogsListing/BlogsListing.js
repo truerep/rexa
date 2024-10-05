@@ -1,7 +1,7 @@
 import { Header } from '@/components/common'
 import React from 'react'
 import styled from 'styled-components';
-import BlogCard from '../BlogCard';
+import BlogCard from '../../../common/BlogCard';
 
 const BlogsListing = ({blogsData}) => {
   return (

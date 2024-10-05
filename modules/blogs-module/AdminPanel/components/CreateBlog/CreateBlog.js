@@ -1,8 +1,11 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
+import parse from 'html-react-parser';
 
 const CreateBlog = ({
+  pageTitle,
+  saveButtonTitle,
   title,
   tags,
   thumbnail,
@@ -26,8 +29,8 @@ const CreateBlog = ({
   return (
     <Container>
       <Header>
-        <Title>Create New Blog</Title>
-        <PublishButton onClick={handlePublish} className='btn-primary btn-outlined'>Publish</PublishButton>
+        <Title>{pageTitle}</Title>
+        <PublishButton onClick={handlePublish} className='btn-primary btn-outlined'>{saveButtonTitle}</PublishButton>
       </Header>
       <BlogTitle placeholder="Blog Title" value={title} onChange={handleChanges} name="title" />
       <BlogThumbnail onClick={handleSelectThumbnail}>
@@ -41,7 +44,7 @@ const CreateBlog = ({
       </ContentWrapper>
       <PreviewWrapper>
         <PreviewTitle>Preview</PreviewTitle>
-        <PreviewContent dangerouslySetInnerHTML={{ __html: content }}></PreviewContent>
+        <PreviewContent>{parse(content ?? "")}</PreviewContent>
         <PreviewHTML>{content}</PreviewHTML>
       </PreviewWrapper>
     </Container>

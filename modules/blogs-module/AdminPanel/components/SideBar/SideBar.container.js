@@ -25,8 +25,8 @@ const SideBarContainer = () => {
     {
       name: 'Blogs',
       icon: '/assets/icons/admin-panel/blogs-icon.svg',
-      handleClick: () =>  handleRedirectRoute('/admin-panel/blogs'),
-      activeFor: ['/admin-panel/blogs', '/admin-panel/blogs/create-new']
+      handleClick: () => handleRedirectRoute('/admin-panel/blogs'),
+      activeFor: ['/admin-panel/blogs', '/admin-panel/blogs/create-new', '/admin-panel/blogs/edit/[slug]']
     },
   ];
 
@@ -38,10 +38,10 @@ const SideBarContainer = () => {
   ];
 
   return (
-    <SideBar 
+    <SideBar
       pathname={router?.pathname}
       primaryMenu={primaryMenu}
-      secondryMenu={secondryMenu} 
+      secondryMenu={secondryMenu}
     />
   )
 }
