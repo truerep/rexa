@@ -5,7 +5,7 @@ const downloadOriginalResume = async (resumeUrl) => {
   
   const config = {
     method: 'get',
-    url: `https://aicvpro-api.jamreludhi.workers.dev/api/get-resume/${resumeUrl}`,
+    url: `https://aicvpro-api.jamreludhi.workers.dev/api/get-file/${resumeUrl}`,
     headers: {
       Authorization: `Bearer ${authToken}`
     },

@@ -17,6 +17,11 @@ import {
   getUserResumes
 } from './Users';
 
+import { 
+  getAllBlogs,
+  getParticularBlog
+} from './Blogs';
+
 export {
   getResumeText,
   getResumeJson,
@@ -30,5 +35,8 @@ export {
   getTempResumeJsonData,
   getUserData,
   getUserResumes,
-  getRandomResumeFactAndAnimation
+  getRandomResumeFactAndAnimation,
+
+  getAllBlogs,
+  getParticularBlog
 };

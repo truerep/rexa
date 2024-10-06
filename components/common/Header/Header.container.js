@@ -26,6 +26,10 @@ const HeaderContainer = () => {
       url: '/'
     },
     {
+      name: 'Blogs',
+      url: '/blogs'
+    },
+    {
       name: 'About Us',
       url: '/about'
     },

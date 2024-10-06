@@ -71,7 +71,7 @@ const HeaderWrapper = styled.div`
     left: 0;
     right: 0;
     z-index: 9;
-    max-width: 50%;
+    max-width: 55%;
     margin: 0 auto;
     border : 1px solid #e5e5e5;
     border-radius: 20px;

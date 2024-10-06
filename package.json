@@ -16,6 +16,7 @@
   "dependencies": {
     "aos": "^2.3.4",
     "axios": "^1.6.7",
+    "html-react-parser": "^5.1.17",
     "lottie-react": "^2.4.0",
     "next": "14.1.0",
     "nextjs-toploader": "^1.6.4",
@@ -23,6 +24,7 @@
     "react-animated-numbers": "^0.18.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-quill": "^2.0.0",
     "react-tippy": "^1.4.0",
     "styled-components": "^5.3.8",
     "swiper": "^11.1.0"
