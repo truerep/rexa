@@ -77,7 +77,6 @@ const CreateBlogContainer = () => {
 
   const handleSetThumbnail = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     if (file && (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
       dispatch({ type: 'SET_THUMBNAIL', thumbnail: file });
     } else {
