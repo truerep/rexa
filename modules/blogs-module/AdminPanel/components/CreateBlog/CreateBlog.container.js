@@ -47,6 +47,7 @@ const reducer = (state, action) => {
 const CreateBlogContainer = () => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   const [fileInputKey, setFileInputKey] = React.useState(Date.now());
+  const [loading, setLoading] = React.useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -98,6 +99,7 @@ const CreateBlogContainer = () => {
       if (!state.title || !state.tags || !state.thumbnail || !state.content) {
         return toast.error('Please fill all the fields!');
       }
+      setLoading(true);
 
       const imageUri = await uploadImage(state.thumbnail);
 
@@ -109,14 +111,17 @@ const CreateBlogContainer = () => {
       });
 
       if (res?.data) {
+        setLoading(false);
         router.push('/admin-panel/blogs');
       }
     } catch (error) {
+      setLoading(false);
       toast.error(error?.response?.data?.error ?? 'Something went wrong!');
     }
   };
 
   const handleUpdate = async (slug) => {
+    // TODO: Implement upload new image and delete old image
     try {
       const res = await updateBlog(slug, {
         title: state.title,
@@ -126,7 +131,7 @@ const CreateBlogContainer = () => {
       });
 
       if (res?.data) {
-        router.push(`/admin-panel/blogs/${slug}`);
+        router.push(`/admin-panel/blogs`);
       }
     } catch (error) {
       toast.error(error?.response?.data?.error ?? 'Something went wrong!');
@@ -149,6 +154,7 @@ const CreateBlogContainer = () => {
       removeThumbnail={removeThumbnail}
       handlePublish={router.query?.slug ? () => handleUpdate(router.query.slug) : handlePublish}
       fileInputKey={fileInputKey}
+      loading={loading}
     />
   );
 };

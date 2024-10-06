@@ -16,7 +16,8 @@ const CreateBlog = ({
   handleSetThumbnail,
   handleChanges,
   handlePublish,
-  fileInputKey
+  fileInputKey,
+  loading
 }) => {
 
   const TextEditor = useMemo(() => {
