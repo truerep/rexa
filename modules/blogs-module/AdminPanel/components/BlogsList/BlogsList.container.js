@@ -2,6 +2,7 @@ import React from 'react'
 import BlogsList from './BlogsList'
 import { useRouter } from 'next/router'
 import { getAllBlogs } from '@/api';
+import toast from 'react-hot-toast';
 
 const BlogsListContainer = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const BlogsListContainer = () => {
         setBlogsData(res.data?.blogs);
       }
     } catch (err) {
-      console.log(err);
+      toast.error(err?.response?.data?.message || 'Something went wrong');
     }
   }
 

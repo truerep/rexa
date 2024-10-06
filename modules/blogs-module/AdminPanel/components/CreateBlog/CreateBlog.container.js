@@ -3,6 +3,7 @@ import CreateBlog from './CreateBlog';
 import { useRouter } from 'next/router';
 import { getParticularBlog } from '@/api';
 import { updateBlog } from '@/api/Blogs';
+import toast from 'react-hot-toast';
 
 const INITIAL_STATE = {
   title: '',
@@ -78,7 +79,7 @@ const CreateBlogContainer = () => {
     if (file && (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
       dispatch({ type: 'SET_THUMBNAIL', thumbnail: URL.createObjectURL(file) });
     } else {
-      alert('Please select a valid image file (PNG, JPEG, JPG).');
+      toast.error('Please select a valid image file (PNG, JPEG, JPG).');
     }
   };
 
@@ -91,20 +92,27 @@ const CreateBlogContainer = () => {
   };
 
   const handlePublish = () => {
-    console.log(state);
-    console.log('Publishing...');
+    try {
+      console.log(state);
+    } catch (error) {
+
+    }
   };
 
-  const handleUpdate = (slug) => {
-    const res = updateBlog(slug, {
-      title: state.title,
-      tags: state.tags,
-      image: state.thumbnail,
-      content: state.content
-    });
+  const handleUpdate = async (slug) => {
+    try {
+      const res = await updateBlog(slug, {
+        title: state.title,
+        tags: state.tags,
+        image: state.thumbnail,
+        content: state.content
+      });
 
-    if (res?.data) {
-      router.push(`/admin-panel/blogs/${slug}`);
+      if (res?.data) {
+        router.push(`/admin-panel/blogs/${slug}`);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.error ?? 'Something went wrong!');
     }
 
   };
