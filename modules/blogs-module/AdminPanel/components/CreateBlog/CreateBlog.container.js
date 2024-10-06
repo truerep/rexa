@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import CreateBlog from './CreateBlog';
 import { useRouter } from 'next/router';
 import { getParticularBlog } from '@/api';
-import { updateBlog } from '@/api/Blogs';
+import { createBlog, updateBlog, uploadImage } from '@/api/Blogs';
 import toast from 'react-hot-toast';
 
 const INITIAL_STATE = {
@@ -46,6 +46,7 @@ const reducer = (state, action) => {
 
 const CreateBlogContainer = () => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+  const [fileInputKey, setFileInputKey] = React.useState(Date.now());
   const router = useRouter();
 
   useEffect(() => {
@@ -76,8 +77,9 @@ const CreateBlogContainer = () => {
 
   const handleSetThumbnail = (e) => {
     const file = e.target.files[0];
+    console.log(file);
     if (file && (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
-      dispatch({ type: 'SET_THUMBNAIL', thumbnail: URL.createObjectURL(file) });
+      dispatch({ type: 'SET_THUMBNAIL', thumbnail: file });
     } else {
       toast.error('Please select a valid image file (PNG, JPEG, JPG).');
     }
@@ -89,13 +91,29 @@ const CreateBlogContainer = () => {
 
   const removeThumbnail = () => {
     dispatch({ type: 'REMOVE_THUMBNAIL' });
+    setFileInputKey(Date.now());
   };
 
-  const handlePublish = () => {
+  const handlePublish = async () => {
     try {
-      console.log(state);
-    } catch (error) {
+      if (!state.title || !state.tags || !state.thumbnail || !state.content) {
+        return toast.error('Please fill all the fields!');
+      }
 
+      const imageUri = await uploadImage(state.thumbnail);
+
+      const res = await createBlog({
+        title: state.title,
+        tags: state.tags,
+        image: imageUri,
+        content: state.content
+      });
+
+      if (res?.data) {
+        router.push('/admin-panel/blogs');
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.error ?? 'Something went wrong!');
     }
   };
 
@@ -131,6 +149,7 @@ const CreateBlogContainer = () => {
       handleSetThumbnail={handleSetThumbnail}
       removeThumbnail={removeThumbnail}
       handlePublish={router.query?.slug ? () => handleUpdate(router.query.slug) : handlePublish}
+      fileInputKey={fileInputKey}
     />
   );
 };

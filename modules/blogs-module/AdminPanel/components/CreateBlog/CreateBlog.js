@@ -15,7 +15,8 @@ const CreateBlog = ({
   removeThumbnail,
   handleSetThumbnail,
   handleChanges,
-  handlePublish
+  handlePublish,
+  fileInputKey
 }) => {
 
   const TextEditor = useMemo(() => {
@@ -34,8 +35,10 @@ const CreateBlog = ({
       </Header>
       <BlogTitle placeholder="Blog Title" value={title} onChange={handleChanges} name="title" />
       <BlogThumbnail onClick={handleSelectThumbnail}>
-        <input type="file" style={{ display: 'none' }} className="file-input" onChange={handleSetThumbnail} />
-        {thumbnail ? <Thumbnail src={thumbnail} alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
+        <input type="file" style={{ display: 'none' }} className="file-input" key={fileInputKey} onChange={handleSetThumbnail} />
+        {thumbnail ? <Thumbnail src={
+          thumbnail instanceof File ? URL.createObjectURL(thumbnail) : thumbnail
+        } alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
       </BlogThumbnail>
       {thumbnail && <RemoveThumbnail onClick={removeThumbnail}>Remove</RemoveThumbnail>}
       <Tags placeholder="Tags" value={tags} onChange={handleChanges} name="tags" />
