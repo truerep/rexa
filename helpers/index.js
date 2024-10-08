@@ -5,6 +5,7 @@ import getFormattedDate from './getFormattedDate';
 import { checkImageURLIsValid } from './validator';
 import templateKeys from './templateKeys';
 import { removeDataFromSession } from './removeData';
+import getBlogSchema from './getBlogSchema';
 
 export {
   colors,
@@ -13,5 +14,6 @@ export {
   getFormattedDate,
   checkImageURLIsValid,
   templateKeys,
-  removeDataFromSession
+  removeDataFromSession,
+  getBlogSchema
 };

@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import React from 'react'
 
 import { useAos } from '@/hooks';
@@ -12,9 +11,6 @@ const BlogPost = ({data}) => {
 
   return (
     <>
-        <Head>
-            <title>Blogs | AiCvPro</title>
-        </Head>
         <BlogDetail blogData={data} />
     </>
   )

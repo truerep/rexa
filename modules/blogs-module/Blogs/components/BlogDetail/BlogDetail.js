@@ -4,45 +4,101 @@ import parse from 'html-react-parser';
 
 import BlogCard from '../../../common/BlogCard';
 import { Footer, Header } from '@/components/common';
-import { colors } from '@/helpers';
+import { colors, getBlogSchema } from '@/helpers';
 import { calculateReadTime, getDayMonth } from '@/utils';
+import Head from 'next/head';
 
 const BlogDetail = ({blogData, relatedBlogs}) => {
   return (
-    <Wrapper>
-      <Header />
-      <Container>
-        <BlogInfoWrapper>
-            <BlogKeys>
-                <KeyItem>{calculateReadTime(blogData?.content)} min read</KeyItem>
-                <KeyItem>{getDayMonth(blogData?.createdAt)}</KeyItem>
-            </BlogKeys>
-            <BlogName>{blogData?.title}</BlogName>
-        </BlogInfoWrapper>
-        <BlogThumbnailWrapper>
-            <BlogThumbnail src={blogData?.image} alt="thumbnail" />
-        </BlogThumbnailWrapper>
-        <BlogBody>
-          {parse(blogData?.content ?? "")}
-        </BlogBody>
-      </Container>
-      {
-        relatedBlogs.length > 0 ? (
-          <OtherBlogsWrapper>
-            {relatedBlogs.map((blogItem, index) => (
-              <BlogCard key={index} blogData={blogItem} />
-            ))}
-          </OtherBlogsWrapper>
-        ) : null
-      }
-      <Footer />
-      <BgImages>
-        <BgImageItem className='item-1' src='/assets/icons/gradients/peach.png' alt="bg-1" />
-        <BgImageItem className='item-2' src='/assets/icons/gradients/blue.png' alt="bg-2" />
-        <BgImageItem className='item-3' src='/assets/icons/gradients/light-blue.png' alt="bg-3" />
-        <BgImageItem className='item-4' src='/assets/icons/gradients/green.png' alt="bg-4" />
-      </BgImages>
-    </Wrapper>
+    <>
+      <Head>
+        <title>{blogData?.title} | AiCvPro</title>
+        <meta name="description" content={blogData?.description} />
+        <link rel="canonical" href={`https://aicvpro.com/blogs/${blogData?.slug}`} />
+        <meta name="robots" content="index, follow" />
+        <link rel="favicon" href="/assets/favicon.ico" type="image/x-icon" />
+
+        <meta property="og:title" content={blogData?.title} />
+        <meta property="og:description" content={blogData?.description} />
+        <meta property="og:image" content={blogData?.image} />
+        <meta property="og:url" content={`https://aicvpro.com/blogs/${blogData?.slug}`} />
+        <meta property="og:type" content="article" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={blogData?.title} />
+        <meta name="twitter:description" content={blogData?.description} />
+        <meta name="twitter:image" content={blogData?.image} />
+
+        <script
+          dangerouslySetInnerHTML={{__html: JSON.stringify(getBlogSchema(blogData, `https://aicvpro.com/blogs/${blogData?.slug}`))}}
+          type="application/ld+json"
+        />
+    
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify(
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.aicvpro.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://www.aicvpro.com/blogs/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Your Blog Post Title",
+                  "item": `https://www.aicvpro.com/blogs/${blogData?.slug}`
+                }
+              ]
+            }
+          )}}
+        />
+      </Head>
+      <Wrapper>
+        <Header />
+        <Container>
+          <BlogInfoWrapper>
+              <BlogKeys>
+                  <KeyItem>{calculateReadTime(blogData?.content)} min read</KeyItem>
+                  <KeyItem>{getDayMonth(blogData?.createdAt)}</KeyItem>
+              </BlogKeys>
+              <BlogName>{blogData?.title}</BlogName>
+          </BlogInfoWrapper>
+          <BlogThumbnailWrapper>
+              <BlogThumbnail src={blogData?.image} alt="thumbnail" />
+          </BlogThumbnailWrapper>
+          <BlogBody>
+            {parse(blogData?.content ?? "")}
+          </BlogBody>
+        </Container>
+        {
+          relatedBlogs.length > 0 ? (
+            <OtherBlogsWrapper>
+              {relatedBlogs.map((blogItem, index) => (
+                <BlogCard key={index} blogData={blogItem} />
+              ))}
+            </OtherBlogsWrapper>
+          ) : null
+        }
+        <Footer />
+        <BgImages>
+          <BgImageItem className='item-1' src='/assets/icons/gradients/peach.png' alt="bg-1" />
+          <BgImageItem className='item-2' src='/assets/icons/gradients/blue.png' alt="bg-2" />
+          <BgImageItem className='item-3' src='/assets/icons/gradients/light-blue.png' alt="bg-3" />
+          <BgImageItem className='item-4' src='/assets/icons/gradients/green.png' alt="bg-4" />
+        </BgImages>
+      </Wrapper>
+    </>
   )
 }
 
