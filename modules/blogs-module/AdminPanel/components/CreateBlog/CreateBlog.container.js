@@ -88,7 +88,6 @@ const CreateBlogContainer = () => {
   };
 
   const handlePublish = async () => {
-  const handlePublish = async () => {
     try {
       if (!state.title || !state.description || !state.thumbnail || !state.content) {
         return toast.error('Please fill all the fields!');
