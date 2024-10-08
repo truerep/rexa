@@ -140,7 +140,7 @@ const CreateBlogContainer = () => {
     <CreateBlog
       pageTitle={router.query?.slug ? 'Edit Blog' : 'Create New Blog'}
       saveButtonTitle={router.query?.slug ? 'Save Changes' : 'Publish'}
-      RemoveThumbnailText={router.query?.slug ? null : 'Remove'}
+      removeThumbnailText={router.query?.slug ? null : 'Remove'}
       content={state.content}
       title={state.title}
       description={state.description}

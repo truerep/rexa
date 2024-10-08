@@ -6,7 +6,7 @@ import parse from 'html-react-parser';
 const CreateBlog = ({
   pageTitle,
   saveButtonTitle,
-  RemoveThumbnailText,
+  removeThumbnailText,
   title,
   description,
   thumbnail,
@@ -42,7 +42,7 @@ const CreateBlog = ({
           thumbnail instanceof File ? URL.createObjectURL(thumbnail) : thumbnail
         } alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
       </BlogThumbnail>
-      {thumbnail && RemoveThumbnailText && <RemoveThumbnail onClick={removeThumbnail}>{RemoveThumbnailText}</RemoveThumbnail>}
+      {thumbnail && removeThumbnailText && <RemoveThumbnail onClick={removeThumbnail}>{removeThumbnailText}</RemoveThumbnail>}
       <BlogTitle placeholder="Blog Description" value={description} onChange={handleChanges} name="description" />
       <ContentWrapper>
         <TextEditor content={content} setContent={setContent} />
