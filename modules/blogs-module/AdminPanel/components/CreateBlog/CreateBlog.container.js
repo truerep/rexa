@@ -88,77 +88,75 @@ const CreateBlogContainer = () => {
   };
 
   const handlePublish = async () => {
-    const handlePublish = async () => {
-      try {
-        if (!state.title || !state.description || !state.thumbnail || !state.content) {
-          return toast.error('Please fill all the fields!');
-        }
-        setLoading(true);
-
-        const imageUri = await uploadImage(state.thumbnail);
-
-        const res = await createBlog({
-          title: state.title,
-          description: state.description,
-          image: imageUri,
-          content: state.content
-        });
-
-        if (res?.data) {
-          setLoading(false);
-          router.push('/admin-panel/blogs');
-        }
-      } catch (error) {
-        setLoading(false);
-        toast.error(error?.response?.data?.error ?? 'Something went wrong!');
+    try {
+      if (!state.title || !state.description || !state.thumbnail || !state.content) {
+        return toast.error('Please fill all the fields!');
       }
-    };
+      setLoading(true);
 
-    const handleUpdate = async (slug) => {
-      try {
-        if (!state.title || !state.description || !state.thumbnail || !state.content) {
-          return toast.error('Please fill all the fields!');
-        }
-        setLoading(true);
+      const imageUri = await uploadImage(state.thumbnail);
 
-        const res = await updateBlog(slug, {
-          title: state.title,
-          description: state.description,
-          image: state.thumbnail,
-          content: state.content
-        });
+      const res = await createBlog({
+        title: state.title,
+        description: state.description,
+        image: imageUri,
+        content: state.content
+      });
 
-        if (res?.data) {
-          setLoading(false);
-          router.push(`/admin-panel/blogs`);
-        }
-      } catch (error) {
+      if (res?.data) {
         setLoading(false);
-        toast.error(error?.response?.data?.error ?? 'Something went wrong!');
+        router.push('/admin-panel/blogs');
       }
-
-    };
-
-    return (
-      <CreateBlog
-        pageTitle={router.query?.slug ? 'Edit Blog' : 'Create New Blog'}
-        saveButtonTitle={router.query?.slug ? 'Save Changes' : 'Publish'}
-        removeThumbnailText={router.query?.slug ? null : 'Remove'}
-        content={state.content}
-        title={state.title}
-        description={state.description}
-        thumbnail={state.thumbnail}
-        setContent={(content) => dispatch({ type: 'SET_FIELD', field: 'content', value: content })}
-        handleChanges={handleChanges}
-        handleSelectThumbnail={router.query?.slug ? null : handleSelectThumbnail}
-        handleSetThumbnail={handleSetThumbnail}
-        removeThumbnail={router.query?.slug ? null : removeThumbnail}
-        handlePublish={router.query?.slug ? () => handleUpdate(router.query.slug) : handlePublish}
-        fileInputKey={fileInputKey}
-        loading={loading}
-      />
-    );
+    } catch (error) {
+      setLoading(false);
+      toast.error(error?.response?.data?.error ?? 'Something went wrong!');
+    }
   };
+
+  const handleUpdate = async (slug) => {
+    try {
+      if (!state.title || !state.description || !state.thumbnail || !state.content) {
+        return toast.error('Please fill all the fields!');
+      }
+      setLoading(true);
+
+      const res = await updateBlog(slug, {
+        title: state.title,
+        description: state.description,
+        image: state.thumbnail,
+        content: state.content
+      });
+
+      if (res?.data) {
+        setLoading(false);
+        router.push(`/admin-panel/blogs`);
+      }
+    } catch (error) {
+      setLoading(false);
+      toast.error(error?.response?.data?.error ?? 'Something went wrong!');
+    }
+
+  };
+
+  return (
+    <CreateBlog
+      pageTitle={router.query?.slug ? 'Edit Blog' : 'Create New Blog'}
+      saveButtonTitle={router.query?.slug ? 'Save Changes' : 'Publish'}
+      removeThumbnailText={router.query?.slug ? null : 'Remove'}
+      content={state.content}
+      title={state.title}
+      description={state.description}
+      thumbnail={state.thumbnail}
+      setContent={(content) => dispatch({ type: 'SET_FIELD', field: 'content', value: content })}
+      handleChanges={handleChanges}
+      handleSelectThumbnail={router.query?.slug ? null : handleSelectThumbnail}
+      handleSetThumbnail={handleSetThumbnail}
+      removeThumbnail={router.query?.slug ? null : removeThumbnail}
+      handlePublish={router.query?.slug ? () => handleUpdate(router.query.slug) : handlePublish}
+      fileInputKey={fileInputKey}
+      loading={loading}
+    />
+  );
 };
 
 export default CreateBlogContainer;
