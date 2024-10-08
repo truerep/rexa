@@ -71,6 +71,7 @@ const CreateBlogContainer = () => {
     const file = e.target.files[0];
     if (file && (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
       dispatch({ type: 'SET_THUMBNAIL', thumbnail: file });
+      dispatch({ type: 'SET_THUMBNAIL', thumbnail: file });
     } else {
       toast.error('Please select a valid image file (PNG, JPEG, JPG).');
     }
@@ -83,8 +84,10 @@ const CreateBlogContainer = () => {
   const removeThumbnail = () => {
     dispatch({ type: 'REMOVE_THUMBNAIL' });
     setFileInputKey(Date.now());
+    setFileInputKey(Date.now());
   };
 
+  const handlePublish = async () => {
   const handlePublish = async () => {
     try {
       if (!state.title || !state.description || !state.thumbnail || !state.content) {

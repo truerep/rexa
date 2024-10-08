@@ -41,6 +41,10 @@ const CreateBlog = ({
         {thumbnail ? <Thumbnail src={
           thumbnail instanceof File ? URL.createObjectURL(thumbnail) : thumbnail
         } alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
+        <input type="file" style={{ display: 'none' }} className="file-input" key={fileInputKey} onChange={handleSetThumbnail} />
+        {thumbnail ? <Thumbnail src={
+          thumbnail instanceof File ? URL.createObjectURL(thumbnail) : thumbnail
+        } alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
       </BlogThumbnail>
       {thumbnail && removeThumbnailText && <RemoveThumbnail onClick={removeThumbnail}>{removeThumbnailText}</RemoveThumbnail>}
       <BlogTitle placeholder="Blog Description" value={description} onChange={handleChanges} name="description" />
