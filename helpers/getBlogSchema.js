@@ -12,7 +12,7 @@ const getBlogSchema = (blogData, url) => {
       "author": {
         "@type": "Organization",
         "name": "Aicvpro",
-        "url": "https://www.aicvpro.in/"
+        "url": "https://www.aicvpro.com/"
       },
       "publisher": {
         "@type": "Organization",
