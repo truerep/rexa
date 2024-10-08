@@ -9,9 +9,7 @@ const INITIAL_STATE = {
   title: '',
   description: '',
   thumbnail: null,
-  content: '',
-  pageTitle: 'Create New Blog',
-  saveButtonTitle: 'Publish'
+  content: ''
 };
 
 const reducer = (state, action) => {
@@ -19,9 +17,7 @@ const reducer = (state, action) => {
     case 'SET_STATE_FROM_DATA':
       return {
         ...state,
-        ...action.payload,
-        pageTitle: 'Edit Blog',
-        saveButtonTitle: 'Save Changes'
+        ...action.payload
       };
     case 'SET_FIELD':
       return {
@@ -69,7 +65,6 @@ const CreateBlogContainer = () => {
   const handleChanges = (e) => {
     const { name, value } = e.target;
     dispatch({ type: 'SET_FIELD', field: name, value });
-
   };
 
   const handleSetThumbnail = (e) => {
@@ -117,8 +112,12 @@ const CreateBlogContainer = () => {
   };
 
   const handleUpdate = async (slug) => {
-    // TODO: Implement upload new image and delete old image
     try {
+      if (!state.title || !state.description || !state.thumbnail || !state.content) {
+        return toast.error('Please fill all the fields!');
+      }
+      setLoading(true);
+
       const res = await updateBlog(slug, {
         title: state.title,
         description: state.description,
@@ -127,9 +126,11 @@ const CreateBlogContainer = () => {
       });
 
       if (res?.data) {
+        setLoading(false);
         router.push(`/admin-panel/blogs`);
       }
     } catch (error) {
+      setLoading(false);
       toast.error(error?.response?.data?.error ?? 'Something went wrong!');
     }
 
@@ -137,17 +138,18 @@ const CreateBlogContainer = () => {
 
   return (
     <CreateBlog
-      pageTitle={state.pageTitle}
-      saveButtonTitle={state.saveButtonTitle}
+      pageTitle={router.query?.slug ? 'Edit Blog' : 'Create New Blog'}
+      saveButtonTitle={router.query?.slug ? 'Save Changes' : 'Publish'}
+      RemoveThumbnailText={router.query?.slug ? null : 'Remove'}
       content={state.content}
       title={state.title}
       description={state.description}
       thumbnail={state.thumbnail}
       setContent={(content) => dispatch({ type: 'SET_FIELD', field: 'content', value: content })}
       handleChanges={handleChanges}
-      handleSelectThumbnail={handleSelectThumbnail}
+      handleSelectThumbnail={router.query?.slug ? null : handleSelectThumbnail}
       handleSetThumbnail={handleSetThumbnail}
-      removeThumbnail={removeThumbnail}
+      removeThumbnail={router.query?.slug ? null : removeThumbnail}
       handlePublish={router.query?.slug ? () => handleUpdate(router.query.slug) : handlePublish}
       fileInputKey={fileInputKey}
       loading={loading}
