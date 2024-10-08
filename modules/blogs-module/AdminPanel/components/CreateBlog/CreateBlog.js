@@ -7,7 +7,7 @@ const CreateBlog = ({
   pageTitle,
   saveButtonTitle,
   title,
-  tags,
+  description,
   thumbnail,
   content,
   setContent,
@@ -42,7 +42,7 @@ const CreateBlog = ({
         } alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
       </BlogThumbnail>
       {thumbnail && <RemoveThumbnail onClick={removeThumbnail}>Remove</RemoveThumbnail>}
-      <Tags placeholder="Tags" value={tags} onChange={handleChanges} name="tags" />
+      <BlogTitle placeholder="Blog Description" value={description} onChange={handleChanges} name="description" />
       <ContentWrapper>
         <TextEditor content={content} setContent={setContent} />
       </ContentWrapper>
@@ -120,18 +120,6 @@ const RemoveThumbnail = styled.button`
     border: none;
     border-radius: 5px;
     margin-top: 10px;
-`;
-
-const Tags = styled.input`
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #e1e1e1;
-    border-radius: 5px;
-    margin-top: 20px;
-
-    &:focus {
-        outline: none;
-    }
 `;
 
 const ContentWrapper = styled.div`

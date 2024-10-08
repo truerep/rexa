@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const INITIAL_STATE = {
   title: '',
-  tags: '',
+  description: '',
   thumbnail: null,
   content: '',
   pageTitle: 'Create New Blog',
@@ -20,7 +20,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         ...action.payload,
-        tags: action.payload.tags.join(','),
         pageTitle: 'Edit Blog',
         saveButtonTitle: 'Save Changes'
       };
@@ -59,21 +58,18 @@ const CreateBlogContainer = () => {
   const setStateFromData = async (slug) => {
     const res = await getParticularBlog(slug);
     if (res?.data) {
-      const { title, tags, image, content } = res.data;
+      const { title, description, image, content } = res.data;
       dispatch({
         type: 'SET_STATE_FROM_DATA',
-        payload: { title, tags, thumbnail: image, content }
+        payload: { title, description, thumbnail: image, content }
       });
     }
   };
 
   const handleChanges = (e) => {
     const { name, value } = e.target;
-    if (name === 'tags') {
-      dispatch({ type: 'SET_FIELD', field: name, value: value.split(',') });
-    } else {
-      dispatch({ type: 'SET_FIELD', field: name, value });
-    }
+    dispatch({ type: 'SET_FIELD', field: name, value });
+
   };
 
   const handleSetThumbnail = (e) => {
@@ -96,7 +92,7 @@ const CreateBlogContainer = () => {
 
   const handlePublish = async () => {
     try {
-      if (!state.title || !state.tags || !state.thumbnail || !state.content) {
+      if (!state.title || !state.description || !state.thumbnail || !state.content) {
         return toast.error('Please fill all the fields!');
       }
       setLoading(true);
@@ -105,7 +101,7 @@ const CreateBlogContainer = () => {
 
       const res = await createBlog({
         title: state.title,
-        tags: state.tags,
+        description: state.description,
         image: imageUri,
         content: state.content
       });
@@ -125,7 +121,7 @@ const CreateBlogContainer = () => {
     try {
       const res = await updateBlog(slug, {
         title: state.title,
-        tags: state.tags,
+        description: state.description,
         image: state.thumbnail,
         content: state.content
       });
@@ -145,7 +141,7 @@ const CreateBlogContainer = () => {
       saveButtonTitle={state.saveButtonTitle}
       content={state.content}
       title={state.title}
-      tags={state.tags}
+      description={state.description}
       thumbnail={state.thumbnail}
       setContent={(content) => dispatch({ type: 'SET_FIELD', field: 'content', value: content })}
       handleChanges={handleChanges}
