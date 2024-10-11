@@ -104,7 +104,6 @@ const CreateBlogContainer = () => {
       const imageTags = state.content.match(/<img[^>]*>/g);
 
       const imageUrlsFromContent = [];
-
       
       // get the image URLs from the content
       imageTags?.forEach((tag) => {
