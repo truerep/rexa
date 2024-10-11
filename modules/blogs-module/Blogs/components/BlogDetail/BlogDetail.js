@@ -129,12 +129,13 @@ const BlogBody = styled.div`
     line-height: 1.6;
   }
   
-  p {
+  p, ol, ul, li {
     font-weight: 500;
     color: ${colors.ErrieBlack};
     text-align: justify;
     padding: 5px 30px;
     line-height: 1.6;
+    list-style: none;
   }
 
   img {

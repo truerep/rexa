@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import CreateBlog from './CreateBlog';
 import { useRouter } from 'next/router';
 import { getParticularBlog } from '@/api';
-import { createBlog, updateBlog, uploadImage } from '@/api/Blogs';
+import { createBlog, deleteImage, updateBlog, uploadImage } from '@/api/Blogs';
 import toast from 'react-hot-toast';
 
 const INITIAL_STATE = {
@@ -43,6 +43,8 @@ const CreateBlogContainer = () => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   const [fileInputKey, setFileInputKey] = React.useState(Date.now());
   const [loading, setLoading] = React.useState(false);
+  const [imageUrls, setImageUrls] = React.useState([]);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -52,13 +54,17 @@ const CreateBlogContainer = () => {
   }, [router]);
 
   const setStateFromData = async (slug) => {
-    const res = await getParticularBlog(slug);
-    if (res?.data) {
-      const { title, description, image, content } = res.data;
-      dispatch({
-        type: 'SET_STATE_FROM_DATA',
-        payload: { title, description, thumbnail: image, content }
-      });
+    try {
+      const res = await getParticularBlog(slug);
+      if (res?.data) {
+        const { title, description, image, content } = res.data;
+        dispatch({
+          type: 'SET_STATE_FROM_DATA',
+          payload: { title, description, thumbnail: image, content }
+        });
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.error ?? 'Something went wrong!');
     }
   };
 
@@ -93,6 +99,31 @@ const CreateBlogContainer = () => {
       setLoading(true);
 
       const imageUri = await uploadImage(state.thumbnail);
+    
+      // check if the content has any image tags
+      const imageTags = state.content.match(/<img[^>]*>/g);
+
+      const imageUrlsFromContent = [];
+      
+      // get the image URLs from the content
+      imageTags?.forEach((tag) => {
+        const src = tag.match(/src="([^"]*)"/)[1];
+        imageUrlsFromContent.push(src);
+      });
+
+
+      const deleteImages = imageUrls.filter((url) => !imageUrlsFromContent.includes(url));
+
+      deleteImages.forEach(async (url) => {
+        try {
+          const segments = url.split('/');
+          const imageId = segments[segments.length - 2];
+          await deleteImage(imageId);
+        } catch (error) {
+          alert('Failed to delete image');
+        }
+      });
+
 
       const res = await createBlog({
         title: state.title,
@@ -153,6 +184,7 @@ const CreateBlogContainer = () => {
       handlePublish={router.query?.slug ? () => handleUpdate(router.query.slug) : handlePublish}
       fileInputKey={fileInputKey}
       loading={loading}
+      setImageUrls={setImageUrls}
     />
   );
 };
