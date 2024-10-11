@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import { uploadImage } from "@/api/Blogs";
+import React, { useMemo, useRef } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
@@ -16,56 +17,33 @@ const StyledReactQuill = styled(ReactQuill)`
     }
 `;
 
-export default function TextEditor({ content, setContent }) {
+export default function TextEditor({ content, setContent, setImageUrls }) {
+    const reactQuillRef = useRef(null);
+    const [uploading, setUploading] = React.useState(false);
 
-    const handleImageUpload = () => {
+    const handleImageUpload = async (quill) => {
+        setUploading(true);
         const input = document.createElement('input');
         input.setAttribute('type', 'file');
         input.setAttribute('accept', 'image/*');
         input.click();
 
         input.onchange = async () => {
-            const file = input.files[0];
-            const formData = new FormData();
-            formData.append('file', file);
-
-            // Replace with your cloud upload URL
-            const response = await fetch('YOUR_CLOUD_UPLOAD_URL', {
-                method: 'POST',
-                body: formData
-            });
-
-            const data = await response.json();
-            const imageUrl = data.url; // Adjust based on your response structure
-
-            const quill = this.quill;
+            const file = input.files ? input.files[0] : null;
             const range = quill.getSelection();
-            quill.insertEmbed(range.index, 'image', imageUrl);
-        };
-    };
 
-    const handleImageRemove = (delta, oldDelta, source) => {
-        if (source === 'user') {
-            const ops = delta.ops;
-            ops.forEach(op => {
-                if (op.delete) {
-                    const oldOps = oldDelta.ops;
-                    oldOps.forEach(oldOp => {
-                        if (oldOp.insert && oldOp.insert.image) {
-                            const imageUrl = oldOp.insert.image;
-                            // Replace with your cloud delete URL
-                            fetch('YOUR_CLOUD_DELETE_URL', {
-                                method: 'POST',
-                                body: JSON.stringify({ url: imageUrl }),
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                }
-                            });
-                        }
-                    });
+            if (file) {
+                try {
+                    const imageUrl = await uploadImage(file);
+                    setImageUrls((prev) => [...prev, imageUrl]);
+                    quill.insertEmbed(range.index, 'image', imageUrl);
+                    setUploading(false);
+                } catch (error) {
+                    console.error('Image upload failed:', error);
+                    setUploading(false);
                 }
-            });
-        }
+            }
+        };
     };
 
     const modules = useMemo(() => {
@@ -79,7 +57,7 @@ export default function TextEditor({ content, setContent }) {
                     ["link", "image"],
                 ],
                 handlers: {
-                    image: handleImageUpload
+                    image: () => handleImageUpload(reactQuillRef.current.getEditor())
                 },
                 clipboard: {
                     // toggle to add extra line breaks when pasting HTML:
@@ -100,12 +78,13 @@ export default function TextEditor({ content, setContent }) {
 
     return (
         <StyledReactQuill
+            ref={reactQuillRef}
             modules={modules}
             theme="snow"
             value={content}
             placeholder="Write something amazing..."
             onChange={handleTextChange}
-            onChangeSelection={handleImageRemove}
+            readOnly={uploading}
         />
     );
 }

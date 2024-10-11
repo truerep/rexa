@@ -18,7 +18,8 @@ const CreateBlog = ({
   handleChanges,
   handlePublish,
   fileInputKey,
-  loading
+  loading,
+  setImageUrls
 }) => {
 
   const TextEditor = useMemo(() => {
@@ -45,7 +46,7 @@ const CreateBlog = ({
       {thumbnail && removeThumbnailText && <RemoveThumbnail onClick={removeThumbnail}>{removeThumbnailText}</RemoveThumbnail>}
       <BlogTitle placeholder="Blog Description" value={description} onChange={handleChanges} name="description" />
       <ContentWrapper>
-        <TextEditor content={content} setContent={setContent} />
+        <TextEditor content={content} setContent={setContent} setImageUrls={setImageUrls} />
       </ContentWrapper>
       <PreviewWrapper>
         <PreviewTitle>Preview</PreviewTitle>
