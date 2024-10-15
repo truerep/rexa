@@ -245,6 +245,19 @@ h6 {
   color: #6725f4;
 }
 
+.btn-secondary {
+  background: #ff4d4d;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 15px;
+  border: 1px solid #ff4d4d;
+}
+
+.btn-secondary:hover {
+  background: #fff;
+  color: #ff4d4d;
+}
+
 button:hover,
 a:hover {
   /* transform: scale3d(0.95, 0.95, 0.95); */
