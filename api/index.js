@@ -17,9 +17,14 @@ import {
   getUserResumes
 } from './Users';
 
-import { 
+import {
   getAllBlogs,
-  getParticularBlog
+  getParticularBlog,
+  updateBlog,
+  createBlog,
+  uploadImage,
+  deleteImage,
+  deleteBlog
 } from './Blogs';
 
 export {
@@ -38,5 +43,10 @@ export {
   getRandomResumeFactAndAnimation,
 
   getAllBlogs,
-  getParticularBlog
+  getParticularBlog,
+  updateBlog,
+  createBlog,
+  uploadImage,
+  deleteImage,
+  deleteBlog
 };

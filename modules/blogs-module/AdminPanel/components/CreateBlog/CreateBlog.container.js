@@ -1,8 +1,11 @@
 import React, { useReducer, useEffect } from 'react';
 import CreateBlog from './CreateBlog';
+
 import { useRouter } from 'next/router';
-import { getParticularBlog } from '@/api';
-import { createBlog, deleteImage, updateBlog, uploadImage } from '@/api/Blogs';
+import { HttpStatusCode } from 'axios';
+
+import { getParticularBlog, createBlog, deleteBlog, deleteImage, updateBlog, uploadImage } from '@/api';
+
 import toast from 'react-hot-toast';
 
 const INITIAL_STATE = {
@@ -44,6 +47,7 @@ const CreateBlogContainer = () => {
   const [fileInputKey, setFileInputKey] = React.useState(Date.now());
   const [loading, setLoading] = React.useState(false);
   const [imageUrls, setImageUrls] = React.useState([]);
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
 
   const router = useRouter();
 
@@ -91,6 +95,48 @@ const CreateBlogContainer = () => {
     setFileInputKey(Date.now());
   };
 
+  const checkImagesInContentAndDelete = async (content) => {
+    // check if the content has any image tags
+    const imageTags = content.match(/<img[^>]*>/g);
+
+    const imageUrlsFromContent = [];
+
+    // get the image URLs from the content
+    imageTags?.forEach((tag) => {
+      const src = tag.match(/src="([^"]*)"/)[1];
+      imageUrlsFromContent.push(src);
+    });
+
+    // get the images that are not in the content
+    const deleteImages = imageUrls.filter((url) => !imageUrlsFromContent.includes(url));
+
+    // delete the images that are not in the content
+    deleteImages.forEach(async (url) => {
+      try {
+        const segments = url.split('/');
+        const imageId = segments[segments.length - 2];
+        await deleteImage(imageId);
+      } catch (error) {
+        toast.error(error?.response?.data?.error ?? 'Something went wrong!');
+      }
+    });
+  };
+
+  const getImageIdsFromContent = async (content) => {
+    const imageTags = content.match(/<img[^>]*>/g);
+
+    const imageIds = [];
+
+    imageTags?.forEach((tag) => {
+      const src = tag.match(/src="([^"]*)"/)[1];
+      const segments = src.split('/');
+      const imageId = segments[segments.length - 2];
+      imageIds.push(imageId);
+    });
+
+    return imageIds;
+  };
+
   const handlePublish = async () => {
     try {
       if (!state.title || !state.description || !state.thumbnail || !state.content) {
@@ -99,37 +145,17 @@ const CreateBlogContainer = () => {
       setLoading(true);
 
       const imageUri = await uploadImage(state.thumbnail);
-    
-      // check if the content has any image tags
-      const imageTags = state.content.match(/<img[^>]*>/g);
 
-      const imageUrlsFromContent = [];
-      
-      // get the image URLs from the content
-      imageTags?.forEach((tag) => {
-        const src = tag.match(/src="([^"]*)"/)[1];
-        imageUrlsFromContent.push(src);
-      });
+      await checkImagesInContentAndDelete(state.content);
 
-
-      const deleteImages = imageUrls.filter((url) => !imageUrlsFromContent.includes(url));
-
-      deleteImages.forEach(async (url) => {
-        try {
-          const segments = url.split('/');
-          const imageId = segments[segments.length - 2];
-          await deleteImage(imageId);
-        } catch (error) {
-          alert('Failed to delete image');
-        }
-      });
-
+      const imageIds = await getImageIdsFromContent(state.content);
 
       const res = await createBlog({
         title: state.title,
         description: state.description,
         image: imageUri,
-        content: state.content
+        content: state.content,
+        imageIds
       });
 
       if (res?.data) {
@@ -149,11 +175,16 @@ const CreateBlogContainer = () => {
       }
       setLoading(true);
 
+      await checkImagesInContentAndDelete(state.content);
+
+      const imageIds = await getImageIdsFromContent(state.content);
+
       const res = await updateBlog(slug, {
         title: state.title,
         description: state.description,
         image: state.thumbnail,
-        content: state.content
+        content: state.content,
+        imageIds
       });
 
       if (res?.data) {
@@ -164,8 +195,31 @@ const CreateBlogContainer = () => {
       setLoading(false);
       toast.error(error?.response?.data?.error ?? 'Something went wrong!');
     }
-
   };
+
+  const handleDeleteBlog = async (slug) => {
+    try {
+      setLoading(true);
+      const segments = state.thumbnail.split('/');
+      const imageId = segments[segments.length - 2];
+
+      state.thumbnail && await deleteImage(imageId);
+
+      const res = await deleteBlog(slug);
+
+      if (res?.status === HttpStatusCode.NoContent) {
+        router.push('/admin-panel/blogs');
+        setLoading(false);
+      }
+    } catch (error) {
+      setLoading(false);
+      toast.error(error?.response?.data?.error ?? 'Something went wrong!');
+    }
+  }
+
+  const handleDeleteModal = () => {
+    setShowDeleteModal(!showDeleteModal);
+  }
 
   return (
     <CreateBlog
@@ -185,6 +239,10 @@ const CreateBlogContainer = () => {
       fileInputKey={fileInputKey}
       loading={loading}
       setImageUrls={setImageUrls}
+      handleDeleteBlog={router.query?.slug ? () => handleDeleteBlog(router.query.slug) : null}
+      showDeleteModal={showDeleteModal}
+      handleDeleteModal={handleDeleteModal}
+      setShowDeleteModal={setShowDeleteModal}
     />
   );
 };

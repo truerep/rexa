@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
 import parse from 'html-react-parser';
+import { DeleteBtn } from '@/components/common/UiElements';
+import { Loader, Modal } from '@/components/common';
 
 const CreateBlog = ({
   pageTitle,
@@ -19,7 +21,11 @@ const CreateBlog = ({
   handlePublish,
   fileInputKey,
   loading,
-  setImageUrls
+  setImageUrls,
+  handleDeleteBlog,
+  showDeleteModal,
+  handleDeleteModal,
+  setShowDeleteModal
 }) => {
 
   const TextEditor = useMemo(() => {
@@ -29,33 +35,60 @@ const CreateBlog = ({
     });
   }, []);
 
-
   return (
-    <Container>
-      <Header>
-        <Title>{pageTitle}</Title>
-        <PublishButton onClick={handlePublish} className='btn-primary btn-outlined'>{saveButtonTitle}</PublishButton>
-      </Header>
-      <BlogTitle placeholder="Blog Title" value={title} onChange={handleChanges} name="title" />
-      <BlogThumbnail onClick={handleSelectThumbnail}>
-        <input type="file" style={{ display: 'none' }} className="file-input" key={fileInputKey} onChange={handleSetThumbnail} />
-        {thumbnail ? <Thumbnail src={
-          thumbnail instanceof File ? URL.createObjectURL(thumbnail) : thumbnail
-        } alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
-      </BlogThumbnail>
-      {thumbnail && removeThumbnailText && <RemoveThumbnail onClick={removeThumbnail}>{removeThumbnailText}</RemoveThumbnail>}
-      <BlogTitle placeholder="Blog Description" value={description} onChange={handleChanges} name="description" />
-      <ContentWrapper>
-        <TextEditor content={content} setContent={setContent} setImageUrls={setImageUrls} />
-      </ContentWrapper>
-      <PreviewWrapper>
-        <PreviewTitle>Preview</PreviewTitle>
-        <PreviewContent>{parse(content ?? "")}</PreviewContent>
-        <PreviewHTML>{content}</PreviewHTML>
-      </PreviewWrapper>
-    </Container>
+    loading ?
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper> : <Container>
+        <Header>
+          <Title>{pageTitle}</Title>
+          {handleDeleteBlog && <DeleteBtn onClick={handleDeleteModal} className='btn-secondary'>
+            Delete Blog
+          </DeleteBtn>}
+          <PublishButton onClick={handlePublish} className='btn-primary btn-outlined'>{saveButtonTitle}</PublishButton>
+        </Header>
+        <BlogTitle placeholder="Blog Title" value={title} onChange={handleChanges} name="title" />
+        <BlogThumbnail onClick={handleSelectThumbnail}>
+          <input type="file" style={{ display: 'none' }} className="file-input" key={fileInputKey} onChange={handleSetThumbnail} />
+          {thumbnail ? <Thumbnail src={
+            thumbnail instanceof File ? URL.createObjectURL(thumbnail) : thumbnail
+          } alt="thumbnail" /> : <ThumbnailText>Upload Thumbnail</ThumbnailText>}
+        </BlogThumbnail>
+        {thumbnail && removeThumbnailText && <RemoveThumbnail onClick={removeThumbnail}>{removeThumbnailText}</RemoveThumbnail>}
+        <BlogTitle placeholder="Blog Description" value={description} onChange={handleChanges} name="description" />
+        <ContentWrapper>
+          <TextEditor content={content} setContent={setContent} setImageUrls={setImageUrls} />
+        </ContentWrapper>
+        <PreviewWrapper>
+          <PreviewTitle>Preview</PreviewTitle>
+          <PreviewContent>{parse(content ?? "")}</PreviewContent>
+          <PreviewHTML>{content}</PreviewHTML>
+        </PreviewWrapper>
+        {/* 
+        Modal for deleting blog
+      */}
+        <Modal showModal={showDeleteModal} setShowModal={setShowDeleteModal}>
+          <DeleteModalBody>
+            <DeleteModalTitle>Delete Blog</DeleteModalTitle>
+            <DeleteModalParagraph>Are you sure you want to delete the blog?</DeleteModalParagraph>
+            <DeleteModalParagraph>This action cannot be undone.</DeleteModalParagraph>
+            <DeleteModalButtonWrapper>
+              <DeleteModalDeleteButton onClick={handleDeleteBlog}>Delete</DeleteModalDeleteButton>
+              <DeleteModalButton className='btn-dark' onClick={handleDeleteModal}>Cancel</DeleteModalButton>
+            </DeleteModalButtonWrapper>
+          </DeleteModalBody>
+        </Modal>
+      </Container>
   );
 };
+
+const LoaderWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 90px 0 0;
+    height: 80%;
+`;
 
 const Container = styled.div`
     display: flex;
@@ -164,6 +197,44 @@ const PreviewHTML = styled.div`
     text-align: left;
     color: #666;
     font-size: 14px;
+`;
+
+const DeleteModalBody = styled.div`
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+`;
+
+const DeleteModalTitle = styled.h2`
+    margin-bottom: 20px;
+`;
+
+const DeleteModalParagraph = styled.p`
+    margin-bottom: 20px;
+`;
+
+const DeleteModalButtonWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const DeleteModalButton = styled.button`
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+`;
+
+const DeleteModalDeleteButton = styled(DeleteModalButton)`
+    background-color: #fff;
+    color: #f00;
+
+    &:hover {
+        background-color: #f00;
+        color: #fff;
+    }
 `;
 
 export default CreateBlog;
