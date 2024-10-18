@@ -45,6 +45,13 @@ const CreateBlog = ({
           {handleDeleteBlog && <DeleteBtn onClick={handleDeleteModal} className='btn-secondary'>
             Delete Blog
           </DeleteBtn>}
+          <DraftSelect>
+            <label>Is Draft</label>
+            <select>
+              <option value="false">no</option>
+              <option value="true">yes</option>
+            </select>
+          </DraftSelect>
           <PublishButton onClick={handlePublish} className='btn-primary btn-outlined'>{saveButtonTitle}</PublishButton>
         </Header>
         <BlogTitle placeholder="Blog Title" value={title} onChange={handleChanges} name="title" />
@@ -103,6 +110,19 @@ const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+`;
+
+const DraftSelect = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  select {
+    padding: 5px 5px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
 `;
 
 const Title = styled.h1`
