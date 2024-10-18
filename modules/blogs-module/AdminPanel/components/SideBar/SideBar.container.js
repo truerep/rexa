@@ -1,7 +1,6 @@
 import React from 'react'
 import SideBar from './SideBar'
 import { useRouter } from 'next/router'
-import { checkAuthenticated } from '@/helpers';
 
 const SideBarContainer = () => {
   const router = useRouter();
