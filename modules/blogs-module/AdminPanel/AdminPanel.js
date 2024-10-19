@@ -1,14 +1,36 @@
 import React from 'react'
 import styled from 'styled-components';
 import { SideBar } from './components';
+import { Loader } from '@/components';
+import { colors } from '@/helpers';
 
-const AdminPanel = ({children}) => {
+const AdminPanel = ({children, pageLoading, isAuthorized, handleLogin}) => {
   return (
     <Section>
-        <Wrapper>
-            <SideBar />
-            <PageContent>{children}</PageContent>
-        </Wrapper>
+        {
+            pageLoading ? (
+                <LoaderWrapper>
+                    <Loader />
+                </LoaderWrapper>
+            ) : (
+                <>
+                    {
+                        isAuthorized ? (
+                            <Wrapper>
+                                <SideBar />
+                                <PageContent>{children}</PageContent>
+                            </Wrapper>
+                        ) : (
+                            <LoaderWrapper>
+                                <LoginButton onClick={handleLogin}>
+                                    <span>Login</span>
+                                </LoginButton>
+                            </LoaderWrapper>
+                        )
+                    }
+                </>
+            )
+        }
     </Section>
   )
 }
@@ -17,6 +39,13 @@ const Section = styled.section`
     padding: 20px;
     height: 100vh;
     overflow: auto;
+`;
+
+const LoaderWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 `;
 
 const Wrapper = styled.div`
@@ -28,6 +57,16 @@ const Wrapper = styled.div`
 const PageContent = styled.div`
     flex: 1;
     overflow: auto;
+`;
+
+const LoginButton = styled.button`
+  padding: 10px 30px;
+  background-color: ${colors.HanPurple};
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
 `;
 
 export default AdminPanel

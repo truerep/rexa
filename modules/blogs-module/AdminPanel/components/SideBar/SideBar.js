@@ -5,18 +5,13 @@ import styled from 'styled-components';
 const SideBar = ({
   pathname,
   primaryMenu,
-  secondryMenu,
-  isAuthorized,
-  handleLogin
+  secondryMenu
 }) => {
   return (
     <Wrapper>
       <LogoWrapper>
         <Logo src="/assets/images/company-logo.svg" alt="company logo" />
       </LogoWrapper>
-      {!isAuthorized && <LoginButton onClick={handleLogin}>
-        <span>Login</span>
-      </LoginButton>}
       <MenuWrapper>
         <PrimaryMenu>
           {

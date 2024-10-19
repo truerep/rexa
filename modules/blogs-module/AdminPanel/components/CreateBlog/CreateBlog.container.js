@@ -12,7 +12,8 @@ const INITIAL_STATE = {
   title: '',
   description: '',
   thumbnail: null,
-  content: ''
+  content: '',
+  draft: false
 };
 
 const reducer = (state, action) => {
@@ -155,6 +156,7 @@ const CreateBlogContainer = () => {
         description: state.description,
         image: imageUri,
         content: state.content,
+        draft: state.draft === 'true',
         imageIds
       });
 
@@ -184,6 +186,7 @@ const CreateBlogContainer = () => {
         description: state.description,
         image: state.thumbnail,
         content: state.content,
+        draft: state.draft === 'true',
         imageIds
       });
 
@@ -230,6 +233,7 @@ const CreateBlogContainer = () => {
       title={state.title}
       description={state.description}
       thumbnail={state.thumbnail}
+      draft={state.draft}
       setContent={(content) => dispatch({ type: 'SET_FIELD', field: 'content', value: content })}
       handleChanges={handleChanges}
       handleSelectThumbnail={router.query?.slug ? null : handleSelectThumbnail}
