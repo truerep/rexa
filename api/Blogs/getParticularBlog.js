@@ -4,7 +4,7 @@ import { appEnv } from '@/helpers';
 const getParticularBlog = async (blogSlug) => {
   const config = {
     method: 'get',
-    url: `${appEnv.API_URL}/api/blogs/${blogSlug}`
+    url: `${appEnv.API_URL}/api/blogs/get-blog/${blogSlug}`
   };
 
   const res = await axios(config);

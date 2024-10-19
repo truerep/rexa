@@ -13,6 +13,7 @@ const CreateBlog = ({
   description,
   thumbnail,
   content,
+  draft,
   setContent,
   handleSelectThumbnail,
   removeThumbnail,
@@ -47,7 +48,7 @@ const CreateBlog = ({
           </DeleteBtn>}
           <DraftSelect>
             <label>Is Draft</label>
-            <select>
+            <select name="draft" value={draft} onChange={handleChanges}>
               <option value="false">no</option>
               <option value="true">yes</option>
             </select>
