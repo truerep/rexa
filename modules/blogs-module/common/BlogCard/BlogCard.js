@@ -12,6 +12,7 @@ const BlogCard = ({ blogData, redirectToBlogDetail }) => {
             <BlogInfoWrapper>
                 <BlogName>{blogData?.title}</BlogName>
                 <BlogKeys>
+                    {blogData?.draft && <IsDraft>Draft</IsDraft>}
                     <KeyItem>{calculateReadTime(blogData?.content ?? "")} min read</KeyItem>
                     <KeyItem>{getDayMonth(blogData?.createdAt ?? "")}</KeyItem>
                 </BlogKeys>
@@ -35,6 +36,15 @@ const BlogImgWrapper = styled.div`
     @media (max-width: 576px) {
         height: 220px;
     }
+`;
+
+const IsDraft = styled.div`
+    display: inline-block;
+    padding: 8px 16px;
+    background: ${colors.Red};
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
 `;
 
 const BlogImg = styled.img`

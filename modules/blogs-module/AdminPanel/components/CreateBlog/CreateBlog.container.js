@@ -4,7 +4,7 @@ import CreateBlog from './CreateBlog';
 import { useRouter } from 'next/router';
 import { HttpStatusCode } from 'axios';
 
-import { getParticularBlog, createBlog, deleteBlog, deleteImage, updateBlog, uploadImage } from '@/api';
+import { getParticularBlogAdmin, createBlog, deleteBlog, deleteImage, updateBlog, uploadImage } from '@/api';
 
 import toast from 'react-hot-toast';
 
@@ -60,12 +60,12 @@ const CreateBlogContainer = () => {
 
   const setStateFromData = async (slug) => {
     try {
-      const res = await getParticularBlog(slug);
+      const res = await getParticularBlogAdmin(slug);
       if (res?.data) {
-        const { title, description, image, content } = res.data;
+        const { title, description, image, content, draft } = res.data;
         dispatch({
           type: 'SET_STATE_FROM_DATA',
-          payload: { title, description, thumbnail: image, content }
+          payload: { title, description, thumbnail: image, content, draft }
         });
       }
     } catch (error) {

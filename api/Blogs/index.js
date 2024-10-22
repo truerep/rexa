@@ -5,6 +5,8 @@ import createBlog from "./createBlog";
 import uploadImage from "./uploadImage";
 import deleteImage from "./deleteImage";
 import deleteBlog from "./deleteBlog";
+import getAllBlogsAdmin from "./getAllBlogsAdmin";
+import getParticularBlogAdmin from "./getParticularBlogAdmin";
 
 export {
     getAllBlogs,
@@ -13,5 +15,7 @@ export {
     createBlog,
     uploadImage,
     deleteImage,
-    deleteBlog
+    deleteBlog,
+    getAllBlogsAdmin,
+    getParticularBlogAdmin
 }
