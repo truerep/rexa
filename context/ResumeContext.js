@@ -13,7 +13,7 @@ const ResumeContextProvider = ({children}) => {
     toggleTemplatesPopover: false,
     togglePreview: false,
     contentSectionName: '',
-    templateUniqueId: '66eafc870f641ea8a1472414'
+    templateUniqueId: '6717cd2e4ea2f2536dfd6b7d'
   });
 
   const updateResumeData = (newResumeData) => {
