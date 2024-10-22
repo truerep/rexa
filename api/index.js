@@ -24,7 +24,9 @@ import {
   createBlog,
   uploadImage,
   deleteImage,
-  deleteBlog
+  deleteBlog,
+  getParticularBlogAdmin,
+  getAllBlogsAdmin
 } from './Blogs';
 
 export {
@@ -48,5 +50,7 @@ export {
   createBlog,
   uploadImage,
   deleteImage,
-  deleteBlog
+  deleteBlog,
+  getParticularBlogAdmin,
+  getAllBlogsAdmin
 };

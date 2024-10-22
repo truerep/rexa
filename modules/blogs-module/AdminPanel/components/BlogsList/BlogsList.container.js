@@ -1,7 +1,7 @@
 import React from 'react'
 import BlogsList from './BlogsList'
 import { useRouter } from 'next/router'
-import { getAllBlogs } from '@/api';
+import { getAllBlogsAdmin } from '@/api';
 import toast from 'react-hot-toast';
 
 const BlogsListContainer = () => {
@@ -14,7 +14,7 @@ const BlogsListContainer = () => {
 
   const getBlogs = async () => {
     try {
-      const res = await getAllBlogs();
+      const res = await getAllBlogsAdmin();
       if (res?.data) {
         setBlogsData(res.data?.blogs);
       }
