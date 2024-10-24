@@ -3,7 +3,7 @@ import AdminPanel from './AdminPanel'
 import { checkAuthenticated } from '@/helpers'
 import { useRouter } from 'next/router';
 
-const AdminPanelContainer = ({children}) => {
+const AdminPanelContainer = ({ children }) => {
   const router = useRouter();
 
   const [pageLoading, setPageLoading] = useState(true);
@@ -24,8 +24,8 @@ const AdminPanelContainer = ({children}) => {
   }
 
   return (
-    <AdminPanel 
-      children={children} 
+    <AdminPanel
+      children={children}
       pageLoading={pageLoading}
       isAuthorized={isAuthorized}
       handleLogin={handleLogin}

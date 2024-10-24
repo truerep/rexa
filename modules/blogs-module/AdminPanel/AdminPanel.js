@@ -3,36 +3,39 @@ import styled from 'styled-components';
 import { SideBar } from './components';
 import { Loader } from '@/components';
 import { colors } from '@/helpers';
+import AdminContextProvider from './context/AdminContext';
 
-const AdminPanel = ({children, pageLoading, isAuthorized, handleLogin}) => {
-  return (
-    <Section>
-        {
-            pageLoading ? (
-                <LoaderWrapper>
-                    <Loader />
-                </LoaderWrapper>
-            ) : (
-                <>
-                    {
-                        isAuthorized ? (
-                            <Wrapper>
-                                <SideBar />
-                                <PageContent>{children}</PageContent>
-                            </Wrapper>
-                        ) : (
-                            <LoaderWrapper>
-                                <LoginButton onClick={handleLogin}>
-                                    <span>Login</span>
-                                </LoginButton>
-                            </LoaderWrapper>
-                        )
-                    }
-                </>
-            )
-        }
-    </Section>
-  )
+const AdminPanel = ({ children, pageLoading, isAuthorized, handleLogin }) => {
+    return (
+        <AdminContextProvider>
+            <Section>
+                {
+                    pageLoading ? (
+                        <LoaderWrapper>
+                            <Loader />
+                        </LoaderWrapper>
+                    ) : (
+                        <>
+                            {
+                                isAuthorized ? (
+                                    <Wrapper>
+                                        <SideBar />
+                                        <PageContent>{children}</PageContent>
+                                    </Wrapper>
+                                ) : (
+                                    <LoaderWrapper>
+                                        <LoginButton onClick={handleLogin}>
+                                            <span>Login</span>
+                                        </LoginButton>
+                                    </LoaderWrapper>
+                                )
+                            }
+                        </>
+                    )
+                }
+            </Section>
+        </AdminContextProvider>
+    )
 }
 
 const Section = styled.section`

@@ -1,3 +1,4 @@
+import { CloseIcon } from '@/components/common/UiElements';
 import { colors } from '@/helpers';
 import React from 'react'
 import styled from 'styled-components';
@@ -5,10 +6,15 @@ import styled from 'styled-components';
 const SideBar = ({
   pathname,
   primaryMenu,
-  secondryMenu
+  secondryMenu,
+  hideSidebar,
+  handleHideSidebar
 }) => {
   return (
-    <Wrapper>
+    !hideSidebar && <Wrapper>
+      <CloseButton onClick={handleHideSidebar}>
+        <CloseIcon src="/assets/icons/close-icon-dark.svg" />
+      </CloseButton>
       <LogoWrapper>
         <Logo src="/assets/images/company-logo.svg" alt="company logo" />
       </LogoWrapper>
@@ -48,6 +54,21 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+`;
+
+const CloseButton = styled.div`
+  display: none;
+  cursor: pointer;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    padding: 10px;
+  }
 `;
 
 const LogoWrapper = styled.div`
