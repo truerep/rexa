@@ -8,6 +8,10 @@ export const PageHeader = styled.div`
 
     h1 {
         font-size: 28px;
+
+        @media (max-width: 768px) {
+            font-size: 14px;
+        }
     }
 
     button {
@@ -16,6 +20,29 @@ export const PageHeader = styled.div`
 
         &:hover {
             transform: unset;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 14px;
+
+        }
+    }
+`;
+
+export const HamBurger = styled.div`
+    display: none;
+    cursor: pointer;
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+
+    @media (max-width: 768px) {
+        display: block;
+        img {
+            width: 20px;
+            height: 20px;
         }
     }
 `;

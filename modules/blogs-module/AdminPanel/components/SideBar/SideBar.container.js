@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SideBar from './SideBar'
 import { useRouter } from 'next/router'
+import { AdminContext } from '../../context/AdminContext';
 
 const SideBarContainer = () => {
   const router = useRouter();
+  const { adminData, handleHideSidebar } = useContext(AdminContext);
 
   const handleRedirectRoute = (route) => {
     router.push(route);
@@ -42,6 +44,8 @@ const SideBarContainer = () => {
       pathname={router?.pathname}
       primaryMenu={primaryMenu}
       secondryMenu={secondryMenu}
+      hideSidebar={adminData?.handleSidebar}
+      handleHideSidebar={handleHideSidebar}
     />
   )
 }
