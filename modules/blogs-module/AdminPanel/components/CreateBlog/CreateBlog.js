@@ -111,6 +111,11 @@ const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 20px;
+    }
 `;
 
 const DraftSelect = styled.div`
@@ -124,10 +129,18 @@ const DraftSelect = styled.div`
     border-radius: 5px;
     text-transform: uppercase;
   }
+
+  @media (max-width: 768px) {
+    margin: 10px 0;
+  }
 `;
 
 const Title = styled.h1`
     margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        text-align: center;
+    }
 `;
 
 const BlogTitle = styled.input`
@@ -190,6 +203,9 @@ const ContentWrapper = styled.div`
 `;
 
 const PublishButton = styled.button`
+  @media (max-width: 768px) {
+    padding: 5px 10px !important;
+  }
 `;
 
 const PreviewWrapper = styled.div`
@@ -211,6 +227,12 @@ const PreviewTitle = styled.h2`
 const PreviewContent = styled.div`
     margin-top: 20px;
     text-align: left;
+
+    @media (max-width: 768px) {
+      img {
+        width: 100%;
+      }
+    }
 `;
 
 const PreviewHTML = styled.div`
@@ -218,6 +240,10 @@ const PreviewHTML = styled.div`
     text-align: left;
     color: #666;
     font-size: 14px;
+
+    @media (max-width: 768px) {
+      word-wrap: break-word;
+    }
 `;
 
 const DeleteModalBody = styled.div`
