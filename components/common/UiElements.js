@@ -220,6 +220,11 @@ export const DeleteBtn = styled.button`
   transform: unset!important;
   display: grid;
   place-items: center;
+
+  @media (max-width: 576px) {
+    margin-left: 0;
+    padding: 5px 10px !important;
+  }
 `;
 
 export const AddNewSkillSection = styled.div`
