@@ -139,7 +139,7 @@ const getModifiedResume = async (resumeString, jobDescription) => {
   try {
     const config = {
       method: 'post',
-      url: `${appEnv.API_URL}/api/send-resume`,
+      url: `${appEnv.API_URL}/api/send-job-description`,
       data: payload
     };
 
