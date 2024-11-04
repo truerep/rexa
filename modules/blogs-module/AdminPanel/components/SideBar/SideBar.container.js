@@ -11,6 +11,11 @@ const SideBarContainer = () => {
     router.push(route);
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('auth_token');
+    router.push('/');
+  };
+
   const primaryMenu = [
     {
       name: 'Home',
@@ -35,7 +40,8 @@ const SideBarContainer = () => {
   const secondryMenu = [
     {
       name: 'Logout',
-      icon: '/assets/icons/admin-panel/logout-icon.svg'
+      icon: '/assets/icons/admin-panel/logout-icon.svg',
+      handleClick: handleLogout
     }
   ];
 
