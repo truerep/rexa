@@ -4,6 +4,7 @@ import { SideBar } from './components';
 import { Loader } from '@/components';
 import { colors } from '@/helpers';
 import AdminContextProvider from './context/AdminContext';
+import PageHeader from './components/common/PageHeader';
 
 const AdminPanel = ({ children, pageLoading, isAuthorized, handleLogin }) => {
     return (
@@ -19,8 +20,11 @@ const AdminPanel = ({ children, pageLoading, isAuthorized, handleLogin }) => {
                             {
                                 isAuthorized ? (
                                     <Wrapper>
-                                        <SideBar />
-                                        <PageContent>{children}</PageContent>
+                                        <PageHeader />
+                                        <VerticalFlex>
+                                            <SideBar />
+                                            <PageContent>{children}</PageContent>
+                                        </VerticalFlex>
                                     </Wrapper>
                                 ) : (
                                     <LoaderWrapper>
@@ -53,8 +57,15 @@ const LoaderWrapper = styled.div`
 
 const Wrapper = styled.div`
     display: flex;
+    flex-direction: column;
     height: 100%;
     gap: 20px;
+`;
+
+const VerticalFlex = styled.div`
+    display: flex;
+    flex-direction: row;
+    height: 100%;
 `;
 
 const PageContent = styled.div`

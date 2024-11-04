@@ -6,7 +6,7 @@ export const AdminContext = createContext();
 
 const AdminContextProvider = ({ children }) => {
     const [adminData, setAdminData] = useState({
-        handleSidebar: false,
+        handleSidebar: true,
     });
 
     const handleHideSidebar = () => {

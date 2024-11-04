@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PageHeader = styled.div`
+export const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,7 +30,7 @@ export const PageHeader = styled.div`
 `;
 
 export const HamBurger = styled.div`
-    display: none;
+    display: block;
     cursor: pointer;
 
     img {

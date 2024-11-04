@@ -1,24 +1,12 @@
 import React from 'react'
-import { HamBurger, PageHeader } from '../common/UiElements'
+
 import styled from 'styled-components'
 import { BlogCard } from '@/modules/blogs-module/common'
 
-const hamburgerIcon = 'https://ik.imagekit.io/sahildhingra/hamburger-dark.png';
 
-const BlogsList = ({ router, blogsData, handleHideSidebar }) => {
+const BlogsList = ({ blogsData }) => {
   return (
     <Wrapper>
-      <PageHeader>
-        <HamBurger onClick={handleHideSidebar}>
-          <img src={hamburgerIcon} alt='hamburger-icon' />
-        </HamBurger>
-        <h1>Blogs</h1>
-        <button
-          onClick={() => router.push('/admin-panel/blogs/create-new')}
-          className='btn-primary btn-outlined'
-        >Create New</button>
-      </PageHeader>
-
       <BlogsWrapper>
         {
           blogsData.length > 0 ? blogsData.map((blogItem) => (
