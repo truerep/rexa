@@ -5,6 +5,7 @@ import Popover from './Popover';
 import LoginForm from './LoginForm';
 import AppDownload from './AppDownload';
 import Loader from './Loader';
+import Breadcrumbs from './Breadcrumbs';
 
 export {
   Header,
@@ -13,5 +14,6 @@ export {
   Popover,
   LoginForm,
   AppDownload,
-  Loader
+  Loader,
+  Breadcrumbs
 };
