@@ -9,7 +9,7 @@ const BlogDetailContainer = ({blogData}) => {
     try {
       const res = await getAllBlogs();
       if (res?.data) {
-        const OtherBlogs = res.data?.blogs.slice(0, 4);
+        const OtherBlogs = res.data?.blogs.slice(0, 3);
         setRelatedBlogs(OtherBlogs);
       }
     } catch (err) {}
