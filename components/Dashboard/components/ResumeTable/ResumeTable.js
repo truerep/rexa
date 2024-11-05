@@ -185,7 +185,7 @@ const ResumeTable = ({
 
 const Wrapper = styled.div`
     max-width: 1200px;
-    margin: 100px auto 50px;
+    margin: 20px auto 50px;
     border-radius: 10px;
     box-shadow: 0 4px 30px 0 rgba(5, 0, 255, 0.05);
     background: #fff;
@@ -193,8 +193,7 @@ const Wrapper = styled.div`
     min-height: 450px;
 
     @media (max-width: 1240px) {
-      margin-left: 20px;
-      margin-right: 20px;
+      margin-top: 10px;
     }
 `;
 
