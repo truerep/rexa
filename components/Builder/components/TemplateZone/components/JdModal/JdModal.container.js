@@ -13,9 +13,10 @@ import {
 
 const JdModalContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [prompt, setPrompt] = useState('');
   const [jobDescription, setJobDescription] = useState('');
-  const {resumeData, updateResumeData} = useContext(ResumeContext);
-  
+  const { resumeData, updateResumeData } = useContext(ResumeContext);
+
   const modifyResume = async () => {
     try {
       setIsLoading(true);
@@ -23,7 +24,9 @@ const JdModalContainer = () => {
         id: 'modifying-resume'
       });
       if (jobDescription.length > 0 && resumeData?.resumeString) {
-        const res = await getModifiedResume(resumeData.resumeString, jobDescription);
+        const textForAI = prompt ? prompt + " " + jobDescription : jobDescription;
+        
+        const res = await getModifiedResume(resumeData.resumeString, textForAI);
         if (res?.basics) {
           toast.success('Resume modified!', {
             id: 'modifying-resume'
@@ -35,9 +38,10 @@ const JdModalContainer = () => {
               templateData: res
             };
           });
+          setPrompt('');
           setJobDescription('');
         }
-      } else {}
+      } else { }
     } catch (err) {
       toast.error(err?.response?.data?.error ?? 'Error modifying resume!', {
         id: 'modifying-resume'
@@ -52,6 +56,8 @@ const JdModalContainer = () => {
       isLoading={isLoading}
       jobDescription={jobDescription}
       setJobDescription={setJobDescription}
+      prompt={prompt}
+      setPrompt={setPrompt}
       modifyResume={modifyResume}
     />
   );

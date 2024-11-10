@@ -7,10 +7,17 @@ import {
 const JdModal = ({
   isLoading,
   jobDescription,
+  prompt,
+  setPrompt,
   setJobDescription,
   modifyResume
 }) => (
   <Wrapper>
+    <Prompt
+      value={prompt}
+      onChange={(e) => setPrompt(e.target.value)}
+      placeholder="Enter prompt for our AI"
+    />
     <TextArea
       value={jobDescription}
       onChange={(e) => setJobDescription(e.target.value)}
@@ -41,6 +48,22 @@ const Wrapper = styled.div`
 
     @media (max-width: 576px) {
       min-width: 270px;
+    }
+`;
+
+const Prompt = styled.textarea`
+    width: 100%;
+    padding: 5px 8px;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: 4px;
+    min-height: 100px;
+    font-size: 16px;
+    border: 1px solid #cbcbcb;
+    margin-bottom: 10px;
+
+    &:active {
+      border-color: ${colors.HanPurple};
     }
 `;
 
