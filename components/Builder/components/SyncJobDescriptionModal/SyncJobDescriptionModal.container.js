@@ -31,25 +31,35 @@ const SyncJobDescriptionModalContainer = () => {
     }, [file])
 
     const handleGeneratingResume = async (index) => {
+        const rawData = userResumes[index]?.rawData;
+        if (!rawData) return;
+
         try {
-            setToggleResumesList(false)
-            let storedJobDescription = typeof window !== 'undefined' && window.sessionStorage.getItem('jobDescription');
-            const res = await getModifiedResume(userResumes[index].rawData, storedJobDescription)
+            setToggleResumesList(false);
+
+            const storedJobDescription = window?.sessionStorage?.getItem('jobDescription');
+            if (!storedJobDescription) return;
+
+            const res = await getModifiedResume(rawData, storedJobDescription);
+
             if (res?.basics) {
-                toast.success('Resume generated!', {
-                    id: 'modifying-resume'
-                });
-                updateResumeData((prevState) => {
-                    return {
-                        ...prevState,
-                        templateData: res
-                    };
-                });
+                toast.success('Resume generated!', { id: 'modifying-resume' });
+
+                const storedResumeString = window?.sessionStorage?.getItem('resumeString');
+                const url = JSON.parse(storedResumeString)?.url;
+
+                window.sessionStorage.setItem('resumeString', JSON.stringify({ url, text: res }));
+
+                updateResumeData(prevState => ({
+                    ...prevState,
+                    templateData: res,
+                    resumeString: JSON.stringify(res)
+                }));
             }
         } catch (err) {
             toast.error(err?.response?.data?.error ?? 'Something went wrong!');
         }
-    }
+    };
 
     const fetchUserResumes = async () => {
         try {
