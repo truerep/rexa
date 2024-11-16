@@ -16,7 +16,7 @@ const Footer = () => {
         },
         {
           title: 'Blog',
-          url: '#footer'
+          url: '/blogs'
         }
       ]
     },
