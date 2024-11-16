@@ -4,7 +4,7 @@ const checkImageURLIsValid = async (url) => {
     if (!url) {
         return false;
     }
-    
+
     let regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
 
     if (!regex.test(url)) {
@@ -16,5 +16,9 @@ const checkImageURLIsValid = async (url) => {
     return response.status === HttpStatusCode.Ok;
 };
 
+const isString = (value) => {
+    return typeof value === 'string' || value instanceof String;
+};
 
-export { checkImageURLIsValid };
+
+export { checkImageURLIsValid, isString };

@@ -12,6 +12,7 @@ import {
 import {
   ResumeContext
 } from '@/context/ResumeContext';
+import { isString } from '@/helpers';
 
 const TemplateZoneContainer = () => {
   const [showJdModal, setShowJdModal] = useState();
@@ -41,8 +42,12 @@ const TemplateZoneContainer = () => {
     let storedResumeString = typeof window !== 'undefined' && window.sessionStorage.getItem('resumeString');
     if (storedResumeString) {
       storedResumeString = JSON.parse(storedResumeString);
-      if (resumeString?.length === 0) {
-        setResumeString(storedResumeString?.text ?? storedResumeString);
+      if (!resumeString || resumeString?.length === 0) {
+        if (isString(storedResumeString) || isString(storedResumeString?.text)) {
+          setResumeString(storedResumeString?.text ?? storedResumeString);
+        } else {
+          setResumeString(JSON.stringify(storedResumeString?.text) ?? JSON.stringify(storedResumeString));
+        }
       }
     }
   }, []);
@@ -52,7 +57,7 @@ const TemplateZoneContainer = () => {
   }, [resumeData]);
 
   useEffect(() => {
-    if (resumeString?.length > 0) {
+    if (resumeString || resumeString?.length > 0) {
       getResumeData();
     }
   }, [resumeString]);
