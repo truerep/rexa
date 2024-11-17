@@ -21,7 +21,7 @@ const ImportFromLinkedIn = () => {
             <li>Follow any on-screen instructions to set up and start using the extension.</li>
         </ol>
         <ImageWrapper>
-            <img src="/assets/images/extension-ss.jpeg" alt="Extension-screenshot" />
+            <img src="/assets/images/extension-ss.png" alt="Extension-screenshot" />
         </ImageWrapper>
     </Wrapper>
   )
