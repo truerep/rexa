@@ -14,7 +14,8 @@ import {
 
 import {
   getUserData,
-  getUserResumes
+  getUserResumes,
+  getAllUsers
 } from './Users';
 
 import {
@@ -40,9 +41,11 @@ export {
   downloadOriginalResume,
   updateSection,
   getTempResumeJsonData,
+
   getUserData,
   getUserResumes,
   getRandomResumeFactAndAnimation,
+  getAllUsers,
 
   getAllBlogs,
   getParticularBlog,
