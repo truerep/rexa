@@ -26,7 +26,7 @@ const SideBarContainer = () => {
     {
       name: 'Users',
       icon: '/assets/icons/admin-panel/users-icon.svg',
-      handleClick: () => handleRedirectRoute('/admin-panel'),
+      handleClick: () => handleRedirectRoute('/admin-panel/users'),
       activeFor: ['/admin-panel/users']
     },
     {
