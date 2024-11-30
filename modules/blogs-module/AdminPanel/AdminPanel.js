@@ -6,7 +6,7 @@ import { colors } from '@/helpers';
 import AdminContextProvider from './context/AdminContext';
 import PageHeader from './components/common/PageHeader';
 
-const AdminPanel = ({ children, pageLoading, isAuthorized, handleLogin }) => {
+const AdminPanel = ({ children, pageLoading, isAuthorized, handleLogin, title }) => {
     return (
         <AdminContextProvider>
             <Section>
@@ -20,7 +20,7 @@ const AdminPanel = ({ children, pageLoading, isAuthorized, handleLogin }) => {
                             {
                                 isAuthorized ? (
                                     <Wrapper>
-                                        <PageHeader />
+                                        <PageHeader title={title} />
                                         <VerticalFlex>
                                             <SideBar />
                                             <PageContent>{children}</PageContent>

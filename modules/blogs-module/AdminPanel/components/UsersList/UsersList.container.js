@@ -17,7 +17,7 @@ const UsersListContainer = () => {
 
   const getUsersList = async () => {
     try {
-      const res = await getAllUsers();
+      const res = await getAllUsers(currentPage);
       if (res?.data) {
         setUsersData(res.data?.users);
         setTotalCount(res.data?.totalCount);

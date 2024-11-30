@@ -5,12 +5,9 @@ import styled from 'styled-components'
 
 const UsersList = ({ usersData, totalCount, totalPages, currentPage }) => {
   return (
-    <Wrapper>
+    usersData.length && <Wrapper>
       <UsersWrapper>
         <Table>
-          <Caption>
-            List of Users
-          </Caption>
           <Thead>
             <Tr>
               <th>Name</th>
@@ -20,7 +17,7 @@ const UsersList = ({ usersData, totalCount, totalPages, currentPage }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {usersData.length > 0 ? usersData.map((u) => (
+            {usersData.map((u) => (
               <Tr key={u._id}>
                 <Td>{u.firstName} {u.lastName}</Td>
                 <Td>{u.email}</Td>
@@ -31,11 +28,14 @@ const UsersList = ({ usersData, totalCount, totalPages, currentPage }) => {
                 </Td>
                 <Td>{new Date(u.createdAt).toDateString()}</Td>
               </Tr>
-            )) : null}
+            ))}
           </Tbody>
           <tfoot>
             <Tr>
               <Td colSpan="4">Total Users: {totalCount}</Td>
+            </Tr>
+            <Tr>
+              <Td colSpan="4">Page {currentPage} of {totalPages}</Td>
             </Tr>
           </tfoot>
         </Table>
@@ -52,24 +52,16 @@ const UsersWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin: 2vh 0;
 `;
 
 const Table = styled.table`
     table-layout: fixed;
     width: 90vw;
     border-collapse: collapse;
-    border: 3px solid purple;
-`;
-
-const Caption = styled.caption`
-    font-size: 1.5em;
-    margin-bottom: 10px;
 `;
 
 const Thead = styled.thead`
-    /* display: block;
-    overflow-y: auto; */
     background-color: #f2f2f2;
 
     th {
@@ -95,7 +87,6 @@ const Thead = styled.thead`
 `;
 
 const Tbody = styled.tbody`
-    /* display: block;*/
     overflow-y: auto;
     height: 500px; 
 `;
@@ -105,6 +96,13 @@ const Td = styled.td`
     border: 1px solid #ddd;
     text-align: center;
     width: 100%;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+        text-align: left;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 `;
 
 const Th = styled.th`

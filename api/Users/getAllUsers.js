@@ -4,12 +4,12 @@ import {
   appEnv
 } from '@/helpers';
 
-const getAllUsers = async () => {
+const getAllUsers = async (pageNumber) => {
   const authToken = localStorage.getItem('auth_token');
 
   const config = {
     method: 'get',
-    url: `${appEnv.API_URL}/api/auth/list`,
+    url: `${appEnv.API_URL}/api/auth/list?pageNumber=${pageNumber}`,
     headers: {
       Authorization: `Bearer ${authToken}`
     }
