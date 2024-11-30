@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import SideBar from './SideBar'
 import { useRouter } from 'next/router'
 import { AdminContext } from '../../context/AdminContext';
+import { blogsUrls, homeUrls, usersUrls } from '@/modules/blogs-module/helpers';
 
 const SideBarContainer = () => {
   const router = useRouter();
@@ -21,19 +22,19 @@ const SideBarContainer = () => {
       name: 'Home',
       icon: '/assets/icons/admin-panel/home-icon.svg',
       handleClick: () => handleRedirectRoute('/admin-panel'),
-      activeFor: ['/admin-panel']
+      activeFor: homeUrls
     },
     {
       name: 'Users',
       icon: '/assets/icons/admin-panel/users-icon.svg',
       handleClick: () => handleRedirectRoute('/admin-panel/users'),
-      activeFor: ['/admin-panel/users']
+      activeFor: usersUrls
     },
     {
       name: 'Blogs',
       icon: '/assets/icons/admin-panel/blogs-icon.svg',
       handleClick: () => handleRedirectRoute('/admin-panel/blogs'),
-      activeFor: ['/admin-panel/blogs', '/admin-panel/blogs/create-new', '/admin-panel/blogs/edit/[slug]']
+      activeFor: blogsUrls
     },
   ];
 
