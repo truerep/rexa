@@ -14,8 +14,8 @@ import {
 import { useRouter } from 'next/router';
 
 const BuilderContainer = () => {
-  const {resumeData, updateResumeData} = useContext(ResumeContext);
-  
+  const { resumeData, updateResumeData } = useContext(ResumeContext);
+
   const router = useRouter();
 
   const getTempResumeData = async () => {
@@ -50,6 +50,7 @@ const BuilderContainer = () => {
     try {
       const res = await getResumeData(resumeId);
       if (res?.data?.data) {
+        window.sessionStorage.setItem('resumeString', JSON.stringify({ url: res.data.resumeUrl, text: res.data.data }));
         updateResumeData((prevState) => {
           return {
             ...prevState,
@@ -96,9 +97,9 @@ const BuilderContainer = () => {
   };
 
   return (
-    <Builder 
-      handlePreview={handlePreview} 
-      togglePreview={resumeData?.togglePreview} 
+    <Builder
+      handlePreview={handlePreview}
+      togglePreview={resumeData?.togglePreview}
     />
   );
 };

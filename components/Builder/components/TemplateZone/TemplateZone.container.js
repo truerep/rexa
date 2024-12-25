@@ -42,7 +42,7 @@ const TemplateZoneContainer = () => {
     let storedResumeString = typeof window !== 'undefined' && window.sessionStorage.getItem('resumeString');
     if (storedResumeString) {
       storedResumeString = JSON.parse(storedResumeString);
-      if (!resumeString || resumeString?.length === 0) {
+      if (!resumeString || !resumeString?.length) {
         if (isString(storedResumeString) || isString(storedResumeString?.text)) {
           setResumeString(storedResumeString?.text ?? storedResumeString);
         } else {
@@ -57,7 +57,7 @@ const TemplateZoneContainer = () => {
   }, [resumeData]);
 
   useEffect(() => {
-    if (resumeString || resumeString?.length > 0) {
+    if (resumeString || resumeString?.length) {
       getResumeData();
     }
   }, [resumeString]);
