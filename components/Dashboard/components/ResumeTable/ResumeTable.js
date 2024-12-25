@@ -29,7 +29,8 @@ const ResumeTable = ({
   toggleResumesList,
   setToggleResumesList,
   activeMenuIdx,
-  setActiveMenuIdx
+  setActiveMenuIdx,
+  handleRouteToBuilder
 }) => {
   const router = useRouter();
 
@@ -80,7 +81,7 @@ const ResumeTable = ({
               <tr key={resume?._id}>
                 <td>
                   <a
-                    onClick={() => router.push(`/builder/${resume?._id}`)}
+                    onClick={() => handleRouteToBuilder(resume?._id)}
                   >
                     {resume?.name}
                   </a>

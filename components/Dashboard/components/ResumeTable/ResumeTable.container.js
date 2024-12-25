@@ -103,6 +103,11 @@ const ResumeTableContainer = () => {
     }
   }
 
+  const handleRouteToBuilder = (resumeId) => {
+    router.push(`/builder/${resumeId}`);
+    sessionStorage.removeItem('resumeString');
+  }
+
   return (
     <ResumeTable
       userResumes={userResumes}
@@ -118,6 +123,7 @@ const ResumeTableContainer = () => {
       setToggleResumesList={setToggleResumesList}
       activeMenuIdx={activeMenuIdx}
       setActiveMenuIdx={setActiveMenuIdx}
+      handleRouteToBuilder={handleRouteToBuilder}
     />
   );
 };

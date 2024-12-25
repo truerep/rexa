@@ -104,7 +104,7 @@ const SyncJobDescriptionModalContainer = () => {
                 });
                 setToggleResumesList(false)
                 let storedJobDescription = typeof window !== 'undefined' && window.sessionStorage.getItem('jobDescription');
-                const resumeString = res?.text
+                const resumeString = res?.text ? res.text : res;
                 sessionStorage.setItem('resumeString', JSON.stringify(resumeString));
                 const resModifiedResume = await getModifiedResume(JSON.stringify(resumeString), storedJobDescription)
                 if (resModifiedResume?.basics) {
