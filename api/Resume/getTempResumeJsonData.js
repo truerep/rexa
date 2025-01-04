@@ -3,6 +3,8 @@ const temp = {
   basics: {
     name: 'john doe',
     email: 'john.doe@email.com',
+    nationality: 'American',
+    birthDate: '01/01/1990',
     title: 'Software Engineer',
     phone: '+1 (912) 555-4321',
     summary: 'A summary of John Doe...',
@@ -13,12 +15,15 @@ const temp = {
     linkedin: 'https://www.linkedin.com/in/some-linkedin-profile',
     github: 'https://github.com/some-github-profile',
     leetcode: 'https://leetcode.com/some-leetcode-profile',
+    website: 'https://www.johndoe.com'
   },
   work: [
     {
       company: 'ABC Company',
       position: 'Software Engineer',
       website: 'abc-company.com',
+      city: 'Atlanta',
+      country: 'USA',
       startDate: 'April 2023',
       endDate: 'Present',
       highlights: [
@@ -31,6 +36,8 @@ const temp = {
       company: 'XYZ Company',
       position: 'Web Developer',
       website: 'xyz-company.com',
+      city: 'Atlanta',
+      country: 'USA',
       startDate: 'January 2023',
       endDate: 'March 2023',
       highlights: [
@@ -42,6 +49,8 @@ const temp = {
       company: 'PQR Company',
       position: 'Software Developer Internship',
       website: 'pqr-company.com',
+      city: 'Atlanta',
+      country: 'USA',
       startDate: 'June 2022',
       endDate: 'December 2022',
       highlights: [
@@ -85,6 +94,9 @@ const temp = {
       studyType: 'B.Tech',
       startDate: '2012',
       endDate: '2016',
+      city: 'Atlanta',
+      country: 'USA',
+      website: 'https://www.xyz-university.com',
       gpa: 'None',
       courses: [
         'None'
@@ -96,6 +108,9 @@ const temp = {
       studyType: 'Diploma',
       startDate: '2009',
       endDate: '2012',
+      city: 'Atlanta',
+      country: 'USA',
+      website: 'https://www.xyz-university.com',
       gpa: 'None',
       courses: [
         'None'
@@ -141,7 +156,25 @@ const temp = {
   languages: [
     {
       language: 'English',
-      fluency: 'Native speaker'
+      fluency: 'Native speaker',
+      motherTongue: true
+    },
+    {
+      language: 'Hindi',
+      fluency: 'Native speaker',
+      motherTongue: true
+    },
+    {
+      language: 'Spanish',
+      fluency: 'Professional working proficiency',
+      motherTongue: false,
+      level: 'B2'
+    },
+    {
+      language: 'Punjabi',
+      fluency: 'Professional working proficiency',
+      motherTongue: false,
+      level: 'B2'
     }
   ],
   interests: [

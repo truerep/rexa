@@ -16,121 +16,65 @@ const TemplateEuroPass1 = () => {
 
   return (
     <Wrapper>
+      <RightUpperBorder />
+      <LeftUpperBorder />
       <BasicInfoWrapper>
         {resumeData?.basics?.picture &&
           <Image
             src={resumeData?.basics?.picture}
             alt="logo"
-            width={100}
-            height={100}
+            width={120}
+            height={120}
             style={{
               borderRadius: '50%',
-              margin: '0 10px',
-              width: '100px'
+              margin: '0px 20px 0 0',
+              border: '2px solid #c6c6c6'
             }}
           />}
-        <h1>{resumeData?.basics?.name}</h1>
+        <BasicInfoDiv>
+          <h2>{resumeData?.basics?.name}</h2>
+          <Horizontal>
+            <p>
+              <BoldLabel>Nationality:</BoldLabel> {resumeData?.basics?.nationality || 'Indian'}
+            </p>
+            <p>
+              <BoldLabel>Date of birth:</BoldLabel> {resumeData?.basics?.birthDate || '01/01/1990'}
+            </p>
+            <p>
+              <BoldLabel><Image src={phoneImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />Phone number:</BoldLabel> {resumeData?.basics?.phone}
+            </p>
+          </Horizontal>
+          <p>
+            <BoldLabel><Image src={mailImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />Email address:</BoldLabel> <a href={`mailto:${resumeData?.basics?.email}`}>{resumeData?.basics?.email}</a>
+          </p>
+          <p>
+            <BoldLabel><Image src={mailImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />LinkedIn:</BoldLabel>
+            <a href={resumeData?.additionalLinks?.linkedin} target="_blank" rel="noreferrer">
+              {resumeData?.additionalLinks?.linkedin}
+            </a>
+          </p>
+          <p>
+            <BoldLabel><Image src={mailImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />Website:</BoldLabel><a href={resumeData?.additionalLinks?.website} target="_blank" rel="noreferrer">{resumeData?.additionalLinks?.website}</a>
+          </p>
+          <p>
+            <BoldLabel><Image src={mailImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />Home:</BoldLabel> {resumeData?.basics?.city}
+          </p>
+        </BasicInfoDiv>
       </BasicInfoWrapper>
-      <ContactSection>
-        <ContactSectionImageAndItemDiv>
-          <Image
-            src={mailImage}
-            alt="sectionImage"
-            width={5}
-            height={20}
-            style={{
-              width: '18px',
-              height: '18px',
-              filter: 'invert(1)',
-              marginRight: '10px'
-            }}
-          />
-          <ContactItem>
-            {resumeData?.basics?.email}
-          </ContactItem>
-        </ContactSectionImageAndItemDiv>
-        <ContactSectionImageAndItemDiv>
-          <Image
-            src={phoneImage}
-            alt="sectionImage"
-            width={5}
-            height={20}
-            style={{
-              width: '18px',
-              height: '18px',
-              filter: 'invert(1)',
-              marginRight: '10px'
-            }}
-          />
-          <ContactItem>{resumeData?.basics?.phone}</ContactItem>
-        </ContactSectionImageAndItemDiv>
-      </ContactSection>
       <SectionImageAndTitleDiv>
-        <Image
-          src={userImage}
-          alt="sectionImage"
-          width={5}
-          height={20}
-          style={{
-            width: '18px',
-            height: '18px',
-            marginRight: '5px'
-          }}
-        />
-        <SectionTitle>SUMMARY</SectionTitle>
+        <SectionTitle>About me</SectionTitle>
       </SectionImageAndTitleDiv>
       <ShortBio>{resumeData?.basics?.summary}</ShortBio>
       <SectionImageAndTitleDiv>
-        <Image
-          src={skillsImage}
-          alt="sectionImage"
-          width={5}
-          height={20}
-          style={{
-            width: '18px',
-            height: '18px',
-            marginRight: '5px'
-          }}
-        />
-        <SectionTitle>SKILLS</SectionTitle>
-      </SectionImageAndTitleDiv>
-      <SkillItemWrapper>
-        {
-          resumeData?.skills && resumeData?.skills.map((skill) => (
-            <SkillSection>
-              <SkillTitle>
-                {skill?.name}
-                :&nbsp;
-              </SkillTitle>
-              {skill?.keywords && skill.keywords.map((skill) => (
-                <SkillItem>
-                  {skill}
-                  ,&nbsp;
-                </SkillItem>
-              ))}
-            </SkillSection>
-          ))
-        }
-      </SkillItemWrapper>
-      <SectionImageAndTitleDiv>
-        <Image
-          src={workImage}
-          alt="sectionImage"
-          width={5}
-          height={20}
-          style={{
-            width: '18px',
-            height: '18px',
-            marginRight: '5px'
-          }}
-        />
-        <SectionTitle>WORK EXPERIENCE</SectionTitle>
+        <SectionTitle>Work experience</SectionTitle>
       </SectionImageAndTitleDiv>
       <SectionContent>
         {resumeData?.work?.map((work, idx) => (
           <Item key={idx}>
-            <ItemTitle>{work?.company}</ItemTitle>
-            <ItemSubline>{work?.position}</ItemSubline>
+            <ItemTitle>{work?.position}</ItemTitle>
+            <ItemSubline>{work?.company} <StartDateEndDate> [ {work?.startDate} - {work?.endDate} ] </StartDateEndDate></ItemSubline>
+            <PlaceOfWork>City: {work?.city} <Separator>|</Separator> Country: {work?.country}</PlaceOfWork>
+            <Spacer height={10} />
             {
               work?.highlights && work?.highlights.map((highlight, hIdx) => (
                 <BulletPoints key={hIdx}>{highlight}</BulletPoints>
@@ -140,48 +84,71 @@ const TemplateEuroPass1 = () => {
         ))}
       </SectionContent>
       <SectionImageAndTitleDiv>
-        <Image
-          src={educationImage}
-          alt="sectionImage"
-          width={5}
-          height={20}
-          style={{
-            width: '18px',
-            height: '18px',
-            marginRight: '5px'
-          }}
-        />
-        <SectionTitle>EDUCATION</SectionTitle>
+        <SectionTitle>Education and Training</SectionTitle>
       </SectionImageAndTitleDiv>
       <SectionContent>
         {resumeData?.education?.map((education, idx) => (
           <Item key={idx}>
             <ItemTitle>
-              {education?.studyType}
-              {' '}
-              -
-              {' '}
-              {education?.area}
+              {education?.studyType} in {education?.area}
             </ItemTitle>
             <ItemSubline>
-              (
-              {education?.startDate}
-              {' '}
-              -
-              {' '}
-              {education?.endDate}
-              )&nbsp;
-              {education?.institution}
+              {education?.institution} [ {education?.startDate} - {education?.endDate} ]
             </ItemSubline>
+            <PlaceOfWork>City: {education?.city} <Separator>|</Separator> Country: {education?.country} <Separator>|</Separator> Website: {education?.website}</PlaceOfWork>
           </Item>
         ))}
       </SectionContent>
-    </Wrapper>
+      <SectionImageAndTitleDiv>
+        <SectionTitle>Language skills</SectionTitle>
+      </SectionImageAndTitleDiv>
+      <SectionContent>
+        <LanguageLevels><ItemTitle style={{ fontSize: '14px' }}>Mother tongue(s):</ItemTitle> <Separator /> {resumeData?.languages?.map((language, idx) => (
+          language.motherTongue && (<><p key={idx}>{language?.language}</p>
+            {idx === resumeData?.languages?.filter((e) => e.motherTongue).length - 1 ? '' : <Separator>|</Separator>}
+          </>)
+        ))}</LanguageLevels>
+        <ItemTitle style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Other language(s): </ItemTitle>{resumeData?.languages?.map((language, idx) => (
+          !language.motherTongue && <Item key={idx}>
+            <p>{language?.language}</p>
+            <LanguageLevels>
+              <BoldLabel>Listening: </BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Reading:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken interaction:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken production: </BoldLabel><p>{language?.level}</p> <Separator>|</Separator> <BoldLabel> Writing:</BoldLabel><p> {language?.level}</p>
+            </LanguageLevels>
+          </Item>
+        ))}
+        <LanguageLevelsDetail>Levels: A1 and A2: Basic user; B1 and B2: Independent user; C1 and C2: Proficient user</LanguageLevelsDetail>
+      </SectionContent>
+      <RightLowerBorder />
+      <LeftLowerBorder />
+    </Wrapper >
   );
 };
+
 const Wrapper = styled.div` 
+  border-top: 1.5rem solid #81acd9;
+  border-bottom: 1.5rem solid #81acd9;
   min-height: 296mm;
   background: #fff;
+  position: relative;
+  padding: 0 20px;
+`;
+
+const RightUpperBorder = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 8vh;
+  border: 0.7rem solid #81acd9;
+`;
+
+const LeftUpperBorder = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 8vh;
+  border: 0.7rem solid #81acd9;
 `;
 
 const BasicInfoWrapper = styled.div`
@@ -189,30 +156,36 @@ const BasicInfoWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 20px 20px 20px;
-  p {
-    padding-top: 10px;
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
   }
-  color: #eee;
-  background-color: #2C2C2C;
+  p {
+    padding-top: 5px;
+    font-size: 14px;
+    display: flex;
+  }
 `;
 
-const ContactSectionImageAndItemDiv = styled.div`
+const Horizontal = styled.div`
   display: flex;
-  align-items: center;
-  margin: 0 10px;
-`;
-
-const ContactSection = styled.div`
-  padding: 5px 30px;
-  display: flex;
-  justify-content: space-between;
   flex-direction: row;
-  background-color: #101010;
+  align-items: center;
+  justify-content: space-between;
 `;
 
-const ContactItem = styled.p`
-  padding: 5px 0;
-  color: #eee;
+const BoldLabel = styled.span`
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  text-align: center;
+  margin-right: 5px;
+`;
+
+const BasicInfoDiv = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ShortBio = styled.p`
@@ -222,14 +195,15 @@ const ShortBio = styled.p`
 const SectionImageAndTitleDiv = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: 4px solid #000;
-  padding: 10px 5px;
+  border-bottom: 1px solid #c6c6c6;
+  padding: 5px 0;
   margin: 0 20px;
 `;
 
 const SectionTitle = styled.h2`
   font-size: 18px;
   font-weight: 600;
+  text-transform: uppercase;
 `;
 
 const SectionContent = styled.div`
@@ -251,41 +225,77 @@ const ItemSubline = styled.p`
   padding: 2px 0 5px;
 `;
 
+const StartDateEndDate = styled.span`
+  font-weight: 400;
+  font-size: 14px;
+`;
+
+const PlaceOfWork = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+`;
+
+const Separator = styled.span`
+  color: #c6c6c6;
+  margin: 0 5px;
+`;
+
+const Spacer = styled.div`
+  height: ${(props) => props.height}px;
+`;
+
+const LanguageLevelsDetail = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  color: #c6c6c6;
+  font-style: italic;
+`;
+
+const LanguageLevels = styled.div`
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  p {
+    font-size: 14px;
+  }
+`;
+
 const BulletPoints = styled.p`
-  padding-left: 12px;
+  padding: 0 3rem;
   position: relative;
   font-size: 14px;
 
   &:before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 5px;
-    width: 6px;
-    height: 6px;
+    left: 2.3rem;
+    top: 0.5rem;
+    width: 3px;
+    height: 3px;
     border-radius: 100%;
     background-color: #000;
-    opacity: 0.4;
+    opacity: 1;
   }
 `;
 
-const SkillItemWrapper = styled.div`
-  padding: 10px 20px;
+const RightLowerBorder = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 8vh;
+  border: 0.7rem solid #81acd9;
 `;
 
-const SkillSection = styled.div`
-  &:not(:last-child) {
-    padding-bottom: 10px;
-  }
-`;
-
-const SkillTitle = styled.span`
-  display: inline-block;
-  font-weight: bold;
-`;
-
-const SkillItem = styled.span`
-  display: inline-block;
+const LeftLowerBorder = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 8vh;
+  border: 0.7rem solid #81acd9;
 `;
 
 export default TemplateEuroPass1;
