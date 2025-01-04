@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Prism,
+  TemplateEuroPass1,
   TemplateModern,
   TemplateStarter,
   TemplateTechStarter
@@ -17,6 +18,8 @@ const TemplateRender = (templateNameKey) => {
       return <TemplateModern />;
     case templateKeys.TECH_STARTER:
       return <TemplateTechStarter />;
+    case templateKeys.EURO_PASS_1:
+      return <TemplateEuroPass1 />;
     default:
       return <TemplateStarter />;
   }
