@@ -72,7 +72,7 @@ const TemplateEuroPass1 = () => {
       <SectionContent>
         {resumeData?.work?.map((work, idx) => (
           <Item key={idx}>
-            <ItemTitle>{work?.position}</ItemTitle>
+            <ItemTitle style={{ color: '#214493' }}>{work?.position}</ItemTitle>
             <ItemSubline>{work?.company} <StartDateEndDate> [ {work?.startDate} - {work?.endDate} ] </StartDateEndDate></ItemSubline>
             <PlaceOfWork>City: {work?.city} <Separator>|</Separator> Country: {work?.country}</PlaceOfWork>
             <Spacer height={10} />
@@ -90,7 +90,7 @@ const TemplateEuroPass1 = () => {
       <SectionContent>
         {resumeData?.education?.map((education, idx) => (
           <Item key={idx}>
-            <ItemTitle>
+            <ItemTitle style={{ color: '#214493' }}>
               {education?.studyType} in {education?.area}
             </ItemTitle>
             <ItemSubline>
@@ -111,7 +111,10 @@ const TemplateEuroPass1 = () => {
         ))}</LanguageLevels>
         <ItemTitle style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Other language(s): </ItemTitle>{resumeData?.languages?.map((language, idx) => (
           !language.motherTongue && <Item key={idx}>
-            <p>{language?.language}</p>
+            <p style={{
+              color: '#214493', fontSize:
+                '14px', fontWeight: '600'
+            }} >{language?.language}</p>
             <LanguageLevels>
               <BoldLabel>Listening: </BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Reading:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken interaction:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken production: </BoldLabel><p>{language?.level}</p> <Separator>|</Separator> <BoldLabel> Writing:</BoldLabel><p> {language?.level}</p>
             </LanguageLevels>
