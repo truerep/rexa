@@ -9,6 +9,7 @@ import {
 import {
   linkedinImage, pinImage, webImage, mailImage, phoneImage
 } from './assets';
+import ImageWrapper from './Image';
 
 const TemplateEuroPass1 = () => {
   let { resumeData } = useContext(ResumeContext);
@@ -32,7 +33,7 @@ const TemplateEuroPass1 = () => {
             }}
           />}
         <BasicInfoDiv>
-          <h3>{resumeData?.basics?.name}</h3>
+          <h3 style={{ color: '#214493' }}>{resumeData?.basics?.name}</h3>
           <Horizontal>
             <p>
               <BoldLabel>Nationality:</BoldLabel> {resumeData?.basics?.nationality || 'Indian'}
@@ -41,23 +42,23 @@ const TemplateEuroPass1 = () => {
               <BoldLabel>Date of birth:</BoldLabel> {resumeData?.basics?.birthDate || '01/01/1990'}
             </p>
             <p>
-              <BoldLabel><Image src={phoneImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />Phone number:</BoldLabel> {resumeData?.basics?.phone}
+              <BoldLabel><ImageWrapper image={phoneImage} /> Phone number:</BoldLabel> {resumeData?.basics?.phone}
             </p>
           </Horizontal>
           <p>
-            <BoldLabel><Image src={mailImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />Email address:</BoldLabel> <a href={`mailto:${resumeData?.basics?.email}`}>{resumeData?.basics?.email}</a>
+            <BoldLabel><ImageWrapper image={mailImage} /> Email address:</BoldLabel> <a href={`mailto:${resumeData?.basics?.email}`}>{resumeData?.basics?.email}</a>
           </p>
           <p>
-            <BoldLabel><Image src={linkedinImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />LinkedIn:</BoldLabel>
+            <BoldLabel><ImageWrapper image={linkedinImage} /> LinkedIn:</BoldLabel>
             <a href={resumeData?.additionalLinks?.linkedin} target="_blank" rel="noreferrer">
               {resumeData?.additionalLinks?.linkedin}
             </a>
           </p>
           <p>
-            <BoldLabel><Image src={webImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />Website:</BoldLabel><a href={resumeData?.additionalLinks?.website} target="_blank" rel="noreferrer">{resumeData?.additionalLinks?.website}</a>
+            <BoldLabel><ImageWrapper image={webImage} /> Website:</BoldLabel><a href={resumeData?.additionalLinks?.website} target="_blank" rel="noreferrer">{resumeData?.additionalLinks?.website}</a>
           </p>
           <p>
-            <BoldLabel><Image src={pinImage} alt="sectionImage" style={{ width: '18px', height: '18px', marginRight: '5px' }} />Home:</BoldLabel> {resumeData?.basics?.city}
+            <BoldLabel><ImageWrapper image={pinImage} /> Home:</BoldLabel> {resumeData?.basics?.city}
           </p>
         </BasicInfoDiv>
       </BasicInfoWrapper>
@@ -160,7 +161,7 @@ const BasicInfoWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 20px 20px 20px;
-  
+
   h3 {
     font-size: 24px;
     font-weight: 600;
@@ -209,6 +210,7 @@ const SectionImageAndTitleDiv = styled.div`
 const SectionTitle = styled.h2`
   font-size: 14px;
   font-weight: 600;
+  color: #214493;
   text-transform: uppercase;
 `;
 
@@ -224,11 +226,13 @@ const Item = styled.div`
 
 const ItemTitle = styled.h3`
   font-weight: 600;
+  font-size: 14px;
 `;
 
 const ItemSubline = styled.p`
   font-weight: 500;
   padding: 2px 0 5px;
+  font-size: 14px;
 `;
 
 const StartDateEndDate = styled.span`
