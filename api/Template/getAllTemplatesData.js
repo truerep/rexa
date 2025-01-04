@@ -23,6 +23,7 @@ const getAllTemplatesData = async () => {
       [template.slug]: {
         id: template.slug,
         name: template.name,
+        description: template.description,
         thumbnail: template.imageUrl,
         price: template.price,
         users: template.users,
