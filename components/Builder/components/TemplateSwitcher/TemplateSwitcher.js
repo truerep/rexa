@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import parse from 'html-react-parser';
 import {
   Swiper, SwiperSlide
 } from 'swiper/react';
@@ -65,6 +66,9 @@ const TemplateSwitcher = ({ templateId, setTemplateId, handleTemplateChange, tem
         <TemplatePrice>
           {templatesData[templateId]?.price || 'Free'}
         </TemplatePrice>
+        <TemplateDescription>
+          {parse(`${templatesData[templateId]?.description}`)}
+        </TemplateDescription>
         <button
           onClick={() => handleTemplateChange(templatesData[templateId].templateId)}
           type="button"
@@ -201,6 +205,11 @@ const SelectTemplate = styled.h1`
 
 const TemplateName = styled.h3`
     font-size: 24px;
+`;
+
+const TemplateDescription = styled.div`
+    font-size: 18px;
+    margin-top: 10px;
 `;
 
 const TemplatePrice = styled.h4`
