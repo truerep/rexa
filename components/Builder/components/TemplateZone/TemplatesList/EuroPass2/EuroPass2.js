@@ -5,14 +5,12 @@ import { ResumeContext } from '@/context/ResumeContext';
 import { linkedinImage, pinImage, webImage, mailImage, phoneImage } from './assets';
 import ImageWrapper from './Image';
 
-const TemplateEuroPass1 = () => {
+const TemplateEuroPass2 = () => {
   let { resumeData } = useContext(ResumeContext);
   resumeData = resumeData?.templateData;
 
   return (
     <Wrapper>
-      <RightUpperBorder />
-      <LeftUpperBorder />
       <BasicInfoWrapper>
         {resumeData?.basics?.picture && (
           <Image
@@ -132,15 +130,11 @@ const TemplateEuroPass1 = () => {
         ))}
         <LanguageLevelsDetail>Levels: A1 and A2: Basic user; B1 and B2: Independent user; C1 and C2: Proficient user</LanguageLevelsDetail>
       </SectionContent>
-      <RightLowerBorder />
-      <LeftLowerBorder />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  border-top: 1.5rem solid #81acd9;
-  border-bottom: 1.5rem solid #81acd9;
   min-height: 296mm;
   background: #fff;
   position: relative;
@@ -151,29 +145,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const RightUpperBorder = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 8vh;
-  border: 0.7rem solid #81acd9;
-`;
-
-const LeftUpperBorder = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 8vh;
-  border: 0.7rem solid #81acd9;
-`;
-
 const BasicInfoWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 20px 10px 20px;
+  padding: 20px 20px 20px;
 
   h3 {
     font-size: 24px;
@@ -304,22 +280,5 @@ const BulletPoints = styled.p`
   }
 `;
 
-const RightLowerBorder = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 8vh;
-  border: 0.7rem solid #81acd9;
-`;
 
-const LeftLowerBorder = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 8vh;
-  border: 0.7rem solid #81acd9;
-`;
-
-export default TemplateEuroPass1;
+export default TemplateEuroPass2;
