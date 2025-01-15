@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { ResumeContext } from '@/context/ResumeContext';
-import { linkedinImage, pinImage, webImage, mailImage, phoneImage } from './assets';
-import ImageWrapper from './Image';
 
 const TemplateEuroPass2 = () => {
   let { resumeData } = useContext(ResumeContext);
@@ -26,43 +24,39 @@ const TemplateEuroPass2 = () => {
           />
         )}
         <BasicInfoDiv>
-          <h3 style={{ color: '#214493' }}>{resumeData?.basics?.name}</h3>
+          <h3>{resumeData?.basics?.name}</h3>
           <Horizontal>
-            <p>
-              <BoldLabel>Nationality:</BoldLabel> {resumeData?.basics?.nationality || 'Indian'}
-            </p>
             <p>
               <BoldLabel>Date of birth:</BoldLabel> {resumeData?.basics?.birthDate || '01/01/1990'}
             </p>
+            <Separator>|</Separator>
             <p>
-              <BoldLabel>
-                <ImageWrapper image={phoneImage} /> Phone number:
-              </BoldLabel> {resumeData?.basics?.phone}
+              <BoldLabel>Nationality:</BoldLabel> {resumeData?.basics?.nationality || 'Indian'}
+            </p>
+            <Separator>|</Separator>
+            <p>
+              <BoldLabel> Phone number:</BoldLabel> {resumeData?.basics?.phone}
+            </p>
+            <Separator>|</Separator>
+            <p>
+              <BoldLabel>Email address:</BoldLabel> <a href={`mailto:${resumeData?.basics?.email}`}>{resumeData?.basics?.email}</a>
+            </p>
+            <Separator>|</Separator>
+            <p>
+              <BoldLabel>LinkedIn:</BoldLabel>
+              <a href={resumeData?.additionalLinks?.linkedin} target="_blank" rel="noreferrer">
+                {resumeData?.additionalLinks?.linkedin}
+              </a>
+            </p>
+            <Separator>|</Separator>
+            <p>
+              <BoldLabel>Website:</BoldLabel><a href={resumeData?.additionalLinks?.website} target="_blank" rel="noreferrer">{resumeData?.additionalLinks?.website}</a>
+            </p>
+            <Separator>|</Separator>
+            <p>
+              <BoldLabel>Address:</BoldLabel> {resumeData?.basics?.city}
             </p>
           </Horizontal>
-          <p>
-            <BoldLabel>
-              <ImageWrapper image={mailImage} /> Email address:
-            </BoldLabel> <a href={`mailto:${resumeData?.basics?.email}`}>{resumeData?.basics?.email}</a>
-          </p>
-          <p>
-            <BoldLabel>
-              <ImageWrapper image={linkedinImage} /> LinkedIn:
-            </BoldLabel>
-            <a href={resumeData?.additionalLinks?.linkedin} target="_blank" rel="noreferrer">
-              {resumeData?.additionalLinks?.linkedin}
-            </a>
-          </p>
-          <p>
-            <BoldLabel>
-              <ImageWrapper image={webImage} /> Website:
-            </BoldLabel><a href={resumeData?.additionalLinks?.website} target="_blank" rel="noreferrer">{resumeData?.additionalLinks?.website}</a>
-          </p>
-          <p>
-            <BoldLabel>
-              <ImageWrapper image={pinImage} /> Home:
-            </BoldLabel> {resumeData?.basics?.city}
-          </p>
         </BasicInfoDiv>
       </BasicInfoWrapper>
       <SectionImageAndTitleDiv>
@@ -75,9 +69,16 @@ const TemplateEuroPass2 = () => {
       <SectionContent>
         {resumeData?.work?.map((work, idx) => (
           <Item key={idx}>
-            <ItemTitle style={{ color: '#214493' }}>{work?.position}</ItemTitle>
-            <ItemSubline>{work?.company} <StartDateEndDate> [ {work?.startDate} - {work?.endDate} ] </StartDateEndDate></ItemSubline>
-            <PlaceOfWork>City: {work?.city} <Separator>|</Separator> Country: {work?.country}</PlaceOfWork>
+            <ItemSubline>
+              <StartDateEndDate> {work?.startDate} - {work?.endDate} {work?.city}, {work?.country} </StartDateEndDate>
+            </ItemSubline>
+            <Horizontal>
+              <ItemTitle>{work?.position}</ItemTitle><p style={{
+                textTransform: 'uppercase',
+                fontSize: '14px',
+                margin: '0 0 0 5px',
+              }}>{work?.company}</p>
+            </Horizontal>
             <Spacer height={10} />
             {work?.highlights && work?.highlights.map((highlight, hIdx) => (
               <BulletPoints key={hIdx}>{highlight}</BulletPoints>
@@ -91,13 +92,31 @@ const TemplateEuroPass2 = () => {
       <SectionContent>
         {resumeData?.education?.map((education, idx) => (
           <Item key={idx}>
-            <ItemTitle style={{ color: '#214493' }}>
-              {education?.studyType} in {education?.area}
-            </ItemTitle>
             <ItemSubline>
-              {education?.institution} [ {education?.startDate} - {education?.endDate} ]
+              <StartDateEndDate>{education?.startDate} - {education?.endDate} {education?.city}, {education?.country} </StartDateEndDate>
             </ItemSubline>
-            <PlaceOfWork>City: {education?.city} <Separator>|</Separator> Country: {education?.country} <Separator>|</Separator> Website: {education?.website}</PlaceOfWork>
+            <Horizontal>
+              <ItemTitle style={{
+                textTransform: 'uppercase',
+              }}>
+                {education?.studyType} in {education?.area}
+              </ItemTitle><p style={{
+                textTransform: 'uppercase',
+                fontSize: '14px',
+                margin: '0 0 0 5px',
+              }}>{education?.institution}</p>
+            </Horizontal>
+            <Spacer height={10} />
+            <Horizontal>
+              <ItemTitle>Website</ItemTitle> <a style={{
+                fontSize: '14px',
+                margin: '0 0 0 5px',
+              }}
+                href={education?.website} target="_blank" rel="noreferrer"
+              >
+                {education?.website}
+              </a>
+            </Horizontal>
           </Item>
         ))}
       </SectionContent>
@@ -106,31 +125,61 @@ const TemplateEuroPass2 = () => {
       </SectionImageAndTitleDiv>
       <SectionContent>
         <LanguageLevels>
-          <ItemTitle style={{ fontSize: '14px' }}>Mother tongue(s):</ItemTitle>
+          <p>Mother tongue(s):</p>
           <Separator />
           {resumeData?.languages?.map((language, idx) => (
             language.motherTongue && (
               <React.Fragment key={idx}>
-                <p>{language?.language}</p>
+                <ItemTitle>{language?.language}</ItemTitle>
                 {idx === resumeData?.languages?.filter((e) => e.motherTongue).length - 1 ? '' : <Separator>|</Separator>}
               </React.Fragment>
             )
           ))}
         </LanguageLevels>
-        <ItemTitle style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Other language(s): </ItemTitle>
-        {resumeData?.languages?.map((language, idx) => (
-          !language.motherTongue && (
-            <Item key={idx}>
-              <p style={{ color: '#214493', fontSize: '14px', fontWeight: '600' }}>{language?.language}</p>
-              <LanguageLevels>
-                <BoldLabel>Listening: </BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Reading:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken interaction:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken production: </BoldLabel><p>{language?.level}</p> <Separator>|</Separator> <BoldLabel> Writing:</BoldLabel><p>{language?.level}</p>
-              </LanguageLevels>
-            </Item>
-          )
-        ))}
+        <p style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Other language(s): </p>
+        <Table>
+          <tr>
+            <th></th>
+            <th>Understanding</th>
+            <th></th>
+            <th>Speaking</th>
+            <th></th>
+            <th>Writing</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Listening</td>
+            <td>Reading</td>
+            <td>Spoken production</td>
+            <td>Spoken interaction</td>
+            <td></td>
+          </tr>
+          {resumeData?.languages?.map((language, idx) => (
+            !language.motherTongue && (
+              // <Item key={idx}>
+              //   <p style={{ color: '#214493', fontSize: '14px', fontWeight: '600' }}>{language?.language}</p>
+              //   <LanguageLevels>
+              //     <BoldLabel>Listening: </BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Reading:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken interaction:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken production: </BoldLabel><p>{language?.level}</p> <Separator>|</Separator> <BoldLabel> Writing:</BoldLabel><p>{language?.level}</p>
+              //   </LanguageLevels>
+              // </Item>
+              <tr>
+                <td>
+                  <ItemTitle style={{
+                    textTransform: 'uppercase',
+                  }}>{language?.language}</ItemTitle>
+                </td>
+                <td>{language?.level}</td>
+                <td>{language?.level}</td>
+                <td>{language?.level}</td>
+                <td>{language?.level}</td>
+                <td>{language?.level}</td>
+              </tr>
+            )
+          ))}
+        </Table>
         <LanguageLevelsDetail>Levels: A1 and A2: Basic user; B1 and B2: Independent user; C1 and C2: Proficient user</LanguageLevelsDetail>
       </SectionContent>
-    </Wrapper>
+    </Wrapper >
   );
 };
 
@@ -138,7 +187,6 @@ const Wrapper = styled.div`
   min-height: 296mm;
   background: #fff;
   position: relative;
-  padding: 0 20px;
 
   a {
     color: #81acd9;
@@ -149,11 +197,14 @@ const BasicInfoWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 20px 20px 20px;
+  padding: 10px 20px;
+  background-color: #F5F5F5;
 
   h3 {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: bolder;
+    border-bottom: 2px solid #979797;
+    padding: 10px 0;
   }
 
   p {
@@ -167,7 +218,7 @@ const Horizontal = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const BoldLabel = styled.span`
@@ -192,15 +243,14 @@ const ShortBio = styled.p`
 const SectionImageAndTitleDiv = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #c6c6c6;
-  padding: 5px 0;
+  border-bottom: 2px solid #979797;
+  padding: 10px 0 0 0;
   margin: 0 20px;
 `;
 
 const SectionTitle = styled.h2`
   font-size: 14px;
-  font-weight: 600;
-  color: #214493;
+  font-weight: bolder;
   text-transform: uppercase;
 `;
 
@@ -221,16 +271,11 @@ const ItemTitle = styled.h3`
 
 const ItemSubline = styled.p`
   font-weight: 500;
-  padding: 2px 0 5px;
+  padding: 2px 0 0 0;
   font-size: 14px;
 `;
 
 const StartDateEndDate = styled.span`
-  font-weight: 400;
-  font-size: 14px;
-`;
-
-const PlaceOfWork = styled.p`
   font-weight: 400;
   font-size: 14px;
 `;
@@ -241,14 +286,55 @@ const Separator = styled.span`
 `;
 
 const Spacer = styled.div`
-  height: ${(props) => props.height}px;
+  border-bottom: 2px solid #979797;
+  margin: 0 0 ${(props) => props.height}px 0;
 `;
 
 const LanguageLevelsDetail = styled.p`
   font-size: 14px;
   font-weight: 400;
-  color: #c6c6c6;
   font-style: italic;
+  padding: 10px 0;
+`;
+
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+
+  tr:first-child {
+    border-bottom: 1px solid #979797;
+
+    th {
+      border-bottom: 1px solid #f2f2f2;
+      text-align: right;
+    }
+    th:last-child {
+      text-align: center;
+    }
+  }
+
+  td:first-child {
+    text-align: left;
+  }
+
+  td {
+    padding: 8px;
+    border-bottom: 1px solid #f2f2f2;
+    text-align: center;
+  }
+
+  tr:nth-child(2) {
+    td {
+      background-color: #fff;
+    }
+  }
+
+  tr {
+    td {
+      background-color: #f2f2f2;
+    }
+  }
+  
 `;
 
 const LanguageLevels = styled.div`
