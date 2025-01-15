@@ -173,7 +173,7 @@ const BasicInfoWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 20px 20px 20px;
+  padding: 20px 10px 20px;
 
   h3 {
     font-size: 24px;
