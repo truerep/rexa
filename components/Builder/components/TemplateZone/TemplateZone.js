@@ -36,21 +36,6 @@ const TemplateZone = ({
       {
         resumeData?.templateData ? (
           <>
-            {/* <Actions className="print-none">
-              <span>Match your resume with Job Description and make it ATS Friendly.</span>
-              <button onClick={() => setShowJdModal(true)} type="button" className="btn-primary btn-outlined">
-                <img src="/assets/icons/sync-icon.png" alt="" />
-                <span>Match now</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="btn-primary"
-              >
-                <img src="/assets/icons/download-icon.png" alt="" />
-                <span>Download</span>
-              </button>
-            </Actions> */}
             <ResumeTemplate id="templateContainer">
               {TemplateRender(templateId)}
             </ResumeTemplate>

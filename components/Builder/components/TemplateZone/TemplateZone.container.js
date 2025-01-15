@@ -24,16 +24,16 @@ const TemplateZoneContainer = () => {
 
   const getResumeData = async () => {
     try {
-      // const res = await getResumeJson(resumeString);
-      // if (res?.basics) {
-      //   updateResumeData((prevState) => {
-      //     return {
-      //       ...prevState,
-      //       resumeString,
-      //       templateData: res
-      //     };
-      //   });
-      // }
+      const res = await getResumeJson(resumeString);
+      if (res?.basics) {
+        updateResumeData((prevState) => {
+          return {
+            ...prevState,
+            resumeString,
+            templateData: res
+          };
+        });
+      }
     } catch (err) {
     }
   };
