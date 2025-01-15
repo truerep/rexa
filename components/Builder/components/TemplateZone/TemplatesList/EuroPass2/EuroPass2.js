@@ -156,12 +156,6 @@ const TemplateEuroPass2 = () => {
           </tr>
           {resumeData?.languages?.map((language, idx) => (
             !language.motherTongue && (
-              // <Item key={idx}>
-              //   <p style={{ color: '#214493', fontSize: '14px', fontWeight: '600' }}>{language?.language}</p>
-              //   <LanguageLevels>
-              //     <BoldLabel>Listening: </BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Reading:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken interaction:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken production: </BoldLabel><p>{language?.level}</p> <Separator>|</Separator> <BoldLabel> Writing:</BoldLabel><p>{language?.level}</p>
-              //   </LanguageLevels>
-              // </Item>
               <tr>
                 <td>
                   <ItemTitle style={{
