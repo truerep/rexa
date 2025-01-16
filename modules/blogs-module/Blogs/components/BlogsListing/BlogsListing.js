@@ -10,7 +10,7 @@ const BlogsListing = ({blogsData}) => {
         <Container>
             <BlogsWrapper>
               {
-                blogsData.length > 0 ? blogsData.map((blogItem) => (
+                blogsData?.length > 0 ? blogsData.map((blogItem) => (
                   <BlogCard blogData={blogItem} />
                 )) : null
               }

@@ -143,12 +143,24 @@ const BlogBody = styled.div`
     margin: 20px 0;
   }
 
+  pre {
+    background: ${colors.BrightGray};
+    margin: 5px 30px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    overflow: auto;
+  }
+
   @media (max-width: 768px) {
     padding: 10px 0 20px;
 
     h1, h2, h3, h4, h5, h6, p {
       padding-left: 20px;
       padding-right: 20px;
+    }
+
+    pre {
+      margin: 5px 20px;
     }
   }
 `;
