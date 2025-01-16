@@ -13,7 +13,8 @@ const colors = {
   ChineseBlack: '#111111',
   VoiletBlue: '#9C6EFF',
   GraniteGray: '#676767',
-  Red: '#FF0000'
+  Red: '#FF0000',
+  BrightGray: '#ececec'
 };
 
 export default colors;
