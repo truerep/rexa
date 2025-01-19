@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ResumeContext } from '@/context/ResumeContext';
 import { linkedinImage, pinImage, webImage, mailImage, phoneImage } from './assets';
 import ImageWrapper from './Image';
+import { checkOtherLanguagesExist } from '@/helpers';
 
 const TemplateEuroPass1 = () => {
   let { resumeData } = useContext(ResumeContext);
@@ -119,18 +120,21 @@ const TemplateEuroPass1 = () => {
             )
           ))}
         </LanguageLevels>
-        <ItemTitle style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Other language(s): </ItemTitle>
-        {resumeData?.languages?.map((language, idx) => (
-          !language.motherTongue && (
-            <Item key={idx}>
-              <p style={{ color: '#214493', fontSize: '14px', fontWeight: '600' }}>{language?.language}</p>
-              <LanguageLevels>
-                <BoldLabel>Listening: </BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Reading:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken interaction:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken production: </BoldLabel><p>{language?.level}</p> <Separator>|</Separator> <BoldLabel> Writing:</BoldLabel><p>{language?.level}</p>
-              </LanguageLevels>
-            </Item>
-          )
-        ))}
-        <LanguageLevelsDetail>Levels: A1 and A2: Basic user; B1 and B2: Independent user; C1 and C2: Proficient user</LanguageLevelsDetail>
+        {checkOtherLanguagesExist(resumeData.languages) &&
+          <>
+            <ItemTitle style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Other language(s): </ItemTitle>
+            {resumeData?.languages?.map((language, idx) => (
+              !language.motherTongue && (
+                <Item key={idx}>
+                  <p style={{ color: '#214493', fontSize: '14px', fontWeight: '600' }}>{language?.language}</p>
+                  <LanguageLevels>
+                    <BoldLabel>Listening: </BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Reading:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken interaction:</BoldLabel> <p>{language?.level}</p> <Separator>|</Separator> <BoldLabel>Spoken production: </BoldLabel><p>{language?.level}</p> <Separator>|</Separator> <BoldLabel> Writing:</BoldLabel><p>{language?.level}</p>
+                  </LanguageLevels>
+                </Item>
+              )
+            ))}
+            <LanguageLevelsDetail>Levels: A1 and A2: Basic user; B1 and B2: Independent user; C1 and C2: Proficient user</LanguageLevelsDetail>
+          </>}
       </SectionContent>
       <RightLowerBorder />
       <LeftLowerBorder />

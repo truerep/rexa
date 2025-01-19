@@ -58,6 +58,25 @@ const Education = ({
                     onChange={(e) => handleInputChange(idx, 'area', e.target.value)}
                   />
                 </InputGroup>
+                <InputGroup>
+                  <input
+                    value={templateItem?.website}
+                    placeholder="xyz-university.com"
+                    onChange={(e) => handleInputChange(idx, 'website', e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <input
+                    value={templateItem?.city}
+                    placeholder="City"
+                    onChange={(e) => handleInputChange(idx, 'city', e.target.value)}
+                  />
+                  <input
+                    value={templateItem?.country}
+                    placeholder="Country"
+                    onChange={(e) => handleInputChange(idx, 'country', e.target.value)}
+                  />
+                </InputGroup>
               </ItemWrapper>
 
               <div className="d-grid grid-2 col-gap-2">

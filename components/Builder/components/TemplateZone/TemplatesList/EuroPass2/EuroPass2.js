@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { ResumeContext } from '@/context/ResumeContext';
+import { checkOtherLanguagesExist } from '@/helpers';
 
 const TemplateEuroPass2 = () => {
   let { resumeData } = useContext(ResumeContext);
@@ -136,42 +137,45 @@ const TemplateEuroPass2 = () => {
             )
           ))}
         </LanguageLevels>
-        <p style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Other language(s): </p>
-        <Table>
-          <tr>
-            <th></th>
-            <th>Understanding</th>
-            <th></th>
-            <th>Speaking</th>
-            <th></th>
-            <th>Writing</th>
-          </tr>
-          <tr>
-            <td></td>
-            <td>Listening</td>
-            <td>Reading</td>
-            <td>Spoken production</td>
-            <td>Spoken interaction</td>
-            <td></td>
-          </tr>
-          {resumeData?.languages?.map((language, idx) => (
-            !language.motherTongue && (
+        {checkOtherLanguagesExist(resumeData?.languages) &&
+          <>
+            <p style={{ fontSize: '14px', margin: '0 0 10px 0' }}>Other language(s): </p>
+            <Table>
               <tr>
-                <td>
-                  <ItemTitle style={{
-                    textTransform: 'uppercase',
-                  }}>{language?.language}</ItemTitle>
-                </td>
-                <td>{language?.level}</td>
-                <td>{language?.level}</td>
-                <td>{language?.level}</td>
-                <td>{language?.level}</td>
-                <td>{language?.level}</td>
+                <th></th>
+                <th>Understanding</th>
+                <th></th>
+                <th>Speaking</th>
+                <th></th>
+                <th>Writing</th>
               </tr>
-            )
-          ))}
-        </Table>
-        <LanguageLevelsDetail>Levels: A1 and A2: Basic user; B1 and B2: Independent user; C1 and C2: Proficient user</LanguageLevelsDetail>
+              <tr>
+                <td></td>
+                <td>Listening</td>
+                <td>Reading</td>
+                <td>Spoken production</td>
+                <td>Spoken interaction</td>
+                <td></td>
+              </tr>
+              {resumeData?.languages?.map((language, idx) => (
+                !language.motherTongue && (
+                  <tr>
+                    <td>
+                      <ItemTitle style={{
+                        textTransform: 'uppercase',
+                      }}>{language?.language}</ItemTitle>
+                    </td>
+                    <td>{language?.level}</td>
+                    <td>{language?.level}</td>
+                    <td>{language?.level}</td>
+                    <td>{language?.level}</td>
+                    <td>{language?.level}</td>
+                  </tr>
+                )
+              ))}
+            </Table>
+            <LanguageLevelsDetail>Levels: A1 and A2: Basic user; B1 and B2: Independent user; C1 and C2: Proficient user</LanguageLevelsDetail>
+          </>}
       </SectionContent>
     </Wrapper >
   );
