@@ -6,6 +6,7 @@ import { checkImageURLIsValid, isString } from './validator';
 import templateKeys from './templateKeys';
 import { removeDataFromSession } from './removeData';
 import getBlogSchema from './getBlogSchema';
+import checkOtherLanguagesExist from './checkOtherLanguagesExist';
 
 export {
   colors,
@@ -16,5 +17,6 @@ export {
   templateKeys,
   removeDataFromSession,
   getBlogSchema,
-  isString
+  isString,
+  checkOtherLanguagesExist
 };

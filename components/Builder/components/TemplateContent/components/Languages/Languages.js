@@ -57,6 +57,20 @@ const Languages = ({
                     placeholder="Fluency"
                     onChange={(e) => handleInputChange(idx, 'fluency', e.target.value)}
                   />
+                  <input
+                    value={templateItem?.level}
+                    placeholder="Level"
+                    onChange={(e) => handleInputChange(idx, 'level', e.target.value)}
+                  />
+                  <MotherTongueToggle>
+                    <input
+                      type="checkbox"
+                      id={`motherTongue-${idx}`}
+                      checked={templateItem?.motherTongue}
+                      onChange={(e) => handleInputChange(idx, 'motherTongue', e.target.checked)}
+                    />
+                    <label htmlFor={`motherTongue-${idx}`} />
+                  </MotherTongueToggle>
                 </InputGroup>
               </ItemWrapper>
             </ItemSection>
@@ -85,6 +99,12 @@ const ItemWrapper = styled.div`
   .highlight-item {
     min-height: 50px;
   }
+`;
+
+const MotherTongueToggle = styled.div`
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
 `;
 
 export default Languages;

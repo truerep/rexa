@@ -103,6 +103,26 @@ const Experience = ({
                   </InputGroup>
                 </ItemWrapper>
               </div>
+              <div className="d-grid grid-2 col-gap-2">
+                <ItemWrapper>
+                  <InputGroup>
+                    <input
+                      value={templateItem?.city}
+                      placeholder="City"
+                      onChange={(e) => handleInputChange(idx, 'city', e.target.value)}
+                    />
+                  </InputGroup>
+                </ItemWrapper>
+                <ItemWrapper>
+                  <InputGroup>
+                    <input
+                      value={templateItem?.country}
+                      placeholder="Country"
+                      onChange={(e) => handleInputChange(idx, 'country', e.target.value)}
+                    />
+                  </InputGroup>
+                </ItemWrapper>
+              </div>
               {
                 templateItem?.highlights && templateItem?.highlights?.map((highlight, hIdx) => (
                   <ItemWrapper key={hIdx}>
