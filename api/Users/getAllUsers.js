@@ -9,7 +9,7 @@ const getAllUsers = async (pageNumber) => {
 
   const config = {
     method: 'get',
-    url: `${appEnv.API_URL}/api/auth/list?pageNumber=${pageNumber}`,
+    url: `${appEnv.API_URL}/api/auth/list?pageNumber=${pageNumber}&pageSize=5`,
     headers: {
       Authorization: `Bearer ${authToken}`
     }

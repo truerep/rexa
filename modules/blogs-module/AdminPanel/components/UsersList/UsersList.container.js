@@ -15,9 +15,9 @@ const UsersListContainer = () => {
     getUsersList();
   }, [router])
 
-  const getUsersList = async () => {
+  const getUsersList = async (page) => {
     try {
-      const res = await getAllUsers(currentPage);
+      const res = await getAllUsers(page ?? currentPage);
       if (res?.data) {
         setUsersData(res.data?.users);
         setTotalCount(res.data?.totalCount);
@@ -29,8 +29,14 @@ const UsersListContainer = () => {
     }
   }
 
+  const handlePageChange = (page) => {
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
+    getUsersList(page);
+  }
+
   return (
-    <UsersList usersData={usersData} totalCount={totalCount} totalPages={totalPages} currentPage={currentPage} />
+    <UsersList usersData={usersData} totalCount={totalCount} totalPages={totalPages} currentPage={currentPage} handlePageChange={handlePageChange} />
   )
 }
 

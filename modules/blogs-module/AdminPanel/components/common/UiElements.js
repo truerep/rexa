@@ -46,3 +46,18 @@ export const HamBurger = styled.div`
         }
     }
 `;
+
+export const Button = styled.button`
+    background-color: #f2f2f2;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: all 0.3s ease;
+    width: 100px;
+`;

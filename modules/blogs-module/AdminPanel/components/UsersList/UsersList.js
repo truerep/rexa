@@ -1,9 +1,11 @@
+import { colors } from '@/helpers';
 import React from 'react'
 
 import styled from 'styled-components'
+import { Button } from '../common/UiElements';
 
 
-const UsersList = ({ usersData, totalCount, totalPages, currentPage }) => {
+const UsersList = ({ usersData, totalCount, totalPages, currentPage, handlePageChange }) => {
   return (
     usersData.length && <Wrapper>
       <UsersWrapper>
@@ -30,15 +32,27 @@ const UsersList = ({ usersData, totalCount, totalPages, currentPage }) => {
               </Tr>
             ))}
           </Tbody>
-          <tfoot>
+          <Tfoot>
             <Tr>
               <Td colSpan="4">Total Users: {totalCount}</Td>
             </Tr>
             <Tr>
               <Td colSpan="4">Page {currentPage} of {totalPages}</Td>
             </Tr>
-          </tfoot>
+          </Tfoot>
         </Table>
+        <Horizantal>
+          <Button style={{
+            backgroundColor: currentPage === 1 ? 'gray' : colors.HanPurple,
+            color: 'white',
+            cursor: currentPage === 1 ? 'not-allowed' : 'pointer'
+          }} onClick={() => handlePageChange(currentPage - 1)}>Previous</Button>
+          <Button style={{
+            backgroundColor: currentPage === totalPages ? 'gray' : colors.HanPurple,
+            color: 'white',
+            cursor: currentPage === totalPages ? 'not-allowed' : 'pointer'
+          }} onClick={() => handlePageChange(currentPage + 1)}>Next</Button>
+        </Horizantal>
       </UsersWrapper>
     </Wrapper>
   )
@@ -52,12 +66,13 @@ const UsersWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 2vh 0;
 `;
 
 const Table = styled.table`
     table-layout: fixed;
-    width: 90vw;
+    width: 80vw;
     border-collapse: collapse;
 `;
 
@@ -66,7 +81,9 @@ const Thead = styled.thead`
 
     th {
       height: 6vh;
-      background-color: #f2f2f2;
+      background-color: ${colors.HanPurple};
+      color: white;
+      border: 1px solid #ddd;
     }
 
     th:first-child {
@@ -88,7 +105,7 @@ const Thead = styled.thead`
 
 const Tbody = styled.tbody`
     overflow-y: auto;
-    height: 500px; 
+    height: 50vh;
 `;
 
 const Td = styled.td`
@@ -105,15 +122,24 @@ const Td = styled.td`
     }
 `;
 
-const Th = styled.th`
-    padding: 10px;
-    border: 1px solid #ddd;
-`;
-
 const Tr = styled.tr`
     background-color: #f2f2f2;
 `;
 
+const Tfoot = styled.tfoot` 
+    background-color: #f2f2f2;
+    color: white;
 
+    tr {
+        background-color: ${colors.Lavender};
+    }
+`;
+
+const Horizantal = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+`;
 
 export default UsersList
